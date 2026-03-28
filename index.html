@@ -29,9 +29,7 @@
             <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="assets/img/ui/Bajo el volcan transparente.png" alt="Logo bajo el volcan" width="50"
                     height="80" class="bev-brand-main fw-bold" style="line-height: 1; font-size: 1.2rem;">
-                <span class="bev-brand-main fw-bold" style="line-height: 1; font-size: 1.2rem;">
-                    BAJO EL VOLCÁN
-                </span>
+                <span class="bev-brand-main">BAJO EL VOLCÁN</span>
             </a>
             <div class="position-absolute start-50 translate-middle-x d-none d-lg-block">
                 <span class="bev-brand-sub text-uppercase"
@@ -60,104 +58,41 @@
         </div>
     </nav>
 
-
-    <!-- ============================
-    CARRUSEL HERO
-============================= -->
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-        </div>
-
-        <div class="carousel-inner">
-
-            <div class="carousel-item active bev-slide bev-slide-1">
-                <div class="bev-slide-overlay"></div>
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-lg-6 bev-slide-content">
-                            <span class="bev-eyebrow">Novedad 2024</span>
-                            <h1 class="bev-slide-title">Pobres Triunfos Pasajeros<br /><em>Ruben Dario Jiguera</em></h1>
-                            <p class="bev-slide-desc">Una novela sobre la memoria y el regreso imposible.</p>
-                            <div class="d-flex gap-3 flex-wrap mt-4">
-                                <a href="pages/catalogo.html" class="btn bev-btn-gold">Ver libro</a>
-                                <a href="pages/catalogo.html" class="btn bev-btn-outline-light">Ver catálogo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item bev-slide bev-slide-2">
-                <div class="bev-slide-overlay"></div>
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-lg-6 bev-slide-content">
-                            <span class="bev-eyebrow">Premio Iberoamericano 2020</span>
-                            <h1 class="bev-slide-title">Fiorella</h1>
-                            <p class="bev-slide-desc">La historia de una mujer italiana en el Caribe colombiano.</p>
-                            <div class="d-flex gap-3 flex-wrap mt-4">
-                                <a href="pages/catalogo.html" class="btn bev-btn-gold">Ver libro</a>
-                                <a href="pages/catalogo.html" class="btn bev-btn-outline-light">Ver catálogo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item bev-slide bev-slide-3">
-                <div class="bev-slide-overlay"></div>
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-lg-6 bev-slide-content">
-                            <span class="bev-eyebrow">Poesía · Nuevo título</span>
-                            <h1 class="bev-slide-title">Instinto de<br /><em>Partida</em></h1>
-                            <p class="bev-slide-desc">Cuarenta y tres poemas sobre el umbral entre quedarse y partir.
-                            </p>
-                            <div class="d-flex gap-3 flex-wrap mt-4">
-                                <a href="pages/catalogo.html" class="btn bev-btn-gold">Ver libro</a>
-                                <a href="pages/catalogo.html" class="btn bev-btn-outline-light">Ver catálogo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+<!--Carousel principal-->
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+ 
+        <!-- Los indicadores se generan desde main.js -->
+        <div class="carousel-indicators" id="heroIndicators"></div>
+ 
+        <!-- Los slides se generan desde main.js via libros.json -->
+        <div class="carousel-inner" id="heroCarouselInner"></div>
+ 
         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </button>
-
+ 
     </div>
 
-
-  <!-- ============================
+<!-- ============================
          LIBROS DESTACADOS — carrusel
     ============================= -->
     <section class="py-5 bev-section-light">
         <div class="container">
 
             <div class="text-center mb-5">
-                <span class="bev-section-tag">Conoce los títulos de Bajo el Volcán</span>
+                <span class="bev-section-tag">Destacados de Bajo el Volcán</span>
                 <h2 class="bev-section-title">Nuestras Novelas</h2>
             </div>
 
-            <!-- Carrusel de libros -->
-            <div id="librosCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div id="librosCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
 
-                <!-- Las diapositivas se generan desde libros.json con main.js -->
                 <div class="carousel-inner" id="librosCarouselInner">
-                    <!-- JS inserta aquí los grupos de 3 tarjetas -->
+                    <!-- Generado por main.js desde libros.json -->
                 </div>
 
-                <!-- Flechas -->
                 <button class="carousel-control-prev bev-carousel-ctrl" type="button"
                     data-bs-target="#librosCarousel" data-bs-slide="prev">
                     <i class="bi bi-chevron-left"></i>
@@ -167,7 +102,7 @@
                     <i class="bi bi-chevron-right"></i>
                 </button>
 
-            </div><!-- /#librosCarousel -->
+            </div>
 
             <div class="text-center mt-5">
                 <a href="pages/catalogo.html" class="btn bev-btn-dark">
@@ -178,60 +113,26 @@
         </div>
     </section>
 
-
     <!-- ============================
-       AUTORES
-  ============================= -->
+         AUTORES
+    ============================= -->
     <section class="py-5 bev-section-dark">
         <div class="container">
-
+ 
             <div class="text-center mb-5">
                 <span class="bev-section-tag-light">Voces de la editorial</span>
                 <h2 class="bev-section-title text-white">Nuestros autores</h2>
             </div>
-
-            <div class="row g-4 justify-content-center">
-
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <div class="bev-author-avatar-wrap mx-auto">
-                        <img src="assets/img/autores/camila.jpeg" alt="Camila Vásquez"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-                        <div class="bev-avatar-fallback" style="display:none">CV</div>
-                    </div>
-                    <p class="bev-author-name mt-3">Camila Vásquez</p>
-                    <p class="bev-author-country">Colombia</p>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <div class="bev-author-avatar-wrap mx-auto">
-                        <img src="assets/img/autores/mateo.jpeg" alt="Mateo Florián"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-                        <div class="bev-avatar-fallback" style="display:none">MF</div>
-                    </div>
-                    <p class="bev-author-name mt-3">Mateo Florián</p>
-                    <p class="bev-author-country">Colombia</p>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-2 text-center">
-                    <div class="bev-author-avatar-wrap mx-auto">
-                        <img src="assets/img/autores/jorge.jpeg" alt="Jorge Espinosa"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-                        <div class="bev-avatar-fallback" style="display:none">JE</div>
-                    </div>
-                    <p class="bev-author-name mt-3">Jorge Espinosa</p>
-                    <p class="bev-author-country">Argentina</p>
-                </div>
-
-            </div>
-
+ 
+            <!-- Generado por main.js desde autores.json -->
+            <div class="row g-4 justify-content-center" id="autoresGrid"></div>
+ 
             <div class="text-center mt-5">
                 <a href="pages/autores.html" class="btn bev-btn-outline-light">Ver todos los autores</a>
             </div>
-
+ 
         </div>
     </section>
-
-
     <!-- ============================
        FOOTER
   ============================= -->

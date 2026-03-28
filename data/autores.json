@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "nombre": "Ruben Dario Higera",
+    "nacionalidad": "Colombia",
+    "bio": "",
+    "foto": "assets/img/autores/Rubendariohiguera.png",
+    "libros_ids": [1]
+  },
+  {
+    "id": 2,
+    "nombre": "Natalia Alvarez Arenas",
+    "nacionalidad": "Colombia",
+    "bio": "",
+    "foto": "assets/img/autores/Nataliaalvarezarenas.png",
+    "libros_ids": [2]
+  },
+  {
+    "id": 3,
+    "nombre": "",
+    "nacionalidad": "",
+    "bio": "",
+    "foto": "assets/img/autores/",
+    "libros_ids": [3]
+  },
+  {
+    "id": 4,
+    "nombre": "",
+    "nacionalidad": "",
+    "bio": "",
+    "foto": "assets/img/autores/",
+    "libros_ids": [4]
+  },
+  {
+    "id": 5,
+    "nombre": "",
+    "nacionalidad": "",
+    "bio": "",
+    "foto": "assets/img/autores/",
+    "libros_ids": [5]
+  },
+  {
+    "id": 6,
+    "nombre": "",
+    "nacionalidad": "",
+    "bio": "",
+    "foto": "assets/img/autores/",
+    "libros_ids": [6]
+  }
+]
