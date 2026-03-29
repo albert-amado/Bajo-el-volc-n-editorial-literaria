@@ -26,7 +26,7 @@ function renderizarHero(libros) {
   const indicators = document.getElementById('heroIndicators');
   if (!inner) return;
 
-  const slides = libros.slice(0, 6);
+  const slides = libros.slice(0, 9);//Cantidad de libros del carrousel
 
   if (indicators) {
     indicators.innerHTML = slides.map((_, i) => `
@@ -41,12 +41,12 @@ function renderizarHero(libros) {
 
   inner.innerHTML = slides.map((libro, i) => `
     <div class="carousel-item ${i === 0 ? 'active' : ''} bev-slide"
-      style="background-image: url('${libro.imagen}');">
+      style="background-image: url('${libro.imagen_hero || libro.imagen}');">
       <div class="bev-slide-overlay"></div>
       <div class="container h-100">
         <div class="row h-100 align-items-center">
           <div class="col-lg-6 bev-slide-content">
-            <span class="bev-eyebrow">${libro.nuevo ? 'Novedad 2024' : libro.genero}</span>
+            <span class="bev-eyebrow">${libro.nuevo ? 'Novedad 2026' : libro.genero}</span>
             <h1 class="bev-slide-title">${libro.titulo}</h1>
             <p class="bev-slide-author">${libro.autor}</p>
             <p class="bev-slide-desc">${libro.descripcion.substring(0, 120)}...</p>
@@ -88,7 +88,6 @@ function renderizarCarrusel(libros) {
                 <span class="bev-book-genre">${libro.genero}</span>
                 <h5 class="bev-book-title">${libro.titulo}</h5>
                 <p class="bev-book-author">${libro.autor}</p>
-                <p class="bev-book-desc">${libro.descripcion.substring(0, 100)}...</p>
                 <div class="mt-auto d-flex justify-content-between align-items-center pt-2 bev-card-footer">
                   <span class="bev-book-price">$${libro.precio.toLocaleString('es-CO')}</span>
                   <button class="btn bev-btn-add-cart"

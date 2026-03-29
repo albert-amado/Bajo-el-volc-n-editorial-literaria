@@ -17,10 +17,10 @@
   },
   {
     "id": 3,
-    "nombre": "",
-    "nacionalidad": "",
+    "nombre": "Juana Carolina",
+    "nacionalidad": "Colombia",
     "bio": "",
-    "foto": "assets/img/autores/",
+    "foto": "assets/img/autores/Juanacarolina.png",
     "libros_ids": [3]
   },
   {

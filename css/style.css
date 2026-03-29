@@ -5,13 +5,14 @@
 
 /* ---------- VARIABLES GLOBALES ---------- */
 :root {
-  --bev-ink:        #1A1C2A;
-  --bev-ink-mid:    #181A26;
-  --bev-gold:       #1A1C2A;
+  --bev-topbar:     #000000; /*Fondo footer superior*/
+  --bev-ink:        #181A26;/*Fondo para barra de navegacion*/
+  --bev-ink-mid:    #2f2d39; /*Fondo de seccion de autores*/
+  --bev-gold:       #181a26;
   --bev-gold-lt:    #1A1C2A;
-  --bev-cream:      #181A26; 
+  --bev-cream:      #181a26; /*fondo imagenes libros*/ 
   --bev-cream-dk:   #F2EBE0;
-  --bev-ash:        #4A5568;
+  --bev-ash:        #2f344b;
   --bev-charcoal:   #4B5563;
   --bev-red:        #8B2228;
   --font-display:   'Lato', sans-serif;
@@ -24,13 +25,45 @@ body {
   background-color: #FDFAF4;
 }
 
+/* ================================================
+   TOP BAR Redes sociales
+   ================================================ */
+.bev-topbar-footer {
+  background-color: var(--bev-topbar);
+  border-bottom: 1px solid var(--bev-gold);
+  padding: 0.4rem 1rem;
+}
+
+.bev-topbar-info {
+  color: var(--bev-ash);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bev-topbar-link {
+  color: var(--bev-ash);
+  font-size: 1rem;
+  margin-left: 1rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.bev-topbar-link:hover { color: var(--bev-gold); }
+
+/* Ocultar en móvil para no saturar */
+@media (max-width: 768px) {
+  .bev-topbar-info { display: none; }
+}
 
 /* ================================================
    NAVBAR
    ================================================ */
 .bev-navbar {
   background-color: var(--bev-ink);
-  border-bottom: 2px solid var(--bev-gold);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   padding: 0.75rem 0;
 }
 
@@ -90,7 +123,7 @@ body {
    CARRUSEL HERO
    ================================================ */
 .bev-slide {
-  height: 88vh;
+  height: 70vh;
   min-height: 520px;
   position: relative;
   background-size: cover;
@@ -410,8 +443,8 @@ body {
    AUTORES — sección homepage
    ================================================ */
 .bev-author-avatar-wrap {
-  width: 150px;   /* ← cambia para avatares más grandes o pequeños */
-  height: 150px;
+  width: 200px;   /* ← cambia para avatares más grandes o pequeños */
+  height: 200px;
   border-radius: 50%;
   border: 2px solid var(--bev-gold);
   overflow: hidden;
