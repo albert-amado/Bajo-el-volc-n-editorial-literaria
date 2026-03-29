@@ -1,13 +1,10 @@
-// ================================================
-// main.js
-// ================================================
-
 let todosLosLibros = [];
 
 document.addEventListener('DOMContentLoaded', () => {
   Promise.all([
-    fetch('data/libros.json').then(r => r.json()),
-    fetch('data/autores.json').then(r => r.json())
+    // Agregamos / al inicio para que la ruta sea absoluta desde la raíz de public
+    fetch('/data/libros.json').then(r => r.json()),
+    fetch('/data/autores.json').then(r => r.json())
   ])
   .then(([libros, autores]) => {
     todosLosLibros = libros;
@@ -20,12 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   .catch(err => console.error('Error cargando datos:', err));
 });
 
-
-// ------------------------------------------------
-// HERO
-// ------------------------------------------------
 function renderizarHero(libros) {
-  const inner      = document.getElementById('heroCarouselInner');
+  const inner = document.getElementById('heroCarouselInner');
   const indicators = document.getElementById('heroIndicators');
   if (!inner) return;
 
@@ -56,8 +49,8 @@ function renderizarHero(libros) {
             <p class="bev-slide-author">${libro.autor}</p>
             <p class="bev-slide-desc">${libro.descripcion.substring(0, 120)}...</p>
             <div class="d-flex gap-3 flex-wrap mt-4">
-              <a href="pages/catalogo.html" class="btn bev-btn-gold">Ver libro</a>
-              <a href="pages/catalogo.html" class="btn bev-btn-outline-light">Ver catálogo</a>
+              <a href="/catalogo" class="btn bev-btn-gold">Ver libro</a>
+              <a href="/catalogo" class="btn bev-btn-outline-light">Ver catálogo</a>
             </div>
           </div>
         </div>

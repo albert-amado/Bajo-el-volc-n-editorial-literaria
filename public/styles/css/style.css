@@ -9,7 +9,7 @@
   --bev-ink:        #181A26;/*Fondo para barra de navegacion*/
   --bev-ink-mid:    #2f2d39; /*Fondo de seccion de autores*/
   --bev-gold:       #181a26;
-  --bev-gold-lt:    #1A1C2A;
+  --bev-gold-lt:    #ffffff;
   --bev-cream:      #181a26; /*fondo imagenes libros*/ 
   --bev-cream-dk:   #F2EBE0;
   --bev-ash:        #2f344b;
@@ -23,6 +23,9 @@ body {
   font-family: var(--font-body);
   color: var(--bev-ink);
   background-color: #FDFAF4;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden
 }
 
 /* ================================================
@@ -751,4 +754,175 @@ body {
     border-color: var(--bev-ink);
     padding-left: 0.8rem;
   }
+}
+
+/* ================================================
+   CATÁLOGO — encabezado de página
+   ================================================ */
+.bev-page-header {
+  background-color: var(--bev-ink-mid);
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--bev-gold);
+}
+
+.bev-page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--bev-cream);
+  margin: 0;
+}
+
+/* ================================================
+   CATÁLOGO — filtros
+   ================================================ */
+.bev-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--bev-cream-dk);
+}
+
+.bev-filtro-btn {
+  background: transparent;
+  color: var(--bev-ash);
+  border: 1px solid var(--bev-cream-dk);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 0;
+}
+
+.bev-filtro-btn:hover,
+.bev-filtro-btn.activo {
+  background: var(--bev-ink);
+  color: var(--bev-gold);
+  border-color: var(--bev-ink);
+}
+
+/* ================================================
+   CATÁLOGO — fila de libro
+   ================================================ */
+.bev-libro-fila {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--bev-cream-dk);
+  cursor: pointer;
+  transition: background 0.2s;
+  align-items: flex-start;
+}
+
+.bev-libro-fila:hover {
+  background: rgba(0,0,0,0.02);
+}
+
+/* Portada */
+.bev-libro-fila-img {
+  position: relative;
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.bev-libro-fila-img img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info central */
+.bev-libro-fila-info {
+  flex: 1;
+}
+
+.bev-libro-fila-titulo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--bev-ink);
+  margin-bottom: 0.25rem;
+}
+
+.bev-libro-fila-autor {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--bev-ash);
+  margin-bottom: 0.75rem;
+}
+
+.bev-libro-fila-desc {
+  font-size: 0.9rem;
+  color: var(--bev-charcoal);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Columna derecha: precio y botones */
+.bev-libro-fila-accion {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 130px;
+  flex-shrink: 0;
+}
+
+/* ================================================
+   MODAL DETALLE
+   ================================================ */
+.bev-modal-content {
+  border-radius: 0;
+  border: none;
+  background: var(--bev-cream);
+}
+
+.bev-modal-header {
+  background: var(--bev-ink);
+  border: none;
+  padding: 0.75rem 1rem;
+}
+
+.bev-modal-cover {
+  min-height: 350px;
+  overflow: hidden;
+}
+
+.bev-modal-titulo {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--bev-ink);
+  margin-bottom: 0.25rem;
+}
+
+.bev-modal-autor {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--bev-ash);
+  margin-bottom: 1rem;
+}
+
+.bev-modal-desc {
+  font-size: 0.95rem;
+  color: var(--bev-charcoal);
+  line-height: 1.75;
+  flex-grow: 1;
+}
+
+.bev-modal-precio {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--bev-ink);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bev-libro-fila { flex-wrap: wrap; }
+  .bev-libro-fila-accion { align-items: flex-start; width: 100%; }
 }

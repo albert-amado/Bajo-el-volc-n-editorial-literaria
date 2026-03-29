@@ -1,0 +1,75 @@
+---
+
+---
+
+<!-- LIBROS DESTACADOS -->
+<section class="py-5 bev-section-light">
+  <div class="container-fluid">
+    <!-- Título -->
+    <div class="text-center mb-5">
+      <span class="bev-section-tag">Coleccion de Bajo el Volcán</span>
+      <h2 class="bev-section-title">Nuestras Novelas</h2>
+    </div>
+
+    <!-- Categorías + Carrusel -->
+    <div class="row g-4">
+      <!-- Columna izquierda: categorías -->
+      <div class="col-12 col-lg-2 px-0">
+        <div class="bev-categorias">
+          <p class="bev-categorias-titulo">CATEGORÍA</p>
+          <ul class="bev-categorias-lista" id="listaCategorias">
+            <li class="bev-categoria-item activo" data-categoria="todos">
+              Todos
+            </li>
+            <li class="bev-categoria-item" data-categoria="nuevo">Nuevos</li>
+            <li class="bev-categoria-item" data-categoria="destacado">
+              Destacados
+            </li>
+            <li class="bev-categoria-item" data-categoria="preventa">
+              Preventa
+            </li>
+            <li class="bev-categoria-item" data-categoria="Misterio">
+              Misterio
+            </li>
+            <li class="bev-categoria-item" data-categoria="Romance">Romance</li>
+            <li class="bev-categoria-item" data-categoria="Novela">Novela</li>
+            <li class="bev-categoria-item" data-categoria="Filosofia">
+              Filosofía
+            </li>
+            <li class="bev-categoria-item" data-categoria="Crimen">Crimen</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Columna derecha: carrusel -->
+      <div class="col-12 col-lg-10">
+        <div
+          id="librosCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-interval="4000"
+        >
+          <div class="carousel-inner" id="librosCarouselInner">
+            <!-- Generado por main.js desde libros.json -->
+          </div>
+          <button
+            class="carousel-control-prev bev-carousel-ctrl"
+            type="button"
+            data-bs-target="#librosCarousel"
+            data-bs-slide="prev"
+          >
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button
+            class="carousel-control-next bev-carousel-ctrl"
+            type="button"
+            data-bs-target="#librosCarousel"
+            data-bs-slide="next"
+          >
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div>
+</section>
