@@ -6,8 +6,8 @@
     "genero": "Misterio",
     "precio": 55000,
     "imagen": "assets/img/Libros/pobrestriunfospasajeros.jpeg",
-    "imagen_hero": "assets/img/carrusels/pobrestriunfospasajeroscarrusels.png",
-    "etiqueta": "",
+    "imagen_hero": "assets/img/carrusels/pobrestriunfospasajeroscarrusels.png",       
+    "etiqueta": "destacado",               
     "descripcion": "En un mundo de sombras y pasiones, donde el amor se convierte en veneno y la traición acecha en cada esquina, surge una historia de suspense y seducción. Un detective retirado, consumido por el recuerdo de la mujer que lo abandonó. Un fotógrafo que ahoga sus penas en ron y humo. Un escritor mujeriego que oculta secretos detrás de su éxito. Un agente de policía implacable para matar. Y ella, la enigmática madama, tejedora de destinos. Cuando una serie de mujeres asesinadas sacude la ciudad, una detective sin miedo ni prejuicios debe navegar por un laberinto de mentiras y deseos. ¿Podrá descubrir la verdad antes de que la siguiente víctima caiga? Sumérgete en esta novela de crimen y pasión, donde nada es como parece y el peligro acecha en cada página.",
     "nuevo": false,
     "destacado": true
@@ -46,7 +46,7 @@
     "precio": 50000,
     "imagen": "assets/img/Libros/jugadordeajedrez.jpeg",
     "imagen_hero": "assets/img/carrusels/Donsandaliocarrusels.png",
-    "etiqueta": "",
+    "etiqueta": "destacado",
     "descripcion": "Publicada al final de su vida, Don Sandalio, jugador de ajedrez recoge las preocupaciones fundamentales del autor y nos muestra un ejem-plo de su peculiar manera de entender la novela: como un campo de pensamiento. La historia comienza con las disquisiciones existen-ciales de un misántropo que busca escapar de la estupidez humana refugiándose en la soledad de la naturaleza. La aparente cotidianidad de las situaciones –un casino y una partida de ajedrez– no riñe con la urgencia trágica con la que se plantean varias preguntas en las que se nos va el sentido de la propia existencia: ¿quiénes somos? ¿Qué queda de nosotros después de la muerte? ¿Hasta qué punto somos lo que los demás dicen o creen sobre nosotros?",
     "nuevo": false,
     "destacado": true
@@ -58,6 +58,7 @@
     "genero": "Psicologica",
     "precio": 55000,
     "imagen": "assets/img/Libros/losdemoniosdelmezcal.jpeg",
+    "etiqueta": "destacado",
     "imagen_hero": "assets/img/carrusels/Losdemoniosdelmezcalcarrusels.png",
     "descripcion": "Michael Owen, reencarnación del escritor Malcolm Lowry, llega a México en vísperas de un día de muertos, acompañado de su esposa. Un anciano le ofrece mezcal y desde entonces Owen adquiere el don de la profecía. Descubre las cantinas y queda fascinado con las costumbres mexicanas y sobre todo con la vista de los volcanes Popocatépetl e Iztaccíhuatl. La creación literaria no cesa. Finaliza la novela y un volcán entra en erupción. Owen ve el volcán como un espejo de su vida que, poco a poco, se destruye.",
     "nuevo": false,
@@ -84,7 +85,7 @@
     "precio": 65000,
     "imagen": "assets/img/Libros/Dondehabitaelolvido.jpeg",
     "imagen_hero": "assets/img/carrusels/Dondehabitaelolvidocarrusels.png",
-    "etiqueta": "Nuevo",
+    "etiqueta": "Preventa",
     "descripcion": "",
     "nuevo": true,
     "destacado": true
@@ -110,7 +111,7 @@
     "precio": 55000,
     "imagen": "assets/img/Libros/Unamujer.jpeg",
     "imagen_hero": "assets/img/carrusels/Unamujercarrusels.png",
-    "etiqueta": "Nuevo",
+    "etiqueta": "Preventa",
     "descripcion": "",
     "nuevo": true,
     "destacado": true

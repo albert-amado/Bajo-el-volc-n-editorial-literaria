@@ -5,70 +5,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bajo el Volcán — Editorial Literaria</title>
-
-    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap"
         rel="stylesheet" />
-    <!-- Estilos propios -->
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-<!-- TOP BAR redes sociales-->
-<div class="bev-topbar-footer">
-  <div class="container-fluid d-flex justify-content-between align-items-center">
-    
-    <!-- Lado izquierdo: contacto -->
-    <div class="d-flex gap-3">
-      <span class="bev-topbar-info">
-        <i class="bi bi-telephone"></i> 321-234-2343
-      </span>
-      <span class="bev-topbar-info">
-        <i class="bi bi-envelope"></i> bajoelvolcaneditorial@gmail.com
-      </span>
-      <span class="bev-topbar-info">
-        <i class="bi bi-geo-alt"></i> Duitama, Boyacá
-      </span>
+    <!-- TOP BAR -->
+    <div class="bev-topbar-footer">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-3">
+                <span class="bev-topbar-info"><i class="bi bi-telephone"></i> 321-234-2343</span>
+                <span class="bev-topbar-info"><i class="bi bi-envelope"></i> bajoelvolcaneditorial@gmail.com</span>
+                <span class="bev-topbar-info"><i class="bi bi-geo-alt"></i> Duitama, Boyacá</span>
+            </div>
+            <div class="d-flex align-items-center">
+                <a href="https://www.instagram.com/bajoelvolcane?igsh=ODlhYjdzYjAzMGc3" class="bev-topbar-link"><i
+                        class="bi bi-instagram"></i></a>
+                <a href="#" class="bev-topbar-link"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="bev-topbar-link"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="bev-topbar-link"><i class="bi bi-tiktok"></i></a>
+            </div>
+        </div>
     </div>
 
-    <!-- Lado derecho: redes sociales -->
-    <div class="d-flex align-items-center">
-      <a href="https://www.instagram.com/bajoelvolcane?igsh=ODlhYjdzYjAzMGc3" class="bev-topbar-link"><i class="bi bi-instagram"></i></a>
-      <a href="#" class="bev-topbar-link"><i class="bi bi-facebook"></i></a>
-      <a href="#" class="bev-topbar-link"><i class="bi bi-twitter-x"></i></a>
-      <a href="#" class="bev-topbar-link"><i class="bi bi-tiktok"></i></a>
-    </div>
-
-  </div>
-</div>
-
-    <!-- ============================
-    NAVBAR
-============================= -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bev-navbar sticky-top">
         <div class="container-fluid">
-
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="assets/img/ui/Bajo el volcan transparente.png" alt="Logo bajo el volcan" width="50"
-                    height="80" class="bev-brand-main fw-bold" style="line-height: 1; font-size: 1.2rem;">
-                <span class="bev-brand-main">BAJO EL VOLCÁN</span>
+                <img src="assets/img/ui/Bajo el volcan transparente.png" alt="Logo" width="80" height="100">
             </a>
-            <div class="position-absolute start-50 translate-middle-x d-none d-lg-block">
+
+            <!--Texto de la barra de navegacion-->
+            <div class="position-absolute start-50 translate-middle-x d-none d-lg-flex flex-column align-items-center"
+                style="top: 50%; transform: translate(-50%, -50%);">
+                <span class="bev-brand-main text-uppercase"
+                    style="font-size: 0.9rem; letter-spacing: 3px; text-indent: 9px; color: white; line-height: 1.2;">
+                    BAJO EL VOLCÁN
+                </span>
                 <span class="bev-brand-sub text-uppercase"
-                    style="font-size: 0.8rem; letter-spacing: 5px; color: white;">
+                    style="font-size: 0.8rem; letter-spacing: 5px; text-indent: 5px; color: rgb(162, 160, 160); line-height: 1.2;">
                     Editorial Literaria
                 </span>
             </div>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                     <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
@@ -82,56 +69,72 @@
                     </li>
                 </ul>
             </div>
-
         </div>
     </nav>
 
-<!--Carousel principal-->
-<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
- 
-        <!-- Los indicadores se generan desde main.js -->
+    <!-- CARRUSEL HERO -->
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
         <div class="carousel-indicators" id="heroIndicators"></div>
- 
-        <!-- Los slides se generan desde main.js via libros.json -->
         <div class="carousel-inner" id="heroCarouselInner"></div>
- 
         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </button>
- 
     </div>
 
-<!-- ============================
-         LIBROS DESTACADOS — carrusel
-    ============================= -->
+    <!-- LIBROS DESTACADOS -->
     <section class="py-5 bev-section-light">
-        <div class="container">
+        <div class="container-fluid">
 
+            <!-- Título -->
             <div class="text-center mb-5">
-                <span class="bev-section-tag">Destacados de Bajo el Volcán</span>
+                <span class="bev-section-tag">Coleccion de Bajo el Volcán</span>
                 <h2 class="bev-section-title">Nuestras Novelas</h2>
             </div>
 
-            <div id="librosCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+            <!-- Categorías + Carrusel -->
+            <div class="row g-4">
 
-                <div class="carousel-inner" id="librosCarouselInner">
-                    <!-- Generado por main.js desde libros.json -->
+                <!-- Columna izquierda: categorías -->
+                <div class="col-12 col-lg-2 px-0">
+                    <div class="bev-categorias">
+                        <p class="bev-categorias-titulo">CATEGORÍA</p>
+                        <ul class="bev-categorias-lista" id="listaCategorias">
+                            <li class="bev-categoria-item activo" data-categoria="todos">Todos</li>
+                            <li class="bev-categoria-item" data-categoria="nuevo">Nuevos</li>
+                            <li class="bev-categoria-item" data-categoria="destacado">Destacados</li>
+                            <li class="bev-categoria-item" data-categoria="preventa">Preventa</li>
+                            <li class="bev-categoria-item" data-categoria="Misterio">Misterio</li>
+                            <li class="bev-categoria-item" data-categoria="Romance">Romance</li>
+                            <li class="bev-categoria-item" data-categoria="Novela">Novela</li>
+                            <li class="bev-categoria-item" data-categoria="Filosofia">Filosofía</li>
+                            <li class="bev-categoria-item" data-categoria="Crimen">Crimen</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <button class="carousel-control-prev bev-carousel-ctrl" type="button"
-                    data-bs-target="#librosCarousel" data-bs-slide="prev">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
-                <button class="carousel-control-next bev-carousel-ctrl" type="button"
-                    data-bs-target="#librosCarousel" data-bs-slide="next">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
+                <!-- Columna derecha: carrusel -->
+                <div class="col-12 col-lg-10">
+                    <div id="librosCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                        <div class="carousel-inner" id="librosCarouselInner">
+                            <!-- Generado por main.js desde libros.json -->
+                        </div>
+                        <button class="carousel-control-prev bev-carousel-ctrl" type="button"
+                            data-bs-target="#librosCarousel" data-bs-slide="prev">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="carousel-control-next bev-carousel-ctrl" type="button"
+                            data-bs-target="#librosCarousel" data-bs-slide="next">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
 
-            </div>
+            </div><!-- /.row -->
 
+            <!-- Botón catálogo -->
             <div class="text-center mt-5">
                 <a href="pages/catalogo.html" class="btn bev-btn-dark">
                     Ver catálogo completo <i class="bi bi-arrow-right ms-1"></i>
@@ -141,39 +144,29 @@
         </div>
     </section>
 
-    <!-- ============================
-         AUTORES
-    ============================= -->
+    <!-- AUTORES -->
     <section class="py-5 bev-section-dark">
         <div class="container">
- 
             <div class="text-center mb-5">
                 <span class="bev-section-tag-light">Voces de la editorial</span>
                 <h2 class="bev-section-title text-white">Nuestros autores</h2>
             </div>
- 
-            <!-- Generado por main.js desde autores.json -->
             <div class="row g-4 justify-content-center" id="autoresGrid"></div>
- 
             <div class="text-center mt-5">
                 <a href="pages/autores.html" class="btn bev-btn-outline-light">Ver todos los autores</a>
             </div>
- 
         </div>
     </section>
-    <!-- ============================
-       FOOTER
-  ============================= -->
+
+    <!-- FOOTER -->
     <footer class="bev-footer pt-5 pb-3">
         <div class="container">
             <div class="row g-4">
-
                 <div class="col-md-4">
                     <p class="bev-footer-brand">BAJO EL VOLCÁN</p>
                     <p class="bev-footer-text">Editorial literaria independiente.<br />Literatura latinoamericana
                         contemporánea.</p>
                 </div>
-
                 <div class="col-md-4">
                     <p class="bev-footer-heading">Navegación</p>
                     <ul class="list-unstyled bev-footer-links">
@@ -183,12 +176,10 @@
                         <li><a href="pages/carrito.html">Carrito</a></li>
                     </ul>
                 </div>
-
                 <div class="col-md-4">
                     <p class="bev-footer-heading">Contacto</p>
-                    <p class="bev-footer-text">editorial@bajoelvolcan.com<br />Bogotá, Colombia</p>
+                    <p class="bev-footer-text">bajoelvolcaneditorial@gmail.com<br />Duitama, Boyacá</p>
                 </div>
-
             </div>
             <hr class="bev-footer-hr mt-4" />
             <p class="bev-footer-copy text-center mb-0">
@@ -200,7 +191,6 @@
     <!-- Toast -->
     <div class="bev-toast" id="bevToast"></div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/carrito.js"></script>
     <script src="js/main.js"></script>

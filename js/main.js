@@ -2,16 +2,19 @@
 // main.js
 // ================================================
 
+let todosLosLibros = [];
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Carga libros y autores en paralelo
   Promise.all([
     fetch('data/libros.json').then(r => r.json()),
     fetch('data/autores.json').then(r => r.json())
   ])
   .then(([libros, autores]) => {
+    todosLosLibros = libros;
     renderizarHero(libros);
     renderizarCarrusel(libros);
     renderizarAutores(autores);
+    iniciarCategorias();
     actualizarContador();
   })
   .catch(err => console.error('Error cargando datos:', err));
@@ -26,7 +29,7 @@ function renderizarHero(libros) {
   const indicators = document.getElementById('heroIndicators');
   if (!inner) return;
 
-  const slides = libros.slice(0, 9);//Cantidad de libros del carrousel
+  const slides = libros.slice(0, 9);
 
   if (indicators) {
     indicators.innerHTML = slides.map((_, i) => `
@@ -46,7 +49,9 @@ function renderizarHero(libros) {
       <div class="container h-100">
         <div class="row h-100 align-items-center">
           <div class="col-lg-6 bev-slide-content">
-            <span class="bev-eyebrow">${libro.nuevo ? 'Novedad 2026' : libro.genero}</span>
+            ${libro.etiqueta === 'nuevo' ? '<span class="bev-hero-badge bev-etiqueta-nuevo">Nuevo</span>' : ''}
+            ${libro.etiqueta === 'preventa' ? '<span class="bev-hero-badge bev-etiqueta-preventa">Próximo lanzamiento</span>' : ''}
+            <span class="bev-eyebrow">${libro.genero}</span>
             <h1 class="bev-slide-title">${libro.titulo}</h1>
             <p class="bev-slide-author">${libro.autor}</p>
             <p class="bev-slide-desc">${libro.descripcion.substring(0, 120)}...</p>
@@ -69,6 +74,16 @@ function renderizarCarrusel(libros) {
   const inner = document.getElementById('librosCarouselInner');
   if (!inner) return;
 
+  if (libros.length === 0) {
+    inner.innerHTML = `
+      <div class="carousel-item active">
+        <div class="text-center py-5">
+          <p style="color: var(--bev-ash);">No hay libros en esta categoría.</p>
+        </div>
+      </div>`;
+    return;
+  }
+
   const grupos = [];
   for (let i = 0; i < libros.length; i += 3) {
     grupos.push(libros.slice(i, i + 3));
@@ -79,16 +94,23 @@ function renderizarCarrusel(libros) {
       <div class="row g-4">
         ${grupo.map(libro => `
           <div class="col-12 col-md-6 col-lg-4">
-            <div class="card bev-book-card h-100 border-0">
-              <div class="bev-book-cover-wrap">
-                <img src="${libro.imagen}" class="card-img-top" alt="${libro.titulo}"/>
-                ${libro.nuevo ? '<span class="bev-badge-nuevo">Nuevo</span>' : ''}
+            <div class="bev-book-card-v2">
+              <div class="bev-book-cover-v2">
+                <img src="${libro.imagen}" alt="${libro.titulo}"/>
+                ${libro.etiqueta ? `<span class="bev-etiqueta bev-etiqueta-${libro.etiqueta}">${{
+                  'nuevo': 'Nuevo',
+                  'destacado': 'Destacado',
+                  'preventa': 'En preventa',
+                  'descuento': 'Oferta'
+                }[libro.etiqueta] || libro.etiqueta}</span>` : ''}
               </div>
-              <div class="card-body d-flex flex-column">
-                <span class="bev-book-genre">${libro.genero}</span>
-                <h5 class="bev-book-title">${libro.titulo}</h5>
-                <p class="bev-book-author">${libro.autor}</p>
-                <div class="mt-auto d-flex justify-content-between align-items-center pt-2 bev-card-footer">
+              <div class="bev-book-info-v2">
+                <div>
+                  <span class="bev-book-genre">${libro.genero}</span>
+                  <h5 class="bev-book-title">${libro.titulo}</h5>
+                  <p class="bev-book-author">${libro.autor}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
                   <span class="bev-book-price">$${libro.precio.toLocaleString('es-CO')}</span>
                   <button class="btn bev-btn-add-cart"
                     onclick="agregarAlCarrito(${libro.id}, '${libro.titulo}', ${libro.precio})">
@@ -102,6 +124,35 @@ function renderizarCarrusel(libros) {
       </div>
     </div>
   `).join('');
+}
+
+
+// ------------------------------------------------
+// CATEGORÍAS
+// ------------------------------------------------
+function iniciarCategorias() {
+  const items = document.querySelectorAll('.bev-categoria-item');
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      items.forEach(i => i.classList.remove('activo'));
+      item.classList.add('activo');
+
+      const cat = item.dataset.categoria;
+      let filtrados;
+
+      if (cat === 'todos') {
+        filtrados = todosLosLibros;
+      } else if (['nuevo', 'destacado', 'preventa', 'descuento'].includes(cat)) {
+        filtrados = todosLosLibros.filter(l => l.etiqueta === cat);
+      } else {
+        filtrados = todosLosLibros.filter(l =>
+          l.genero.toLowerCase() === cat.toLowerCase()
+        );
+      }
+
+      renderizarCarrusel(filtrados);
+    });
+  });
 }
 
 
