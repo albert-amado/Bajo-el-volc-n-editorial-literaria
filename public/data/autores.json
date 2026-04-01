@@ -3,7 +3,7 @@
     "id": 1,
     "nombre": "Ruben Dario Higera",
     "nacionalidad": "Colombia",
-    "bio": "",
+    "bio": "Rubén Darío Higuera nació en Bogotá. Ha trabajado como editor y periodista. Sus crónicas han aparecido en las revistas El Malpensante, SoHo, Don Juan, Esquire y Bocas. Es autor de las novelas Donde habita el olvido, Pobres triunfos pasajeros e Insectos. Sus libros abordan temas como el engaño, el deseo y la naturaleza violenta y sádica del ser humano. ",
     "foto": "assets/img/autores/Rubendariohiguera.png",
     "libros_ids": [1]
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "nombre": "Natalia Alvarez Arenas",
     "nacionalidad": "Colombia",
-    "bio": "",
+    "bio": "Natalia Álvarez Arenas es Comunicadora Social y Periodista de la Universidad Pontificia Bolivariana, Magíster en Gestión Estratégica de la Información y el Conocimiento, de la Universidad Oberta de Cataluña y Obtuvo su título de Magíster en Escritura Creativa en la Universidad de Salamanca.",
     "foto": "assets/img/autores/Nataliaalvarezarenas.png",
     "libros_ids": [2]
   },
@@ -41,7 +41,7 @@
   },
   {
     "id": 6,
-    "nombre": "",
+    "nombre": "Fabiana Bartra",
     "nacionalidad": "",
     "bio": "",
     "foto": "assets/img/autores/",

@@ -1,15 +1,27 @@
 ---
-import Layout from '../layouts/layout.astro';
-import CarruselHero from '../components/carruselhero.astro';
-import CarruselLibros from '../components/carrusellibros.astro';
-import Autores from '../components/autores.astro';
+import Layout from "../layouts/layout.astro";
+import CarruselHero from "../components/carruselhero.astro";
+import CarruselLibros from "../components/carrusellibros.astro";
+import Categorias from "../components/categorias.astro";
+import Autores from "../components/autores.astro";
 ---
 
-<Layout title="Bajo el Volcán — Inicio">
+<Layout title="Bajo el Volcán">
   <CarruselHero />
-  
-  <section class="py-5">
-      <CarruselLibros />
+
+  <section class="py-5 bev-section-light">
+    <div class="container">
+
+      <!-- Categorías + Carrusel en el mismo row -->
+      <div class="row g-4">
+        <div class="col-12 col-lg-2">
+          <Categorias />
+        </div>
+        <div class="col-12 col-lg-10">
+          <CarruselLibros />
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="bev-section-dark py-5">

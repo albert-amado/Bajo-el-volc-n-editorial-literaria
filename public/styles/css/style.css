@@ -5,16 +5,16 @@
 
 /* ---------- VARIABLES GLOBALES ---------- */
 :root {
-  --bev-topbar:     #000000; /*Fondo footer superior*/
-  --bev-ink:        #181A26;/*Fondo para barra de navegacion*/
-  --bev-ink-mid:    #181c26; /*Fondo de seccion de autores*/
+  --bev-topbar:     #000000;
+  --bev-ink:        #181A26;
+  --bev-ink-mid:    #181c26;
   --bev-gold:       #181a26;
   --bev-gold-lt:    #ffffff;
-  --bev-cream:      #000000; /*fondo imagenes libros*/ 
+  --bev-cream:      #000000;
   --bev-cream-dk:   #F2EBE0;
   --bev-ash:        #2f344b;
   --bev-charcoal:   #4B5563;
-  --bev-red:        #a30000;
+  --bev-red:        #F23838; /*Colores para el panel de categorias*/
   --font-display:   'Lato', sans-serif;
   --font-body:      'Lato', sans-serif;
 }
@@ -24,11 +24,11 @@ body {
   color: var(--bev-ink);
   margin: 0;
   padding: 0;
-  overflow-x: hidden
+  overflow-x: hidden;
 }
 
 /* ================================================
-   TOP BAR Redes sociales
+   TOP BAR
    ================================================ */
 .bev-topbar-footer {
   background-color: var(--bev-topbar);
@@ -55,7 +55,6 @@ body {
 
 .bev-topbar-link:hover { color: var(--bev-gold); }
 
-/* Ocultar en móvil para no saturar */
 @media (max-width: 768px) {
   .bev-topbar-info { display: none; }
 }
@@ -67,11 +66,20 @@ body {
   background-color: var(--bev-ink);
   border-bottom: 1px solid rgba(255,255,255,0.08);
   padding: 0.75rem 0;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.1));
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.1));
+}
+
+.bev-navbar .navbar-brand img {
+  width: 80px;
+  height: 100px;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+  transition: all 0.4s ease-in-out;
 }
 
 .bev-brand-main {
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
   font-family: 'Lato', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
@@ -87,7 +95,7 @@ body {
   text-transform: uppercase;
   color: var(--bev-ash);
   line-height: 1;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
 }
 
 .bev-navbar .nav-link {
@@ -98,21 +106,11 @@ body {
   transition: color 0.2s;
 }
 
-.bev-navbar .navbar-brand img {
-    width: 80px; 
-    height: 100px;
-    object-fit: contain; 
-    image-rendering: -webkit-optimize-contrast; 
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3)); 
-    transition: all 0.4s ease-in-out;
-  }
-
 .bev-navbar .nav-link:hover,
 .bev-navbar .nav-link.active {
   color: var(--bev-gold) !important;
 }
 
-/* Ícono del carrito con badge */
 .bev-cart-btn {
   position: relative;
 }
@@ -132,31 +130,42 @@ body {
   align-items: center;
   justify-content: center;
 }
+.bev-navbar .nav-link {
+  color: var(--bev-cream) !important;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.3s, border-bottom 0.4s; 
+  border-bottom: 2px solid transparent;       
+  padding-bottom: 2px;                         
+}
+
+.bev-navbar .nav-link:hover {
+  color: var(--bev-gold) !important;
+  border-bottom: 2px solid var(--bev-gold);   
+}
 
 /* ================================================
    CARRUSEL HERO
    ================================================ */
 .bev-slide {
-  height: 50vh;
+  height: 55vh;
   min-height: 250px;
   position: relative;
   background-size: cover;
-  background-position: center center; /* ← ajusta: top / center / bottom */
+  background-position: center center;
   background-repeat: no-repeat;
   background-color: var(--bev-ink);
 }
 
-/* Overlay: lado izquierdo oscuro para leer el texto,
-   lado derecho deja ver la imagen
-   ── ajusta el 50% para más o menos imagen visible ── */
 .bev-slide-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(10, 6, 2, 0.93) 0%,
-    rgba(10, 6, 2, 0.6) 50%,  /* ← cambia este % para más/menos oscuro */
-    rgba(10, 6, 2, 0.1) 100%
+    rgba(10,6,2,0.93) 0%,
+    rgba(10,6,2,0.6)  50%,
+    rgba(10,6,2,0.1)  100%
   );
   pointer-events: none;
 }
@@ -176,10 +185,8 @@ body {
   margin-bottom: 1.25rem;
 }
 
-/* Título principal del slide
-   ── cambia font-family para otra tipografía ── */
 .bev-slide-title {
-  font-family: 'Lato', sans-serif; /* ← cámbialo aquí */
+  font-family: 'Lato', sans-serif;
   font-size: clamp(2.2rem, 5vw, 4.2rem);
   font-weight: 700;
   color: var(--bev-cream);
@@ -188,7 +195,6 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* Nombre del autor debajo del título */
 .bev-slide-author {
   font-family: 'Lato', sans-serif;
   font-size: 1rem;
@@ -208,11 +214,22 @@ body {
 /* ================================================
    CARRUSEL DE LIBROS DESTACADOS
    ================================================ */
+
+/* FIX FLECHAS: Bootstrap pone overflow:hidden en .carousel por defecto,
+   lo que corta los botones. Se anula aquí. */
+#librosCarousel.carousel {
+  overflow: visible;
+}
+
 #librosCarousel {
   padding: 0 4rem;
+  position: relative;
 }
 
 .bev-carousel-ctrl {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 3rem;
   height: 3rem;
   background: transparent;
@@ -220,20 +237,76 @@ body {
   color: var(--bev-cream);
   font-size: 2rem;
   opacity: 0.7;
-  top: 50%;
-  transform: translateY(-50%);
+  z-index: 10;
   transition: opacity 0.2s, transform 0.2s;
 }
 
 .bev-carousel-ctrl:hover {
   opacity: 1;
-  transform: translateY(-50%) scale(1.3);
+  transform: translateY(-50%) scale(1.5);
   background: transparent;
   color: var(--bev-gold);
 }
-
-.bev-carousel-ctrl.carousel-control-prev { left: 0; }
+#librosCarousel .bev-carousel-ctrl {
+  position: absolute !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  z-index: 10 !important;
+}
+.bev-carousel-ctrl.carousel-control-prev {left: 0;}
 .bev-carousel-ctrl.carousel-control-next { right: 0; }
+
+/* ================================================
+   SECCIONES
+   ================================================ */
+.bev-section-light { background-color: var(--bev-cream); }
+.bev-section-dark  { background-color: var(--bev-ink-mid); }
+
+.bev-section-tag {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--bev-gold);
+  margin-bottom: 0.5rem;
+}
+
+.bev-section-tag-light {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--bev-gold-lt);
+  margin-bottom: 0.5rem;
+}
+
+.bev-section-title {
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  font-weight: 500;
+  color: var(--bev-ink);
+  margin: 0;
+}
+
+.bev-body-text {
+  font-size: 1rem;
+  color: var(--bev-charcoal);
+  line-height: 1.8;
+}
+
+.bev-blockquote {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--bev-charcoal);
+  border-left: 3px solid var(--bev-gold);
+  padding-left: 1.5rem;
+  line-height: 1.45;
+}
+
 /* ================================================
    BOTONES
    ================================================ */
@@ -293,7 +366,6 @@ body {
   color: var(--bev-ink);
 }
 
-/* Botón pequeño dentro de la tarjeta */
 .bev-btn-add-cart {
   background-color: var(--bev-ink);
   color: var(--bev-gold);
@@ -310,58 +382,8 @@ body {
   color: var(--bev-ink);
 }
 
-
 /* ================================================
-   SECCIONES
-   ================================================ */
-.bev-section-light { background-color: var(--bev-cream); }
-.bev-section-dark  { background-color: var(--bev-ink-mid); }
-
-.bev-section-tag {
-  display: block;
-  font-size: 0.72rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--bev-gold);
-  margin-bottom: 0.5rem;
-}
-
-.bev-section-tag-light {
-  display: block;
-  font-size: 0.72rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--bev-gold-lt);
-  margin-bottom: 0.5rem;
-}
-
-.bev-section-title {
-  font-family: var(--font-body);
-  font-size: clamp(1.2rem, 4vw, 2.6rem);
-  font-weight: 700;
-  color: var(--bev-ink);
-  margin: 0;
-}
-
-.bev-body-text {
-  font-size: 1rem;
-  color: var(--bev-charcoal);
-  line-height: 1.8;
-}
-
-.bev-blockquote {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-style: italic;
-  color: var(--bev-charcoal);
-  border-left: 3px solid var(--bev-gold);
-  padding-left: 1.5rem;
-  line-height: 1.45;
-}
-
-
-/* ================================================
-   TARJETAS DE LIBROS
+   TARJETAS DE LIBROS V1
    ================================================ */
 .bev-book-card {
   background-color: #ffffff;
@@ -371,10 +393,9 @@ body {
 
 .bev-book-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 14px 34px rgba(26, 18, 8, 0.12);
+  box-shadow: 0 14px 34px rgba(26,18,8,0.12);
 }
 
-/* Contenedor de la portada con aspect ratio fijo */
 .bev-book-cover-wrap {
   position: relative;
   overflow: hidden;
@@ -393,7 +414,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Badge "Nuevo" sobre la portada */
 .bev-badge-nuevo {
   position: absolute;
   top: 10px;
@@ -406,7 +426,6 @@ body {
   padding: 3px 10px;
 }
 
-/* Texto dentro de la tarjeta */
 .bev-book-genre {
   display: block;
   font-size: 0.68rem;
@@ -439,7 +458,6 @@ body {
   flex-grow: 1;
 }
 
-/* Pie de la tarjeta: precio + botón */
 .bev-card-footer {
   border-top: 1px solid var(--bev-cream-dk);
 }
@@ -452,10 +470,156 @@ body {
 }
 
 /* ================================================
-   AUTORES — sección homepage
+   TARJETAS DE LIBROS V2
+   ================================================ */
+.bev-book-card-v2 {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.25s, box-shadow 0.25s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bev-book-card-v2:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+}
+
+.bev-book-cover-v2 {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  flex-shrink: 0;
+  min-height: 280px;
+}
+
+.bev-book-cover-v2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+  min-height: 380px; 
+}
+
+.bev-book-card-v2:hover .bev-book-cover-v2 img {
+  transform: scale(1.04);
+}
+
+.bev-book-info-v2 {
+  padding: 0.9rem 1rem;
+  background: var(--bev-ink-mid);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.bev-book-info-v2 .bev-book-genre  { font-size: 0.65rem; margin-bottom: 0.2rem; }
+.bev-book-info-v2 .bev-book-title  { font-size: 0.95rem; color: var(--bev-cream); margin-bottom: 0.15rem; }
+.bev-book-info-v2 .bev-book-author { font-size: 0.78rem; margin-bottom: 0; }
+.bev-book-info-v2 .bev-book-price  { color: var(--bev-cream); font-size: 1.1rem; }
+
+/* ================================================
+   ETIQUETAS
+   ================================================ */
+.bev-etiqueta {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  font-size: 0.90rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  z-index: 2;
+}
+
+.bev-etiqueta-nuevo     { background-color: #8B2228; color: #fff; }
+.bev-etiqueta-destacado { background-color: var(--bev-gold); color: var(--bev-ink); }
+.bev-etiqueta-preventa  { background-color: #1a56a0; color: #fff; }
+.bev-etiqueta-descuento { background-color: #1a6b3a; color: #fff; }
+
+/* ================================================
+   PANEL DE CATEGORÍAS
+   ================================================ */
+.bev-categorias {
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.bev-categorias-titulo {
+  font-family: var(--font-body);
+  font-size: 0.80rem;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  color: var(--bev-red);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px solid var(--bev-red);
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+}
+
+.bev-categorias-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bev-categoria-item {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--bev-charcoal);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: color 0.25s, padding-left 0.25s, letter-spacing 0.25s;
+}
+
+.bev-categoria-item:hover {
+  color: var(--bev-red);          
+  padding-left: 6px;
+  letter-spacing: 0.05em;        
+}
+.bev-categoria-item.activo {
+  color: var(--bev-ink);
+  font-weight: 700;
+  padding-left: 6px;
+}
+
+@media (max-width: 991px) {
+  .bev-categorias {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-right: 0;
+    padding-bottom: 1rem;
+    min-height: auto;
+  }
+  .bev-categorias-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .bev-categoria-item {
+    border: 1px solid var(--bev-cream-dk);
+    padding: 0.3rem 0.8rem;
+    border-bottom: 1px solid var(--bev-cream-dk);
+    font-size: 0.8rem;
+  }
+  .bev-categoria-item.activo {
+    background: var(--bev-ink);
+    color: var(--bev-gold);
+    border-color: var(--bev-ink);
+    padding-left: 0.8rem;
+  }
+}
+
+/* ================================================
+   AUTORES
    ================================================ */
 .bev-author-avatar-wrap {
-  width: 200px;   /* ← cambia para avatares más grandes o pequeños */
+  width: 200px;
   height: 200px;
   border-radius: 50%;
   border: 2px solid var(--bev-gold);
@@ -476,7 +640,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top; /* ← cambia a "center" si las fotos se recortan mal */
+  object-position: top;
 }
 
 .bev-avatar-fallback {
@@ -514,249 +678,7 @@ body {
 }
 
 /* ================================================
-   FOOTER
-   ================================================ */
-.bev-footer {
-  background-color: var(--bev-ink);
-  border-top: 2px solid var(--bev-gold);
-}
-
-.bev-footer-brand {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--bev-gold);
-  margin-bottom: 0.5rem;
-}
-
-.bev-footer-heading {
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--bev-cream);
-  margin-bottom: 1rem;
-}
-
-.bev-footer-text {
-  font-size: 0.9rem;
-  color: var(--bev-ash);
-  line-height: 1.7;
-}
-
-.bev-footer-links a {
-  display: block;
-  color: var(--bev-ash);
-  text-decoration: none;
-  font-size: 0.9rem;
-  margin-bottom: 0.4rem;
-  transition: color 0.2s;
-}
-
-.bev-footer-links a:hover {
-  color: var(--bev-gold);
-}
-
-.bev-footer-hr {
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.bev-footer-copy {
-  font-size: 0.78rem;
-  color: var(--bev-ash);
-}
-
-
-/* ================================================
-   TOAST (confirmación carrito)
-   ================================================ */
-.bev-toast {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background-color: var(--bev-ink);
-  color: var(--bev-gold);
-  font-size: 0.85rem;
-  padding: 0.7rem 1.4rem;
-  border-left: 3px solid var(--bev-gold);
-  z-index: 9999;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s, transform 0.3s;
-  pointer-events: none;
-}
-
-.bev-toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* ================================================
-   TARJETAS V2 — portada grande, info pequeña
-   ================================================ */
-.bev-book-card-v2 {
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
-  transition: transform 0.25s, box-shadow 0.25s;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.bev-book-card-v2:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.2);
-}
-
-/* Portada — grande */
-.bev-book-cover-v2 {
-  position: relative;
-  aspect-ratio: 2 / 3;  /* ← cambia a 3/4 para más ancho */
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.bev-book-cover-v2 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s;
-}
-
-.bev-book-card-v2:hover .bev-book-cover-v2 img {
-  transform: scale(1.04);
-}
-
-/* Info — recuadro compacto */
-.bev-book-info-v2 {
-  padding: 0.9rem 1rem;
-  background: var(--bev-ink-mid);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
-}
-
-.bev-book-info-v2 .bev-book-genre {
-  font-size: 0.65rem;
-  margin-bottom: 0.2rem;
-}
-
-.bev-book-info-v2 .bev-book-title {
-  font-size: 0.95rem;
-  color: var(--bev-cream);
-  margin-bottom: 0.15rem;
-}
-
-.bev-book-info-v2 .bev-book-author {
-  font-size: 0.78rem;
-  margin-bottom: 0;
-}
-
-.bev-book-info-v2 .bev-book-price {
-  color: var(--bev-cream);
-  font-size: 1.1rem;
-}
-
-/* ================================================
-   ETIQUETAS
-   ================================================ */
-.bev-etiqueta {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  font-size: 0.90rem;    /* ← era 0.62rem */
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 6px 14px;     /* ← era 4px 10px */
-  z-index: 2;
-}
-
-.bev-etiqueta-nuevo     { background-color: #8B2228; color: #fff; }
-.bev-etiqueta-destacado { background-color: var(--bev-gold); color: var(--bev-ink); }
-.bev-etiqueta-preventa  { background-color: #1a56a0; color: #fff; }
-.bev-etiqueta-descuento { background-color: #1a6b3a; color: #fff; }
-
-/* ================================================
-   PANEL DE CATEGORÍAS
-   ================================================ */
-.bev-categorias {
-  border-right: 1px solid rgba(255,255,255,0.08);
-  padding-left: 0 !important;
-  padding-right: 0.5rem !important;
-}
-
-.bev-categorias-titulo {
-  font-family: var(--font-body);
-  font-size: 0.80rem;
-  font-weight: 700;
-  letter-spacing: 0.5em;
-  color: var(--bev-red);
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 2px solid var(--bev-red);
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
-}
-
-.bev-categorias-lista {
-  list-style: none;
-  padding: 10;
-  margin: 10;
-}
-
-.bev-categoria-item {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--bev-charcoal);
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  cursor: pointer;
-  transition: color 0.2s, padding-left 0.2s;
-}
-
-.bev-categoria-item:hover {
-  color: var(--bev-ink);
-  padding-left: 6px;
-}
-
-.bev-categoria-item.activo {
-  color: var(--bev-ink);
-  font-weight: 700;
-  padding-left: 6px;
-}
-
-/* En móvil la lista va horizontal */
-@media (max-width: 991px) {
-  .bev-categorias {
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding-right: 0;
-    padding-bottom: 1rem;
-    min-height: auto;
-  }
-  .bev-categorias-lista {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .bev-categoria-item {
-    border: 1px solid var(--bev-cream-dk);
-    padding: 0.3rem 0.8rem;
-    border-bottom: 1px solid var(--bev-cream-dk);
-    font-size: 0.8rem;
-  }
-  .bev-categoria-item.activo {
-    background: var(--bev-ink);
-    color: var(--bev-gold);
-    border-color: var(--bev-ink);
-    padding-left: 0.8rem;
-  }
-}
-
-/* ================================================
-   CATÁLOGO — encabezado de página
+   CATÁLOGO — encabezado
    ================================================ */
 .bev-page-header {
   background-color: var(--bev-ink-mid);
@@ -817,11 +739,8 @@ body {
   align-items: flex-start;
 }
 
-.bev-libro-fila:hover {
-  background: rgba(0,0,0,0.02);
-}
+.bev-libro-fila:hover { background: rgba(0,0,0,0.02); }
 
-/* Portada */
 .bev-libro-fila-img {
   position: relative;
   width: 120px;
@@ -835,10 +754,7 @@ body {
   display: block;
 }
 
-/* Info central */
-.bev-libro-fila-info {
-  flex: 1;
-}
+.bev-libro-fila-info { flex: 1; }
 
 .bev-libro-fila-titulo {
   font-family: var(--font-display);
@@ -862,7 +778,6 @@ body {
   margin: 0;
 }
 
-/* Columna derecha: precio y botones */
 .bev-libro-fila-accion {
   display: flex;
   flex-direction: column;
@@ -871,25 +786,17 @@ body {
   flex-shrink: 0;
 }
 
+@media (max-width: 768px) {
+  .bev-libro-fila { flex-wrap: wrap; }
+  .bev-libro-fila-accion { align-items: flex-start; width: 100%; }
+}
+
 /* ================================================
    MODAL DETALLE
    ================================================ */
-.bev-modal-content {
-  border-radius: 0;
-  border: none;
-  background: var(--bev-cream);
-}
-
-.bev-modal-header {
-  background: var(--bev-ink);
-  border: none;
-  padding: 0.75rem 1rem;
-}
-
-.bev-modal-cover {
-  min-height: 350px;
-  overflow: hidden;
-}
+.bev-modal-content  { border-radius: 0; border: none; background: var(--bev-cream); }
+.bev-modal-header   { background: var(--bev-ink); border: none; padding: 0.75rem 1rem; }
+.bev-modal-cover    { min-height: 350px; overflow: hidden; }
 
 .bev-modal-titulo {
   font-family: var(--font-display);
@@ -920,8 +827,71 @@ body {
   color: var(--bev-ink);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .bev-libro-fila { flex-wrap: wrap; }
-  .bev-libro-fila-accion { align-items: flex-start; width: 100%; }
+/* ================================================
+   FOOTER
+   ================================================ */
+.bev-footer {
+  background-color: var(--bev-ink);
+  border-top: 2px solid var(--bev-gold);
+}
+
+.bev-footer-brand {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--bev-gold);
+  margin-bottom: 0.5rem;
+}
+
+.bev-footer-heading {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bev-cream);
+  margin-bottom: 1rem;
+}
+
+.bev-footer-text {
+  font-size: 0.9rem;
+  color: var(--bev-ash);
+  line-height: 1.7;
+}
+
+.bev-footer-links a {
+  display: block;
+  color: var(--bev-ash);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s;
+}
+
+.bev-footer-links a:hover { color: var(--bev-gold); }
+
+.bev-footer-hr   { border-color: rgba(255,255,255,0.08); }
+.bev-footer-copy { font-size: 0.78rem; color: var(--bev-ash); }
+
+/* ================================================
+   TOAST
+   ================================================ */
+.bev-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--bev-ink);
+  color: var(--bev-gold);
+  font-size: 0.85rem;
+  padding: 0.7rem 1.4rem;
+  border-left: 3px solid var(--bev-gold);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.bev-toast.show {
+  opacity: 1;
+  transform: translateY(0);
 }
