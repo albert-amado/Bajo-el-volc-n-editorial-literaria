@@ -7,10 +7,10 @@
 :root {
   --bev-topbar:     #000000; /*Fondo footer superior*/
   --bev-ink:        #181A26;/*Fondo para barra de navegacion*/
-  --bev-ink-mid:    #2f2d39; /*Fondo de seccion de autores*/
+  --bev-ink-mid:    #181c26; /*Fondo de seccion de autores*/
   --bev-gold:       #181a26;
   --bev-gold-lt:    #ffffff;
-  --bev-cream:      #181a26; /*fondo imagenes libros*/ 
+  --bev-cream:      #000000; /*fondo imagenes libros*/ 
   --bev-cream-dk:   #F2EBE0;
   --bev-ash:        #2f344b;
   --bev-charcoal:   #4B5563;
@@ -22,7 +22,6 @@
 body {
   font-family: var(--font-body);
   color: var(--bev-ink);
-  background-color: #FDFAF4;
   margin: 0;
   padding: 0;
   overflow-x: hidden
@@ -138,8 +137,8 @@ body {
    CARRUSEL HERO
    ================================================ */
 .bev-slide {
-  height: 70vh;
-  min-height: 520px;
+  height: 50vh;
+  min-height: 250px;
   position: relative;
   background-size: cover;
   background-position: center center; /* ← ajusta: top / center / bottom */
@@ -692,19 +691,19 @@ body {
   font-family: var(--font-body);
   font-size: 0.80rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.5em;
   color: var(--bev-red);
   text-transform: uppercase;
   margin-bottom: 1rem;
-  padding-bottom: 0.8rem;
+  padding-bottom: 0.9rem;
   border-bottom: 2px solid var(--bev-red);
   filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
 }
 
 .bev-categorias-lista {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 10;
+  margin: 10;
 }
 
 .bev-categoria-item {
