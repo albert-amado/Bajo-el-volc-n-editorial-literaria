@@ -1,11 +1,11 @@
 [
   {
     "id": 1,
-    "nombre": "Ruben Dario Higera",
+    "nombre": "Rubén Darío Higuera",
     "nacionalidad": "Colombia",
     "bio": "Rubén Darío Higuera nació en Bogotá. Ha trabajado como editor y periodista. Sus crónicas han aparecido en las revistas El Malpensante, SoHo, Don Juan, Esquire y Bocas. Es autor de las novelas Donde habita el olvido, Pobres triunfos pasajeros e Insectos. Sus libros abordan temas como el engaño, el deseo y la naturaleza violenta y sádica del ser humano. ",
     "foto": "assets/img/autores/Rubendariohiguera.png",
-    "libros_ids": [1]
+    "libros_ids": [1, 7, 8]
   },
   {
     "id": 2,

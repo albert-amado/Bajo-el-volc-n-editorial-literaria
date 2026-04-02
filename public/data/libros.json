@@ -2,7 +2,8 @@
   {
     "id": 1,
     "titulo": "Pobres Triunfos Pasajeros",
-    "autor": "Rubén Dario Higuera",
+    "detalle": "Formato\nLibro Físico\nEditorial\nBajo el Volcán\nAño\n2025\nIdioma\nEspañol\nN° páginas\n168\nEncuadernación\nTapa Blanda\nDimensiones\n19cm x 12.5cm",
+    "autor": "Rubén Darío Higuera",
     "genero": "Misterio",
     "precio": 55000,
     "imagen": "/assets/img/Libros/pobrestriunfospasajeros.jpeg",
@@ -80,7 +81,7 @@
   {
     "id": 7,
     "titulo": "Donde habita el olvido",
-    "autor": "Ruben Dario Higuera",
+    "autor": "Rubén Darío Higuera",
     "genero": "Novela",
     "precio": 65000,
     "imagen": "/assets/img/Libros/Dondehabitaelolvido.jpeg",
@@ -93,7 +94,7 @@
   {
     "id": 8,
     "titulo": "Insectos",
-    "autor": "Ruben Dario Higuera",
+    "autor": "Rubén Darío Higuera",
     "genero": "Novela",
     "precio": 55000,
     "imagen": "/assets/img/Libros/Insectos.jpeg",
