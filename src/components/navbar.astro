@@ -59,9 +59,6 @@
           <a class="nav-link active" href="index.html">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="catalogo.astro">Catálogo</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="pages/autores.astro">Autores</a>
         </li>
         <li class="nav-item">
@@ -87,3 +84,89 @@
 
   </div>
 </nav>
+
+<style>
+  .bev-navbar {
+  background-color: var(--bev-ink);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0.75rem 0;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.1));
+}
+
+.bev-navbar .navbar-brand img {
+  width: 80px;
+  height: 100px;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+  transition: all 0.4s ease-in-out;
+}
+
+.bev-brand-main {
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--bev-gold);
+  display: block;
+  line-height: 1.7;
+}
+
+.bev-brand-sub {
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bev-ash);
+  line-height: 1;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
+}
+
+.bev-navbar .nav-link {
+  color: var(--bev-cream) !important;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.bev-navbar .nav-link:hover,
+.bev-navbar .nav-link.active {
+  color: var(--bev-gold) !important;
+}
+
+.bev-cart-btn {
+  position: relative;
+}
+
+.bev-cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background: var(--bev-gold);
+  color: var(--bev-ink);
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bev-navbar .nav-link {
+  color: var(--bev-cream) !important;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.3s, border-bottom 0.4s; 
+  border-bottom: 2px solid transparent;       
+  padding-bottom: 2px;                         
+}
+
+.bev-navbar .nav-link:hover {
+  color: var(--bev-gold) !important;
+  border-bottom: 2px solid var(--bev-gold);   
+}
+
+</style>

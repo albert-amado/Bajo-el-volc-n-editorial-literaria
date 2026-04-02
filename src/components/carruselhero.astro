@@ -1,7 +1,5 @@
 ---
-
 ---
-
 <!-- CARRUSEL HERO -->
 <div
   id="heroCarousel"
@@ -28,3 +26,69 @@
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
+
+<style is:global>
+  .bev-slide {
+  height: 55vh;
+  min-height: 250px;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: var(--bev-ink);
+}
+
+.bev-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(10,6,2,0.93) 0%,
+    rgba(10,6,2,0.6)  50%,
+    rgba(10,6,2,0.1)  100%
+  );
+  pointer-events: none;
+}
+
+.bev-slide-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 0;
+}
+
+.bev-eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--bev-gold);
+  margin-bottom: 1.25rem;
+}
+
+.bev-slide-title {
+  font-family: 'Lato', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 700;
+  color: var(--bev-cream);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.bev-slide-author {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--bev-gold);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.bev-slide-desc {
+  font-size: 1rem;
+  color: var(--bev-ash);
+  max-width: 460px;
+  line-height: 1.7;
+}
+
+</style>

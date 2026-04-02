@@ -1,4 +1,5 @@
 let todosLosLibros = [];
+let todosLosAutores = [];   // ← AÑADIDO (necesario para la bio del autor en el modal)
 
 document.addEventListener('DOMContentLoaded', () => {
   Promise.all([
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ])
   .then(([libros, autores]) => {
     todosLosLibros = libros;
+    todosLosAutores = autores;   // ← AÑADIDO
     renderizarHero(libros);
     renderizarCarrusel(libros);
     renderizarAutores(autores);
@@ -61,7 +63,7 @@ function renderizarHero(libros) {
 
 
 // ------------------------------------------------
-// CARRUSEL DE TARJETAS
+// CARRUSEL DE TARJETAS (MODIFICADO - solo lo necesario)
 // ------------------------------------------------
 function renderizarCarrusel(libros) {
   const inner = document.getElementById('librosCarouselInner');
@@ -86,8 +88,10 @@ function renderizarCarrusel(libros) {
     <div class="carousel-item ${index === 0 ? 'active' : ''}">
       <div class="row g-4">
         ${grupo.map(libro => `
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="bev-book-card-v2">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-4"> 
+            <div class="bev-book-card-v2 h-100" style="cursor:pointer;" onclick="abrirModal(${libro.id})">
+
+              <!-- Portada -->
               <div class="bev-book-cover-v2">
                 <img src="${libro.imagen}" alt="${libro.titulo}"/>
                 ${libro.etiqueta ? `<span class="bev-etiqueta bev-etiqueta-${libro.etiqueta}">${{
@@ -97,6 +101,8 @@ function renderizarCarrusel(libros) {
                   'descuento': 'Oferta'
                 }[libro.etiqueta] || libro.etiqueta}</span>` : ''}
               </div>
+
+              <!-- Info -->
               <div class="bev-book-info-v2">
                 <div>
                   <span class="bev-book-genre">${libro.genero}</span>
@@ -105,10 +111,17 @@ function renderizarCarrusel(libros) {
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-2">
                   <span class="bev-book-price">$${libro.precio.toLocaleString('es-CO')}</span>
-                  <button class="btn bev-btn-add-cart"
-                    onclick="agregarAlCarrito(${libro.id}, '${libro.titulo}', ${libro.precio})">
-                    <i class="bi bi-bag-plus"></i> Agregar
-                  </button>
+                  <div class="d-flex gap-2">
+                    <!-- NUEVO: Botón "Más información" -->
+                    <button class="btn btn-sm bev-btn-outline"
+                      onclick="event.stopPropagation(); abrirModal(${libro.id})">
+                      <i class="bi bi-plus-circle"></i> Conoce mas
+                    </button>
+                    <button class="btn bev-btn-add-cart"
+                      onclick="event.stopPropagation(); agregarAlCarrito(${libro.id}, '${libro.titulo}', ${libro.precio})">
+                      <i class="bi bi-bag-plus"></i> Agregar
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -119,9 +132,66 @@ function renderizarCarrusel(libros) {
   `).join('');
 }
 
+/* ── MODAL DETALLE DEL LIBRO (NUEVA FUNCIÓN) ── */
+function abrirModal(id) {
+  const libro = todosLosLibros.find(l => l.id === id);
+  if (!libro) return;
+
+  // Datos del libro
+  document.getElementById('modalPortada').src = libro.imagen;
+  document.getElementById('modalPortada').alt = libro.titulo;
+  document.getElementById('modalTitulo').textContent = libro.titulo;
+  document.getElementById('modalAutorNombre').textContent = libro.autor;
+  document.getElementById('modalAutorNombreDetalle').textContent = libro.autor;
+  document.getElementById('modalGenero').textContent = libro.genero;
+  document.getElementById('modalDesc').textContent = libro.descripcion || 'Descripción no disponible.';
+  document.getElementById('modalPrecio').textContent = `$${libro.precio.toLocaleString('es-CO')}`;
+
+  // Etiqueta
+  const etiquetaEl = document.getElementById('modalEtiqueta');
+  if (libro.etiqueta) {
+    const textos = { 'nuevo': 'Nuevo', 'destacado': 'Destacado', 'preventa': 'En preventa', 'descuento': 'Oferta' };
+    etiquetaEl.textContent = textos[libro.etiqueta.toLowerCase()] || libro.etiqueta;
+    etiquetaEl.className = `bev-etiqueta bev-etiqueta-${libro.etiqueta.toLowerCase()}`;
+    etiquetaEl.classList.remove('d-none');
+  } else {
+    etiquetaEl.classList.add('d-none');
+  }
+
+  // Botón carrito dentro del modal
+  document.getElementById('modalBtnCarrito').onclick = () => {
+    agregarAlCarrito(libro.id, libro.titulo, libro.precio);
+  };
+
+  // ── Datos del autor (foto + biografía) ──
+  const autor = todosLosAutores.find(a =>
+    a.nombre?.toLowerCase() === libro.autor?.toLowerCase()
+  );
+
+  const fotoEl = document.getElementById('modalAutorFoto');
+  const fallbackEl = document.getElementById('modalAutorFallback');
+  const inicialesEl = document.getElementById('modalAutorIniciales');
+  const bioEl = document.getElementById('modalAutorBio');
+
+  if (autor) {
+    fotoEl.src = autor.foto || '';
+    fotoEl.style.display = 'block';
+    fallbackEl.style.display = 'none';
+    bioEl.textContent = autor.bio || '';
+  } else {
+    fotoEl.style.display = 'none';
+    fallbackEl.style.display = 'flex';
+    inicialesEl.textContent = libro.autor.split(' ').map(n => n[0]).slice(0, 2).join('');
+    bioEl.textContent = '';
+  }
+
+  // Abrir modal Bootstrap
+  new bootstrap.Modal(document.getElementById('modalLibro')).show();
+}
+
 
 // ------------------------------------------------
-// CATEGORÍAS
+// CATEGORÍAS (sin cambios)
 // ------------------------------------------------
 function iniciarCategorias() {
   const items = document.querySelectorAll('.bev-categoria-item');
@@ -150,7 +220,7 @@ function iniciarCategorias() {
 
 
 // ------------------------------------------------
-// AUTORES
+// AUTORES (sin cambios)
 // ------------------------------------------------
 function renderizarAutores(autores) {
   const grid = document.getElementById('autoresGrid');
@@ -174,7 +244,7 @@ function renderizarAutores(autores) {
 
 
 // ------------------------------------------------
-// CARRITO
+// CARRITO (sin cambios)
 // ------------------------------------------------
 function agregarAlCarrito(id, titulo, precio) {
   let carrito = JSON.parse(localStorage.getItem('bev_carrito') || '[]');

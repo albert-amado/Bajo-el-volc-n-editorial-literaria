@@ -12,7 +12,8 @@ const { title = "Bajo el Volcán  Editorial Literaria" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="stylesheet" href="/styles/css/style.css" />
+    <link rel="stylesheet" href="/styles/css/body.css" />
+    <link rel="stylesheet" href="/styles/css/var.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap"
       rel="stylesheet"
@@ -41,5 +42,52 @@ const { title = "Bajo el Volcán  Editorial Literaria" } = Astro.props;
     ></script>
     <script is:inline src="/js/carrito.js"></script>
     <script is:inline src="/js/main.js"></script>
-  </body>
+    <div id="bevToast" class="bev-toast-container"></div></body
+  >
 </html>
+
+<style>
+  .bev-modal-content {
+    border-radius: 0;
+    border: none;
+    background: var(--bev-cream);
+  }
+  .bev-modal-header {
+    background: var(--bev-ink);
+    border: none;
+    padding: 0.75rem 1rem;
+  }
+  .bev-modal-cover {
+    min-height: 350px;
+    overflow: hidden;
+  }
+
+  .bev-modal-titulo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bev-ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .bev-modal-autor {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--bev-ash);
+    margin-bottom: 1rem;
+  }
+
+  .bev-modal-desc {
+    font-size: 0.95rem;
+    color: var(--bev-charcoal);
+    line-height: 1.75;
+    flex-grow: 1;
+  }
+
+  .bev-modal-precio {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bev-ink);
+  }
+</style>

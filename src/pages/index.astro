@@ -2,8 +2,8 @@
 import Layout from "../layouts/layout.astro";
 import CarruselHero from "../components/carruselhero.astro";
 import CarruselLibros from "../components/carrusellibros.astro";
-import Categorias from "../components/categorias.astro";
 import Autores from "../components/autores.astro";
+import Modallibros from "../components/modallibros.astro";
 ---
 
 <Layout title="Bajo el Volcán">
@@ -11,22 +11,15 @@ import Autores from "../components/autores.astro";
 
   <section class="py-5 bev-section-light">
     <div class="container">
-
-      <!-- Categorías + Carrusel en el mismo row -->
-      <div class="row g-4">
-        <div class="col-12 col-lg-2">
-          <Categorias />
-        </div>
-        <div class="col-12 col-lg-10">
-          <CarruselLibros />
-        </div>
+      <div class="col-12 col-lg-12">
+        <CarruselLibros />
       </div>
     </div>
+    <section class="bev-section-dark py-5">
+      <div class="container">
+        <Autores />
+      </div>
+    </section>
   </section>
-
-  <section class="bev-section-dark py-5">
-    <div class="container">
-      <Autores />
-    </div>
-  </section>
+  <Modallibros />
 </Layout>

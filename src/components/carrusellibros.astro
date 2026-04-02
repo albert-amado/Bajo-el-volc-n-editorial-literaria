@@ -1,41 +1,169 @@
 ---
+
 ---
-<!-- LIBROS DESTACADOS -->
+
 <section class="py-5 bev-section-light">
-    <!-- Título -->
+  <div class="container-fluid">
     <div class="text-center mb-5">
-      <span class="bev-section-tag">Coleccion de Bajo el Volcán</span>
-      <h6 class="bev-section-title">Nuestras Novelas</h6>
+      <span class="bev-section-tag">Colección de Bajo el Volcán</span>
+      <h2 class="bev-section-title">Nuestras Novelas</h2>
     </div>
 
-      <!-- Columna derecha: carrusel -->
-      <div class="col-12 col-lg-10">
-        <div
-          id="librosCarousel"
-          class="carousel slide"
-          data-bs-ride="carousel"
-          data-bs-interval="4000"
-        >
-          <div class="carousel-inner" id="librosCarouselInner">
-            <!-- Generado por main.js desde libros.json -->
-          </div>
-          <button
-            class="carousel-control-prev bev-carousel-ctrl"
-            type="button"
-            data-bs-target="#librosCarousel"
-            data-bs-slide="prev"
-          >
-            <i class="bi bi-chevron-left"></i>
-          </button>
-          <button
-            class="carousel-control-next bev-carousel-ctrl"
-            type="button"
-            data-bs-target="#librosCarousel"
-            data-bs-slide="next"
-          >
-            <i class="bi bi-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-    </div><!-- /.row -->
+    <div id="librosCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner" id="librosCarouselInner"></div>
+
+      <button
+        class="carousel-control-prev bev-carousel-ctrl"
+        type="button"
+        data-bs-target="#librosCarousel"
+        data-bs-slide="prev"
+      >
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <button
+        class="carousel-control-next bev-carousel-ctrl"
+        type="button"
+        data-bs-target="#librosCarousel"
+        data-bs-slide="next"
+      >
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </div>
 </section>
+
+<style is:global>
+  #librosCarousel {
+    padding: 0rem;
+    position: relative;
+  }
+
+  .bev-carousel-ctrl {
+    width: auto; /* Ya no necesita un ancho fijo */
+    height: auto; /* Ya no necesita un alto fijo */
+    background: transparent; /* Quitamos el fondo oscuro */
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    color: var(--bev-gold); 
+    border: none;
+  }
+  .bev-carousel-ctrl:hover {
+    background: transparent;
+    color: var(--bev-cream);
+    border: none;
+  }
+
+  .bev-carousel-ctrl.carousel-control-prev {
+    left: -70px;
+  }
+  .bev-carousel-ctrl.carousel-control-next {
+    right: -70px;
+  }
+
+  /* SECCIONES */
+  .bev-section-light {
+    background-color: var(--bev-cream);
+  }
+  .bev-section-tag {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bev-gold);
+    margin-bottom: 0.5rem;
+  }
+  .bev-section-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--bev-ink);
+  }
+
+  /* TARJETAS V2*/
+  .bev-book-card-v2 {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+
+  .bev-book-card-v2:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .bev-book-cover-v2 {
+    position: relative;
+    aspect-ratio: 2 / 3; /* Proporción del libro */
+    overflow: hidden;
+  }
+
+  .bev-book-cover-v2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bev-book-info-v2 {
+    padding: 1.2rem;
+    background: var(--bev-ink); /* Fondo oscuro elegante */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .bev-book-title {
+    font-size: 1.1rem;
+    color: var(--bev-cream);
+    margin: 5px 0;
+  }
+
+  .bev-book-author {
+    font-size: 0.85rem;
+    color: var(--bev-gold);
+    font-style: italic;
+  }
+
+  .bev-book-price {
+    color: var(--bev-cream);
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* ETIQUETAS */
+  .bev-etiqueta {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    z-index: 2;
+    text-transform: uppercase;
+  }
+  .bev-etiqueta-nuevo {
+    background: var(--bev-red);
+    color: #fff;
+  }
+  .bev-etiqueta-destacado {
+    background: var(--bev-gold);
+    color: var(--bev-ink);
+  }
+
+  /* BOTÓN AGREGAR */
+  .bev-btn-add-cart {
+    background: transparent;
+    border: 1px solid var(--bev-gold);
+    color: var(--bev-gold);
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    transition: 0.3s;
+  }
+  .bev-btn-add-cart:hover {
+    background: var(--bev-gold);
+    color: var(--bev-ink);
+  }
+</style>
