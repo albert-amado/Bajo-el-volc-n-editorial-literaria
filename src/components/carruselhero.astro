@@ -1,42 +1,44 @@
 ---
 ---
-<!-- CARRUSEL HERO -->
-<div
-  id="heroCarousel"
-  class="carousel slide carousel-fade"
-  data-bs-ride="carousel"
-  data-bs-interval="5000"
->
-  <div class="carousel-indicators" id="heroIndicators"></div>
-  <div class="carousel-inner" id="heroCarouselInner"></div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#heroCarousel"
-    data-bs-slide="prev"
+<section class="container py-4"> 
+  <div
+    id="heroCarousel"
+    class="carousel slide carousel-fade bev-carousel-custom"
+    data-bs-ride="carousel"
+    data-bs-interval="5000"
   >
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-bs-target="#heroCarousel"
-    data-bs-slide="next"
-  >
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
+    <div class="carousel-indicators" id="heroIndicators"></div>
+    <div class="carousel-inner" id="heroCarouselInner"></div>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
 
 <style is:global>
-  .bev-slide {
-  height: 55vh;
-  min-height: 250px;
-  position: relative;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: var(--bev-ink);
-}
+<style is:global>
+  /* NUEVO: Contenedor con bordes redondeados */
+  .bev-carousel-custom {
+    border-radius: 20px; /* Igual que la imagen de premio nacional */
+    overflow: hidden;    /* Importante para que la imagen no se salga de las esquinas */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Opcional: le da profundidad */
+  }
+.bev-slide {
+    height: 60vh;
+    min-height: 350px; /* Aumenté un poco el mínimo para que no se vea muy delgado */
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: var(--bev-ink);
+    /* No necesitas border-radius aquí si el padre lo tiene, 
+       pero ayuda a asegurar el renderizado */
+    border-radius: 20px; 
+  }
 
 .bev-slide-overlay {
   position: absolute;

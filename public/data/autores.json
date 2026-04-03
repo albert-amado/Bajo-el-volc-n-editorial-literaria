@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "nombre": "Natalia Alvarez Arenas",
+    "nombre": "Natalia Álvarez Arenas",
     "nacionalidad": "Colombia",
     "bio": "Natalia Álvarez Arenas es Comunicadora Social y Periodista de la Universidad Pontificia Bolivariana, Magíster en Gestión Estratégica de la Información y el Conocimiento, de la Universidad Oberta de Cataluña y Obtuvo su título de Magíster en Escritura Creativa en la Universidad de Salamanca.",
     "foto": "assets/img/autores/Nataliaalvarezarenas.png",
@@ -25,11 +25,11 @@
   },
   {
     "id": 4,
-    "nombre": "",
-    "nacionalidad": "",
-    "bio": "",
-    "foto": "assets/img/autores/",
-    "libros_ids": [4]
+    "nombre": "Alberto Rebollo",
+    "nacionalidad": "México",
+    "bio": "Alberto Rebollo. Nació en Ciudad de México. Estudió Letras inglesas en la UNAM, creación literaria en la SOGEM y en el Taller de Eusebio Ruvalcaba. En 2002 ganó el Premio Nacional de Ensayo Literario Malcolm Lowry. Es académico de la UNAM y el IEMS. En 2024 publicó el libro de crónicas Tepeyólotl y otros dioses de México. Los demonios del mezcal es su primera novela. ",
+    "foto": "assets/img/autores/albertorebollo.png",
+    "libros_ids": [5]
   },
   {
     "id": 5,
