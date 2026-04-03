@@ -23,13 +23,12 @@
 <style is:global>
 
   .bev-carousel-custom {
- 
     overflow: hidden;   
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4); 
   }
 .bev-slide {
     height: 50vh;
-    min-height: 350px; 
+    min-height: 150px; 
     position: relative;
     background-size: cover;
     background-position: center center;
@@ -52,8 +51,8 @@
 
 .bev-slide-content {
   position: relative;
-  z-index: 2;
-  padding: 2rem 0;
+  z-index: 1;
+  padding: 1rem 0;
 }
 
 .bev-eyebrow {
@@ -70,8 +69,7 @@
   font-size: clamp(2.2rem, 5vw, 4.2rem);
   font-weight: 700;
   color: var(--bev-cream);
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
   letter-spacing: 0.02em;
 }
 
@@ -80,15 +78,16 @@
   font-size: 1rem;
   font-style: italic;
   color: var(--bev-gold);
-  margin-bottom: 1rem;
-  letter-spacing: 0.05em;
+  margin-bottom: 0rem;
+  letter-spacing: 0.0em;
 }
 
 .bev-slide-desc {
+  position:initial;
   font-size: 1rem;
   color: var(--bev-ash);
-  max-width: 460px;
-  line-height: 1.7;
+  max-width: 600px;
+  line-height: 1.2;
 }
 
 </style>
