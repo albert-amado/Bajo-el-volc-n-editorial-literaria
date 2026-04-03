@@ -1,93 +1,210 @@
 ---
 ---
-<section class="container py-4"> 
-  <div
-    id="heroCarousel"
-    class="carousel slide carousel-fade bev-carousel-custom"
-    data-bs-ride="carousel"
-    data-bs-interval="5000"
-  >
-    <div class="carousel-indicators" id="heroIndicators"></div>
-    <div class="carousel-inner" id="heroCarouselInner"></div>
-    
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
+
+<section class="py-4">
+  <div class="bev-container">
+
+    <div
+      id="heroCarousel"
+      class="carousel slide carousel-fade bev-carousel-custom"
+      data-bs-ride="carousel"
+      data-bs-interval="5000"
+    >
+
+      <!-- Indicadores -->
+      <div class="carousel-indicators" id="heroIndicators"></div>
+
+      <!-- Slides dinámicos -->
+      <div class="carousel-inner" id="heroCarouselInner"></div>
+
+      <!-- Controles -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon"></span>
+      </button>
+
+    </div>
+
   </div>
 </section>
-
-<style is:global>
 <style is:global>
 
-  .bev-carousel-custom {
-    overflow: hidden;   
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4); 
-  }
+/* =========================================================
+   🧱 CONTENEDOR GLOBAL (alineación con TODO el sitio)
+========================================================= */
+.bev-container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* =========================================================
+   🎠 CARRUSEL
+========================================================= */
+.bev-carousel-custom {
+  width: 100%;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================================================
+   🖼️ SLIDE
+========================================================= */
 .bev-slide {
-    height: 50vh;
-    min-height: 150px; 
-    position: relative;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: var(--bev-ink);
+  height: 45vh;
+  min-height: 350px;
+  position: relative;
 
-  }
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--carousel-bg);
 
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Overlay (legibilidad SIEMPRE) */
 .bev-slide-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(10,6,2,0.93) 0%,
-    rgba(10,6,2,0.6)  50%,
-    rgba(10,6,2,0.1)  100%
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.6) 40%,
+    rgba(0,0,0,0.1) 100%
   );
-  pointer-events: none;
 }
 
+/* =========================================================
+   🧩 CONTENIDO (alineado a la izquierda)
+========================================================= */
 .bev-slide-content {
   position: relative;
-  z-index: 1;
-  padding: 1rem 0;
+  z-index: 2;
+
+  width: 100%;
+  padding-left: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
+/* =========================================================
+   ✍️ TEXTOS
+========================================================= */
+
+/* Categoría */
 .bev-eyebrow {
-  display: block;
-  font-size: 0.78rem;
-  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--bev-gold);
-  margin-bottom: 1.25rem;
+  color: var(--pr-white);
+  opacity: 0.7;
+  margin-bottom: 1rem;
 }
 
+/* Título */
 .bev-slide-title {
   font-family: 'Lato', sans-serif;
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 700;
-  color: var(--bev-cream);
-  margin-bottom: 0rem;
-  letter-spacing: 0.02em;
+  color: var(--pr-white);
+  margin-bottom: 0.5rem;
 }
 
+/* Autor */
 .bev-slide-author {
-  font-family: 'Lato', sans-serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-style: italic;
-  color: var(--bev-gold);
-  margin-bottom: 0rem;
-  letter-spacing: 0.0em;
+  color: var(--pr-white);
+  opacity: 0.85;
+  margin-bottom: 1rem;
 }
 
+/* Descripción */
 .bev-slide-desc {
-  position:initial;
-  font-size: 1rem;
-  color: var(--bev-ash);
-  max-width: 600px;
-  line-height: 1.2;
+  font-size: 0.95rem;
+  color: var(--pr-white);
+  opacity: 0.8;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   🔘 BOTONES (blancos, elegantes)
+========================================================= */
+.bev-slide-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.bev-btn {
+  position: relative;
+  color: var(--pr-white);
+  border: 1px solid rgba(255,255,255,0.6);
+  padding: 0.5rem 1.4rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Línea animada */
+.bev-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  width: 0%;
+  height: 1px;
+  background: var(--pr-white);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.bev-btn:hover::after {
+  width: 70%;
+}
+
+.bev-btn:hover {
+  border-color: var(--pr-white);
+}
+
+/* =========================================================
+   📱 RESPONSIVE
+========================================================= */
+@media (max-width: 768px) {
+  .bev-slide {
+    height: 45vh;
+  }
+
+  .bev-slide-content {
+    padding-left: 1rem;
+  }
+
+  .bev-slide-title {
+    font-size: 1.8rem;
+  }
 }
 
 </style>

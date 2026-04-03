@@ -1,17 +1,18 @@
 ---
-
 ---
-
 <section class="py-5 bev-section-light">
-  <div class="container-fluid">
+  <div class="bev-container">
+
     <div class="text-center mb-5">
       <span class="bev-section-tag">Colección de Bajo el Volcán</span>
       <h2 class="bev-section-title">Nuestras Novelas</h2>
     </div>
 
     <div id="librosCarousel" class="carousel slide" data-bs-ride="carousel">
+
       <div class="carousel-inner" id="librosCarouselInner"></div>
 
+      <!-- Flechas -->
       <button
         class="carousel-control-prev bev-carousel-ctrl"
         type="button"
@@ -20,6 +21,7 @@
       >
         <i class="bi bi-chevron-left"></i>
       </button>
+
       <button
         class="carousel-control-next bev-carousel-ctrl"
         type="button"
@@ -28,147 +30,186 @@
       >
         <i class="bi bi-chevron-right"></i>
       </button>
+
     </div>
+
   </div>
 </section>
-
 <style is:global>
-  #librosCarousel {
-  padding: 0 4rem; 
+
+/* =========================================================
+   🎨 SECCIÓN (gris claro coherente)
+========================================================= */
+.bev-section-light {
+  background-color: var(--bg-subtle);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* =========================================================
+   📦 CARRUSEL
+========================================================= */
+#librosCarousel {
   position: relative;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  max-width: 1200px; 
 }
 
-  .bev-carousel-ctrl {
-    width: auto; 
-    height: auto; 
-    background: transparent; 
-    top: 90%;
-    transform: translateY(-50%);
-    opacity: 1;
-    color: var(--bev-gold); 
-    border: none;
-  }
-  .bev-carousel-ctrl:hover {
-    background: transparent;
-    color: var(--bev-cream);
-    border: none;
-  }
-
-  .bev-carousel-ctrl.carousel-control-prev {
-  left: 0;
+/* IMPORTANTE: espacio para flechas */
+.carousel-inner {
+  padding: 0 3rem;
 }
-.carousel-inner .row {
+
+/* =========================================================
+   🎯 FLECHAS FUERA DEL CONTENIDO
+========================================================= */
+.bev-carousel-ctrl {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
   justify-content: center;
-  margin-right: 0;
-  margin-left: -80;
+
+  background: var(--pr-white);
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+
+  color: var(--bev-gold);
+  opacity: 1;
+  z-index: 5;
+
+  transition: all 0.3s ease;
 }
- .bev-carousel-ctrl.carousel-control-next {
-  right: 0;
+
+.bev-carousel-ctrl:hover {
+  background: var(--bev-gold);
+  color: var(--bev-ink);
 }
 
-  /* SECCIONES */
-  .bev-section-light {
-    background-color: var(--bev-cream);
-  }
-  .bev-section-tag {
-    display: block;
-    font-size: 0.75rem;
-    letter-spacing: 0.9rem;
-    text-transform: uppercase;
-    color: var(--bev-gold);
-    margin-bottom: 0.5rem;
-  }
-  .bev-section-title {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    color: var(--bev-ink);
-  }
+/* Posición real fuera */
+.carousel-control-prev.bev-carousel-ctrl {
+  left: -20px;
+}
 
-  /* TARJETAS V2*/
-  .bev-book-card-v2 {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease;
-  }
+.carousel-control-next.bev-carousel-ctrl {
+  right: -20px;
+}
 
-  .bev-book-card-v2:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  }
+/* =========================================================
+   🧾 TITULOS
+========================================================= */
+.bev-section-tag {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--bev-gold);
+  margin-bottom: 0.5rem;
+}
 
-  .bev-book-cover-v2 {
-    position: relative;
-    aspect-ratio: 2 / 3; /* Proporción del libro */
-    overflow: hidden;
-  }
+.bev-section-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--bev-ink);
+}
 
-  .bev-book-cover-v2 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+/* =========================================================
+   📚 TARJETAS
+========================================================= */
+.bev-book-card-v2 {
+  background: var(--pr-white);
+  border: 1px solid var(--border-light);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
 
-  .bev-book-info-v2 {
-    padding: 1.2rem;
-    background: var(--bev-ink); /* Fondo oscuro elegante */
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+.bev-book-card-v2:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
 
-  .bev-book-title {
-    font-size: 1.1rem;
-    color: var(--bev-cream);
-    margin: 0px 0;
-  }
+.bev-book-cover-v2 {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+}
 
-  .bev-book-author {
-    font-size: 0.85rem;
-    color: var(--bev-gold);
-    font-style: italic;
-  }
+.bev-book-cover-v2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  .bev-book-price {
-    color: var(--bev-cream);
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
+/* INFO */
+.bev-book-info-v2 {
+  padding: 1.2rem;
+  background: var(--bev-ink);
+}
 
-  /* ETIQUETAS */
-  .bev-etiqueta {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 5px 12px;
-    z-index: 2;
-    text-transform: uppercase;
-  }
-  .bev-etiqueta-nuevo {
-    background: var(--bev-red);
-    color: #fff;
-  }
-  .bev-etiqueta-destacado {
-    background: var(--bev-gold);
-    color: var(--bev-ink);
-  }
-  .bev-btn-add-cart {
-    background: transparent;
-    border: 1px solid var(--bev-gold);
-    color: var(--bev-gold);
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    transition: 0.3s;
-  }
-  .bev-btn-add-cart:hover {
-    background: var(--bev-gold);
-    color: var(--bev-ink);
-  }
+.bev-book-title {
+  font-size: 1.05rem;
+  color: var(--bev-cream);
+  margin-bottom: 0.3rem;
+}
+
+.bev-book-author {
+  font-size: 0.85rem;
+  color: var(--bev-gold);
+  font-style: italic;
+}
+
+.bev-book-price {
+  color: var(--bev-cream);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* =========================================================
+   🏷️ ETIQUETAS
+========================================================= */
+.bev-etiqueta {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+.bev-etiqueta-nuevo {
+  background: var(--bev-red);
+  color: var(--pr-white);
+}
+
+.bev-etiqueta-destacado {
+  background: var(--bev-gold);
+  color: var(--bev-ink);
+}
+
+/* =========================================================
+   🛒 BOTÓN
+========================================================= */
+.bev-btn-add-cart {
+  background: transparent;
+  border: 1px solid var(--bev-gold);
+  color: var(--bev-gold);
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  transition: 0.3s;
+}
+
+.bev-btn-add-cart:hover {
+  background: var(--bev-gold);
+  color: var(--bev-ink);
+}
+
 </style>
