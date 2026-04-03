@@ -1,42 +1,83 @@
 ---
 ---
 <div class="bev-topbar-footer">
-  <div
-    class="container d-flex justify-content-between align-items-center"
-  >
-    <div class="d-flex align-items-center">
-        <img src="/assets/img/carrusels/premionacional.png" alt="Recuadro premio nacional">
+  <div class="container d-flex justify-content-center align-items-center">
+    
+    <div class="bev-promo-wrapper">
+      <img
+        src="/assets/img/carrusels/premionacional.png"
+        alt="Recuadro premio nacional"
+        class="bev-promo-img"
+      />
+
+      <a
+        class="btn bev-btn-premio-banner" 
+        href="/assets/img/doc/bases_premio_nacional_de_novela.pdf"
+        target="_blank">
+        Bases premio novela
+      </a>
     </div>
+
   </div>
 </div>
 
-<style>
+<style is:global>
   .bev-topbar-footer {
-  background-color: var(--bev-topbar);
-  border-bottom: 1px solid var(--bev-gold);
-  padding: 0.4rem 1rem;
-}
+    background-color: var(--bev-ink);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
 
-.bev-topbar-info {
-  color: var(--bev-ash);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: relative;
-  gap: 5px;
-}
+  .bev-promo-wrapper {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+    /* Opcional: sombra para que resalte sobre el fondo oscuro */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
 
-.bev-topbar-link {
-  color: var(--bev-ash);
-  font-size: 1rem;
-  margin-left: 1rem;
-  text-decoration: none;
-  transition: color 0.2s;
-}
+  .bev-promo-img {
+    display: block;
+    width: auto;
 
-.bev-topbar-link:hover { color: var(--bev-gold); }
+    max-height: 500px; 
+    min-width: 500px; 
+    height: auto;
+    object-fit: contain;
+  }
 
-@media (max-width: 500px) {
-  .bev-topbar-info { display: none; }
-}
+  .bev-btn-premio-banner {
+    position: absolute;
+    bottom: 50px; /* Distancia desde el borde inferior de la imagen */
+    left: 20%;
+    transform: translateX(-50%);
+    
+    /* Estilo del botón */
+    color: var(--bev-gold);
+    border: 2px solid var(--bev-gold); /* Borde un poco más grueso por el tamaño */
+    background-color: rgba(10, 6, 2, 0.8); /* Fondo más oscuro para que resalte */
+    font-size: 0.9rem; /* Texto más legible para imagen grande */
+    padding: 0.4rem 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+
+  .bev-btn-premio-banner:hover {
+    background-color: var(--bev-gold);
+    color: var(--bev-ink);
+    transform: translateX(-50%) scale(1.05); /* Efecto de agrandado al pasar el mouse */
+  }
+
+  /* Ajuste para móviles: Que no se salga de la pantalla */
+  @media (max-width: 768px) {
+    .bev-promo-img {
+      max-height: 150px;
+    }
+    .bev-btn-premio-banner {
+      font-size: 0.7rem;
+      padding: 0.3rem 0.8rem;
+    }
+  }
 </style>

@@ -1,14 +1,13 @@
 :root {
   --bev-topbar:     #000000;
-  --bev-ink:        #181A26;
+  --bev-ink:        #ffffff;
   --bev-ink-mid:    #ffffff;
-  --bev-gold:       #181a26;
+  --bev-gold:       #ffffff;
   --bev-gold-lt:    #ffffff;
   --bev-cream:      #000000;
   --bev-cream-dk:   #F2EBE0;
-  --bev-ash:        #2f344b;
-  --bev-charcoal:   #4B5563;
-  --bev-red:        #F23838; /*Colores para el panel de categorias*/
+  --bev-ash:        #ffffff;
+  --bev-charcoal:   #ffffff;
   --font-display:   'Lato', sans-serif;
   --font-body:      'Lato', sans-serif;
 }

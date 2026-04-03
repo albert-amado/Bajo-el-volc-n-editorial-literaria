@@ -34,9 +34,13 @@
 
 <style is:global>
   #librosCarousel {
-    padding: 0rem;
-    position: relative;
-  }
+  /* Reducimos el padding excesivo para dar aire y centrar mejor */
+  padding: 0 4rem; 
+  position: relative;
+  /* Añadimos margen automático para centrar el contenedor del carrusel */
+  margin: 0 auto;
+  max-width: 1200px; 
+}
 
   .bev-carousel-ctrl {
     width: auto; /* Ya no necesita un ancho fijo */
@@ -55,11 +59,13 @@
   }
 
   .bev-carousel-ctrl.carousel-control-prev {
-    left: -70px;
-  }
-  .bev-carousel-ctrl.carousel-control-next {
-    right: -70px;
-  }
+  /* Ajustamos la posición para que no flote tan lejos del contenido */
+  left: 0;
+}
+ .bev-carousel-ctrl.carousel-control-next {
+  /* Ajustamos la posición para simetría */
+  right: 0;
+}
 
   /* SECCIONES */
   .bev-section-light {
@@ -68,7 +74,7 @@
   .bev-section-tag {
     display: block;
     font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.9rem;
     text-transform: uppercase;
     color: var(--bev-gold);
     margin-bottom: 0.5rem;

@@ -21,23 +21,21 @@
 
 <style is:global>
 <style is:global>
-  /* NUEVO: Contenedor con bordes redondeados */
+
   .bev-carousel-custom {
-    border-radius: 20px; /* Igual que la imagen de premio nacional */
-    overflow: hidden;    /* Importante para que la imagen no se salga de las esquinas */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Opcional: le da profundidad */
+ 
+    overflow: hidden;   
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
   }
 .bev-slide {
-    height: 60vh;
-    min-height: 350px; /* Aumenté un poco el mínimo para que no se vea muy delgado */
+    height: 50vh;
+    min-height: 350px; 
     position: relative;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-color: var(--bev-ink);
-    /* No necesitas border-radius aquí si el padre lo tiene, 
-       pero ayuda a asegurar el renderizado */
-    border-radius: 20px; 
+
   }
 
 .bev-slide-overlay {
