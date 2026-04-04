@@ -106,7 +106,7 @@ const slides = libros.slice(0, 9);
     width: 100%;
     max-width: var(--content-max-width);
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
   }
 
   .bev-carousel-custom {
@@ -116,14 +116,14 @@ const slides = libros.slice(0, 9);
   }
 
   .bev-slide {
-    height: 45vh;
+    height: 55vh;
     min-height: 350px;
     position: relative;
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: var(--carousel-bg);
+    background-color: var(--pr-gray-1000);
 
     display: flex;
     align-items: center;
@@ -220,7 +220,7 @@ const slides = libros.slice(0, 9);
 
   @media (max-width: 768px) {
     .bev-slide {
-      height: 45vh;
+      height: 40vh;
     }
 
     .bev-slide-content {

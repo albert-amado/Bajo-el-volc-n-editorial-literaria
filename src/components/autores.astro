@@ -18,7 +18,7 @@ const getInitials = (nombre: string) => {
   <div class="container">
     <div class="text-center mb-5">
       <span class="bev-section-tag-light">Voces Bajo el Volcán</span>
-      <h2 class="bev-section-title text-white">Nuestros autores</h2>
+      <h2 class="bev-section-title">Nuestros autores</h2>
     </div>
 
     <div class="row g-4 justify-content-center">
@@ -95,17 +95,19 @@ const getInitials = (nombre: string) => {
     font-size: 1.5rem;
     background: linear-gradient(45deg, var(--pr-gray-900), #333);
   }
-
-  .bev-author-name {
-    color: var(--pr-white);
-    font-weight: 600;
-    margin-bottom: 2px;
+.bev-author-name {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--pr-gray-900);
+    margin-bottom: 0.1rem;
   }
 
   .bev-author-country {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: var(--pr-gray-700);
   }
 
   .bev-author-bio {
@@ -158,7 +160,7 @@ const getInitials = (nombre: string) => {
     font-family: var(--font-display);
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--pr-white);
+    color: var(--pr-gray-900);
     margin-bottom: 0.1rem;
   }
 

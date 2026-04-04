@@ -6,7 +6,8 @@
   --pr-gray-200:     #E5E5E5;
   --pr-gray-400:     #BFBFBF;
   --pr-gray-700:     #000000;
-  --pr-gray-900:     #000000;;
+  --pr-gray-900:     #000000;
+  --pr-gray-1000:     #F2F2F2;;
 
   --pr-glass-dark:   rgba(0, 0, 0, 0.05);
   --pr-glass-light:  rgba(255, 255, 255, 0.8);
@@ -40,8 +41,8 @@
   --navbar-border:      rgba(255, 255, 255, 0.08);
   --navbar-logo-glow:   rgba(255,255,255,0.3);
 
-  --content-max-width:      1200px;
-  --carousel-bg:            var(--pr-gray-900);
+  --content-max-width:      1400px;
+  --carousel-bg:            var(--pr-gray-1000);
   --carousel-overlay-start: rgba(0,0,0,0.85);
   --carousel-overlay-mid:   rgba(0,0,0,0.5);
   --carousel-overlay-end:   rgba(0,0,0,0.1);

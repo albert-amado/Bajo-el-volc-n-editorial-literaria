@@ -1,5 +1,4 @@
 ---
-
 ---
 
 <div class="bev-topbar-footer">
@@ -8,8 +7,7 @@
       <img
         src="/assets/img/carrusels/premionacional.png"
         alt="Recuadro premio nacional"
-        class="bev-promo-img"
-      />
+        class="bev-promo-img"/>
 
       <a
         class="btn bev-btn-premio-banner"
@@ -24,8 +22,10 @@
 
 <style is:global>
   .bev-topbar-footer {
-    background-color: var(--pr-gray-900);
+    background-color: var( --pr-gray-1000);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3rem 0 1.5rem 0;   
+    margin-top: 0.0rem;
   }
 
   .bev-promo-wrapper {
@@ -87,17 +87,17 @@
     border-color: var(--pr-white);
   }
   .bev-btn-premio-banner:hover {
-    background-color: var(--pr-gray-400);
-    color: var(--pr-gray-900);
+    background-color: var(--pr-gray-1000);
+    color: var(--bev-ink);
   }
   .bev-slide-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    var(--carousel-overlay-start) 0%,
-    var(--carousel-overlay-mid) 40%,
-    var(--carousel-overlay-end) 100%
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.6) 40%,
+    rgba(0,0,0,0.1) 100%
   );
 }
 @media (max-width: 768px) {

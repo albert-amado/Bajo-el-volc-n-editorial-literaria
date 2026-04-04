@@ -61,45 +61,46 @@
               style="border-top: 1px solid var(--bev-cream-dk);"
             >
               <div class="d-flex align-items-start gap-3">
+                <!-- Foto -->
                 <img
                   id="modalAutorFoto"
                   src=""
                   alt=""
                   onerror="this.style.display='none'; document.getElementById('modalAutorFallback').style.display='flex';"
-                  style="width:70px; height:70px; border-radius:50%; object-fit:cover; object-position:top; border:2px solid var(--bev-gold); flex-shrink:0;"
+                  style="width:70px; height:70px; border-radius:50%; object-fit:cover; object-position:top; border:2px solid var(--pr-gray-900); flex-shrink:0;"
                 />
+
+                <!-- Fallback -->
                 <div
                   id="modalAutorFallback"
-                  style="display:none; width:70px; height:70px; border-radius:50%; background:var(--bev-charcoal); border:2px solid var(--bev-gold); flex-shrink:0; align-items:center; justify-content:center; font-size:1.2rem; color:var(--bev-gold); font-weight:700;"
+                  style="display:none; width:70px; height:70px; border-radius:50%; background:var(--pr-gray-400); border:2px solid var(--pr-gray-900); flex-shrink:0; align-items:center; justify-content:center; font-size:1.2rem; color:var(--pr-gray-900); font-weight:700;"
                 >
                   <span id="modalAutorIniciales"></span>
                 </div>
+
+                <!-- Info -->
                 <div>
                   <p
-                    style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--bev-gold); margin-bottom:0.2rem;"
+                    style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--pr-gray-700); margin-bottom:0.2rem;"
                   >
                     Autor
                   </p>
+
                   <p
                     id="modalAutorNombreDetalle"
-                    style="font-weight:700; color:var(--bev-ink); margin-bottom:0.3rem; font-size:0.95rem;"
+                    style="font-weight:700; color:var(--pr-gray-900); margin-bottom:0.4rem; font-size:0.95rem;"
+                  >
+                  </p>
+
+                  <p
+                    id="modalAutorBio"
+                    style="font-size:0.82rem; color:var(--pr-gray-700); line-height:1.6; margin:0;"
                   >
                   </p>
                 </div>
               </div>
             </div>
-            Autor
           </div>
-          <p
-            id="modalAutorNombreDetalle"
-            style="font-weight:700; color:var(--bev-ink); margin-bottom:0.3rem; font-size:0.95rem;"
-          >
-          </p>
-          <p
-            id="modalAutorBio"
-            style="font-size:0.82rem; color:var(--bev-charcoal); line-height:1.6; margin:0;"
-          >
-          </p>
         </div>
       </div>
     </div>
