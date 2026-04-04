@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nombre": "Ruben Dario Higuera",
+    "cargo": "Director Bajo el Volcan Ediciones",
+    "foto": "/assets/img/team/directorjoelvolcan.jpeg",
+    "bio": ""
+  },
+  {
+    "id": 2,
+    "nombre": "",
+    "cargo": "",
+    "foto": "",
+    "bio": ""
+  },
+  {
+    "id": 3,
+    "nombre": "",
+    "cargo": "",
+    "foto": "",
+    "bio": ""
+  }
+]

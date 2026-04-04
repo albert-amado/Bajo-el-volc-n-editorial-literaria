@@ -1,0 +1,194 @@
+---
+import Layout from "../layouts/layout.astro";
+import equipo from "../data/team.json";
+
+const getInitials = (nombre: string) => {
+  if (!nombre) return "?";
+  return nombre
+    .split(" ")
+    .map((n) => n[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+};
+---
+
+<Layout title="Nosotros - Bajo el Volcán">
+  <main class="bev-nosotros mt-5 pt-5">
+    <div class="container">
+
+      <!-- ENCABEZADO -->
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <span class="bev-section-tag">Quiénes somos</span>
+          <h1 class="display-4 fw-bold text-white mt-3 mb-4">Bajo el Volcán</h1>
+          <div class="bev-divider mx-auto mb-4"></div>
+          <p class="lead text-light opacity-75">
+            <!-- Descripción de la editorial -->
+          </p>
+        </div>
+      </div>
+
+      <!-- MISIÓN Y VISIÓN -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-6">
+          <div class="bev-info-card h-100 p-4">
+            <div class="bev-info-icon mb-3">
+              <i class="bi bi-book"></i>
+            </div>
+            <h4 class="text-white fw-bold mb-3">Nuestra misión</h4>
+            <p class="text-light opacity-75">
+              <!-- Misión de la editorial -->
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="bev-info-card h-100 p-4">
+            <div class="bev-info-icon mb-3">
+              <i class="bi bi-eye"></i>
+            </div>
+            <h4 class="text-white fw-bold mb-3">Nuestra visión</h4>
+            <p class="text-light opacity-75">
+              <!-- Visión de la editorial -->
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-5" />
+
+      <!-- EQUIPO -->
+      <div class="row mb-4">
+        <div class="col-12 text-center">
+          <h2 class="text-white fw-bold mb-2">Equipo Bajo el Volcán Ediciones</h2>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-content-center mb-5">
+        {
+          equipo.map((persona) => (
+            <div class="col-6 col-md-4 col-lg-3">
+              <div class="bev-team-card text-center p-4 h-100">
+                <div class="bev-team-avatar mx-auto mb-3">
+                  <img
+                    src={persona.foto || ''}
+                    alt={persona.nombre}
+                    style={persona.foto ? '' : 'display:none'}
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div
+                    class="bev-team-fallback"
+                    style={persona.foto ? 'display:none' : 'display:flex'}
+                  >
+                    {getInitials(persona.nombre)}
+                  </div>
+                </div>
+                <h5 class="text-white fw-bold mb-1">
+                  {persona.nombre || "Por definir"}
+                </h5>
+                <p class="bev-team-cargo mb-2">
+                  {persona.cargo || ""}
+                </p>
+                {persona.bio && (
+                  <p class="text-light opacity-75 small">{persona.bio}</p>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .bev-nosotros {
+    background-color: var(--bev-dark, #ababab);
+    min-height: 100vh;
+    color: white;
+  }
+
+  .bev-section-tag {
+    background-color: rgba(230, 57, 70, 0.1);
+    color: var(--bev-primary, #e63946);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+
+  .bev-divider {
+    height: 4px;
+    width: 60px;
+    background-color: var(--bev-primary, #e63946);
+    border-radius: 2px;
+  }
+
+  /* Tarjetas de misión/visión */
+  .bev-info-card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+  }
+
+  .bev-info-card:hover {
+    border-color: rgba(230, 57, 70, 0.4);
+  }
+
+  .bev-info-icon {
+    font-size: 1.8rem;
+    color: var(--bev-primary, #e63946);
+  }
+
+  /* Tarjetas del equipo */
+  .bev-team-card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .bev-team-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(230, 57, 70, 0.4);
+  }
+
+  .bev-team-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--bev-primary, #e63946);
+    position: relative;
+  }
+
+  .bev-team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .bev-team-fallback {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #222, #444);
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--bev-primary, #e63946);
+  }
+
+  .bev-team-cargo {
+    color: var(--bev-primary, #e63946);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+</style>

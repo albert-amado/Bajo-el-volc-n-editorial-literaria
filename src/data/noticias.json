@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "titulo": "",
+    "resumen": "",
+    "contenido": "",
+    "imagen": "",
+    "fecha": "2026-04-04",
+    "categoria": "evento",
+    "slug": ""
+  },
+  {
+    "id": 2,
+    "titulo": "",
+    "resumen": "",
+    "contenido": "",
+    "imagen": "",
+    "fecha": "2026-04-04",
+    "categoria": "lanzamiento",
+    "slug": ""
+  }
+]

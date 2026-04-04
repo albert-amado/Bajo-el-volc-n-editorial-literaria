@@ -1,0 +1,365 @@
+---
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout title="Contacto - Bajo el Volcán">
+  <main class="bev-contacto mt-5 pt-5">
+    <div class="container">
+
+      <!-- ENCABEZADO -->
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <span class="bev-section-tag">Escríbenos</span>
+          <h1 class="display-4 fw-bold text-white mt-3 mb-4">Contacto</h1>
+          <div class="bev-divider mx-auto mb-4"></div>
+          <p class="lead text-light opacity-75">
+            ¿Tienes preguntas sobre nuestros libros o quieres trabajar con
+            nosotros? Estamos aquí para escucharte.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-5 mb-5">
+
+        <!-- COLUMNA IZQUIERDA: logo + info -->
+        <div class="col-lg-5">
+          <div class="bev-contact-info h-100 p-4">
+
+            <!-- Logo -->
+            <div class="text-center mb-4">
+              <img
+                src="/images/logo.png"
+                alt="Bajo el Volcán"
+                class="bev-contact-logo"
+                onerror="this.style.display='none'"
+              />
+            </div>
+
+            <hr class="border-secondary mb-4" />
+
+            <ul class="list-unstyled bev-contact-list">
+
+              <!-- WhatsApp -->
+              <li class="d-flex align-items-start gap-3 mb-4">
+                <div class="bev-contact-icon">
+                  <i class="bi bi-whatsapp"></i>
+                </div>
+                <div>
+                  <p class="bev-contact-label">WhatsApp</p>
+                  <a
+                    href="https://wa.me/573144559506"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bev-contact-value"
+                  >
+                    +57 314 455 9506
+                  </a>
+                </div>
+              </li>
+
+              <!-- Correo -->
+              <li class="d-flex align-items-start gap-3 mb-4">
+                <div class="bev-contact-icon">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <div>
+                  <p class="bev-contact-label">Correo</p>
+                  <a
+                    href="mailto:bajoelvolcane@gmail.com"
+                    class="bev-contact-value"
+                  >
+                    bajoelvolcane@gmail.com
+                  </a>
+                </div>
+              </li>
+
+              <!-- Instagram -->
+              <li class="d-flex align-items-start gap-3 mb-4">
+                <div class="bev-contact-icon">
+                  <i class="bi bi-instagram"></i>
+                </div>
+                <div>
+                  <p class="bev-contact-label">Instagram</p>
+                  <a
+                    href="https://www.instagram.com/bajoelvolcane"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bev-contact-value"
+                  >
+                    @bajoelvolcane
+                  </a>
+                </div>
+              </li>
+
+              <!-- Ubicación -->
+              <li class="d-flex align-items-start gap-3 mb-4">
+                <div class="bev-contact-icon">
+                  <i class="bi bi-geo-alt"></i>
+                </div>
+                <div>
+                  <p class="bev-contact-label">Ubicación</p>
+                  <p class="bev-contact-value mb-0">
+                    Duitama, Boyacá — Colombia
+                  </p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: formulario -->
+        <div class="col-lg-7">
+          <div class="bev-contact-form p-4 p-lg-5 h-100">
+            <h4 class="text-white fw-bold mb-4">Envíanos un mensaje</h4>
+
+            <form id="formContacto" novalidate>
+              <div class="row g-3">
+
+                <div class="col-md-6">
+                  <label class="bev-form-label">Nombre</label>
+                  <input
+                    type="text"
+                    id="inputNombre"
+                    class="bev-form-input"
+                    placeholder="Tu nombre"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="bev-form-label">Correo electrónico</label>
+                  <input
+                    type="email"
+                    id="inputCorreo"
+                    class="bev-form-input"
+                    placeholder="tu@correo.com"
+                    required
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label class="bev-form-label">Asunto</label>
+                  <input
+                    type="text"
+                    id="inputAsunto"
+                    class="bev-form-input"
+                    placeholder="¿En qué podemos ayudarte?"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label class="bev-form-label">Mensaje</label>
+                  <textarea
+                    id="inputMensaje"
+                    class="bev-form-input"
+                    rows="5"
+                    placeholder="Escribe tu mensaje aquí..."
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn bev-btn-submit w-100">
+                    <i class="bi bi-send me-2"></i>Enviar mensaje
+                  </button>
+                </div>
+
+                <div class="col-12">
+                  <div id="formMensaje" class="bev-form-feedback d-none"></div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const form = document.getElementById("formContacto");
+  const feedback = document.getElementById("formMensaje");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nombre = (document.getElementById("inputNombre") as HTMLInputElement).value.trim();
+    const correo = (document.getElementById("inputCorreo") as HTMLInputElement).value.trim();
+    const asunto = (document.getElementById("inputAsunto") as HTMLInputElement).value.trim();
+    const mensaje = (document.getElementById("inputMensaje") as HTMLTextAreaElement).value.trim();
+
+    if (!nombre || !correo || !mensaje) {
+      feedback?.classList.remove("d-none", "bev-feedback-ok");
+      feedback?.classList.add("bev-feedback-error");
+      if (feedback) feedback.textContent = "Por favor completa los campos obligatorios.";
+      return;
+    }
+
+    try {
+      const res = await fetch("https://formspree.io/f/TU_ID_AQUI", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, correo, asunto, mensaje }),
+      });
+
+      if (res.ok) {
+        feedback?.classList.remove("d-none", "bev-feedback-error");
+        feedback?.classList.add("bev-feedback-ok");
+        if (feedback) feedback.textContent = "¡Mensaje enviado! Te responderemos pronto.";
+        (form as HTMLFormElement).reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      feedback?.classList.remove("d-none", "bev-feedback-ok");
+      feedback?.classList.add("bev-feedback-error");
+      if (feedback) feedback.textContent = "Hubo un error al enviar. Intenta de nuevo.";
+    }
+  });
+</script>
+
+<style>
+  .bev-contacto {
+    background-color: var(--bev-dark, #1a1a1a);
+    min-height: 100vh;
+    color: white;
+  }
+
+  .bev-section-tag {
+    background-color: rgba(230, 57, 70, 0.1);
+    color: var(--bev-primary, #e63946);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+
+  .bev-divider {
+    height: 4px;
+    width: 60px;
+    background-color: var(--bev-primary, #e63946);
+    border-radius: 2px;
+  }
+
+  .bev-contact-info {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+
+  .bev-contact-logo {
+    max-width: 160px;
+    height: auto;
+  }
+
+  .bev-contact-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(230, 57, 70, 0.1);
+    color: var(--bev-primary, #e63946);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .bev-contact-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--bev-primary, #e63946);
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+  }
+
+  .bev-contact-value {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .bev-contact-value:hover {
+    color: var(--bev-primary, #e63946);
+  }
+
+  .bev-contact-form {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+
+  .bev-form-label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  .bev-form-input {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: white;
+    padding: 0.65rem 1rem;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .bev-form-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .bev-form-input:focus {
+    border-color: var(--bev-primary, #e63946);
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .bev-btn-submit {
+    background-color: var(--bev-primary, #e63946);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .bev-btn-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    color: white;
+  }
+
+  .bev-form-feedback {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .bev-feedback-ok {
+    background-color: rgba(40, 167, 69, 0.15);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    color: #5cb85c;
+  }
+
+  .bev-feedback-error {
+    background-color: rgba(230, 57, 70, 0.15);
+    border: 1px solid rgba(230, 57, 70, 0.3);
+    color: #e63946;
+  }
+</style>

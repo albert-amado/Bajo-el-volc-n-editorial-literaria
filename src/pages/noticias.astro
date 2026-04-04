@@ -1,0 +1,259 @@
+---
+import Layout from "../layouts/layout.astro";
+import noticias from "../data/noticias.json";
+
+const categoriaColores: Record<string, string> = {
+  evento: "bev-cat-evento",
+  lanzamiento: "bev-cat-lanzamiento",
+  convocatoria: "bev-cat-convocatoria",
+  entrevista: "bev-cat-entrevista",
+  premio: "bev-cat-premio",
+};
+
+const categoriaTextos: Record<string, string> = {
+  evento: "Evento",
+  lanzamiento: "Lanzamiento",
+  convocatoria: "Convocatoria",
+  entrevista: "Entrevista",
+  premio: "Premio",
+};
+
+const formatearFecha = (fecha: string) => {
+  return new Date(fecha).toLocaleDateString("es-CO", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+const noticiasOrdenadas = [...noticias].sort(
+  (a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime()
+);
+---
+
+<Layout title="Noticias - Bajo el Volcán">
+  <main class="bev-noticias mt-5 pt-5">
+    <div class="container">
+
+      <!-- ENCABEZADO -->
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <span class="bev-section-tag">Actualidad</span>
+          <h1 class="display-4 fw-bold text-white mt-3 mb-4">Noticias</h1>
+          <div class="bev-divider mx-auto mb-4"></div>
+          <p class="lead text-light opacity-75">
+            Eventos, lanzamientos y todo lo que pasa en Bajo el Volcán.
+          </p>
+        </div>
+      </div>
+
+      <!-- FILTROS -->
+      <div class="row mb-4">
+        <div class="col-12 d-flex flex-wrap gap-2 justify-content-center">
+          <button class="bev-filtro active" data-filtro="todos">Todos</button>
+          <button class="bev-filtro" data-filtro="evento">Eventos</button>
+          <button class="bev-filtro" data-filtro="lanzamiento">Lanzamientos</button>
+          <button class="bev-filtro" data-filtro="convocatoria">Convocatorias</button>
+          <button class="bev-filtro" data-filtro="entrevista">Entrevistas</button>
+          <button class="bev-filtro" data-filtro="premio">Premio</button>
+        </div>
+      </div>
+
+      <!-- TARJETAS -->
+      <div class="row g-4 mb-5" id="noticiasGrid">
+        {
+          noticiasOrdenadas.map((noticia) => (
+            <div
+              class="col-12 col-md-6 col-lg-4 bev-noticia-item"
+              data-categoria={noticia.categoria}
+            >
+              <a href={`/noticias/${noticia.slug}`} class="text-decoration-none">
+                <div class="bev-noticia-card h-100">
+                  <div class="bev-noticia-img">
+                    {noticia.imagen ? (
+                      <img
+                        src={noticia.imagen}
+                        alt={noticia.titulo}
+                        onerror="this.parentElement.classList.add('bev-img-fallback')"
+                      />
+                    ) : (
+                      <div class="bev-img-placeholder">
+                        <i class="bi bi-newspaper"></i>
+                      </div>
+                    )}
+                    <span class={`bev-categoria-badge ${categoriaColores[noticia.categoria] || ''}`}>
+                      {categoriaTextos[noticia.categoria] || noticia.categoria}
+                    </span>
+                  </div>
+                  <div class="bev-noticia-body p-4">
+                    <p class="bev-noticia-fecha mb-2">
+                      <i class="bi bi-calendar3 me-1"></i>
+                      {formatearFecha(noticia.fecha)}
+                    </p>
+                    <h5 class="bev-noticia-titulo mb-2">{noticia.titulo || "Sin título"}</h5>
+                    <p class="bev-noticia-resumen mb-0">
+                      {noticia.resumen || "Sin resumen disponible."}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const filtros = document.querySelectorAll(".bev-filtro");
+  const items = document.querySelectorAll(".bev-noticia-item");
+
+  filtros.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filtros.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filtro = btn.getAttribute("data-filtro");
+
+      items.forEach((item) => {
+        const categoria = item.getAttribute("data-categoria");
+        if (filtro === "todos" || categoria === filtro) {
+          (item as HTMLElement).style.display = "block";
+        } else {
+          (item as HTMLElement).style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .bev-noticias {
+    background-color: var(--bev-dark, #1a1a1a);
+    min-height: 100vh;
+    color: white;
+  }
+
+  .bev-section-tag {
+    background-color: rgba(230, 57, 70, 0.1);
+    color: var(--bev-primary, #e63946);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+
+  .bev-divider {
+    height: 4px;
+    width: 60px;
+    background-color: var(--bev-primary, #e63946);
+    border-radius: 2px;
+  }
+
+  /* Filtros */
+  .bev-filtro {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .bev-filtro:hover,
+  .bev-filtro.active {
+    background-color: var(--bev-primary, #e63946);
+    border-color: var(--bev-primary, #e63946);
+    color: white;
+  }
+
+  /* Tarjetas */
+  .bev-noticia-card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .bev-noticia-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(230, 57, 70, 0.4);
+  }
+
+  .bev-noticia-img {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .bev-noticia-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .bev-noticia-card:hover .bev-noticia-img img {
+    transform: scale(1.05);
+  }
+
+  .bev-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .bev-categoria-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .bev-cat-evento { background-color: #0d6efd; color: white; }
+  .bev-cat-lanzamiento { background-color: #e63946; color: white; }
+  .bev-cat-convocatoria { background-color: #f4a261; color: #1a1a1a; }
+  .bev-cat-entrevista { background-color: #2a9d8f; color: white; }
+  .bev-cat-premio { background-color: #c9a84c; color: #1a1a1a; }
+
+  .bev-noticia-fecha {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .bev-noticia-titulo {
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .bev-noticia-resumen {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

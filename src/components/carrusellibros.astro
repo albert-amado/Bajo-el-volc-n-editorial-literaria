@@ -1,18 +1,103 @@
 ---
+// 1. Importamos los datos
+import libros from "../data/libros.json";
+
+// 2. Lógica de agrupación (De 3 en 3)
+const grupos = [];
+for (let i = 0; i < libros.length; i += 3) {
+  grupos.push(libros.slice(i, i + 3));
+}
+
+// 3. Diccionario para las etiquetas (Mucho más limpio aquí arriba)
+const etiquetasMap: Record<string, string> = {
+  nuevo: "Nuevo",
+  destacado: "Destacado",
+  preventa: "En preventa",
+  descuento: "Oferta",
+};
 ---
+
 <section class="py-5 bev-section-light">
   <div class="bev-container">
-
     <div class="text-center mb-5">
       <span class="bev-section-tag">Colección de Bajo el Volcán</span>
       <h2 class="bev-section-title">Nuestras Novelas</h2>
     </div>
 
     <div id="librosCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        {
+          libros.length === 0 ? (
+            <div class="carousel-item active">
+              <div class="text-center py-5">
+                <p style="color: var(--bev-ash);">
+                  No hay libros en esta categoría.
+                </p>
+              </div>
+            </div>
+          ) : (
+            /* RENDERIZADO DE GRUPOS Y LIBROS */
+            grupos.map((grupo, index) => (
+              <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
+                <div class="row g-4">
+                  {grupo.map((libro) => (
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                      <div
+                        class="bev-book-card-v2 h-100 js-card-modal"
+                        data-id={libro.id}
+                        style="cursor:pointer;"
+                      >
+                        <div class="bev-book-cover-v2">
+                          <img src={libro.imagen} alt={libro.titulo} />
+                          {libro.etiqueta && (
+                            <span
+                              class={`bev-etiqueta bev-etiqueta-${libro.etiqueta}`}
+                            >
+                              {etiquetasMap[libro.etiqueta] || libro.etiqueta}
+                            </span>
+                          )}
+                        </div>
 
-      <div class="carousel-inner" id="librosCarouselInner"></div>
+                        <div class="bev-book-info-v2">
+                          <div>
+                            <span class="bev-book-genre">{libro.genero}</span>
+                            <h5 class="bev-book-title">{libro.titulo}</h5>
+                            <p class="bev-book-author">{libro.autor}</p>
+                          </div>
 
-      <!-- Flechas -->
+                          <div class="d-flex justify-content-between align-items-center mt-2">
+                            <span class="bev-book-price">
+                              ${libro.precio.toLocaleString("es-CO")}
+                            </span>
+                            <div class="d-flex gap-2">
+                              <button
+                                class="btn btn-sm bev-btn-outline js-btn-modal"
+                                data-id={libro.id}
+                              >
+                                <i class="bi bi-plus-circle" /> Conoce mas
+                              </button>
+
+                              <button
+                                class="btn bev-btn-add-cart js-btn-carrito"
+                                data-id={libro.id}
+                                data-titulo={libro.titulo}
+                                data-precio={libro.precio}
+                              >
+                                <i class="bi bi-bag-plus" /> Agregar
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))
+          )
+        }
+      </div>
+
       <button
         class="carousel-control-prev bev-carousel-ctrl"
         type="button"
@@ -21,7 +106,6 @@
       >
         <i class="bi bi-chevron-left"></i>
       </button>
-
       <button
         class="carousel-control-next bev-carousel-ctrl"
         type="button"
@@ -30,183 +114,224 @@
       >
         <i class="bi bi-chevron-right"></i>
       </button>
-
     </div>
-
   </div>
 </section>
-<style is:global>
 
-/* =========================================================
+<script>
+  // 1. Imports de lógica
+  import { abrirModal } from "../js/modal.js";
+  import { agregarAlCarrito } from "../js/carrito.js";
+
+  // 2. Imports para llenar el estado global (Store)
+  import { setLibros, setAutores } from "../js/store.js";
+  import librosData from "../data/libros.json";
+  import autoresData from "../data/autores.json";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 3. INICIALIZACIÓN: Pasamos los datos al store para que modal.js pueda verlos
+    setLibros(librosData);
+    setAutores(autoresData);
+
+    // 4. Lógica para abrir el Modal
+    const modalTriggers = document.querySelectorAll(
+      ".js-card-modal, .js-btn-modal",
+    );
+    modalTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const id = trigger.getAttribute("data-id");
+        // Importante: convertir el ID a número si tu JSON usa IDs numéricos
+        if (id) abrirModal(parseInt(id));
+      });
+    });
+
+    // 5. Lógica para el Carrito
+    const carritoBtns = document.querySelectorAll(".js-btn-carrito");
+    carritoBtns.forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const id = btn.getAttribute("data-id");
+        const titulo = btn.getAttribute("data-titulo");
+        const precio = parseFloat(btn.getAttribute("data-precio") || "0");
+
+        if (id && titulo) {
+          agregarAlCarrito(id, titulo, precio);
+        }
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  /* =========================================================
    🎨 SECCIÓN (gris claro coherente)
 ========================================================= */
-.bev-section-light {
-  background-color: var(--bg-subtle);
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
-}
+  .bev-section-light {
+    background-color: var(--bg-subtle);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
 
-/* =========================================================
+  /* =========================================================
    📦 CARRUSEL
 ========================================================= */
-#librosCarousel {
-  position: relative;
-  max-width: var(--content-max-width);
-  margin: 0 auto;
-}
+  #librosCarousel {
+    position: relative;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+  }
 
-/* IMPORTANTE: espacio para flechas */
-.carousel-inner {
-  padding: 0 3rem;
-}
+  /* IMPORTANTE: espacio para flechas */
+  .carousel-inner {
+    padding: 0 3rem;
+  }
 
-.bev-carousel-ctrl {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  
-  width: 40px;
-  height: 40px;
+  .bev-carousel-ctrl {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 40px;
+    height: 40px;
 
-  background: var(--pr-white);
-  border: 1px solid var(--border-light);
-  border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  color: var(--bev-gold);
-  opacity: 1;
-  z-index: 5;
+    background: var(--pr-white);
+    border: 1px solid var(--border-light);
+    border-radius: 50%;
 
-  transition: all 0.3s ease;
-}
+    color: var(--bev-gold);
+    opacity: 1;
+    z-index: 5;
 
-.bev-carousel-ctrl:hover {
-  background: var(--bev-gold);
-  color: var(--bev-ink);
-}
+    transition: all 0.3s ease;
+  }
 
+  .bev-carousel-ctrl:hover {
+    background: var(--bev-gold);
+    color: var(--bev-ink);
+  }
 
-.carousel-control-prev.bev-carousel-ctrl {
-  left: -20px;
-}
+  .carousel-control-prev.bev-carousel-ctrl {
+    left: -20px;
+  }
 
-.carousel-control-next.bev-carousel-ctrl {
-  right: -20px;
-}
+  .carousel-control-next.bev-carousel-ctrl {
+    right: -20px;
+  }
 
-/* =========================================================
+  /* =========================================================
    🧾 TITULOS
 ========================================================= */
-.bev-section-tag {
-  display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  color: var(--bev-gold);
-  margin-bottom: 0.5rem;
-}
+  .bev-section-tag {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--bev-gold);
+    margin-bottom: 0.5rem;
+  }
 
-.bev-section-title {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  color: var(--bev-ink);
-}
+  .bev-section-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--bev-ink);
+  }
 
-/* =========================================================
+  /* =========================================================
    📚 TARJETAS
 ========================================================= */
-.bev-book-card-v2 {
-  background: var(--pr-white);
-  border: 1px solid var(--border-light);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease;
-}
+  .bev-book-card-v2 {
+    background: var(--pr-white);
+    border: 1px solid var(--border-light);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
 
-.bev-book-card-v2:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
-}
+  .bev-book-card-v2:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
 
-.bev-book-cover-v2 {
-  position: relative;
-  aspect-ratio: 2 / 3;
-  overflow: hidden;
-}
+  .bev-book-cover-v2 {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+  }
 
-.bev-book-cover-v2 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .bev-book-cover-v2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-/* INFO */
-.bev-book-info-v2 {
-  padding: 1.2rem;
-  background: var(--bev-ink);
-}
+  /* INFO */
+  .bev-book-info-v2 {
+    padding: 1.2rem;
+    background: var(--bev-ink);
+  }
 
-.bev-book-title {
-  font-size: 1.05rem;
-  color: var(--bev-cream);
-  margin-bottom: 0.3rem;
-}
+  .bev-book-title {
+    font-size: 1.05rem;
+    color: var(--bev-cream);
+    margin-bottom: 0.3rem;
+  }
 
-.bev-book-author {
-  font-size: 0.85rem;
-  color: var(--bev-gold);
-  font-style: italic;
-}
+  .bev-book-author {
+    font-size: 0.85rem;
+    color: var(--bev-gold);
+    font-style: italic;
+  }
 
-.bev-book-price {
-  color: var(--bev-cream);
-  font-weight: bold;
-  font-size: 1.1rem;
-}
+  .bev-book-price {
+    color: var(--bev-cream);
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
 
-/* =========================================================
+  /* =========================================================
    🏷️ ETIQUETAS
 ========================================================= */
-.bev-etiqueta {
-  position: absolute;
-  top: 12px;
-  left: 0;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 5px 12px;
-  z-index: 2;
-  text-transform: uppercase;
-}
+  .bev-etiqueta {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    z-index: 2;
+    text-transform: uppercase;
+  }
 
-.bev-etiqueta-nuevo {
-  background: var(--bev-red);
-  color: var(--pr-white);
-}
+  .bev-etiqueta-nuevo {
+    background: var(--bev-red);
+    color: var(--pr-white);
+  }
 
-.bev-etiqueta-destacado {
-  background: var(--bev-gold);
-  color: var(--bev-ink);
-}
+  .bev-etiqueta-destacado {
+    background: var(--bev-gold);
+    color: var(--bev-ink);
+  }
 
-/* =========================================================
+  /* =========================================================
    🛒 BOTÓN
 ========================================================= */
-.bev-btn-add-cart {
-  background: transparent;
-  border: 1px solid var(--bev-gold);
-  color: var(--bev-gold);
-  padding: 5px 10px;
-  font-size: 0.8rem;
-  transition: 0.3s;
-}
+  .bev-btn-add-cart {
+    background: transparent;
+    border: 1px solid var(--bev-gold);
+    color: var(--bev-gold);
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    transition: 0.3s;
+  }
 
-.bev-btn-add-cart:hover {
-  background: var(--bev-gold);
-  color: var(--bev-ink);
-}
-
+  .bev-btn-add-cart:hover {
+    background: var(--bev-gold);
+    color: var(--bev-ink);
+  }
 </style>
