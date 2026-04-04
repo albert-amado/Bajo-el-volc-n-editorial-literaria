@@ -11,13 +11,10 @@
       data-bs-interval="5000"
     >
 
-      <!-- Indicadores -->
       <div class="carousel-indicators" id="heroIndicators"></div>
 
-      <!-- Slides dinámicos -->
       <div class="carousel-inner" id="heroCarouselInner"></div>
 
-      <!-- Controles -->
       <button
         class="carousel-control-prev"
         type="button"
@@ -42,9 +39,6 @@
 </section>
 <style is:global>
 
-/* =========================================================
-   🧱 CONTENEDOR GLOBAL (alineación con TODO el sitio)
-========================================================= */
 .bev-container {
   width: 100%;
   max-width: var(--content-max-width);
@@ -52,18 +46,12 @@
   padding: 0 1rem;
 }
 
-/* =========================================================
-   🎠 CARRUSEL
-========================================================= */
 .bev-carousel-custom {
   width: 100%;
   overflow: hidden;
   box-shadow: var(--shadow-md);
 }
 
-/* =========================================================
-   🖼️ SLIDE
-========================================================= */
 .bev-slide {
   height: 45vh;
   min-height: 350px;
@@ -79,7 +67,6 @@
   justify-content: flex-start;
 }
 
-/* Overlay (legibilidad SIEMPRE) */
 .bev-slide-overlay {
   position: absolute;
   inset: 0;
@@ -90,10 +77,6 @@
     rgba(0,0,0,0.1) 100%
   );
 }
-
-/* =========================================================
-   🧩 CONTENIDO (alineado a la izquierda)
-========================================================= */
 .bev-slide-content {
   position: relative;
   z-index: 2;
@@ -106,10 +89,6 @@
   align-items: flex-start;
   text-align: left;
 }
-
-/* =========================================================
-   ✍️ TEXTOS
-========================================================= */
 
 /* Categoría */
 .bev-eyebrow {
@@ -139,7 +118,6 @@
   margin-bottom: 1rem;
 }
 
-/* Descripción */
 .bev-slide-desc {
   font-size: 0.95rem;
   color: var(--pr-white);
@@ -148,9 +126,6 @@
   line-height: 1.5;
 }
 
-/* =========================================================
-   🔘 BOTONES (blancos, elegantes)
-========================================================= */
 .bev-slide-actions {
   margin-top: 1.5rem;
   display: flex;
@@ -190,9 +165,6 @@
   border-color: var(--pr-white);
 }
 
-/* =========================================================
-   📱 RESPONSIVE
-========================================================= */
 @media (max-width: 768px) {
   .bev-slide {
     height: 45vh;
