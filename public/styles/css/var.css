@@ -1,5 +1,5 @@
 :root {
-/* Base colores */
+  /* === BASE COLORS (paleta oficial) === */
   --pr-white:        #FFFFFF;
   --pr-gray-50:      #e6e6e6;
   --pr-gray-100:     #b6b6b6;
@@ -11,77 +11,41 @@
   --pr-glass-dark:   rgba(0, 0, 0, 0.05);
   --pr-glass-light:  rgba(255, 255, 255, 0.8);
 
-  /* Colores generales*/
-
-  /* Fondos */
   --bg-main:          var(--pr-white);
   --bg-subtle:        var(--pr-gray-50);
   --bg-surface:       var(--pr-gray-100);
 
-  /* Textos */
   --text-primary:     var(--pr-gray-700);
   --text-secondary:   var(--pr-gray-400);
   --text-bold:        var(--pr-gray-900);
 
-  /* Bordes */
   --border-light:     var(--pr-gray-100);
   --border-strong:    var(--pr-gray-200);
 
-  /* Acciones */
   --action-hover:     var(--pr-gray-900);
 
-  /* Sombras */
   --shadow-sm:        0 1px 2px rgba(0,0,0,0.05);
   --shadow-md:        0 4px 6px -1px rgba(0,0,0,0.1);
 
-  /* TOPBAR */
+  --topbar-bg:        var(--pr-gray-900);
+  --topbar-text:      var(--pr-white);
+  --topbar-muted:     var(--pr-gray-200);
+  --topbar-hover:     var(--pr-white);
+  --topbar-border:    var(--pr-gray-700);
 
-  --topbar-bg:        var(--pr-gray-900);   /* negro*/
-  --topbar-text:      var(--pr-white);      /* texto blanco */
-  --topbar-muted:     var(--pr-gray-200);   /* texto secundario */
-  --topbar-hover:     var(--pr-white);      /* brillante */
-  --topbar-border:    var(--pr-gray-700);   /* borde sutil */
-}
-:root {
-  /* NAVBAR */
-
-  --navbar-bg: transparent;
-
-  --navbar-text: var(--pr-gray-900);
-  --navbar-text-muted: var(--pr-gray-700); /*Colores de texto navbar*/
-  --navbar-accent: var(--pr-gray-900);
+  --navbar-bg:          transparent;
+  --navbar-text:        var(--pr-gray-900);
+  --navbar-text-muted:  var(--pr-gray-700);
+  --navbar-accent:      var(--pr-gray-900);
   --navbar-border:      rgba(255, 255, 255, 0.08);
   --navbar-logo-glow:   rgba(255,255,255,0.3);
-}
-:root {
-  /* Banner*/
 
-  --promo-bg: var(--pr-gray-900);
-
-  --promo-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --promo-overlay: rgba(0, 0, 0, 0.25);
-
-  --promo-btn-bg: rgba(0, 0, 0, 0.65);
-  --promo-btn-bg-hover: rgba(0, 0, 0, 0.85);
-
-  --promo-btn-text: var(--pr-white);
-  --promo-btn-border: rgba(255, 255, 255, 0.6);
-  --promo-btn-border-hover: var(--pr-white);
-
-  --promo-btn-line: var(--pr-white);
-}
-
-:root {
-  /* CAROUSEL */
-  --content-max-width: 1200px;
-  --carousel-bg: var(--pr-gray-900);
-
+  --content-max-width:      1200px;
+  --carousel-bg:            var(--pr-gray-900);
   --carousel-overlay-start: rgba(0,0,0,0.85);
-  --carousel-overlay-mid: rgba(0,0,0,0.5);
-  --carousel-overlay-end: rgba(0,0,0,0.1);
-
-  --carousel-text: var(--pr-white);
-  --carousel-text-muted: var(--pr-gray-200);
-  --carousel-accent: var(--pr-white);
+  --carousel-overlay-mid:   rgba(0,0,0,0.5);
+  --carousel-overlay-end:   rgba(0,0,0,0.1);
+  --carousel-text:          var(--pr-white);
+  --carousel-text-muted:    var(--pr-gray-200);
+  --carousel-accent:        var(--pr-white);
 }
-

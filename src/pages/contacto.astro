@@ -220,17 +220,16 @@ import Layout from "../layouts/layout.astro";
     }
   });
 </script>
-
 <style>
   .bev-contacto {
-    background-color: var(--bev-dark, #1a1a1a);
+    background-color: var(--pr-gray-900);
     min-height: 100vh;
-    color: white;
+    color: var(--pr-white);
   }
 
   .bev-section-tag {
-    background-color: rgba(230, 57, 70, 0.1);
-    color: var(--bev-primary, #e63946);
+    background-color: rgba(255,255,255,0.1);
+    color: var(--pr-gray-400);
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -242,7 +241,7 @@ import Layout from "../layouts/layout.astro";
   .bev-divider {
     height: 4px;
     width: 60px;
-    background-color: var(--bev-primary, #e63946);
+    background-color: var(--pr-gray-400);
     border-radius: 2px;
   }
 
@@ -261,8 +260,8 @@ import Layout from "../layouts/layout.astro";
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background-color: rgba(230, 57, 70, 0.1);
-    color: var(--bev-primary, #e63946);
+    background-color: rgba(255,255,255,0.1);
+    color: var(--pr-gray-400);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -274,7 +273,7 @@ import Layout from "../layouts/layout.astro";
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--bev-primary, #e63946);
+    color: var(--pr-gray-400);
     margin-bottom: 0.2rem;
     font-weight: 600;
   }
@@ -287,7 +286,7 @@ import Layout from "../layouts/layout.astro";
   }
 
   .bev-contact-value:hover {
-    color: var(--bev-primary, #e63946);
+    color: var(--pr-gray-400);
   }
 
   .bev-contact-form {
@@ -311,7 +310,7 @@ import Layout from "../layouts/layout.astro";
     background-color: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 8px;
-    color: white;
+    color: var(--pr-white);
     padding: 0.65rem 1rem;
     font-size: 0.95rem;
     transition: border-color 0.2s;
@@ -323,13 +322,13 @@ import Layout from "../layouts/layout.astro";
   }
 
   .bev-form-input:focus {
-    border-color: var(--bev-primary, #e63946);
+    border-color: var(--pr-gray-400);
     background-color: rgba(255, 255, 255, 0.08);
   }
 
   .bev-btn-submit {
-    background-color: var(--bev-primary, #e63946);
-    color: white;
+    background-color: var(--pr-gray-400);
+    color: var(--pr-white);
     border: none;
     padding: 0.75rem;
     border-radius: 8px;
@@ -341,7 +340,7 @@ import Layout from "../layouts/layout.astro";
   .bev-btn-submit:hover {
     opacity: 0.9;
     transform: translateY(-2px);
-    color: white;
+    color: var(--pr-white);
   }
 
   .bev-form-feedback {
@@ -352,14 +351,14 @@ import Layout from "../layouts/layout.astro";
   }
 
   .bev-feedback-ok {
-    background-color: rgba(40, 167, 69, 0.15);
-    border: 1px solid rgba(40, 167, 69, 0.3);
-    color: #5cb85c;
+    background-color: var(--pr-gray-50);
+    border: 1px solid var(--pr-gray-200);
+    color: var(--pr-gray-900);
   }
 
   .bev-feedback-error {
-    background-color: rgba(230, 57, 70, 0.15);
-    border: 1px solid rgba(230, 57, 70, 0.3);
-    color: #e63946;
+    background-color: var(--pr-gray-100);
+    border: 1px solid var(--pr-gray-400);
+    color: var(--pr-gray-900);
   }
 </style>

@@ -100,6 +100,7 @@ const slides = libros.slice(0, 9);
     </div>
   </div>
 </section>
+
 <style is:global>
   .bev-container {
     width: 100%;
@@ -134,9 +135,9 @@ const slides = libros.slice(0, 9);
     inset: 0;
     background: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0.6) 40%,
-      rgba(0, 0, 0, 0.1) 100%
+      var(--carousel-overlay-start) 0%,
+      var(--carousel-overlay-mid) 40%,
+      var(--carousel-overlay-end) 100%
     );
   }
   .bev-slide-content {
@@ -152,7 +153,6 @@ const slides = libros.slice(0, 9);
     text-align: left;
   }
 
-  /* Categoría */
   .bev-eyebrow {
     font-size: 0.75rem;
     letter-spacing: 0.35em;
@@ -162,7 +162,6 @@ const slides = libros.slice(0, 9);
     margin-bottom: 1rem;
   }
 
-  /* Título */
   .bev-slide-title {
     font-family: "Lato", sans-serif;
     font-size: clamp(2rem, 4vw, 3.5rem);
@@ -171,7 +170,6 @@ const slides = libros.slice(0, 9);
     margin-bottom: 0.5rem;
   }
 
-  /* Autor */
   .bev-slide-author {
     font-size: 0.95rem;
     font-style: italic;
@@ -188,12 +186,6 @@ const slides = libros.slice(0, 9);
     line-height: 1.5;
   }
 
-  .bev-slide-actions {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-  }
-
   .bev-btn {
     position: relative;
     color: var(--pr-white);
@@ -206,7 +198,6 @@ const slides = libros.slice(0, 9);
     transition: all 0.3s ease;
   }
 
-  /* Línea animada */
   .bev-btn::after {
     content: "";
     position: absolute;

@@ -162,27 +162,19 @@ const etiquetasMap: Record<string, string> = {
     });
   });
 </script>
-
 <style is:global>
-  /* =========================================================
-   🎨 SECCIÓN (gris claro coherente)
-========================================================= */
   .bev-section-light {
     background-color: var(--bg-subtle);
     border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
   }
 
-  /* =========================================================
-   📦 CARRUSEL
-========================================================= */
   #librosCarousel {
     position: relative;
     max-width: var(--content-max-width);
     margin: 0 auto;
   }
 
-  /* IMPORTANTE: espacio para flechas */
   .carousel-inner {
     padding: 0 3rem;
   }
@@ -203,7 +195,7 @@ const etiquetasMap: Record<string, string> = {
     border: 1px solid var(--border-light);
     border-radius: 50%;
 
-    color: var(--bev-gold);
+    color: var(--pr-gray-400);
     opacity: 1;
     z-index: 5;
 
@@ -211,8 +203,8 @@ const etiquetasMap: Record<string, string> = {
   }
 
   .bev-carousel-ctrl:hover {
-    background: var(--bev-gold);
-    color: var(--bev-ink);
+    background: var(--pr-gray-400);
+    color: var(--pr-gray-900);
   }
 
   .carousel-control-prev.bev-carousel-ctrl {
@@ -223,27 +215,21 @@ const etiquetasMap: Record<string, string> = {
     right: -20px;
   }
 
-  /* =========================================================
-   🧾 TITULOS
-========================================================= */
   .bev-section-tag {
     display: block;
     font-size: 0.75rem;
     letter-spacing: 0.5em;
     text-transform: uppercase;
-    color: var(--bev-gold);
+    color: var(--pr-gray-400);
     margin-bottom: 0.5rem;
   }
 
   .bev-section-title {
     font-family: var(--font-display);
     font-size: 2.5rem;
-    color: var(--bev-ink);
+    color: var(--pr-gray-900);
   }
 
-  /* =========================================================
-   📚 TARJETAS
-========================================================= */
   .bev-book-card-v2 {
     background: var(--pr-white);
     border: 1px solid var(--border-light);
@@ -270,33 +256,29 @@ const etiquetasMap: Record<string, string> = {
     object-fit: cover;
   }
 
-  /* INFO */
   .bev-book-info-v2 {
     padding: 1.2rem;
-    background: var(--bev-ink);
+    background: var(--pr-gray-900);
   }
 
   .bev-book-title {
     font-size: 1.05rem;
-    color: var(--bev-cream);
+    color: var(--pr-white);
     margin-bottom: 0.3rem;
   }
 
   .bev-book-author {
     font-size: 0.85rem;
-    color: var(--bev-gold);
+    color: var(--pr-gray-400);
     font-style: italic;
   }
 
   .bev-book-price {
-    color: var(--bev-cream);
+    color: var(--pr-white);
     font-weight: bold;
     font-size: 1.1rem;
   }
 
-  /* =========================================================
-   🏷️ ETIQUETAS
-========================================================= */
   .bev-etiqueta {
     position: absolute;
     top: 12px;
@@ -309,29 +291,26 @@ const etiquetasMap: Record<string, string> = {
   }
 
   .bev-etiqueta-nuevo {
-    background: var(--bev-red);
+    background: var(--pr-gray-900);
     color: var(--pr-white);
   }
 
   .bev-etiqueta-destacado {
-    background: var(--bev-gold);
-    color: var(--bev-ink);
+    background: var(--pr-gray-400);
+    color: var(--pr-gray-900);
   }
 
-  /* =========================================================
-   🛒 BOTÓN
-========================================================= */
   .bev-btn-add-cart {
     background: transparent;
-    border: 1px solid var(--bev-gold);
-    color: var(--bev-gold);
+    border: 1px solid var(--pr-gray-400);
+    color: var(--pr-gray-400);
     padding: 5px 10px;
     font-size: 0.8rem;
     transition: 0.3s;
   }
 
   .bev-btn-add-cart:hover {
-    background: var(--bev-gold);
-    color: var(--bev-ink);
+    background: var(--pr-gray-400);
+    color: var(--pr-gray-900);
   }
 </style>

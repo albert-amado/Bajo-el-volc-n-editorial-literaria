@@ -128,17 +128,16 @@ const noticiasOrdenadas = [...noticias].sort(
     });
   });
 </script>
-
 <style>
   .bev-noticias {
-    background-color: var(--bev-dark, #1a1a1a);
+    background-color: var(--pr-gray-900);
     min-height: 100vh;
-    color: white;
+    color: var(--pr-white);
   }
 
   .bev-section-tag {
-    background-color: rgba(230, 57, 70, 0.1);
-    color: var(--bev-primary, #e63946);
+    background-color: rgba(255,255,255,0.1);
+    color: var(--pr-gray-400);
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -150,7 +149,7 @@ const noticiasOrdenadas = [...noticias].sort(
   .bev-divider {
     height: 4px;
     width: 60px;
-    background-color: var(--bev-primary, #e63946);
+    background-color: var(--pr-gray-400);
     border-radius: 2px;
   }
 
@@ -170,9 +169,9 @@ const noticiasOrdenadas = [...noticias].sort(
 
   .bev-filtro:hover,
   .bev-filtro.active {
-    background-color: var(--bev-primary, #e63946);
-    border-color: var(--bev-primary, #e63946);
-    color: white;
+    background-color: var(--pr-gray-400);
+    border-color: var(--pr-gray-400);
+    color: var(--pr-white);
   }
 
   /* Tarjetas */
@@ -186,7 +185,7 @@ const noticiasOrdenadas = [...noticias].sort(
 
   .bev-noticia-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(230, 57, 70, 0.4);
+    border-color: var(--pr-gray-400);
   }
 
   .bev-noticia-img {
@@ -229,11 +228,11 @@ const noticiasOrdenadas = [...noticias].sort(
     letter-spacing: 1px;
   }
 
-  .bev-cat-evento { background-color: #0d6efd; color: white; }
-  .bev-cat-lanzamiento { background-color: #e63946; color: white; }
-  .bev-cat-convocatoria { background-color: #f4a261; color: #1a1a1a; }
-  .bev-cat-entrevista { background-color: #2a9d8f; color: white; }
-  .bev-cat-premio { background-color: #c9a84c; color: #1a1a1a; }
+  .bev-cat-evento { background-color: var(--pr-gray-400); color: var(--pr-white); }
+  .bev-cat-lanzamiento { background-color: var(--pr-gray-900); color: var(--pr-white); }
+  .bev-cat-convocatoria { background-color: var(--pr-gray-400); color: var(--pr-gray-900); }
+  .bev-cat-entrevista { background-color: var(--pr-gray-700); color: var(--pr-white); }
+  .bev-cat-premio { background-color: var(--pr-gray-400); color: var(--pr-gray-900); }
 
   .bev-noticia-fecha {
     font-size: 0.78rem;
@@ -241,7 +240,7 @@ const noticiasOrdenadas = [...noticias].sort(
   }
 
   .bev-noticia-titulo {
-    color: white;
+    color: var(--pr-white);
     font-weight: 700;
     font-size: 1rem;
     line-height: 1.4;
