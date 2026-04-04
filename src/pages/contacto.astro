@@ -12,9 +12,8 @@ import Layout from "../layouts/layout.astro";
           <span class="bev-section-tag">Escríbenos</span>
           <h1 class="display-4 fw-bold mt-3 mb-4">Contacto</h1>
           <div class="bev-divider mx-auto mb-4"></div>
-          <p class="lead text-light opacity-75">
-            ¿Tienes preguntas sobre nuestros libros o quieres trabajar con
-            nosotros? Estamos aquí para escucharte.
+          <p class="lead">
+            ¿Tienes Dudas? Estamos aquí para escucharte.
           </p>
         </div>
       </div>
@@ -221,144 +220,149 @@ import Layout from "../layouts/layout.astro";
   });
 </script>
 <style>
-  .bev-contacto {
-    background-color: var(--pr-gray-900);
-    min-height: 100vh;
-    color: var(--pr-white);
-  }
+.bev-contacto {
+  background-color: var(--pr-gray-1000);
+  min-height: 100vh;
+  color: var(--pr-gray-900);
+}
 
-  .bev-section-tag {
-    background-color: rgba(255,255,255,0.1);
-    color: var(--pr-gray-400);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-  }
+/* Tag */
+.bev-section-tag {
+  background-color: var(--pr-gray-400);
+  color: var(--pr-gray-900);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
 
-  .bev-divider {
-    height: 4px;
-    width: 60px;
-    background-color: var(--pr-gray-400);
-    border-radius: 2px;
-  }
+/* Divider */
+.bev-divider {
+  height: 4px;
+  width: 60px;
+  background-color: var(--pr-gray-900);
+  border-radius: 2px;
+}
 
-  .bev-contact-info {
-    background-color: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-  }
+/* Cards */
+.bev-contact-info,
+.bev-contact-form {
+  background-color: var(--pr-white);
+  border: 1px solid var(--pr-gray-200);
+  border-radius: 12px;
+}
 
-  .bev-contact-logo {
-    max-width: 160px;
-    height: auto;
-  }
+/* Logo */
+.bev-contact-logo {
+  max-width: 160px;
+  height: auto;
+}
 
-  .bev-contact-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background-color: rgba(255,255,255,0.1);
-    color: var(--pr-gray-400);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
-  }
+/* Iconos */
+.bev-contact-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--pr-gray-100);
+  color: var(--pr-gray-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
 
-  .bev-contact-label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--pr-gray-400);
-    margin-bottom: 0.2rem;
-    font-weight: 600;
-  }
+/* Labels */
+.bev-contact-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--pr-gray-700);
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+}
 
-  .bev-contact-value {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.2s;
-  }
+/* Valores */
+.bev-contact-value {
+  color: var(--pr-gray-900);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+}
 
-  .bev-contact-value:hover {
-    color: var(--pr-gray-400);
-  }
+.bev-contact-value:hover {
+  opacity: 0.7;
+}
 
-  .bev-contact-form {
-    background-color: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-  }
+/* Form labels */
+.bev-form-label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--pr-gray-700);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
 
-  .bev-form-label {
-    display: block;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 0.4rem;
-    font-weight: 600;
-  }
+/* Inputs */
+.bev-form-input {
+  width: 100%;
+  background-color: var(--pr-white);
+  border: 1px solid var(--pr-gray-200);
+  border-radius: 8px;
+  color: var(--pr-gray-900);
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
 
-  .bev-form-input {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    color: var(--pr-white);
-    padding: 0.65rem 1rem;
-    font-size: 0.95rem;
-    transition: border-color 0.2s;
-    outline: none;
-  }
+.bev-form-input::placeholder {
+  color: var(--pr-gray-400);
+}
 
-  .bev-form-input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
-  }
+.bev-form-input:focus {
+  border-color: var(--pr-gray-900);
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+}
 
-  .bev-form-input:focus {
-    border-color: var(--pr-gray-400);
-    background-color: rgba(255, 255, 255, 0.08);
-  }
+/* Botón */
+.bev-btn-submit {
+  background-color: var(--pr-gray-900);
+  color: var(--pr-white);
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
 
-  .bev-btn-submit {
-    background-color: var(--pr-gray-400);
-    color: var(--pr-white);
-    border: none;
-    padding: 0.75rem;
-    border-radius: 8px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: opacity 0.2s, transform 0.2s;
-  }
+.bev-btn-submit:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
 
-  .bev-btn-submit:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-    color: var(--pr-white);
-  }
+/* Feedback */
+.bev-form-feedback {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  text-align: center;
+}
 
-  .bev-form-feedback {
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    text-align: center;
-  }
+.bev-feedback-ok {
+  background-color: var(--pr-gray-50);
+  border: 1px solid var(--pr-gray-200);
+  color: var(--pr-gray-900);
+}
 
-  .bev-feedback-ok {
-    background-color: var(--pr-gray-50);
-    border: 1px solid var(--pr-gray-200);
-    color: var(--pr-gray-900);
-  }
-
-  .bev-feedback-error {
-    background-color: var(--pr-gray-100);
-    border: 1px solid var(--pr-gray-400);
-    color: var(--pr-gray-900);
-  }
+.bev-feedback-error {
+  background-color: var(--pr-gray-100);
+  border: 1px solid var(--pr-gray-400);
+  color: var(--pr-gray-900);
+}
 </style>
