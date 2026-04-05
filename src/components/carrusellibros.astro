@@ -1,14 +1,6 @@
 ---
-// 1. Importamos los datos
 import libros from "../data/libros.json";
 
-// 2. Lógica de agrupación (De 3 en 3)
-const grupos = [];
-for (let i = 0; i < libros.length; i += 3) {
-  grupos.push(libros.slice(i, i + 3));
-}
-
-// 3. Diccionario para las etiquetas (Mucho más limpio aquí arriba)
 const etiquetasMap: Record<string, string> = {
   nuevo: "Nuevo",
   destacado: "Destacado",
@@ -17,226 +9,136 @@ const etiquetasMap: Record<string, string> = {
 };
 ---
 
-<section class="py-5 bev-section-light">
+<section class="py-5">
   <div class="bev-container">
     <div class="text-center mb-5">
       <span class="bev-section-tag">Colección de Bajo el Volcán</span>
       <h2 class="bev-section-title">Nuestras Novelas</h2>
     </div>
 
-    <div id="librosCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        {
-          libros.length === 0 ? (
-            <div class="carousel-item active">
-              <div class="text-center py-5">
-                <p style="color: var(--bev-ash);">
-                  No hay libros en esta categoría.
-                </p>
-              </div>
-            </div>
-          ) : (
-            /* RENDERIZADO DE GRUPOS Y LIBROS */
-            grupos.map((grupo, index) => (
-              <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
-                <div class="row g-4">
-                  {grupo.map((libro) => (
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                      <div
-                        class="bev-book-card-v2 h-100 js-card-modal"
-                        data-id={libro.id}
-                        style="cursor:pointer;"
-                      >
-                        <div class="bev-book-cover-v2">
-                          <img src={libro.imagen} alt={libro.titulo} />
-                          {libro.etiqueta && (
-                            <span
-                              class={`bev-etiqueta bev-etiqueta-${libro.etiqueta}`}
-                            >
-                              {etiquetasMap[libro.etiqueta] || libro.etiqueta}
-                            </span>
-                          )}
-                        </div>
+    <div class="bev-carousel-wrapper">
 
-                        <div class="bev-book-info-v2">
-                          <div>
-                            <span class="bev-book-genre">{libro.genero}</span>
-                            <h5 class="bev-book-title">{libro.titulo}</h5>
-                            <p class="bev-book-author">{libro.autor}</p>
-                          </div>
-
-                          <div class="d-flex justify-content-between align-items-center mt-2">
-                            <span class="bev-book-price">
-                              ${libro.precio.toLocaleString("es-CO")}
-                            </span>
-                            <div class="d-flex gap-2">
-                              <button
-                                class="btn btn-sm bev-btn-outline js-btn-modal"
-                                data-id={libro.id}
-                              >
-                                <i class="bi bi-plus-circle" /> Conoce mas
-                              </button>
-
-                              <button
-                                class="btn bev-btn-add-cart js-btn-carrito"
-                                data-id={libro.id}
-                                data-titulo={libro.titulo}
-                                data-precio={libro.precio}
-                              >
-                                <i class="bi bi-bag-plus" /> Agregar
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))
-          )
-        }
-      </div>
-
-      <button
-        class="carousel-control-prev bev-carousel-ctrl"
-        type="button"
-        data-bs-target="#librosCarousel"
-        data-bs-slide="prev"
-      >
+      <button class="bev-carousel-ctrl" id="btnPrev" type="button">
         <i class="bi bi-chevron-left"></i>
       </button>
-      <button
-        class="carousel-control-next bev-carousel-ctrl"
-        type="button"
-        data-bs-target="#librosCarousel"
-        data-bs-slide="next"
-      >
+
+      <div class="bev-carousel-viewport">
+        <div class="bev-carousel-track" id="carouselTrack">
+          {libros.map((libro) => (
+            <div class="bev-carousel-slide">
+              <div
+                class="bev-book-card-v2 h-100 js-card-modal"
+                data-id={libro.id}
+                style="cursor:pointer;"
+              >
+                <div class="bev-book-cover-v2">
+                  <img src={libro.imagen} alt={libro.titulo} />
+                  {libro.etiqueta && (
+                    <span class={`bev-etiqueta bev-etiqueta-${libro.etiqueta}`}>
+                      {etiquetasMap[libro.etiqueta] || libro.etiqueta}
+                    </span>
+                  )}
+                </div>
+
+                <div class="bev-book-info-v2">
+                  <div>
+                    <span class="bev-book-genre">{libro.genero}</span>
+                    <h5 class="bev-book-title">{libro.titulo}</h5>
+                    <p class="bev-book-author">{libro.autor}</p>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center mt-2">
+                    <span class="bev-book-price">
+                      ${libro.precio.toLocaleString("es-CO")}
+                    </span>
+                    <div class="d-flex gap-2">
+                      <button
+                        class="btn btn-sm bev-btn-outline js-btn-modal"
+                        data-id={libro.id}
+                      >
+                        <i class="bi bi-plus-circle" /> Conoce mas
+                      </button>
+                      <button
+                        class="btn bev-btn-add-cart js-btn-carrito"
+                        data-id={libro.id}
+                        data-titulo={libro.titulo}
+                        data-precio={libro.precio}
+                      >
+                        <i class="bi bi-bag-plus" /> Agregar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button class="bev-carousel-ctrl" id="btnNext" type="button">
         <i class="bi bi-chevron-right"></i>
       </button>
+
     </div>
   </div>
 </section>
 
-<script>
-  // 1. Imports de lógica
-  import { abrirModal } from "../js/modal.js";
-  import { agregarAlCarrito } from "../js/carrito.js";
+<style>
+  /* === Carrusel === */
+  .bev-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
 
-  // 2. Imports para llenar el estado global (Store)
-  import { setLibros, setAutores } from "../js/store.js";
-  import librosData from "../data/libros.json";
-  import autoresData from "../data/autores.json";
+  .bev-carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+  }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    // 3. INICIALIZACIÓN: Pasamos los datos al store para que modal.js pueda verlos
-    setLibros(librosData);
-    setAutores(autoresData);
+  .bev-carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 
-    // 4. Lógica para abrir el Modal
-    const modalTriggers = document.querySelectorAll(
-      ".js-card-modal, .js-btn-modal",
-    );
-    modalTriggers.forEach((trigger) => {
-      trigger.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const id = trigger.getAttribute("data-id");
-        // Importante: convertir el ID a número si tu JSON usa IDs numéricos
-        if (id) abrirModal(parseInt(id));
-      });
-    });
+  .bev-carousel-slide {
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: calc(33.333% - 1rem);
+  }
 
-    // 5. Lógica para el Carrito
-    const carritoBtns = document.querySelectorAll(".js-btn-carrito");
-    carritoBtns.forEach((btn) => {
-      btn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const id = btn.getAttribute("data-id");
-        const titulo = btn.getAttribute("data-titulo");
-        const precio = parseFloat(btn.getAttribute("data-precio") || "0");
+  /* === Flechas === */
+  .bev-carousel-ctrl {
+    background: none;
+    border: none;
+    color: var(--pr-gray-400);
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0.4rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
 
-        if (id && titulo) {
-          agregarAlCarrito(id, titulo, precio);
-        }
-      });
-    });
-  });
-</script>
-<style is:global>
+  .bev-carousel-ctrl:hover {
+    color: var(--pr-gray-900);
+    transform: scale(1.3);
+  }
+
+  /* === Sección === */
   .bev-section-light {
     background-color: var(--bg-subtle);
     border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
   }
 
-  #librosCarousel {
-    position: relative;
-    max-width: var(--content-max-width);
-    margin: 0 auto;
-  }
-
-  .carousel-inner {
-    padding: 0 3rem;
-  }
-
-  .bev-carousel-ctrl {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+  /* === Tarjetas === */
+  .bev-book-card-v2 {
     background: var(--pr-white);
     border: 1px solid var(--border-light);
-    border-radius: 50%;
-
-    color: var(--pr-gray-400);
-    opacity: 1;
-    z-index: 5;
-
-    transition: all 0.3s ease;
-  }
-
-  .bev-carousel-ctrl:hover {
-    background: var(--pr-gray-400);
-    color: var(--pr-gray-900);
-  }
-
-  .carousel-control-prev.bev-carousel-ctrl {
-    left: -20px;
-  }
-
-  .carousel-control-next.bev-carousel-ctrl {
-    right: -20px;
-  }
-
-  .bev-section-tag {
-    display: block;
-    font-size: 0.75rem;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--pr-gray-900);
-    margin-bottom: 0.5rem;
-  }
-
-  .bev-section-title {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    color: var(--pr-gray-900);
-  }
-
-  .bev-author-profile .bev-book-card-v2 {
-    background: var(--pr-white);
-    border: 1px solid var(--border-light);
-    height: 100%;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .bev-book-card-v2:hover {
@@ -279,6 +181,7 @@ const etiquetasMap: Record<string, string> = {
     font-size: 1.1rem;
   }
 
+  /* === Etiquetas === */
   .bev-etiqueta {
     position: absolute;
     top: 12px;
@@ -300,20 +203,88 @@ const etiquetasMap: Record<string, string> = {
     color: var(--pr-gray-900);
   }
 
+  /* === Botón carrito === */
   .bev-btn-add-cart {
     background: transparent;
     border: 1px solid var(--pr-gray-900);
     color: var(--pr-gray-900);
     padding: 5px 10px;
     font-size: 0.8rem;
-    transition: 0.3s;
+    transition: background 0.3s, color 0.3s;
   }
 
   .bev-btn-add-cart:hover {
     background: var(--pr-gray-900);
+    color: var(--pr-white);
+  }
+
+  /* === Encabezado sección === */
+  .bev-section-tag {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--pr-gray-900);
+    margin-bottom: 0.5rem;
+  }
+
+  .bev-section-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
     color: var(--pr-gray-900);
   }
-  .bev-author-profile .card {
-  background-color: transparent;
-}
 </style>
+
+<script>
+  import { abrirModal } from "../js/modal.js";
+  import { agregarAlCarrito } from "../js/carrito.js";
+  import { setLibros, setAutores } from "../js/store.js";
+  import librosData from "../data/libros.json";
+  import autoresData from "../data/autores.json";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setLibros(librosData);
+    setAutores(autoresData);
+
+    // --- Carrusel con loop infinito ---
+    const track = document.getElementById("carouselTrack") as HTMLElement;
+    const slides = track?.querySelectorAll<HTMLElement>(".bev-carousel-slide");
+    const VISIBLE = 3;
+    let current = 0;
+
+    function mover(dir: number) {
+      if (!slides || !track) return;
+      const max = slides.length - VISIBLE;
+      current += dir;
+      if (current > max) current = 0;
+      if (current < 0) current = max;
+      const slideWidth = slides[0].offsetWidth + 24;
+      track.style.transform = `translateX(-${current * slideWidth}px)`;
+    }
+
+    document.getElementById("btnPrev")?.addEventListener("click", () => mover(-1));
+    document.getElementById("btnNext")?.addEventListener("click", () => mover(1));
+
+    // --- Modal ---
+    const modalTriggers = document.querySelectorAll(".js-card-modal, .js-btn-modal");
+    modalTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const id = trigger.getAttribute("data-id");
+        if (id) abrirModal(parseInt(id));
+      });
+    });
+
+    // --- Carrito ---
+    const carritoBtns = document.querySelectorAll(".js-btn-carrito");
+    carritoBtns.forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const id = btn.getAttribute("data-id");
+        const titulo = btn.getAttribute("data-titulo");
+        const precio = parseFloat(btn.getAttribute("data-precio") || "0");
+        if (id && titulo) agregarAlCarrito(id, titulo, precio);
+      });
+    });
+  });
+</script>
