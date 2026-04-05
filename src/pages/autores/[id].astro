@@ -70,7 +70,11 @@ const getInitials = (nombre: string) => {
         {
           librosDelAutor.map((libro) => (
             <div class="col-6 col-md-4 col-lg-3 mb-4">
-              <div class="card h-100 bev-book-card-v2">
+              <div
+                class="card h-100 bev-book-card-v2 js-autor-modal"
+                data-id={libro.id}
+                style="cursor:pointer;"
+              >
                 <div class="bev-book-cover-v2">
                   <img
                     src={libro.imagen.startsWith('/') ? libro.imagen : `/${libro.imagen}`}
@@ -92,7 +96,139 @@ const getInitials = (nombre: string) => {
 
     </div>
   </main>
+
+  <!-- MODAL INFO LIBRO -->
+  <div class="modal fade" id="modalAutorLibro" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content bev-modal-content">
+        <div class="bev-modal-header d-flex justify-content-end">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body p-0">
+          <div class="row g-0" style="min-height: 520px;">
+
+            <!-- Portada -->
+            <div class="col-12 col-md-4 bev-modal-cover">
+              <img
+                id="autorModalPortada"
+                src=""
+                alt=""
+                style="width:100%; height:100%; object-fit:cover; display:block;"
+              />
+            </div>
+
+            <!-- Info -->
+            <div class="col-12 col-md-8 d-flex flex-column p-4 p-lg-5" style="background: var(--bev-cream);">
+
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span id="autorModalEtiqueta" class="bev-etiqueta" style="position:static; font-size:0.7rem; padding:3px 10px;"></span>
+                <span id="autorModalGenero" class="bev-eyebrow mb-0" style="font-size:0.72rem;"></span>
+              </div>
+
+              <h2 id="autorModalTitulo" class="bev-modal-titulo"></h2>
+              <p id="autorModalAutor" class="bev-modal-autor"></p>
+              <p id="autorModalDesc" class="bev-modal-desc flex-grow-1 mb-4"></p>
+
+              <!-- Ficha técnica -->
+              <div class="d-flex gap-4 mb-4 flex-wrap">
+                <div>
+                  <p class="bev-ficha-label">ISBN</p>
+                  <p id="autorModalISBN" class="bev-ficha-valor"></p>
+                </div>
+                <div>
+                  <p class="bev-ficha-label">Páginas</p>
+                  <p id="autorModalPaginas" class="bev-ficha-valor"></p>
+                </div>
+              </div>
+
+              <!-- Precio y carrito -->
+              <div
+                class="d-flex align-items-center justify-content-between flex-wrap gap-3 mt-auto pt-3"
+                style="border-top: 1px solid var(--bev-cream-dk);"
+              >
+                <span id="autorModalPrecio" class="bev-modal-precio"></span>
+                <button id="autorModalBtnCarrito" class="btn bev-btn-gold">
+                  <i class="bi bi-bag-plus me-2"></i>Agregar al carrito
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<script>
+  import librosData from "../../data/libros.json";
+  import { agregarAlCarrito } from "../../js/carrito.js";
+  import { setLibros, setAutores } from "../../js/store.js";
+  import autoresData from "../../data/autores.json";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setLibros(librosData);
+    setAutores(autoresData);
+
+    const etiquetasMap: Record<string, string> = {
+      nuevo: "Nuevo",
+      destacado: "Destacado",
+      preventa: "En preventa",
+      descuento: "Oferta",
+    };
+
+    const cards = document.querySelectorAll(".js-autor-modal");
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const id = parseInt(card.getAttribute("data-id") || "0");
+        const libro = librosData.find((l) => l.id === id);
+        if (!libro) return;
+
+        // Portada
+        (document.getElementById("autorModalPortada") as HTMLImageElement).src =
+          libro.imagen.startsWith("/") ? libro.imagen : `/${libro.imagen}`;
+        (document.getElementById("autorModalPortada") as HTMLImageElement).alt =
+          libro.titulo;
+
+        // Etiqueta
+        const etiquetaEl = document.getElementById("autorModalEtiqueta")!;
+        if (libro.etiqueta) {
+          etiquetaEl.textContent = etiquetasMap[libro.etiqueta.toLowerCase()] || libro.etiqueta;
+          etiquetaEl.className = `bev-etiqueta bev-etiqueta-${libro.etiqueta.toLowerCase()}`;
+          etiquetaEl.classList.remove("d-none");
+        } else {
+          etiquetaEl.classList.add("d-none");
+        }
+
+        // Campos básicos
+        document.getElementById("autorModalGenero")!.textContent = libro.genero;
+        document.getElementById("autorModalTitulo")!.textContent = libro.titulo;
+        document.getElementById("autorModalAutor")!.textContent = libro.autor;
+        document.getElementById("autorModalDesc")!.textContent =
+          libro.descripcion || "Descripción no disponible.";
+        document.getElementById("autorModalPrecio")!.textContent =
+          `$${libro.precio.toLocaleString("es-CO")}`;
+
+        // Campos nuevos
+        document.getElementById("autorModalISBN")!.textContent =
+          (libro as any).isbn || "No disponible";
+        document.getElementById("autorModalPaginas")!.textContent =
+          (libro as any).paginas ? `${(libro as any).paginas} páginas` : "No disponible";
+
+        // Botón carrito
+        document.getElementById("autorModalBtnCarrito")!.onclick = () => {
+          agregarAlCarrito(libro.id, libro.titulo, libro.precio);
+        };
+
+        // Abrir modal
+        // @ts-ignore
+        new bootstrap.Modal(document.getElementById("modalAutorLibro")).show();
+      });
+    });
+  });
+</script>
 <style>
   .bev-author-profile {
     background-color: var(--pr-gray-1000);
