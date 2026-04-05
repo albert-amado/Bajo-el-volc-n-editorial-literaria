@@ -46,5 +46,13 @@
     "bio": "",
     "foto": "assets/img/autores/",
     "libros_ids": [6]
+  },
+    {
+    "id": 6,
+    "nombre": "Miguel De Unamuno",
+    "nacionalidad": "España",
+    "bio": "Miguel de Unamuno y Jugo (1864 - 1936). Escritor y filósofo español perteneciente a la generación del 98. Sus temas predilectos: la inmortalidad, la maternidad, la lucha del individuo por realizarse, son pretextos para la exploración de sus ideas filosóficas que quedaron esparcidas en ensayos, poemas, novelas y dramas.",
+    "foto": "assets/img/autores/unamuno.web",
+    "libros_ids": [6]
   }
 ]
