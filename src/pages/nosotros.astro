@@ -69,7 +69,14 @@ const getInitials = (nombre: string) => {
           equipo.map((persona) => (
             <div class="col-6 col-md-4 col-lg-3">
               <div class="bev-team-card text-center p-4 h-100">
-                <div class="bev-team-avatar mx-auto mb-3">
+
+                <!-- Sello logo -->
+                <div class="bev-team-sello">
+                  <img src="/public/assets/img/ui/logo.png" alt="Bajo el Volcán" />
+                </div>
+
+                <!-- Avatar -->
+                <div class="bev-team-avatar mx-auto mb-4">
                   <img
                     src={persona.foto || ''}
                     alt={persona.nombre}
@@ -83,14 +90,23 @@ const getInitials = (nombre: string) => {
                     {getInitials(persona.nombre)}
                   </div>
                 </div>
-                <h5 class="fw-bold mb-1">
+
+                <!-- Nombre -->
+                <h4 class="fw-bold mb-1">
                   {persona.nombre || "Por definir"}
-                </h5>
-                <p class="bev-team-cargo mb-2">
+                </h4>
+
+                <!-- Cargo -->
+                <p class="bev-team-cargo mb-3">
                   {persona.cargo || ""}
                 </p>
+
+                <!-- Separador -->
+                <div class="bev-team-divider mx-auto mb-3"></div>
+
+                <!-- Bio -->
                 {persona.bio && (
-                  <p class="opacity-75 small">{persona.bio}</p>
+                  <p class="bev-team-bio">{persona.bio}</p>
                 )}
               </div>
             </div>
@@ -104,108 +120,157 @@ const getInitials = (nombre: string) => {
 
 <style>
   .bev-nosotros {
-  background-color: var(--pr-gray-1000);
-  min-height: 100vh;
-  color: var(--pr-gray-900);
-}
+    background-color: var(--pr-gray-1000);
+    min-height: 100vh;
+    color: var(--pr-gray-900);
+  }
 
-/* Tipografía base */
-.bev-text-muted {
-  color: var(--pr-gray-900);
-}
+  /* Tag */
+  .bev-section-tag {
+    background-color: var(--pr-gray-900);
+    color: var(--pr-gray-1000);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
 
-/* Tag */
-.bev-section-tag {
-  background-color: var(--pr-gray-900);
-  color: var(--pr-gray-1000);
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 600;
-}
+  /* Divider */
+  .bev-divider {
+    height: 4px;
+    width: 60px;
+    background-color: var(--pr-gray-900);
+    border-radius: 2px;
+  }
 
-/* Divider */
-.bev-divider {
-  height: 4px;
-  width: 60px;
-  background-color: var(--pr-gray-900);
-  border-radius: 2px;
-}
+  /* Cards misión/visión */
+  .bev-info-card {
+    background-color: var(--pr-white);
+    border: 1px solid var(--pr-gray-900);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
 
-/* Cards misión/visión */
-.bev-info-card {
-  background-color: var(--pr-white);
-  border: 1px solid var(--pr-gray-900);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
+  .bev-info-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--pr-gray-900);
+  }
 
-.bev-info-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--pr-gray-900);
-}
+  .bev-info-icon {
+    font-size: 1.8rem;
+    color: var(--pr-gray-900);
+  }
 
-/* Icono */
-.bev-info-icon {
-  font-size: 1.8rem;
-  color: var(--pr-gray-900);
-}
+  /* Card equipo */
+  .bev-team-card {
+    background-color: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
+    border-radius: 16px;
+    border-left: 5px solid var(--pr-gray-900);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
 
-/* Cards equipo */
-.bev-team-card {
-  background-color: var(--pr-white);
-  border: 1px solid var(--pr-gray-200);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
+  .bev-team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    border-left-color: var(--pr-gray-400);
+  }
 
-.bev-team-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--pr-gray-900);
-}
+  /* Sello logo */
+  .bev-team-sello {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* Avatar */
-.bev-team-avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid var(--pr-gray-900);
-}
+  .bev-team-sello img {
+    width: 120%;
+    height: 120%;
+    object-fit: contain;
+  }
 
-.bev-team-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-}
+  /* Avatar */
+  .bev-team-avatar {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--pr-gray-900);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
 
-/* Fallback */
-.bev-team-fallback {
-  width: 100%;
-  height: 100%;
-  background: var(--pr-gray-400);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--pr-gray-900);
-}
+  .bev-team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
 
-/* Cargo */
-.bev-team-cargo {
-  color: var(--pr-gray-900);
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
+  /* Fallback */
+  .bev-team-fallback {
+    width: 100%;
+    height: 100%;
+    background: var(--pr-gray-400);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--pr-gray-900);
+  }
 
-/* Línea */
-hr {
-  border-color: var(--pr-gray-900);
-}
+  /* Nombre */
+  .bev-team-card h4 {
+    font-size: 1.15rem;
+    color: var(--pr-gray-900);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Cargo */
+  .bev-team-cargo {
+    color: var(--pr-gray-900);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Separador interno */
+  .bev-team-divider {
+    height: 2px;
+    width: 40px;
+    background-color: var(--pr-gray-400);
+    border-radius: 2px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Bio */
+  .bev-team-bio {
+    font-size: 0.99rem;
+    color: var(--pr-gray-700, #000000);
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+  }
+
+  hr {
+    border-color: var(--pr-gray-900);
+  }
 </style>
