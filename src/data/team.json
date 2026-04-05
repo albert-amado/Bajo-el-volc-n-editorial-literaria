@@ -3,21 +3,21 @@
     "id": 1,
     "nombre": "Rúben Darío Higuera",
     "cargo": "Director Bajo el Volcan Ediciones",
-    "foto": "/assets/img/team/directorjoelvolcan.jpeg",
-    "bio": ""
+    "foto": "/assets/img/team/director.webp",
+    "bio": "Le gusta el ajedrez pero se considera un pésimo jugador, toca piano pero no es pianista. No le gustan los deportes ni la televisión pero disfruta el mar y el sol del caribe tanto como los libros. Sale a caminar solo en las noches y le gustan los helados."
   },
   {
     "id": 2,
-    "nombre": "",
-    "cargo": "",
-    "foto": "",
-    "bio": ""
+    "nombre": "Oswaldo Álvarez",
+    "cargo": "Diseñador y diagramador",
+    "foto": "/assets/img/team/diseñador.webp",
+    "bio": "Además del diseño y la invención es un lector asiduo. Al igual que Roberto Arlt, siempre anda inventando objetos y proyectos quijotescos como una fábrica de ron de miel o una vega de tabaco en su propia casa. Es fumador de puros y degustador de rones."
   },
   {
     "id": 3,
-    "nombre": "",
-    "cargo": "",
-    "foto": "",
-    "bio": ""
+    "nombre": "Laura Correa Flórez",
+    "cargo": "Editora y correctora de estilo",
+    "foto": "/assets/img/team/editora.webp",
+    "bio": "Profesa un amor por los libros heredado de su abuelo, un gusto que ha nutrido con los años, al igual que su pasión por la historia y el arte. La música y la moda de los 70s, le encantan, pasa sus días creando curiosos muñecos de fieltro. Su libro favorito es cumbres borrascosas."
   }
 ]
