@@ -2,8 +2,11 @@
 import Topbar from "../components/topbar.astro";
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
+import { ClientRouter } from 'astro:transitions';
+// 1. Mover el CSS de AOS aquí arriba evita parpadeos visuales
+import "aos/dist/aos.css";
 
-const { title = "Bajo el Volcán  Editorial Literaria" } = Astro.props;
+const { title = "Bajo el Volcán Editorial Literaria" } = Astro.props;
 ---
 
 <!doctype html>
@@ -12,6 +15,9 @@ const { title = "Bajo el Volcán  Editorial Literaria" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    
+    <ClientRouter />
+
     <link rel="stylesheet" href="/styles/css/body.css" />
     <link rel="stylesheet" href="/styles/css/var.css" />
     <link
@@ -30,6 +36,7 @@ const { title = "Bajo el Volcán  Editorial Literaria" } = Astro.props;
   <body>
     <Topbar />
     <Navbar />
+    
     <main>
       <slot />
     </main>
@@ -40,12 +47,30 @@ const { title = "Bajo el Volcán  Editorial Literaria" } = Astro.props;
       is:inline
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     ></script>
-    <div id="bevToast" class="bev-toast-container"></div></body
-  >
+    
+    <div id="bevToast" class="bev-toast-container"></div>
+
+    <script>
+      import AOS from "aos";
+
+      function initAOS() {
+        AOS.init({
+          duration: 900,
+          once: false,
+          offset: 100,
+        });
+      }
+
+      // Inicializa al cargar por primera vez
+      initAOS();
+
+      // RE-INICIALIZA cuando cambias de página (necesario por el ClientRouter)
+      document.addEventListener("astro:after-swap", initAOS);
+    </script>
+  </body>
 </html>
 
 <style>
-  
   .bev-modal-content {
     border-radius: 0;
     border: none;
