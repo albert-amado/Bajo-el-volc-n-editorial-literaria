@@ -23,7 +23,7 @@ const getInitials = (nombre: string) => {
           <span class="bev-section-tag">Quiénes somos</span>
           <h1 class="display-4 fw-bold mt-3 mb-4">Bajo el Volcán</h1>
           <div class="bev-divider mx-auto mb-4"></div>
-          <p class="lead text-light opacity-75">
+          <p class="lead">
             <!-- Descripción de la editorial -->
           </p>
         </div>
@@ -37,7 +37,7 @@ const getInitials = (nombre: string) => {
               <i class="bi bi-book"></i>
             </div>
             <h4 class="fw-bold mb-3">Nuestra misión</h4>
-            <p class="text-light opacity-75">
+            <p class="opacity-75">
               <!-- Misión de la editorial -->
             </p>
           </div>
@@ -48,7 +48,7 @@ const getInitials = (nombre: string) => {
               <i class="bi bi-eye"></i>
             </div>
             <h4 class="fw-bold mb-3">Nuestra visión</h4>
-            <p class="text-light opacity-75">
+            <p class="opacity-75">
               <!-- Visión de la editorial -->
             </p>
           </div>
@@ -90,7 +90,7 @@ const getInitials = (nombre: string) => {
                   {persona.cargo || ""}
                 </p>
                 {persona.bio && (
-                  <p class="text-light opacity-75 small">{persona.bio}</p>
+                  <p class="opacity-75 small">{persona.bio}</p>
                 )}
               </div>
             </div>
@@ -104,14 +104,14 @@ const getInitials = (nombre: string) => {
 
 <style>
   .bev-nosotros {
-  background-color: var(--pr-gray-1000);
+  background-color: var(--pr-gray-900);
   min-height: 100vh;
   color: var(--pr-gray-900);
 }
 
 /* Tipografía base */
 .bev-text-muted {
-  color: var(--pr-gray-700);
+  color: var(--pr-gray-900);
 }
 
 /* Tag */
@@ -130,21 +130,21 @@ const getInitials = (nombre: string) => {
 .bev-divider {
   height: 4px;
   width: 60px;
-  background-color: var(--pr-gray-400);
+  background-color: var(--pr-gray-900);
   border-radius: 2px;
 }
 
 /* Cards misión/visión */
 .bev-info-card {
   background-color: var(--pr-white);
-  border: 1px solid var(--pr-gray-200);
+  border: 1px solid var(--pr-gray-900);
   border-radius: 12px;
   transition: all 0.3s ease;
 }
 
 .bev-info-card:hover {
   transform: translateY(-4px);
-  border-color: var(--pr-gray-400);
+  border-color: var(--pr-gray-900);
 }
 
 /* Icono */
@@ -163,7 +163,7 @@ const getInitials = (nombre: string) => {
 
 .bev-team-card:hover {
   transform: translateY(-6px);
-  border-color: var(--pr-gray-400);
+  border-color: var(--pr-gray-900);
 }
 
 /* Avatar */
@@ -172,7 +172,7 @@ const getInitials = (nombre: string) => {
   height: 100px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid var(--pr-gray-400);
+  border: 3px solid var(--pr-gray-900);
 }
 
 .bev-team-avatar img {
@@ -197,7 +197,7 @@ const getInitials = (nombre: string) => {
 
 /* Cargo */
 .bev-team-cargo {
-  color: var(--pr-gray-700);
+  color: var(--pr-gray-900);
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -206,6 +206,6 @@ const getInitials = (nombre: string) => {
 
 /* Línea */
 hr {
-  border-color: var(--pr-gray-200);
+  border-color: var(--pr-gray-900);
 }
 </style>

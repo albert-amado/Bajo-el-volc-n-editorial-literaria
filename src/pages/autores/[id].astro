@@ -93,7 +93,6 @@ const getInitials = (nombre: string) => {
     </div>
   </main>
 </Layout>
-
 <style>
   .bev-author-profile {
     background-color: var(--pr-gray-1000);
@@ -101,7 +100,7 @@ const getInitials = (nombre: string) => {
     color: var(--pr-gray-900);
   }
 
-  /* Link limpio */
+  /* Link */
   .bev-back-link {
     color: var(--pr-gray-900);
     text-decoration: none;
@@ -166,14 +165,14 @@ const getInitials = (nombre: string) => {
   .bev-divider {
     height: 4px;
     width: 60px;
-    background-color: var(--pr-gray-400);
+    background-color: var(--pr-gray-900);
     border-radius: 2px;
   }
 
-  /* Tag */
+  /* Tag (negro sólido) */
   .bev-section-tag {
-    background-color: var(--pr-gray-400);
-    color: var(--pr-gray-900);
+    background-color: var(--pr-gray-900);
+    color: var(--pr-white);
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.75rem;
@@ -182,10 +181,24 @@ const getInitials = (nombre: string) => {
     font-weight: 600;
   }
 
-  /* Cards */
+  /* Cards negras */
   .bev-book-card-v2 {
-    background: transparent;
-    border: none;
+    background-color: var(--pr-gray-900);
+    border: 1px solid var(--pr-gray-900);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    padding: 12px;
+  }
+
+  .bev-book-card-v2:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  /* Dentro de cards (texto blanco para contraste) */
+  .bev-book-card-v2 h6,
+  .bev-book-card-v2 .bev-book-price {
+    color: var(--pr-white);
   }
 
   .bev-book-cover-v2 {
@@ -198,6 +211,6 @@ const getInitials = (nombre: string) => {
 
   /* Línea */
   hr {
-    border-color: var(--pr-gray-200);
+    border-color: var(--pr-gray-900);
   }
 </style>

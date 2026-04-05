@@ -41,7 +41,7 @@ const noticiasOrdenadas = [...noticias].sort(
           <span class="bev-section-tag">Actualidad</span>
           <h1 class="display-4 fw-bold mt-3 mb-4">Noticias</h1>
           <div class="bev-divider mx-auto mb-4"></div>
-          <p class="lead text-light opacity-75">
+          <p class="lead bev-text-muted">
             Eventos, lanzamientos y todo lo que pasa en Bajo el Volcán.
           </p>
         </div>
@@ -128,16 +128,17 @@ const noticiasOrdenadas = [...noticias].sort(
     });
   });
 </script>
-
 <style>
   .bev-noticias {
-    background-color: var(--pr-gray-400);
+    /* Tu fondo es claro (#F2F2F2), así que el texto debe ser oscuro */
+    background-color: var(--pr-gray-1000); 
     min-height: 100vh;
-    color: var(--pr-white);
+    color: var(--pr-gray-900); /* Cambiado de white a gray-900 (negro) */
   }
 
   .bev-section-tag {
-    background-color: rgba(255,255,255,0.1);
+    /* Ajustado para que se vea sobre fondo claro */
+    background-color: rgba(0,0,0,0.05);
     color: var(--pr-gray-400);
     padding: 5px 15px;
     border-radius: 20px;
@@ -157,8 +158,8 @@ const noticiasOrdenadas = [...noticias].sort(
   /* Filtros */
   .bev-filtro {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--pr-gray-400);
     padding: 6px 18px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -170,22 +171,24 @@ const noticiasOrdenadas = [...noticias].sort(
 
   .bev-filtro:hover,
   .bev-filtro.active {
-    background-color: var(--pr-gray-400);
-    border-color: var(--pr-gray-400);
+    background-color: var(--pr-gray-900);
+    border-color: var(--pr-gray-900);
     color: var(--pr-white);
   }
 
   /* Tarjetas */
   .bev-noticia-card {
-    background-color: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Fondo blanco para resaltar sobre el gris claro del body */
+    background-color: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
     border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .bev-noticia-card:hover {
     transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
     border-color: var(--pr-gray-400);
   }
 
@@ -193,7 +196,7 @@ const noticiasOrdenadas = [...noticias].sort(
     position: relative;
     height: 200px;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: var(--pr-gray-50);
   }
 
   .bev-noticia-img img {
@@ -214,7 +217,7 @@ const noticiasOrdenadas = [...noticias].sort(
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--pr-gray-200);
   }
 
   .bev-categoria-badge {
@@ -227,21 +230,23 @@ const noticiasOrdenadas = [...noticias].sort(
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    z-index: 10;
   }
 
-  .bev-cat-evento { background-color: var(--pr-gray-400); color: var(--pr-white); }
+  /* Clases de Categoría usando tus variables actuales */
+  .bev-cat-evento { background-color: var(--pr-gray-400); color: var(--pr-gray-900); }
   .bev-cat-lanzamiento { background-color: var(--pr-gray-900); color: var(--pr-white); }
-  .bev-cat-convocatoria { background-color: var(--pr-gray-400); color: var(--pr-gray-900); }
+  .bev-cat-convocatoria { background-color: var(--pr-gray-100); color: var(--pr-gray-900); }
   .bev-cat-entrevista { background-color: var(--pr-gray-700); color: var(--pr-white); }
-  .bev-cat-premio { background-color: var(--pr-gray-400); color: var(--pr-gray-900); }
+  .bev-cat-premio { background-color: var(--pr-gray-200); color: var(--pr-gray-900); }
 
   .bev-noticia-fecha {
     font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--pr-gray-400);
   }
 
   .bev-noticia-titulo {
-    color: var(--pr-white);
+    color: var(--pr-gray-900);
     font-weight: 700;
     font-size: 1rem;
     line-height: 1.4;
@@ -249,11 +254,15 @@ const noticiasOrdenadas = [...noticias].sort(
 
   .bev-noticia-resumen {
     font-size: 0.88rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--pr-gray-400);
     line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .bev-text-muted {
+    color: var(--pr-gray-400);
   }
 </style>
