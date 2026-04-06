@@ -1,76 +1,70 @@
 ---
 ---
-<div class="bev-topbar-footer">
+<div class="bev-topbar">
   <div class="container-fluid d-flex justify-content-between align-items-center">
 
     <div class="d-flex gap-3">
       <span class="bev-topbar-info">
         <i class="bi bi-telephone"></i> 314-455-9506
       </span>
-
       <span class="bev-topbar-info">
         <i class="bi bi-envelope"></i> bajoelvolcane@gmail.com
       </span>
     </div>
 
-    <span class="bev-brand-sub text-uppercase">
-      Bajo el Volcán Ediciones
-    </span>
+    <span class="bev-topbar-marca">Bajo el Volcán Ediciones</span>
 
-    <div class="d-flex align-items-center">
-      <a
-        href="https://www.instagram.com/bajoelvolcane"
-        class="bev-topbar-link">
-        <i class="bi bi-instagram"></i>
-        <i>@bajoelvolcane</i>
-      </a>
-    </div>
+    
+      href="https://www.instagram.com/bajoelvolcane"
+      class="bev-topbar-link"
+    >
+      <i class="bi bi-instagram"></i>
+      <i>@bajoelvolcane</i>
+    </a>
 
   </div>
 </div>
 
 <style>
-  .bev-topbar-footer {
-  background-color: var(--topbar-bg);
-  border-bottom: 1px solid var(--topbar-border);
-  padding: 0.4rem 1rem;
-}
-
-/* Texto pequeño */
-.bev-topbar-info {
-  color: var(--topbar-muted);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-/* Marca central */
-.bev-brand-sub {
-  color: var(--topbar-text);
-  font-size: 0.7rem;
-  letter-spacing: 8px;
-  line-height: 1.3;
-}
-
-/* Link */
-.bev-topbar-link {
-  color: var(--topbar-muted);
-  font-size: 1rem;
-  margin-left: 1rem;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.bev-topbar-link:hover {
-  color: var(--topbar-hover);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .bev-topbar-info {
-    display: none;
+  .bev-topbar {
+    background-color: var(--topbar-bg);
+    border-bottom: 1px solid var(--topbar-border);
+    padding: 0.4rem 1rem;
   }
-}
+
+  .bev-topbar-info {
+    color: var(--topbar-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .bev-topbar-marca {
+    color: var(--topbar-text);
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+  }
+
+  .bev-topbar-link {
+    color: var(--topbar-muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .bev-topbar-link:hover {
+    color: var(--topbar-hover);
+  }
+
+  @media (max-width: 768px) {
+    .bev-topbar-info {
+      display: none;
+    }
+  }
 </style>

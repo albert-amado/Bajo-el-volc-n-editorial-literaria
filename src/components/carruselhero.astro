@@ -1,8 +1,5 @@
 ---
-// 1. Importamos los datos directamente desde tu carpeta data
 import libros from "../data/libros.json";
-
-// 2. Tomamos solo los primeros 9 libros para el Hero, igual que en tu JS
 const slides = libros.slice(0, 9);
 ---
 
@@ -15,119 +12,110 @@ const slides = libros.slice(0, 9);
       data-bs-interval="5000"
     >
       <div class="carousel-indicators">
-        {
-          slides.map((_, i) => (
-            <button
-              type="button"
-              data-bs-target="#heroCarousel"
-              data-bs-slide-to={i}
-              class={i === 0 ? "active" : ""}
-              aria-current={i === 0 ? "true" : "false"}
-              aria-label={`Slide ${i + 1}`}
-            />
-          ))
-        }
+        {slides.map((_, i) => (
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to={i}
+            class={i === 0 ? "active" : ""}
+            aria-current={i === 0 ? "true" : "false"}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
       </div>
 
       <div class="carousel-inner">
-        {
-          slides.map((libro, i) => (
-            <div
-              class={`carousel-item bev-slide ${i === 0 ? "active" : ""}`}
-              style={`background-image: url('${libro.imagen_hero || libro.imagen}');`}
-            >
-              <div class="bev-slide-overlay" />
-              <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                  <div class="col-lg-6 bev-slide-content">
-                    {libro.etiqueta === "nuevo" && (
-                      <span class="bev-hero-badge bev-etiqueta-nuevo">
-                        Nuevo
-                      </span>
-                    )}
-                    {libro.etiqueta === "preventa" && (
-                      <span class="bev-hero-badge bev-etiqueta-preventa">
-                        Próximo lanzamiento
-                      </span>
-                    )}
+        {slides.map((libro, i) => (
+          <div
+            class={`carousel-item bev-slide ${i === 0 ? "active" : ""}`}
+            style={`background-image: url('${libro.imagen_hero || libro.imagen}');`}
+          >
+            <div class="bev-slide-overlay"></div>
+            <div class="container h-100">
+              <div class="row h-100 align-items-center">
+                <div class="col-lg-6 bev-slide-content">
 
-                    <span class="bev-eyebrow">{libro.genero}</span>
-                    <h1 class="bev-slide-title">{libro.titulo}</h1>
-                    <p class="bev-slide-author">{libro.autor}</p>
+                  {libro.etiqueta === "nuevo" && (
+                    <span class="bev-hero-badge bev-etiqueta-nuevo">Nuevo</span>
+                  )}
+                  {libro.etiqueta === "preventa" && (
+                    <span class="bev-hero-badge bev-etiqueta-preventa">Próximo lanzamiento</span>
+                  )}
 
-                    <p class="bev-slide-desc">
-                      {libro.descripcion
-                        ? libro.descripcion.substring(0, 120) + "..."
-                        : ""}
-                    </p>
+                  <span class="bev-eyebrow">{libro.genero}</span>
+                  <h1 class="bev-slide-title">{libro.titulo}</h1>
+                  <p class="bev-slide-author">{libro.autor}</p>
+                  <p class="bev-slide-desc">
+                    {libro.descripcion ? libro.descripcion.substring(0, 120) + "..." : ""}
+                  </p>
 
-                    <div class="d-flex gap-3 flex-wrap mt-4">
-                      <button
-                        class="btn bev-btn-gold btn-add-cart"
-                        data-id={libro.id}
-                        data-titulo={libro.titulo}
-                      >
-                        Agregar al carrito
-                      </button>
-                      <a href="/catalogo" class="btn bev-btn-outline-light">
-                        Ver catálogo
-                      </a>
-                    </div>
+                  <div class="d-flex gap-3 flex-wrap mt-4">
+                    <button
+                      class="btn bev-btn-gold btn-add-cart"
+                      data-id={libro.id}
+                      data-titulo={libro.titulo}
+                      data-precio={libro.precio}
+                    >
+                      Agregar al carrito
+                    </button>
+                    <a href="/catalogo" class="btn bev-btn-outline-light">
+                      Ver catálogo
+                    </a>
                   </div>
+
                 </div>
               </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
 
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#heroCarousel"
-        data-bs-slide="prev"
-      >
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
       </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#heroCarousel"
-        data-bs-slide="next"
-      >
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon"></span>
       </button>
+
     </div>
   </div>
 </section>
 
-<style is:global>
-  .bev-container {
-    width: 100%;
-    max-width: var(--content-max-width);
-    margin: 0 auto;
-    padding: 0 0.5rem;
-  }
+<script>
+  import { agregarAlCarrito } from "../js/carrito.js";
 
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll(".btn-add-cart").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-id");
+        const titulo = btn.getAttribute("data-titulo") || "";
+        const precio = parseFloat(btn.getAttribute("data-precio") || "0");
+        if (id) agregarAlCarrito(id, titulo, precio);
+      });
+    });
+  });
+</script>
+
+<style is:global>
   .bev-carousel-custom {
-    width: 100%;
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
+  width: 200%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border-radius: 9px;
   }
 
   .bev-slide {
-    height: 55vh;
-    min-height: 350px;
+    height: 60vh;
+    min-height: 300px;
     position: relative;
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--pr-gray-1000);
-
     display: flex;
     align-items: center;
-    justify-content: flex-start;
   }
 
   .bev-slide-overlay {
@@ -135,22 +123,19 @@ const slides = libros.slice(0, 9);
     inset: 0;
     background: linear-gradient(
       to right,
-      var(--carousel-overlay-start) 0%,
-      var(--carousel-overlay-mid) 40%,
-      var(--carousel-overlay-end) 100%
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.6) 40%,
+      rgba(0, 0, 0, 0.1) 100%
     );
   }
+
   .bev-slide-content {
     position: relative;
     z-index: 2;
-
-    width: 100%;
     padding-left: 2rem;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    text-align: left;
   }
 
   .bev-eyebrow {
@@ -184,38 +169,6 @@ const slides = libros.slice(0, 9);
     opacity: 0.8;
     max-width: 500px;
     line-height: 1.5;
-  }
-
-  .bev-btn {
-    position: relative;
-    color: var(--pr-white);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    padding: 0.5rem 1.4rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .bev-btn::after {
-    content: "";
-    position: absolute;
-    bottom: 6px;
-    left: 50%;
-    width: 0%;
-    height: 1px;
-    background: var(--pr-white);
-    transform: translateX(-50%);
-    transition: width 0.3s ease;
-  }
-
-  .bev-btn:hover::after {
-    width: 70%;
-  }
-
-  .bev-btn:hover {
-    border-color: var(--pr-white);
   }
 
   @media (max-width: 768px) {
