@@ -15,7 +15,7 @@ export function actualizarContador() {
   const carrito = JSON.parse(localStorage.getItem('bev_carrito') || '[]');
   const total = carrito.reduce((sum, i) => sum + i.cantidad, 0);
   const el = document.getElementById('cartCount');
-  if (el) el.textContent = total;
+  if (el) el.textContent = String(total);
 }
 
 export function mostrarToast(msg) {

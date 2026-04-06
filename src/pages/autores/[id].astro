@@ -167,7 +167,7 @@ const getInitials = (nombre: string) => {
   import { setLibros, setAutores } from "../../js/store.js";
   import autoresData from "../../data/autores.json";
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     setLibros(librosData);
     setAutores(autoresData);
 

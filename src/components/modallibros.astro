@@ -6,103 +6,205 @@
 <div class="modal fade" id="modalLibro" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content bev-modal-content">
+
       <div class="bev-modal-header d-flex justify-content-end">
         <button
           type="button"
           class="btn-close btn-close-white"
-          data-bs-dismiss="modal"></button>
+          data-bs-dismiss="modal"
+        ></button>
       </div>
 
       <div class="modal-body p-0">
-        <div class="row g-0" style="min-height: 520px;">
+        <div class="row g-0 bev-modal-row">
+
           <!-- Portada -->
           <div class="col-12 col-md-4 bev-modal-cover">
-            <img
-              id="modalPortada"
-              src=""
-              alt=""
-              style="width:100%; height:100%; object-fit:cover; display:block;"
-            />
+            <img id="modalPortada" src="" alt="" class="bev-modal-cover-img" />
           </div>
 
           <!-- Info -->
-          <div
-            class="col-12 col-md-8 d-flex flex-column p-4 p-lg-5"
-            style="background: var(--bev-cream);"
-          >
+          <div class="col-12 col-md-8 d-flex flex-column p-4 p-lg-5 bev-modal-info">
+
             <div class="d-flex align-items-center gap-2 mb-2">
-              <span
-                id="modalEtiqueta"
-                class="bev-etiqueta"
-                style="position:static; font-size:0.7rem; padding:3px 10px;"
-              ></span>
-              <span
-                id="modalGenero"
-                class="bev-eyebrow mb-0"
-                style="font-size:0.72rem;"></span>
+              <span id="modalEtiqueta" class="bev-etiqueta bev-etiqueta-static"></span>
+              <span id="modalGenero" class="bev-eyebrow mb-0"></span>
             </div>
 
             <h2 id="modalTitulo" class="bev-modal-titulo"></h2>
             <p id="modalAutorNombre" class="bev-modal-autor"></p>
             <p id="modalDesc" class="bev-modal-desc flex-grow-1 mb-4"></p>
 
-            <div
-              class="d-flex align-items-center justify-content-between flex-wrap gap-3 mt-auto pt-3"
-              style="border-top: 1px solid var(--bev-cream-dk);"
-            >
+            <!-- Precio y carrito -->
+            <div class="bev-modal-footer-row mt-auto pt-3">
               <span id="modalPrecio" class="bev-modal-precio"></span>
               <button id="modalBtnCarrito" class="btn bev-btn-gold">
                 <i class="bi bi-bag-plus me-2"></i>Agregar al carrito
               </button>
             </div>
-            <!-- SECCIÓN AUTOR -->
-            <div
-              class="mt-4 pt-4"
-              style="border-top: 1px solid var(--bev-cream-dk);"
-            >
+
+            <!-- Sección autor -->
+            <div class="bev-modal-autor-section mt-4 pt-4">
               <div class="d-flex align-items-start gap-3">
+
                 <!-- Foto -->
                 <img
                   id="modalAutorFoto"
                   src=""
                   alt=""
+                  class="bev-modal-autor-foto"
                   onerror="this.style.display='none'; document.getElementById('modalAutorFallback').style.display='flex';"
-                  style="width:70px; height:70px; border-radius:50%; object-fit:cover; object-position:top; border:2px solid var(--pr-gray-900); flex-shrink:0;"
                 />
 
-                <!-- Fallback -->
-                <div
-                  id="modalAutorFallback"
-                  style="display:none; width:70px; height:70px; border-radius:50%; background:var(--pr-gray-400); border:2px solid var(--pr-gray-900); flex-shrink:0; align-items:center; justify-content:center; font-size:1.2rem; color:var(--pr-gray-900); font-weight:700;"
-                >
+                <!-- Fallback iniciales -->
+                <div id="modalAutorFallback" class="bev-modal-autor-fallback">
                   <span id="modalAutorIniciales"></span>
                 </div>
 
-                <!-- Info -->
+                <!-- Texto autor -->
                 <div>
-                  <p
-                    style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--pr-gray-700); margin-bottom:0.2rem;"
-                  >
-                    Autor
-                  </p>
-
-                  <p
-                    id="modalAutorNombreDetalle"
-                    style="font-weight:700; color:var(--pr-gray-900); margin-bottom:0.4rem; font-size:0.95rem;"
-                  >
-                  </p>
-
-                  <p
-                    id="modalAutorBio"
-                    style="font-size:0.82rem; color:var(--pr-gray-700); line-height:1.6; margin:0;"
-                  >
-                  </p>
+                  <p class="bev-modal-autor-label">Autor</p>
+                  <p id="modalAutorNombreDetalle" class="bev-modal-autor-nombre"></p>
+                  <p id="modalAutorBio" class="bev-modal-autor-bio"></p>
                 </div>
+
               </div>
             </div>
+
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
+
+<style>
+  .bev-modal-content {
+    border-radius: 0;
+    border: none;
+    background: var(--bev-cream);
+  }
+
+  .bev-modal-header {
+    background: var(--bev-ink);
+    border: none;
+    padding: 0.75rem 1rem;
+  }
+
+  .bev-modal-row {
+    min-height: 520px;
+  }
+
+  .bev-modal-cover {
+    min-height: 350px;
+    overflow: hidden;
+  }
+
+  .bev-modal-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bev-modal-info {
+    background: var(--pr-gray-400);
+  }
+
+  .bev-modal-titulo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bev-ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .bev-modal-autor {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--bev-ash);
+    margin-bottom: 1rem;
+  }
+
+  .bev-modal-desc {
+    font-size: 0.95rem;
+    color: var(--bev-charcoal);
+    line-height: 1.75;
+  }
+
+  .bev-modal-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid var(--bev-cream-dk);
+  }
+
+  .bev-modal-precio {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bev-ink);
+  }
+
+  /* Etiqueta estática dentro del modal */
+  .bev-etiqueta-static {
+    position: static;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+  }
+
+  /* Sección autor */
+  .bev-modal-autor-section {
+    border-top: 1px solid var(--bev-cream-dk);
+  }
+
+  .bev-modal-autor-foto {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 2px solid var(--pr-gray-900);
+    flex-shrink: 0;
+  }
+
+  .bev-modal-autor-fallback {
+    display: none;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--pr-gray-400);
+    border: 2px solid var(--pr-gray-900);
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--pr-gray-900);
+    font-weight: 700;
+  }
+
+  .bev-modal-autor-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--pr-gray-700);
+    margin-bottom: 0.2rem;
+  }
+
+  .bev-modal-autor-nombre {
+    font-weight: 700;
+    color: var(--pr-gray-900);
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+  }
+
+  .bev-modal-autor-bio {
+    font-size: 0.82rem;
+    color: var(--pr-gray-700);
+    line-height: 1.6;
+    margin: 0;
+  }
+</style>

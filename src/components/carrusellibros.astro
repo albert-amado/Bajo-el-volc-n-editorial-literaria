@@ -242,7 +242,7 @@ const etiquetasMap: Record<string, string> = {
   import librosData from "../data/libros.json";
   import autoresData from "../data/autores.json";
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     setLibros(librosData);
     setAutores(autoresData);
 
