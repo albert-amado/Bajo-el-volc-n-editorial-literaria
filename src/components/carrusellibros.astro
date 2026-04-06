@@ -1,6 +1,5 @@
 ---
 import libros from "../data/libros.json";
-//carrusellibros.astro para mostrar todos los libros de la editorial
 
 const etiquetasMap: Record<string, string> = {
   nuevo: "Nuevo",
@@ -27,50 +26,49 @@ const etiquetasMap: Record<string, string> = {
         <div class="bev-carousel-track" id="carouselTrack">
           {libros.map((libro) => (
             <div class="bev-carousel-slide">
+
               <div
-                class="bev-book-card-v2 h-100 js-card-modal"
+                class="bev-book-cover-v2 js-card-modal"
                 data-id={libro.id}
                 style="cursor:pointer;"
               >
-                <div class="bev-book-cover-v2">
-                  <img src={libro.imagen} alt={libro.titulo} />
-                  {libro.etiqueta && (
-                    <span class={`bev-etiqueta bev-etiqueta-${libro.etiqueta}`}>
-                      {etiquetasMap[libro.etiqueta] || libro.etiqueta}
-                    </span>
-                  )}
-                </div>
+                <img src={libro.imagen} alt={libro.titulo} />
+                <div class="bev-cover-shine"></div>
+                {libro.etiqueta && (
+                  <span class={`bev-etiqueta bev-etiqueta-${libro.etiqueta.toLowerCase()}`}>
+                    {etiquetasMap[libro.etiqueta] || libro.etiqueta}
+                  </span>
+                )}
+              </div>
 
-                <div class="bev-book-info-v2">
-                  <div>
-                    <span class="bev-book-genre">{libro.genero}</span>
-                    <h5 class="bev-book-title">{libro.titulo}</h5>
-                    <p class="bev-book-author">{libro.autor}</p>
-                  </div>
+              <div class="bev-book-info-v2">
+                <span class="bev-book-genre">{libro.genero}</span>
+                <h5 class="bev-book-title">{libro.titulo}</h5>
+                <p class="bev-book-author">{libro.autor}</p>
 
-                  <div class="d-flex justify-content-between align-items-center mt-2">
-                    <span class="bev-book-price">
-                      ${libro.precio.toLocaleString("es-CO")}
-                    </span>
-                    <div class="d-flex gap-2">
-                      <button
-                        class="btn btn-sm bev-btn-outline js-btn-modal"
-                        data-id={libro.id}
-                      >
-                        <i class="bi bi-plus-circle" /> Conoce mas
-                      </button>
-                      <button
-                        class="btn bev-btn-add-cart js-btn-carrito"
-                        data-id={libro.id}
-                        data-titulo={libro.titulo}
-                        data-precio={libro.precio}
-                      >
-                        <i class="bi bi-bag-plus" /> Agregar
-                      </button>
-                    </div>
+                <div class="bev-book-footer">
+                  <span class="bev-book-price">
+  ${libro.precio.toLocaleString("es-CO")}
+</span>
+                  <div class="d-flex gap-2">
+                    <button
+                      class="btn btn-sm bev-btn-outline js-btn-modal"
+                      data-id={libro.id}
+                    >
+                      <i class="bi bi-plus-circle"></i> Conoce más
+                    </button>
+                    <button
+  class="btn bev-btn-add-cart js-btn-carrito"
+  data-id={libro.id}
+  data-titulo={libro.titulo}
+  data-precio={libro.precio}
+>
+  <i class="bi bi-bag-plus fs-5"></i> Comprar ahora
+</button>
                   </div>
                 </div>
               </div>
+
             </div>
           ))}
         </div>
@@ -84,8 +82,57 @@ const etiquetasMap: Record<string, string> = {
   </div>
 </section>
 
+<script>
+  import { abrirModal } from "../js/modal.js";
+  import { agregarAlCarrito } from "../js/carrito.js";
+  import { setLibros, setAutores } from "../js/store.js";
+  import librosData from "../data/libros.json";
+  import autoresData from "../data/autores.json";
+
+  document.addEventListener("astro:page-load", () => {
+    setLibros(librosData);
+    setAutores(autoresData);
+
+    const track = document.getElementById("carouselTrack") as HTMLElement;
+    const slides = track?.querySelectorAll<HTMLElement>(".bev-carousel-slide");
+    const VISIBLE = 3;
+    let current = 0;
+
+    function mover(dir: number) {
+      if (!slides || !track) return;
+      const max = slides.length - VISIBLE;
+      current += dir;
+      if (current > max) current = 0;
+      if (current < 0) current = max;
+      const slideWidth = slides[0].offsetWidth + 32;
+      track.style.transform = `translateX(-${current * slideWidth}px)`;
+    }
+
+    document.getElementById("btnPrev")?.addEventListener("click", () => mover(-1));
+    document.getElementById("btnNext")?.addEventListener("click", () => mover(1));
+
+    const modalTriggers = document.querySelectorAll(".js-card-modal, .js-btn-modal");
+    modalTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const id = trigger.getAttribute("data-id");
+        if (id) abrirModal(parseInt(id));
+      });
+    });
+
+    const carritoBtns = document.querySelectorAll(".js-btn-carrito");
+    carritoBtns.forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const id = btn.getAttribute("data-id");
+        const titulo = btn.getAttribute("data-titulo");
+        const precio = parseFloat(btn.getAttribute("data-precio") || "0");
+        if (id && titulo) agregarAlCarrito(id, titulo, precio);
+      });
+    });
+  });
+</script>
 <style>
-  /* === Carrusel === */
   .bev-carousel-wrapper {
     display: flex;
     align-items: center;
@@ -99,13 +146,16 @@ const etiquetasMap: Record<string, string> = {
 
   .bev-carousel-track {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .bev-carousel-slide {
-    flex: 0 0 calc(33.333% - 1rem);
-    min-width: calc(33.333% - 1rem);
+    flex: 0 0 calc(33.333% - 1.4rem);
+    min-width: calc(33.333% - 1.4rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   /* === Flechas === */
@@ -126,61 +176,102 @@ const etiquetasMap: Record<string, string> = {
     transform: scale(1.3);
   }
 
-  /* === Sección === */
-  .bev-section-light {
-    background-color: var(--bg-subtle);
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  /* === Tarjetas === */
-  .bev-book-card-v2 {
-    background: var(--pr-white);
-    border: 1px solid var(--border-light);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .bev-book-card-v2:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-md);
-  }
-
+  /* === Portada === */
   .bev-book-cover-v2 {
     position: relative;
     aspect-ratio: 2 / 3;
     overflow: hidden;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.18),
+      inset 0 0 60px rgba(255, 255, 255, 0.06);
   }
 
   .bev-book-cover-v2 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
   }
 
+  /* Brillo sólido permanente — esquina superior izquierda */
+  .bev-cover-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%;
+    height: 45%;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Borde luminoso alrededor de la portada */
+  .bev-book-cover-v2::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 5px solid rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* === Info === */
   .bev-book-info-v2 {
-    padding: 1.2rem;
-    background: var(--pr-gray-1000);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 0.1rem;
+    padding: 1.8rem 1.6rem;
+    background: var(--pr-gray-400);
+    border-left: 4px solid var(--pr-gray-400);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .bev-book-genre {
+    font-size: 0.9rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--pr-gray-900);
+    margin: 0;
   }
 
   .bev-book-title {
-    font-size: 1.05rem;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
     color: var(--pr-gray-900);
-    margin-bottom: 0.3rem;
+    margin: 0;
+    line-height: 1.3;
   }
 
   .bev-book-author {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
     color: var(--pr-gray-900);
     font-style: italic;
+    margin: 0;
   }
 
-  .bev-book-price {
-    color: var(--pr-gray-900);
-    font-weight: bold;
-    font-size: 1.1rem;
+  .bev-book-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border-light);
   }
+
+ .bev-book-price {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--pr-gray-1200);
+}
 
   /* === Etiquetas === */
   .bev-etiqueta {
@@ -190,7 +281,7 @@ const etiquetasMap: Record<string, string> = {
     font-size: 0.7rem;
     font-weight: 700;
     padding: 5px 12px;
-    z-index: 2;
+    z-index: 3;
     text-transform: uppercase;
   }
 
@@ -206,19 +297,24 @@ const etiquetasMap: Record<string, string> = {
 
   /* === Botón carrito === */
   .bev-btn-add-cart {
-    background: transparent;
-    border: 1px solid var(--pr-gray-900);
-    color: var(--pr-gray-900);
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    transition: background 0.3s, color 0.3s;
-  }
+  background: var(--pr-gray-900);
+  border: none;
+  color: var(--pr-white);
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
   .bev-btn-add-cart:hover {
-    background: var(--pr-gray-900);
-    color: var(--pr-white);
-  }
-
+  background: var(--pr-gray-400);
+  color: var(--pr-gray-900);
+}
   /* === Encabezado sección === */
   .bev-section-tag {
     display: block;
@@ -235,57 +331,3 @@ const etiquetasMap: Record<string, string> = {
     color: var(--pr-gray-900);
   }
 </style>
-
-<script>
-  import { abrirModal } from "../js/modal.js";
-  import { agregarAlCarrito } from "../js/carrito.js";
-  import { setLibros, setAutores } from "../js/store.js";
-  import librosData from "../data/libros.json";
-  import autoresData from "../data/autores.json";
-
-  document.addEventListener("astro:page-load", () => {
-    setLibros(librosData);
-    setAutores(autoresData);
-
-    // --- Carrusel con loop infinito ---
-    const track = document.getElementById("carouselTrack") as HTMLElement;
-    const slides = track?.querySelectorAll<HTMLElement>(".bev-carousel-slide");
-    const VISIBLE = 3;
-    let current = 0;
-
-    function mover(dir: number) {
-      if (!slides || !track) return;
-      const max = slides.length - VISIBLE;
-      current += dir;
-      if (current > max) current = 0;
-      if (current < 0) current = max;
-      const slideWidth = slides[0].offsetWidth + 24;
-      track.style.transform = `translateX(-${current * slideWidth}px)`;
-    }
-
-    document.getElementById("btnPrev")?.addEventListener("click", () => mover(-1));
-    document.getElementById("btnNext")?.addEventListener("click", () => mover(1));
-
-    // --- Modal ---
-    const modalTriggers = document.querySelectorAll(".js-card-modal, .js-btn-modal");
-    modalTriggers.forEach((trigger) => {
-      trigger.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const id = trigger.getAttribute("data-id");
-        if (id) abrirModal(parseInt(id));
-      });
-    });
-
-    // --- Carrito ---
-    const carritoBtns = document.querySelectorAll(".js-btn-carrito");
-    carritoBtns.forEach((btn) => {
-      btn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const id = btn.getAttribute("data-id");
-        const titulo = btn.getAttribute("data-titulo");
-        const precio = parseFloat(btn.getAttribute("data-precio") || "0");
-        if (id && titulo) agregarAlCarrito(id, titulo, precio);
-      });
-    });
-  });
-</script>
