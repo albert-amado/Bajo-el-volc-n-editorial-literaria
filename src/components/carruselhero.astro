@@ -3,8 +3,9 @@ import libros from "../data/libros.json";
 const slides = libros.slice(0, 9);
 ---
 
-<section class="py-4">
-  <div class="bev-container">
+<!-- Pegado al navbar (sin espacio superior) -->
+<section class="pt-0 pb-4">
+  <div class="container-fluid px-0">
     <div
       id="heroCarousel"
       class="carousel slide carousel-fade bev-carousel-custom"
@@ -32,8 +33,9 @@ const slides = libros.slice(0, 9);
           >
             <div class="bev-slide-overlay"></div>
             <div class="container h-100">
-              <div class="row h-100 align-items-center">
-                <div class="col-lg-6 bev-slide-content">
+              <div class="row h-100 align-items-center justify-content-center">
+                <!-- Ahora el contenido ocupa casi todo el ancho y está CENTRADO -->
+                <div class="col-lg-10 col-12 bev-slide-content text-center mx-auto">
 
                   {libro.etiqueta === "nuevo" && (
                     <span class="bev-hero-badge bev-etiqueta-nuevo">Nuevo</span>
@@ -49,7 +51,7 @@ const slides = libros.slice(0, 9);
                     {libro.descripcion ? libro.descripcion.substring(0, 120) + "..." : ""}
                   </p>
 
-                  <div class="d-flex gap-3 flex-wrap mt-4">
+                  <div class="d-flex gap-3 flex-wrap mt-4 justify-content-center">
                     <button
                       class="btn bev-btn-gold btn-add-cart"
                       data-id={libro.id}
@@ -98,16 +100,16 @@ const slides = libros.slice(0, 9);
 
 <style is:global>
   .bev-carousel-custom {
-  width: 200%;
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border-radius: 9px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border-radius: 0;
   }
 
   .bev-slide {
-    height: 60vh;
+    height: 70vh;
     min-height: 300px;
     position: relative;
     background-size: cover;
@@ -123,65 +125,128 @@ const slides = libros.slice(0, 9);
     inset: 0;
     background: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0.6) 40%,
-      rgba(0, 0, 0, 0.1) 100%
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.75) 35%,
+      rgba(0, 0, 0, 0.75) 65%,
+      rgba(0, 0, 0, 0.85) 100%
     );
   }
 
   .bev-slide-content {
     position: relative;
     z-index: 2;
-    padding-left: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* centrado vertical y horizontal */
   }
 
+  /* TEXTO MUCHO MÁS GRANDE, NOTORIO Y EN NEGRITA */
   .bev-eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
+    font-size: 1.1rem;
+    letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--pr-white);
-    opacity: 0.7;
+    opacity: 0.9;
     margin-bottom: 1rem;
+    font-weight: 600;
   }
 
   .bev-slide-title {
     font-family: "Lato", sans-serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 700;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800; /* mucho más negrita */
     color: var(--pr-white);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.05;
   }
 
   .bev-slide-author {
-    font-size: 0.95rem;
+    font-size: 1.35rem;
     font-style: italic;
     color: var(--pr-white);
-    opacity: 0.85;
-    margin-bottom: 1rem;
+    opacity: 0.95;
+    margin-bottom: 1.2rem;
+    font-weight: 700; /* negrita */
   }
 
   .bev-slide-desc {
-    font-size: 0.95rem;
+    font-size: 1.25rem;
     color: var(--pr-white);
-    opacity: 0.8;
-    max-width: 500px;
-    line-height: 1.5;
+    opacity: 0.9;
+    max-width: 720px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  /* Botones también centrados */
+  .d-flex.gap-3.flex-wrap.mt-4.justify-content-center {
+    justify-content: center;
+  }
+
+  /* FLECHAS (sin cambios) */
+  .bev-carousel-custom .carousel-control-prev,
+  .bev-carousel-custom .carousel-control-next {
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.35);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bev-carousel-custom .carousel-control-prev:hover,
+  .bev-carousel-custom .carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .bev-carousel-custom .carousel-control-prev-icon,
+  .bev-carousel-custom .carousel-control-next-icon {
+    width: 48px;
+    height: 48px;
+    background-size: 100% 100%;
+    filter: brightness(0) invert(1);
   }
 
   @media (max-width: 768px) {
     .bev-slide {
-      height: 40vh;
+      height: 50vh; /* un poco más alto en móvil para que el texto grande respire */
     }
 
     .bev-slide-content {
       padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     .bev-slide-title {
-      font-size: 1.8rem;
+      font-size: clamp(2.2rem, 7vw, 3.8rem);
+    }
+
+    .bev-slide-author {
+      font-size: 1.15rem;
+    }
+
+    .bev-slide-desc {
+      font-size: 1.1rem;
+    }
+
+    .bev-carousel-custom .carousel-control-prev,
+    .bev-carousel-custom .carousel-control-next {
+      width: 60px;
+      height: 60px;
+    }
+
+    .bev-carousel-custom .carousel-control-prev-icon,
+    .bev-carousel-custom .carousel-control-next-icon {
+      width: 36px;
+      height: 36px;
     }
   }
 </style>
