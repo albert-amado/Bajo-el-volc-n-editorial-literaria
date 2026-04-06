@@ -4,12 +4,20 @@
   <div class="container-fluid d-flex justify-content-between align-items-center">
 
     <div class="d-flex gap-3">
-      <span class="bev-topbar-info">
+      <!-- Teléfono ahora es clicable (tel:) -->
+      <a href="tel:+573144559506" class="bev-topbar-info">
         <i class="bi bi-telephone"></i> 314-455-9506
-      </span>
+      </a>
+
+      <!-- Email sin cambios (sigue siendo solo texto) -->
       <span class="bev-topbar-info">
         <i class="bi bi-envelope"></i> bajoelvolcane@gmail.com
       </span>
+
+      <!-- Nuevo campo: "Déjanos tu mensaje" con icono de mensaje y enlace a /contacto -->
+      <a href="/contacto" class="bev-topbar-info">
+        <i class="bi bi-chat"></i> Déjanos tu mensaje
+      </a>
     </div>
 
     <span class="bev-topbar-marca">Bajo el Volcán Ediciones</span>
@@ -29,28 +37,33 @@
   .bev-topbar {
     background-color: var(--topbar-bg);
     border-bottom: 1px solid var(--topbar-border);
-    padding: 0.4rem 1rem;
+    padding: 0.95rem 0.5rem; /* Topbar más grande (aumentamos padding) */
   }
 
   .bev-topbar-info {
     color: var(--topbar-muted);
-    font-size: 0.75rem;
+    font-size: 0.99rem; /* Un poco más grande que antes */
     letter-spacing: 0.05em;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
+    transition: color 0.2s; /* Hover suave también en los nuevos enlaces */
+  }
+
+  .bev-topbar-info:hover {
+    color: var(--topbar-hover);
   }
 
   .bev-topbar-marca {
     color: var(--topbar-text);
-    font-size: 0.7rem;
+    font-size: 0.95rem; /* Un poco más grande */
     letter-spacing: 0.5em;
     text-transform: uppercase;
   }
 
   .bev-topbar-link {
     color: var(--topbar-muted);
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Un poco más grande */
     text-decoration: none;
     display: flex;
     align-items: center;
