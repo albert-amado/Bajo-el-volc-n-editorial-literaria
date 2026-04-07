@@ -1,7 +1,7 @@
 ---
 
 ---
-//modal libros para informacion 
+
 <!-- ── MODAL DETALLE DEL LIBRO ── -->
 <div class="modal fade" id="modalLibro" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -37,9 +37,15 @@
 
             <!-- Precio y carrito -->
             <div class="bev-modal-footer-row mt-auto pt-3">
+              <!-- RECUADRO DEL PRECIO con --pr-gray-1200 -->
               <span id="modalPrecio" class="bev-modal-precio"></span>
-              <button id="modalBtnCarrito" class="btn bev-btn-gold">
-                <i class="bi bi-bag-plus me-2"></i>Agregar al carrito
+              <button id="modalBtnCarrito" class="btn bev-btn-gold d-flex align-items-center gap-2">
+                <img 
+                  src="/assets/img/pagos/pagos.png" 
+                  alt="Pago seguro" 
+                  style="width: 28px; height: 28px; object-fit: contain;"
+                >
+                Comprar ahora
               </button>
             </div>
 
@@ -47,7 +53,7 @@
             <div class="bev-modal-autor-section mt-4 pt-4">
               <div class="d-flex align-items-start gap-3">
 
-                <!-- Foto -->
+                <!-- Foto (más grande) -->
                 <img
                   id="modalAutorFoto"
                   src=""
@@ -93,44 +99,51 @@
   }
 
   .bev-modal-row {
-    min-height: 520px;
+    min-height: 560px; /* un poco más alto para que quepa todo más grande */
   }
 
-  .bev-modal-cover {
-    min-height: 350px;
-    overflow: hidden;
-  }
+ .bev-modal-cover {
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+ .bev-modal-cover-img {
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  display: block;
+}
 
-  .bev-modal-cover-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
 
   .bev-modal-info {
     background: var(--pr-gray-400);
   }
 
+  /* Título y texto más grandes */
   .bev-modal-titulo {
     font-family: var(--font-display);
-    font-size: 1.8rem;
+    font-size: 2.4rem;        /* más grande */
     font-weight: 700;
     color: var(--bev-ink);
     margin-bottom: 0.25rem;
+    line-height: 1.15;
   }
 
   .bev-modal-autor {
-    font-size: 1rem;
+    font-size: 1.25rem;       /* más grande */
     font-style: italic;
     color: var(--bev-ash);
     margin-bottom: 1rem;
   }
 
+  /* BIOGRAFÍA DEL LIBRO - más grande */
   .bev-modal-desc {
-    font-size: 0.95rem;
+    font-size: 1.15rem;       /* más grande */
     color: var(--bev-charcoal);
-    line-height: 1.75;
+    line-height: 1.8;
   }
 
   .bev-modal-footer-row {
@@ -138,22 +151,29 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
     border-top: 1px solid var(--bev-cream-dk);
   }
 
+  /* RECUADRO DEL PRECIO con --pr-gray-1200 */
   .bev-modal-precio {
     font-family: var(--font-display);
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     font-weight: 700;
-    color: var(--bev-ink);
+    color: var(--pr-gray-1200);
+    background-color: var(--pr-gray-1200);
+    color: #fff;                    /* texto blanco para que contraste */
+    padding: 0.75rem 1.75rem;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   /* Etiqueta estática dentro del modal */
   .bev-etiqueta-static {
     position: static;
-    font-size: 0.7rem;
-    padding: 3px 10px;
+    font-size: 0.8rem;
+    padding: 4px 12px;
   }
 
   /* Sección autor */
@@ -161,33 +181,34 @@
     border-top: 1px solid var(--bev-cream-dk);
   }
 
+  /* FOTO DEL AUTOR - más grande */
   .bev-modal-autor-foto {
-    width: 70px;
-    height: 70px;
+    width: 92px;
+    height: 92px;
     border-radius: 50%;
     object-fit: cover;
     object-position: top;
-    border: 2px solid var(--pr-gray-900);
+    border: 3px solid var(--pr-gray-900);
     flex-shrink: 0;
   }
 
   .bev-modal-autor-fallback {
     display: none;
-    width: 70px;
-    height: 70px;
+    width: 92px;
+    height: 92px;
     border-radius: 50%;
     background: var(--pr-gray-400);
-    border: 2px solid var(--pr-gray-900);
+    border: 3px solid var(--pr-gray-900);
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--pr-gray-900);
     font-weight: 700;
   }
 
   .bev-modal-autor-label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--pr-gray-700);
@@ -198,13 +219,21 @@
     font-weight: 700;
     color: var(--pr-gray-900);
     margin-bottom: 0.4rem;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
   }
 
+  /* BIO DEL AUTOR - más grande */
   .bev-modal-autor-bio {
-    font-size: 0.82rem;
+    font-size: 0.98rem;
     color: var(--pr-gray-700);
-    line-height: 1.6;
+    line-height: 1.75;
     margin: 0;
+  }
+
+  /* Botón más grande y con imagen de pagos */
+  #modalBtnCarrito {
+    font-size: 1.1rem;
+    padding: 0.85rem 1.75rem;
+    font-weight: 700;
   }
 </style>

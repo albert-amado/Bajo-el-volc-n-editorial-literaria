@@ -28,7 +28,7 @@ const getInitials = (nombre: string) => {
               <a href={`/autores/${autor.id}`} class="bev-author-link">
                 <div class="bev-author-avatar mx-auto">
                   <img
-                    src={autor.foto}
+                    src={autor.foto.startsWith('/') ? autor.foto : `/${autor.foto}`}
                     alt={autor.nombre}
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                   />

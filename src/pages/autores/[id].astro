@@ -38,7 +38,7 @@ const getInitials = (nombre: string) => {
         <div class="col-lg-4 text-center mb-4 mb-lg-0">
           <div class="bev-author-detail-avatar mx-auto">
             <img
-              src={`/${autor.foto}`}
+              src={autor.foto.startsWith('/') ? autor.foto : `/${autor.foto}`}
               alt={autor.nombre}
               class="img-fluid shadow-lg"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
