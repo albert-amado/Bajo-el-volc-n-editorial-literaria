@@ -2,9 +2,9 @@
 ---
 <footer class="bev-footer pt-5 pb-3">
   <div class="container">
-    <div class="row g-4">
+    <div class="row g-4 text-center text-md-start">
 
-      <div class="col-md-4">
+      <div class="col-12 col-md-4">
         <p class="bev-footer-brand">BAJO EL VOLCÁN</p>
         <p class="bev-footer-text">
           Editorial literaria independiente.<br />
@@ -12,13 +12,20 @@
         </p>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-12 col-md-4">
         <p class="bev-footer-heading">Contacto</p>
-        <p class="bev-footer-text">bajoelvolcane@gmail.com</p>
+        <a href="mailto:bajoelvolcane@gmail.com" class="bev-footer-text bev-footer-link">
+          bajoelvolcane@gmail.com
+        </a>
       </div>
 
-      <div class="col-md-4 d-flex align-items-center">
-        <a href="https://www.instagram.com/bajoelvolcane" class="bev-topbar-link">
+      <div class="col-12 col-md-4 d-flex align-items-center justify-content-center justify-content-md-start">
+        <a
+          href="https://www.instagram.com/bajoelvolcane"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bev-footer-link d-flex align-items-center gap-2"
+        >
           <i class="bi bi-instagram"></i>
           <i>@bajoelvolcane</i>
         </a>
@@ -53,13 +60,26 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--pr-white);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
   }
 
   .bev-footer-text {
     font-size: 0.9rem;
     color: var(--pr-gray-400);
     line-height: 1.7;
+    margin: 0;
+  }
+
+  .bev-footer-link {
+    color: var(--pr-gray-400);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .bev-footer-link:hover {
+    color: var(--pr-white);
   }
 
   .bev-footer-hr {

@@ -9,25 +9,24 @@ import Layout from "../layouts/layout.astro";
       <!-- ENCABEZADO -->
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
+          <!-- bev-section-tag y bev-divider vienen de utilities.css -->
           <span class="bev-section-tag">Escríbenos</span>
           <h1 class="display-4 fw-bold mt-3 mb-4">Contacto</h1>
           <div class="bev-divider mx-auto mb-4"></div>
-          <p class="lead">
-            ¿Tienes Dudas? Estamos aquí para escucharte.
-          </p>
+          <p class="lead">¿Tienes dudas? Estamos aquí para escucharte.</p>
         </div>
       </div>
 
       <div class="row g-5 mb-5">
 
         <!-- COLUMNA IZQUIERDA: logo + info -->
-        <div class="col-lg-5">
+        <div class="col-12 col-lg-5">
           <div class="bev-contact-info h-100 p-4">
 
-            <!-- Logo -->
             <div class="text-center mb-4">
+              <!-- Ruta corregida -->
               <img
-                src="/images/logo.png"
+                src="/assets/img/ui/logo.png"
                 alt="Bajo el Volcán"
                 class="bev-contact-logo"
                 onerror="this.style.display='none'"
@@ -38,68 +37,49 @@ import Layout from "../layouts/layout.astro";
 
             <ul class="list-unstyled bev-contact-list">
 
-              <!-- WhatsApp -->
               <li class="d-flex align-items-start gap-3 mb-4">
                 <div class="bev-contact-icon">
                   <i class="bi bi-whatsapp"></i>
                 </div>
                 <div>
                   <p class="bev-contact-label">WhatsApp</p>
-                  <a
-                    href="https://wa.me/573144559506"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="bev-contact-value"
-                  >
+                  <a href="https://wa.me/573144559506" target="_blank" rel="noopener noreferrer" class="bev-contact-value">
                     +57 314 455 9506
                   </a>
                 </div>
               </li>
 
-              <!-- Correo -->
               <li class="d-flex align-items-start gap-3 mb-4">
                 <div class="bev-contact-icon">
                   <i class="bi bi-envelope"></i>
                 </div>
                 <div>
                   <p class="bev-contact-label">Correo</p>
-                  <a
-                    href="mailto:bajoelvolcane@gmail.com"
-                    class="bev-contact-value"
-                  >
+                  <a href="mailto:bajoelvolcane@gmail.com" class="bev-contact-value">
                     bajoelvolcane@gmail.com
                   </a>
                 </div>
               </li>
 
-              <!-- Instagram -->
               <li class="d-flex align-items-start gap-3 mb-4">
                 <div class="bev-contact-icon">
                   <i class="bi bi-instagram"></i>
                 </div>
                 <div>
                   <p class="bev-contact-label">Instagram</p>
-                  <a
-                    href="https://www.instagram.com/bajoelvolcane"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="bev-contact-value"
-                  >
+                  <a href="https://www.instagram.com/bajoelvolcane" target="_blank" rel="noopener noreferrer" class="bev-contact-value">
                     @bajoelvolcane
                   </a>
                 </div>
               </li>
 
-              <!-- Ubicación -->
               <li class="d-flex align-items-start gap-3 mb-4">
                 <div class="bev-contact-icon">
                   <i class="bi bi-geo-alt"></i>
                 </div>
                 <div>
                   <p class="bev-contact-label">Ubicación</p>
-                  <p class="bev-contact-value mb-0">
-                    Duitama, Boyacá — Colombia
-                  </p>
+                  <p class="bev-contact-value mb-0">Duitama, Boyacá — Colombia</p>
                 </div>
               </li>
 
@@ -108,59 +88,39 @@ import Layout from "../layouts/layout.astro";
         </div>
 
         <!-- COLUMNA DERECHA: formulario -->
-        <div class="col-lg-7">
+        <div class="col-12 col-lg-7">
           <div class="bev-contact-form p-4 p-lg-5 h-100">
             <h4 class="fw-bold mb-4">Envíanos un mensaje</h4>
 
-            <form id="formContacto" novalidate>
+            <div id="formContacto">
               <div class="row g-3">
 
-                <div class="col-md-6">
-                  <label class="bev-form-label">Nombre</label>
-                  <input
-                    type="text"
-                    id="inputNombre"
-                    class="bev-form-input"
-                    placeholder="Tu nombre"
-                    required
-                  />
+                <div class="col-12 col-md-6">
+                  <label class="bev-form-label" for="inputNombre">Nombre</label>
+                  <input type="text" id="inputNombre" class="bev-form-input" placeholder="Tu nombre" required />
                 </div>
 
-                <div class="col-md-6">
-                  <label class="bev-form-label">Correo electrónico</label>
-                  <input
-                    type="email"
-                    id="inputCorreo"
-                    class="bev-form-input"
-                    placeholder="tu@correo.com"
-                    required
-                  />
+                <div class="col-12 col-md-6">
+                  <label class="bev-form-label" for="inputCorreo">Correo electrónico</label>
+                  <input type="email" id="inputCorreo" class="bev-form-input" placeholder="tu@correo.com" required />
                 </div>
 
                 <div class="col-12">
-                  <label class="bev-form-label">Asunto</label>
-                  <input
-                    type="text"
-                    id="inputAsunto"
-                    class="bev-form-input"
-                    placeholder="¿En qué podemos ayudarte?"
-                  />
+                  <label class="bev-form-label" for="inputAsunto">Asunto</label>
+                  <input type="text" id="inputAsunto" class="bev-form-input" placeholder="¿En qué podemos ayudarte?" />
                 </div>
 
                 <div class="col-12">
-                  <label class="bev-form-label">Mensaje</label>
-                  <textarea
-                    id="inputMensaje"
-                    class="bev-form-input"
-                    rows="5"
-                    placeholder="Escribe tu mensaje aquí..."
-                    required
-                  ></textarea>
+                  <label class="bev-form-label" for="inputMensaje">Mensaje</label>
+                  <textarea id="inputMensaje" class="bev-form-input" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
                 </div>
 
                 <div class="col-12">
-                  <button type="submit" class="btn bev-btn-submit w-100">
+                  <button type="button" id="btnEnviar" class="btn bev-btn-submit w-100">
                     <i class="bi bi-send me-2"></i>Enviar mensaje
+                    <a href="https://wa.me/573144559506" target="_blank" rel="noopener noreferrer" class="bev-contact-value">
+                    +57 314 455 9506
+                  </a>
                   </button>
                 </div>
 
@@ -169,7 +129,7 @@ import Layout from "../layouts/layout.astro";
                 </div>
 
               </div>
-            </form>
+            </div>
           </div>
         </div>
 
@@ -179,190 +139,166 @@ import Layout from "../layouts/layout.astro";
 </Layout>
 
 <script>
-  const form = document.getElementById("formContacto");
-  const feedback = document.getElementById("formMensaje");
+  document.addEventListener("astro:page-load", () => {
+    const feedback = document.getElementById("formMensaje");
 
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    document.getElementById("btnEnviar")?.addEventListener("click", async () => {
+      const nombre = (document.getElementById("inputNombre") as HTMLInputElement).value.trim();
+      const correo = (document.getElementById("inputCorreo") as HTMLInputElement).value.trim();
+      const asunto = (document.getElementById("inputAsunto") as HTMLInputElement).value.trim();
+      const mensaje = (document.getElementById("inputMensaje") as HTMLTextAreaElement).value.trim();
 
-    const nombre = (document.getElementById("inputNombre") as HTMLInputElement).value.trim();
-    const correo = (document.getElementById("inputCorreo") as HTMLInputElement).value.trim();
-    const asunto = (document.getElementById("inputAsunto") as HTMLInputElement).value.trim();
-    const mensaje = (document.getElementById("inputMensaje") as HTMLTextAreaElement).value.trim();
-
-    if (!nombre || !correo || !mensaje) {
-      feedback?.classList.remove("d-none", "bev-feedback-ok");
-      feedback?.classList.add("bev-feedback-error");
-      if (feedback) feedback.textContent = "Por favor completa los campos obligatorios.";
-      return;
-    }
-
-    try {
-      const res = await fetch("https://formspree.io/f/TU_ID_AQUI", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, correo, asunto, mensaje }),
-      });
-
-      if (res.ok) {
-        feedback?.classList.remove("d-none", "bev-feedback-error");
-        feedback?.classList.add("bev-feedback-ok");
-        if (feedback) feedback.textContent = "¡Mensaje enviado! Te responderemos pronto.";
-        (form as HTMLFormElement).reset();
-      } else {
-        throw new Error();
+      if (!nombre || !correo || !mensaje) {
+        showFeedback("Por favor completa los campos obligatorios.", false);
+        return;
       }
-    } catch {
-      feedback?.classList.remove("d-none", "bev-feedback-ok");
-      feedback?.classList.add("bev-feedback-error");
-      if (feedback) feedback.textContent = "Hubo un error al enviar. Intenta de nuevo.";
+
+      try {
+        const res = await fetch("https://formspree.io/f/TU_ID_AQUI", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nombre, correo, asunto, mensaje }),
+        });
+
+        if (res.ok) {
+          showFeedback("¡Mensaje enviado! Te responderemos pronto.", true);
+          (document.getElementById("inputNombre") as HTMLInputElement).value = "";
+          (document.getElementById("inputCorreo") as HTMLInputElement).value = "";
+          (document.getElementById("inputAsunto") as HTMLInputElement).value = "";
+          (document.getElementById("inputMensaje") as HTMLTextAreaElement).value = "";
+        } else {
+          throw new Error();
+        }
+      } catch {
+        showFeedback("Hubo un error al enviar. Intenta de nuevo.", false);
+      }
+    });
+
+    function showFeedback(msg: string, ok: boolean) {
+      if (!feedback) return;
+      feedback.classList.remove("d-none", "bev-feedback-ok", "bev-feedback-error");
+      feedback.classList.add(ok ? "bev-feedback-ok" : "bev-feedback-error");
+      feedback.textContent = msg;
     }
   });
 </script>
+
 <style>
-.bev-contacto {
-  background-color: var(--pr-gray-1000);
-  min-height: 100vh;
-  color: var(--pr-gray-900);
-}
+  .bev-contacto {
+    background-color: var(--pr-gray-1000);
+    min-height: 100vh;
+    color: var(--pr-gray-900);
+  }
 
-/* Tag */
-.bev-section-tag {
-  background-color: var(--pr-gray-400);
-  color: var(--pr-gray-1000);
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 600;
-}
+  .bev-contact-info,
+  .bev-contact-form {
+    background-color: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
+    border-radius: 12px;
+  }
 
-/* Divider */
-.bev-divider {
-  height: 4px;
-  width: 60px;
-  background-color: var(--pr-gray-900);
-  border-radius: 2px;
-}
+  .bev-contact-logo {
+    max-width: 140px;
+    height: auto;
+  }
 
-/* Cards */
-.bev-contact-info,
-.bev-contact-form {
-  background-color: var(--pr-white);
-  border: 1px solid var(--pr-gray-200);
-  border-radius: 12px;
-}
+  .bev-contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--pr-gray-100);
+    color: var(--pr-gray-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+  }
 
-/* Logo */
-.bev-contact-logo {
-  max-width: 160px;
-  height: auto;
-}
+  .bev-contact-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--pr-gray-700);
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+  }
 
-/* Iconos */
-.bev-contact-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background-color: var(--pr-gray-100);
-  color: var(--pr-gray-900);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
+  .bev-contact-value {
+    color: var(--pr-gray-900);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: opacity 0.2s;
+  }
 
-/* Labels */
-.bev-contact-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--pr-gray-700);
-  margin-bottom: 0.2rem;
-  font-weight: 600;
-}
+  .bev-contact-value:hover {
+    opacity: 0.7;
+  }
 
-/* Valores */
-.bev-contact-value {
-  color: var(--pr-gray-900);
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: opacity 0.2s;
-}
+  .bev-form-label {
+    display: block;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--pr-gray-700);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
 
-.bev-contact-value:hover {
-  opacity: 0.7;
-}
+  .bev-form-input {
+    width: 100%;
+    background-color: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
+    border-radius: 8px;
+    color: var(--pr-gray-900);
+    padding: 0.65rem 1rem;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    resize: vertical;
+  }
 
-/* Form labels */
-.bev-form-label {
-  display: block;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--pr-gray-700);
-  margin-bottom: 0.4rem;
-  font-weight: 600;
-}
+  .bev-form-input::placeholder {
+    color: var(--pr-gray-400);
+  }
 
-/* Inputs */
-.bev-form-input {
-  width: 100%;
-  background-color: var(--pr-white);
-  border: 1px solid var(--pr-gray-200);
-  border-radius: 8px;
-  color: var(--pr-gray-900);
-  padding: 0.65rem 1rem;
-  font-size: 0.95rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  outline: none;
-}
+  .bev-form-input:focus {
+    border-color: var(--pr-gray-900);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+  }
 
-.bev-form-input::placeholder {
-  color: var(--pr-gray-400);
-}
+  .bev-btn-submit {
+    background-color: var(--pr-gray-900);
+    color: var(--pr-white);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
 
-.bev-form-input:focus {
-  border-color: var(--pr-gray-900);
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
-}
+  .bev-btn-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
 
-/* Botón */
-.bev-btn-submit {
-  background-color: var(--pr-gray-900);
-  color: var(--pr-white);
-  border: none;
-  padding: 0.75rem;
-  border-radius: 8px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: all 0.2s;
-}
+  .bev-form-feedback {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
 
-.bev-btn-submit:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
+  .bev-feedback-ok {
+    background-color: var(--pr-gray-50);
+    border: 1px solid var(--pr-gray-200);
+    color: var(--pr-gray-900);
+  }
 
-/* Feedback */
-.bev-form-feedback {
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-.bev-feedback-ok {
-  background-color: var(--pr-gray-50);
-  border: 1px solid var(--pr-gray-200);
-  color: var(--pr-gray-900);
-}
-
-.bev-feedback-error {
-  background-color: var(--pr-gray-100);
-  border: 1px solid var(--pr-gray-400);
-  color: var(--pr-gray-900);
-}
+  .bev-feedback-error {
+    background-color: #fff0f0;
+    border: 1px solid #ffcccc;
+    color: #c0392b;
+  }
 </style>

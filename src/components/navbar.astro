@@ -1,32 +1,20 @@
 ---
 ---
-<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bev-navbar sticky-top">
-  <div class="container-fluid d-flex align-items-center" style="position: relative;">
+  <div class="container-fluid bev-navbar-inner">
 
-    <!-- IZQUIERDA: Texto editorial (más grande y con los colores solicitados) -->
-    <div class="d-none d-lg-flex flex-column align-items-start" style="flex: 1;">
-      <span class="bev-brand-main text-uppercase">BAJO EL VOLCÁN</span>
-      <span class="bev-brand-sub text-uppercase">Editorial Literaria</span>
+    <!-- IZQUIERDA: texto editorial (solo desktop) -->
+    <div class="d-none d-lg-flex flex-column align-items-start bev-navbar-brand-text">
+      <span class="bev-brand-main">BAJO EL VOLCÁN</span>
+      <span class="bev-brand-sub">Editorial Literaria</span>
     </div>
 
-    <!-- CENTRO: Logo -->
-    <a class="navbar-brand mx-auto d-none d-lg-block" href="/nosotros" style="flex: 0 0 auto;">
-      <img
-        src="/assets/img/ui/logo.png"
-        alt="Logo"
-        width="80"
-        height="100"
-      />
-    </a>
-
-    <!-- Logo visible solo en móvil -->
-    <a class="navbar-brand d-lg-none" href="/nosotros">
+    <!-- Logo móvil -->
+    <a class="navbar-brand d-lg-none" href="/">
       <img
         src="/assets/img/ui/Bajo el volcan transparente.png"
-        alt="Logo"
-        width="60"
-        height="75"
+        alt="Bajo el Volcán"
+        class="bev-logo-mobile"
       />
     </a>
 
@@ -36,13 +24,25 @@
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarMenu"
+      aria-controls="navbarMenu"
+      aria-expanded="false"
+      aria-label="Abrir menú"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- Logo desktop (centro) -->
+    <a class="navbar-brand mx-auto d-none d-lg-block" href="/">
+      <img
+        src="/assets/img/ui/logo.png"
+        alt="Bajo el Volcán"
+        class="bev-logo-desktop"
+      />
+    </a>
+
     <!-- DERECHA: Links -->
-    <div class="collapse navbar-collapse d-lg-flex" id="navbarMenu" style="flex: 1;">
-      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ms-lg-auto align-items-lg-center gap-lg-1">
         <li class="nav-item bev-nav-item">
           <a class="nav-link" href="/">Inicio</a>
         </li>
@@ -56,13 +56,15 @@
           <a class="nav-link" href="/noticias">Noticias</a>
         </li>
         <li class="nav-item bev-nav-item">
-          <a class="nav-link" href="/assets/img/doc/bases_premio_nacional_de_novela.pdf" target="_blank">Premio nacional de novela</a>
+          <a class="nav-link" href="/assets/img/doc/bases_premio_nacional_de_novela.pdf" target="_blank" rel="noopener noreferrer">
+            Premio nacional de novela
+          </a>
         </li>
         <li class="nav-item bev-nav-item">
-          <a class="nav-link" href="/assets/img/pagos/pagos.png" target="_blank">Pagos</a>
+          <a class="nav-link" href="/pagos">Pagos</a>
         </li>
-        <li class="nav-item ms-lg-3 bev-nav-item">
-          <a class="nav-link bev-cart-btn position-relative" href="/carrito">
+        <li class="nav-item ms-lg-2 bev-nav-item">
+          <a class="nav-link bev-cart-btn position-relative" href="/carrito" aria-label="Carrito de compras">
             <i class="bi bi-bag fs-5"></i>
             <span class="bev-cart-badge" id="cartCount">0</span>
           </a>
@@ -77,94 +79,112 @@
   .bev-navbar {
     background-color: var(--pr-gray-100);
     border-bottom: 3px solid var(--pr-gray-200);
-    padding: 1.4rem 0; /* un poco más alto para aprovechar el espacio y dar más presencia */
+    padding: 1.2rem 0;
     backdrop-filter: blur(8px);
   }
 
-  /* LOGO */
-  .bev-navbar .navbar-brand img {
-    width: 120px;
-    height: 120px;
+  .bev-navbar-inner {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  /* ── Texto de marca (desktop) ── */
+  .bev-navbar-brand-text {
+    flex: 1;
+  }
+
+  .bev-brand-main {
+    font-family: "Lato", sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    color: var(--pr-gray-700);
+    line-height: 1.1;
+  }
+
+  .bev-brand-sub {
+    font-size: 1rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--pr-gray-1200);
+    margin-top: -2px;
+  }
+
+  /* ── Logos ── */
+  .bev-logo-desktop {
+    width: 110px;
+    height: 110px;
     object-fit: contain;
     filter: drop-shadow(0 0 6px var(--navbar-logo-glow));
     transition: transform 0.3s ease;
   }
 
-  .bev-navbar .navbar-brand img:hover {
-    transform: scale(1.08); /* un poco más de vida al hover */
+  .bev-logo-desktop:hover {
+    transform: scale(1.08);
   }
 
-  /* TEXTO IZQUIERDA - COLORES Y TAMAÑO EXACTOS QUE PEDISTE */
-  .bev-brand-main {
-    font-family: 'Lato', sans-serif;
-    font-size: 1.55rem; /* más grande */
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    color: var(--pr-gray-700); /* #000000 como pediste */
-    line-height: 1.1;
+  .bev-logo-mobile {
+    width: 55px;
+    height: 68px;
+    object-fit: contain;
   }
 
-  .bev-brand-sub {
-    font-size: 1.05rem; /* más grande */
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--pr-gray-1200); /* #F23838 rojo como pediste */
-    margin-top: -2px;
-  }
-
-  /* LINKS - más grandes y con más vida */
+  /* ── Links ── */
   .bev-navbar .nav-link {
     position: relative;
     color: var(--navbar-text);
-    font-size: 1.05rem; /* más grande */
-    letter-spacing: 0.14em;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 0.6rem 1.1rem;
-    transition: all 0.25s ease;
+    padding: 0.6rem 0.9rem;
+    transition: color 0.25s ease, letter-spacing 0.25s ease;
   }
 
   .bev-navbar .nav-link:hover {
     color: var(--navbar-accent);
-    letter-spacing: 0.18em; /* efecto extra de vida */
+    letter-spacing: 0.16em;
   }
 
-  /* EFECTO SUBRAYADO más visible */
-  .bev-navbar .nav-link::after {
-    content: "";
-    position: absolute;
-    left: 12%;
-    bottom: 8px;
-    width: 0%;
-    height: 3px;
-    background-color: var(--navbar-accent);
-    transition: width 0.35s ease;
+  /* Subrayado animado (solo desktop) */
+  @media (min-width: 992px) {
+    .bev-navbar .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 12%;
+      bottom: 6px;
+      width: 0%;
+      height: 3px;
+      background-color: var(--navbar-accent);
+      transition: width 0.35s ease;
+    }
+
+    .bev-navbar .nav-link:hover::after,
+    .bev-navbar .nav-link.active::after {
+      width: 76%;
+    }
+
+    /* Separadores entre items */
+    .bev-nav-item {
+      position: relative;
+    }
+
+    .bev-nav-item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.5px;
+      height: 22px;
+      background-color: var(--pr-gray-200);
+      opacity: 0.75;
+    }
   }
 
-  .bev-navbar .nav-link:hover::after,
-  .bev-navbar .nav-link.active::after {
-    width: 76%;
-  }
-
-  /* SEPARADORES ENTRE BOTONES (más notorios y gruesos para que no se vea vacío) */
-  .bev-nav-item {
-    position: relative;
-  }
-
-  .bev-nav-item:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    right: -4px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1.5px; /* más grueso */
-    height: 24px; /* más alto para aprovechar el espacio vertical */
-    background-color: var(--pr-gray-200);
-    opacity: 0.75;
-  }
-
-  /* CARRITO */
+  /* ── Carrito ── */
   .bev-cart-btn {
-    padding-left: 1.2rem;
+    padding-left: 1rem;
   }
 
   .bev-cart-badge {
@@ -183,26 +203,27 @@
     justify-content: center;
   }
 
-  /* MOBILE */
-  @media (max-width: 992px) {
+  /* ── Menú colapsado (móvil) ── */
+  @media (max-width: 991px) {
     .bev-navbar {
-      padding: 1rem 0;
+      padding: 0.85rem 0;
+    }
+
+    #navbarMenu {
+      background-color: var(--pr-gray-100);
+      border-top: 1px solid var(--pr-gray-200);
+      margin-top: 0.75rem;
+      padding: 0.5rem 0 1rem;
     }
 
     .bev-navbar .nav-link {
-      padding: 0.7rem 0;
-      font-size: 1rem;
+      padding: 0.65rem 1.25rem;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--pr-gray-200);
     }
 
-    .bev-nav-item::after {
-      display: none; /* no separadores en móvil */
-    }
-
-    .bev-brand-main {
-      font-size: 1.3rem;
-    }
-    .bev-brand-sub {
-      font-size: 0.9rem;
+    .bev-navbar .nav-link:last-child {
+      border-bottom: none;
     }
   }
 </style>

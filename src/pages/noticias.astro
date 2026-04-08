@@ -18,13 +18,12 @@ const categoriaTextos: Record<string, string> = {
   premio: "Premio",
 };
 
-const formatearFecha = (fecha: string) => {
-  return new Date(fecha).toLocaleDateString("es-CO", {
+const formatearFecha = (fecha: string) =>
+  new Date(fecha).toLocaleDateString("es-CO", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-};
 
 const noticiasOrdenadas = [...noticias].sort(
   (a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime()
@@ -38,12 +37,11 @@ const noticiasOrdenadas = [...noticias].sort(
       <!-- ENCABEZADO -->
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
+          <!-- bev-section-tag y bev-divider vienen de utilities.css -->
           <span class="bev-section-tag">Actualidad</span>
           <h1 class="display-4 fw-bold mt-3 mb-4">Noticias</h1>
           <div class="bev-divider mx-auto mb-4"></div>
-          <p class="lead bev-text-muted">
-            Eventos, lanzamientos y todo lo que pasa en Bajo el Volcán.
-          </p>
+          <p class="lead">Eventos, lanzamientos y todo lo que pasa en Bajo el Volcán.</p>
         </div>
       </div>
 
@@ -61,45 +59,44 @@ const noticiasOrdenadas = [...noticias].sort(
 
       <!-- TARJETAS -->
       <div class="row g-4 mb-5" id="noticiasGrid">
-        {
-          noticiasOrdenadas.map((noticia) => (
-            <div
-              class="col-12 col-md-6 col-lg-4 bev-noticia-item"
-              data-categoria={noticia.categoria}
-            >
-              <a href={`/noticias/${noticia.slug}`} class="text-decoration-none">
-                <div class="bev-noticia-card h-100">
-                  <div class="bev-noticia-img">
-                    {noticia.imagen ? (
-                      <img
-                        src={noticia.imagen}
-                        alt={noticia.titulo}
-                        onerror="this.parentElement.classList.add('bev-img-fallback')"
-                      />
-                    ) : (
-                      <div class="bev-img-placeholder">
-                        <i class="bi bi-newspaper"></i>
-                      </div>
-                    )}
-                    <span class={`bev-categoria-badge ${categoriaColores[noticia.categoria] || ''}`}>
-                      {categoriaTextos[noticia.categoria] || noticia.categoria}
-                    </span>
-                  </div>
-                  <div class="bev-noticia-body p-4">
-                    <p class="bev-noticia-fecha mb-2">
-                      <i class="bi bi-calendar3 me-1"></i>
-                      {formatearFecha(noticia.fecha)}
-                    </p>
-                    <h5 class="bev-noticia-titulo mb-2">{noticia.titulo || "Sin título"}</h5>
-                    <p class="bev-noticia-resumen mb-0">
-                      {noticia.resumen || "Sin resumen disponible."}
-                    </p>
-                  </div>
+        {noticiasOrdenadas.map((noticia) => (
+          <div
+            class="col-12 col-md-6 col-lg-4 bev-noticia-item"
+            data-categoria={noticia.categoria}
+          >
+            <a href={`/noticias/${noticia.slug}`} class="text-decoration-none d-block h-100">
+              <div class="bev-noticia-card h-100">
+                <div class="bev-noticia-img">
+                  {noticia.imagen ? (
+                    <img
+                      src={noticia.imagen}
+                      alt={noticia.titulo}
+                      loading="lazy"
+                      onerror="this.parentElement.classList.add('bev-img-fallback')"
+                    />
+                  ) : (
+                    <div class="bev-img-placeholder">
+                      <i class="bi bi-newspaper"></i>
+                    </div>
+                  )}
+                  <span class={`bev-categoria-badge ${categoriaColores[noticia.categoria] || ""}`}>
+                    {categoriaTextos[noticia.categoria] || noticia.categoria}
+                  </span>
                 </div>
-              </a>
-            </div>
-          ))
-        }
+                <div class="bev-noticia-body p-4">
+                  <p class="bev-noticia-fecha mb-2">
+                    <i class="bi bi-calendar3 me-1"></i>
+                    {formatearFecha(noticia.fecha)}
+                  </p>
+                  <h5 class="bev-noticia-titulo mb-2">{noticia.titulo || "Sin título"}</h5>
+                  <p class="bev-noticia-resumen mb-0">
+                    {noticia.resumen || "Sin resumen disponible."}
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        ))}
       </div>
 
     </div>
@@ -107,58 +104,35 @@ const noticiasOrdenadas = [...noticias].sort(
 </Layout>
 
 <script>
-  const filtros = document.querySelectorAll(".bev-filtro");
-  const items = document.querySelectorAll(".bev-noticia-item");
+  document.addEventListener("astro:page-load", () => {
+    const filtros = document.querySelectorAll(".bev-filtro");
+    const items = document.querySelectorAll<HTMLElement>(".bev-noticia-item");
 
-  filtros.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      filtros.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const filtro = btn.getAttribute("data-filtro");
-
-      items.forEach((item) => {
-        const categoria = item.getAttribute("data-categoria");
-        if (filtro === "todos" || categoria === filtro) {
-          (item as HTMLElement).style.display = "block";
-        } else {
-          (item as HTMLElement).style.display = "none";
-        }
+    filtros.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filtros.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filtro = btn.getAttribute("data-filtro");
+        items.forEach((item) => {
+          const categoria = item.getAttribute("data-categoria");
+          item.style.display = (filtro === "todos" || categoria === filtro) ? "" : "none";
+        });
       });
     });
   });
 </script>
+
 <style>
   .bev-noticias {
-    /* Tu fondo es claro (#F2F2F2), así que el texto debe ser oscuro */
-    background-color: var(--pr-gray-1000); 
+    background-color: var(--pr-gray-1000);
     min-height: 100vh;
-    color: var(--pr-gray-1000); /* Cambiado de white a gray-900 (negro) */
-  }
-
-  .bev-section-tag {
-    /* Ajustado para que se vea sobre fondo claro */
-    background-color: rgba(0,0,0,0.05);
     color: var(--pr-gray-900);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-  }
-
-  .bev-divider {
-    height: 4px;
-    width: 60px;
-    background-color: var(--pr-gray-900);
-    border-radius: 2px;
   }
 
   /* Filtros */
   .bev-filtro {
     background: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     color: var(--pr-gray-900);
     padding: 6px 18px;
     border-radius: 20px;
@@ -178,7 +152,6 @@ const noticiasOrdenadas = [...noticias].sort(
 
   /* Tarjetas */
   .bev-noticia-card {
-    /* Fondo blanco para resaltar sobre el gris claro del body */
     background-color: var(--pr-white);
     border: 1px solid var(--pr-gray-900);
     border-radius: 12px;
@@ -189,7 +162,6 @@ const noticiasOrdenadas = [...noticias].sort(
   .bev-noticia-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-md);
-    border-color: var(--pr-gray-900);
   }
 
   .bev-noticia-img {
@@ -230,19 +202,17 @@ const noticiasOrdenadas = [...noticias].sort(
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    z-index: 10;
   }
 
-  /* Clases de Categoría usando tus variables actuales */
-  .bev-cat-evento { background-color: var(--pr-gray-400); color: var(--pr-gray-900); }
+  .bev-cat-evento      { background-color: var(--pr-gray-400); color: var(--pr-gray-900); }
   .bev-cat-lanzamiento { background-color: var(--pr-gray-900); color: var(--pr-white); }
-  .bev-cat-convocatoria { background-color: var(--pr-gray-100); color: var(--pr-gray-900); }
-  .bev-cat-entrevista { background-color: var(--pr-gray-700); color: var(--pr-white); }
-  .bev-cat-premio { background-color: var(--pr-gray-200); color: var(--pr-gray-900); }
+  .bev-cat-convocatoria{ background-color: var(--pr-gray-100); color: var(--pr-gray-900); }
+  .bev-cat-entrevista  { background-color: var(--pr-gray-700); color: var(--pr-white); }
+  .bev-cat-premio      { background-color: var(--pr-gray-200); color: var(--pr-gray-900); }
 
   .bev-noticia-fecha {
     font-size: 0.78rem;
-    color: var(--pr-gray-900);
+    color: var(--pr-gray-700);
   }
 
   .bev-noticia-titulo {
@@ -254,15 +224,11 @@ const noticiasOrdenadas = [...noticias].sort(
 
   .bev-noticia-resumen {
     font-size: 0.88rem;
-    color: var(--pr-gray-900);
+    color: var(--pr-gray-700);
     line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-  .bev-text-muted {
-    color: var(--pr-gray-900);
   }
 </style>

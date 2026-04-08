@@ -1,0 +1,143 @@
+/* ============================================================
+   BAJO EL VOLCÁN — utilidades globales compartidas
+   Extraídas de páginas y componentes para evitar duplicación
+   ============================================================ */
+
+/* ── Encabezados de sección ── */
+.bev-section-tag {
+  display: inline-block;
+  background-color: var(--pr-gray-900);
+  color: var(--pr-gray-1000);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.bev-section-tag-light {
+  display: block;
+  font-size: 1.35rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--pr-gray-1200);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.bev-section-title {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--pr-gray-1200);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.bev-section-dark {
+  background-color: var(--pr-gray-1000);
+}
+
+.bev-section-light {
+  background-color: var(--pr-gray-50);
+}
+
+/* ── Divisor decorativo ── */
+.bev-divider {
+  height: 4px;
+  width: 60px;
+  background-color: var(--pr-gray-900);
+  border-radius: 2px;
+}
+
+/* ── Etiquetas de libros (usadas en carrusel y modal) ── */
+.bev-etiqueta {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  z-index: 3;
+  text-transform: uppercase;
+}
+
+.bev-etiqueta-nuevo {
+  background: var(--pr-gray-900);
+  color: var(--pr-white);
+}
+
+.bev-etiqueta-destacado {
+  background: var(--pr-gray-400);
+  color: var(--pr-gray-900);
+}
+
+.bev-etiqueta-preventa {
+  background: var(--pr-gray-1200);
+  color: var(--pr-white);
+}
+
+/* ── Botones globales ── */
+.bev-btn-gold {
+  background-color: var(--pr-gray-900);
+  color: var(--pr-white);
+  border: none;
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.3s, color 0.3s;
+}
+
+.bev-btn-gold:hover {
+  background: var(--pr-gray-400);
+  color: var(--pr-gray-900);
+}
+
+.bev-btn-outline {
+  background: transparent;
+  border: 1px solid var(--pr-gray-900);
+  color: var(--pr-gray-900);
+  font-size: 0.82rem;
+  padding: 0.45rem 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.bev-btn-outline:hover {
+  background: var(--pr-gray-900);
+  color: var(--pr-white);
+}
+
+/* ── Hero badge (carrusel hero) ── */
+.bev-hero-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+  border-radius: 2px;
+}
+
+/* ── Contenedor base ── */
+.bev-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Toast ── */
+.bev-toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}

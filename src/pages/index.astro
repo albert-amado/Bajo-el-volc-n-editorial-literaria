@@ -9,21 +9,17 @@ import Premios from "../components/premios.astro";
 
 <Layout title="Bajo el Volcán">
   <CarruselHero />
-  <Premios/>
-  
 
+  <Premios />
+
+  <!-- Catálogo de libros -->
   <section class="py-5 bev-section-light">
-    <div class="container">
-      <div class="col-12 col-lg-12">
-        <CarruselLibros />
-      </div>
-    </div>
-    <section class="bev-section-dark py-5">
-      <div class="container">
-        <Autores />
-      </div>
-    </section>
+    <CarruselLibros />
   </section>
+
+  <!-- Autores -->
+  <Autores />
+
+  <!-- Modal (único, fuera de secciones) -->
   <Modallibros />
-  <script type="module" src="/js/main.js"></script>
 </Layout>

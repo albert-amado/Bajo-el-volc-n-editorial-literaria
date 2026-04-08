@@ -20,6 +20,7 @@ const getInitials = (nombre: string) => {
       <!-- ENCABEZADO -->
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
+          <!-- bev-section-tag viene de utilities.css -->
           <span class="bev-section-tag">Quiénes somos</span>
           <h1 class="display-4 fw-bold mt-3 mb-4">Bajo el Volcán</h1>
           <div class="bev-divider mx-auto mb-4"></div>
@@ -29,14 +30,14 @@ const getInitials = (nombre: string) => {
         </div>
       </div>
 
-      <!-- MISIÓN Y VISIÓN -->
-      <div class="row g-4 mb-5 justify-content-center"> <!-- ← CENTRADO AQUÍ -->
-        <div class="col-12 col-md-8 col-lg-7"> <!-- ← más ancho y centrado en toda la página -->
+      <!-- QUIÉNES SOMOS -->
+      <div class="row g-4 mb-5 justify-content-center">
+        <div class="col-12 col-md-8 col-lg-7">
           <div class="bev-info-card h-100 p-5">
 
-            <!-- Sello logo de fondo (igual que en la sección del equipo) -->
-            <div class="bev-info-sello">
-              <img src="/public/assets/img/ui/logo.png" alt="Bajo el Volcán" />
+            <div class="bev-info-sello" aria-hidden="true">
+              <!-- Ruta corregida: sin /public/ -->
+              <img src="/assets/img/ui/logo.png" alt="" />
             </div>
 
             <div class="bev-info-icon mb-3">
@@ -44,7 +45,9 @@ const getInitials = (nombre: string) => {
             </div>
             <h4 class="fw-bold mb-3">¿Quiénes somos?</h4>
             <p>
-              Somos una editorial literaria independiente; apostamos por voces nuevas que se arriesgan a contar. Creemos en el oficio editorial de rescate literario. Publicamos clásicos, autores contemporáneos y narrativa, con el objetivo de fomentar la reflexión y la experiencia literaria.
+              Somos una editorial literaria independiente; apostamos por voces nuevas que se arriesgan a contar.
+              Creemos en el oficio editorial de rescate literario. Publicamos clásicos, autores contemporáneos
+              y narrativa, con el objetivo de fomentar la reflexión y la experiencia literaria.
             </p>
           </div>
         </div>
@@ -60,53 +63,39 @@ const getInitials = (nombre: string) => {
       </div>
 
       <div class="row g-4 justify-content-center mb-5">
-        {
-          equipo.map((persona) => (
-            <div class="col-6 col-md-4 col-lg-3">
-              <div class="bev-team-card text-center p-4 h-100">
+        {equipo.map((persona) => (
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="bev-team-card text-center p-4 h-100">
 
-                <!-- Sello logo -->
-                <div class="bev-team-sello">
-                  <img src="/public/assets/img/ui/logo.png" alt="Bajo el Volcán" />
-                </div>
-
-                <!-- Avatar -->
-                <div class="bev-team-avatar mx-auto mb-4">
-                  <img
-                    src={persona.foto || ''}
-                    alt={persona.nombre}
-                    style={persona.foto ? '' : 'display:none'}
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                  />
-                  <div
-                    class="bev-team-fallback"
-                    style={persona.foto ? 'display:none' : 'display:flex'}
-                  >
-                    {getInitials(persona.nombre)}
-                  </div>
-                </div>
-
-                <!-- Nombre -->
-                <h4 class="fw-bold mb-1">
-                  {persona.nombre || "Por definir"}
-                </h4>
-
-                <!-- Cargo -->
-                <p class="bev-team-cargo mb-3">
-                  {persona.cargo || ""}
-                </p>
-
-                <!-- Separador -->
-                <div class="bev-team-divider mx-auto mb-3"></div>
-
-                <!-- Bio -->
-                {persona.bio && (
-                  <p class="bev-team-bio">{persona.bio}</p>
-                )}
+              <div class="bev-team-sello" aria-hidden="true">
+                <!-- Ruta corregida: sin /public/ -->
+                <img src="/assets/img/ui/logo.png" alt="" />
               </div>
+
+              <div class="bev-team-avatar mx-auto mb-4">
+                <img
+                  src={persona.foto || ""}
+                  alt={persona.nombre}
+                  style={persona.foto ? "" : "display:none"}
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div
+                  class="bev-team-fallback"
+                  style={persona.foto ? "display:none" : "display:flex"}
+                >
+                  {getInitials(persona.nombre)}
+                </div>
+              </div>
+
+              <h4 class="fw-bold mb-1">{persona.nombre || "Por definir"}</h4>
+              <p class="bev-team-cargo mb-3">{persona.cargo || ""}</p>
+              <div class="bev-team-divider mx-auto mb-3"></div>
+              {persona.bio && <p class="bev-team-bio">{persona.bio}</p>}
+
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
 
     </div>
@@ -120,93 +109,74 @@ const getInitials = (nombre: string) => {
     color: var(--pr-gray-900);
   }
 
-  /* Tag */
-  .bev-section-tag {
-    background-color: var(--pr-gray-900);
-    color: var(--pr-gray-1000);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-  }
-
-  /* Divider */
-  .bev-divider {
-    height: 4px;
-    width: 60px;
-    background-color: var(--pr-gray-900);
-    border-radius: 2px;
-  }
-
-  /* Cards misión/visión - RECUADRO MODIFICADO */
+  /* ── Card misión ── */
   .bev-info-card {
     background-color: var(--pr-white);
     border: 1px solid var(--pr-gray-900);
     border-radius: 12px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
     position: relative;
     overflow: hidden;
-    padding: 2.5rem;
   }
 
   .bev-info-card:hover {
     transform: translateY(-4px);
-    border-color: var(--pr-gray-900);
   }
 
-  /* Logo de fondo semitransparente */
   .bev-info-sello {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 240px;
-    height: 240px;
-    opacity: 0.18;
+    width: 220px;
+    height: 220px;
+    opacity: 0.15;
     pointer-events: none;
     z-index: 0;
   }
 
   .bev-info-sello img {
-    width: 120%;
-    height: 120%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
   }
 
-  /* Contenido del recuadro: grande y en negrita */
-  .bev-info-card .bev-info-icon {
-    font-size: 3rem;
+  .bev-info-icon {
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 1;
   }
 
   .bev-info-card h4 {
-    font-size: 2.25rem !important;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.2;
+    position: relative;
+    z-index: 1;
   }
 
   .bev-info-card p {
-    font-size: 1.35rem !important;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 500;
     line-height: 1.7;
-    opacity: 1 !important;
+    position: relative;
+    z-index: 1;
   }
 
-  /* Card equipo (sin cambios) */
+  /* ── Cards equipo ── */
   .bev-team-card {
     background-color: var(--pr-white);
     border: 1px solid var(--pr-gray-200);
     border-radius: 16px;
     border-left: 5px solid var(--pr-gray-900);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
   }
 
   .bev-team-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
     border-left-color: var(--pr-gray-400);
   }
 
@@ -215,28 +185,28 @@ const getInitials = (nombre: string) => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 180px;
-    height: 180px;
-    opacity: 0.3;
+    width: 160px;
+    height: 160px;
+    opacity: 0.25;
     pointer-events: none;
     z-index: 0;
   }
 
   .bev-team-sello img {
-    width: 120%;
-    height: 120%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
   }
 
   .bev-team-avatar {
-    width: 170px;
-    height: 170px;
+    width: clamp(90px, 12vw, 160px);
+    height: clamp(90px, 12vw, 160px);
     border-radius: 50%;
     overflow: hidden;
     border: 4px solid var(--pr-gray-900);
     position: relative;
     z-index: 1;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   }
 
   .bev-team-avatar img {
@@ -253,13 +223,13 @@ const getInitials = (nombre: string) => {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: bold;
     color: var(--pr-gray-900);
   }
 
   .bev-team-card h4 {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: var(--pr-gray-900);
     position: relative;
     z-index: 1;
@@ -267,7 +237,7 @@ const getInitials = (nombre: string) => {
 
   .bev-team-cargo {
     color: var(--pr-gray-900);
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     font-weight: 700;
@@ -285,15 +255,11 @@ const getInitials = (nombre: string) => {
   }
 
   .bev-team-bio {
-    font-size: 0.99rem;
+    font-size: 0.95rem;
     color: var(--pr-gray-700);
     line-height: 1.65;
     position: relative;
     z-index: 1;
     margin: 0;
-  }
-
-  hr {
-    border-color: var(--pr-gray-900);
   }
 </style>

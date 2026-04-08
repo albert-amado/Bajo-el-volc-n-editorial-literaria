@@ -1,9 +1,9 @@
 ---
 import libros from "../data/libros.json";
+
 const slides = libros.slice(0, 9);
 ---
 
-<!-- Pegado al navbar (sin espacio superior) -->
 <section class="pt-0 pb-4">
   <div class="container-fluid px-0">
     <div
@@ -34,8 +34,7 @@ const slides = libros.slice(0, 9);
             <div class="bev-slide-overlay"></div>
             <div class="container h-100">
               <div class="row h-100 align-items-center justify-content-center">
-                <!-- Ahora el contenido ocupa casi todo el ancho y está CENTRADO -->
-                <div class="col-lg-10 col-12 bev-slide-content text-center mx-auto">
+                <div class="col-11 col-lg-10 bev-slide-content text-center mx-auto">
 
                   {libro.etiqueta === "nuevo" && (
                     <span class="bev-hero-badge bev-etiqueta-nuevo">Nuevo</span>
@@ -69,13 +68,12 @@ const slides = libros.slice(0, 9);
         ))}
       </div>
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Anterior">
         <span class="carousel-control-prev-icon"></span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Siguiente">
         <span class="carousel-control-next-icon"></span>
       </button>
-
     </div>
   </div>
 </section>
@@ -98,16 +96,13 @@ const slides = libros.slice(0, 9);
 <style is:global>
   .bev-carousel-custom {
     width: 100%;
-    max-width: 100%;
-    margin: 0;
     overflow: hidden;
     box-shadow: var(--shadow-md);
-    border-radius: 0;
   }
 
   .bev-slide {
     height: 70vh;
-    min-height: 300px;
+    min-height: 320px;
     position: relative;
     background-size: cover;
     background-position: center;
@@ -123,8 +118,7 @@ const slides = libros.slice(0, 9);
     background: linear-gradient(
       to right,
       rgba(0, 0, 0, 0.85) 0%,
-      rgba(0, 0, 0, 0.75) 35%,
-      rgba(0, 0, 0, 0.75) 65%,
+      rgba(0, 0, 0, 0.72) 50%,
       rgba(0, 0, 0, 0.85) 100%
     );
   }
@@ -132,61 +126,54 @@ const slides = libros.slice(0, 9);
   .bev-slide-content {
     position: relative;
     z-index: 2;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center; /* centrado vertical y horizontal */
+    align-items: center;
   }
 
-  /* TEXTO MUCHO MÁS GRANDE, NOTORIO Y EN NEGRITA */
   .bev-eyebrow {
-    font-size: 1.1rem;
+    font-size: 1rem;
     letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--pr-white);
     opacity: 0.9;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-weight: 600;
   }
 
   .bev-slide-title {
     font-family: "Lato", sans-serif;
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    font-weight: 800; /* mucho más negrita */
+    font-size: clamp(2rem, 5vw, 5rem);
+    font-weight: 800;
     color: var(--pr-white);
     margin-bottom: 0.4rem;
     line-height: 1.05;
   }
 
   .bev-slide-author {
-    font-size: 1.35rem;
+    font-size: clamp(1rem, 2vw, 1.35rem);
     font-style: italic;
     color: var(--pr-white);
     opacity: 0.95;
-    margin-bottom: 1.2rem;
-    font-weight: 700; /* negrita */
+    margin-bottom: 1rem;
+    font-weight: 700;
   }
 
   .bev-slide-desc {
-    font-size: 1.25rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.25rem);
     color: var(--pr-white);
     opacity: 0.9;
     max-width: 720px;
-    line-height: 1.4;
+    line-height: 1.5;
     font-weight: 500;
   }
 
-  /* Botones también centrados */
-  .d-flex.gap-3.flex-wrap.mt-4.justify-content-center {
-    justify-content: center;
-  }
-
-  /* FLECHAS (sin cambios) */
+  /* Flechas */
   .bev-carousel-custom .carousel-control-prev,
   .bev-carousel-custom .carousel-control-next {
-    width: 80px;
-    height: 80px;
+    width: 64px;
+    height: 64px;
     top: 50%;
     transform: translateY(-50%);
     opacity: 1;
@@ -206,44 +193,43 @@ const slides = libros.slice(0, 9);
 
   .bev-carousel-custom .carousel-control-prev-icon,
   .bev-carousel-custom .carousel-control-next-icon {
-    width: 48px;
-    height: 48px;
-    background-size: 100% 100%;
+    width: 36px;
+    height: 36px;
     filter: brightness(0) invert(1);
   }
 
+  /* ── Responsive ── */
   @media (max-width: 768px) {
     .bev-slide {
-      height: 50vh; /* un poco más alto en móvil para que el texto grande respire */
-    }
-
-    .bev-slide-content {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-
-    .bev-slide-title {
-      font-size: clamp(2.2rem, 7vw, 3.8rem);
-    }
-
-    .bev-slide-author {
-      font-size: 1.15rem;
-    }
-
-    .bev-slide-desc {
-      font-size: 1.1rem;
+      height: 55vh;
+      min-height: 280px;
     }
 
     .bev-carousel-custom .carousel-control-prev,
     .bev-carousel-custom .carousel-control-next {
-      width: 60px;
-      height: 60px;
+      width: 44px;
+      height: 44px;
     }
 
     .bev-carousel-custom .carousel-control-prev-icon,
     .bev-carousel-custom .carousel-control-next-icon {
-      width: 36px;
-      height: 36px;
+      width: 26px;
+      height: 26px;
+    }
+
+    .bev-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bev-slide {
+      height: 60vh;
+    }
+
+    .bev-slide-desc {
+      display: none; /* Ocultar descripción en móviles muy pequeños */
     }
   }
 </style>

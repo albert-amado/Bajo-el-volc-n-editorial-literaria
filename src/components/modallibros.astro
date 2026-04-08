@@ -1,10 +1,7 @@
 ---
-
 ---
-
-<!-- ── MODAL DETALLE DEL LIBRO ── -->
-<div class="modal fade" id="modalLibro" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
+<div class="modal fade" id="modalLibro" tabindex="-1" aria-hidden="true" aria-label="Detalle del libro">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content bev-modal-content">
 
       <div class="bev-modal-header d-flex justify-content-end">
@@ -12,6 +9,7 @@
           type="button"
           class="btn-close btn-close-white"
           data-bs-dismiss="modal"
+          aria-label="Cerrar"
         ></button>
       </div>
 
@@ -37,7 +35,6 @@
 
             <!-- Precio y carrito -->
             <div class="bev-modal-footer-row mt-auto pt-3">
-              <!-- RECUADRO DEL PRECIO con --pr-gray-1200 -->
               <span id="modalPrecio" class="bev-modal-precio"></span>
               <button id="modalBtnCarrito" class="btn bev-btn-gold d-flex align-items-center gap-2">
                 Comprar ahora
@@ -48,7 +45,6 @@
             <div class="bev-modal-autor-section mt-4 pt-4">
               <div class="d-flex align-items-start gap-3">
 
-                <!-- Foto (más grande) -->
                 <img
                   id="modalAutorFoto"
                   src=""
@@ -57,12 +53,10 @@
                   onerror="this.style.display='none'; document.getElementById('modalAutorFallback').style.display='flex';"
                 />
 
-                <!-- Fallback iniciales -->
                 <div id="modalAutorFallback" class="bev-modal-autor-fallback">
                   <span id="modalAutorIniciales"></span>
                 </div>
 
-                <!-- Texto autor -->
                 <div>
                   <p class="bev-modal-autor-label">Autor</p>
                   <p id="modalAutorNombreDetalle" class="bev-modal-autor-nombre"></p>
@@ -93,34 +87,30 @@
     padding: 0.75rem 1rem;
   }
 
-  .bev-modal-row {
-    min-height: 560px; /* un poco más alto para que quepa todo más grande */
+  /* Sin min-height fija: el modal se adapta al contenido */
+  .bev-modal-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--pr-gray-50);
   }
 
- .bev-modal-cover {
-  min-height: 380px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
- .bev-modal-cover-img {
-  width: 100%;
-  height: auto;
-  max-height: 560px;
-  object-fit: contain;
-  display: block;
-}
-
+  .bev-modal-cover-img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    display: block;
+  }
 
   .bev-modal-info {
     background: var(--pr-gray-400);
   }
 
-  /* Título y texto más grandes */
   .bev-modal-titulo {
     font-family: var(--font-display);
-    font-size: 2.4rem;        /* más grande */
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
     font-weight: 700;
     color: var(--bev-ink);
     margin-bottom: 0.25rem;
@@ -128,15 +118,14 @@
   }
 
   .bev-modal-autor {
-    font-size: 1.25rem;       /* más grande */
+    font-size: 1.1rem;
     font-style: italic;
     color: var(--bev-ash);
     margin-bottom: 1rem;
   }
 
-  /* BIOGRAFÍA DEL LIBRO - más grande */
   .bev-modal-desc {
-    font-size: 1.15rem;       /* más grande */
+    font-size: 1.05rem;
     color: var(--bev-charcoal);
     line-height: 1.8;
   }
@@ -146,20 +135,19 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1rem;
     border-top: 1px solid var(--bev-cream-dk);
   }
 
-  /* RECUADRO DEL PRECIO con --pr-gray-1200 */
+  /* Precio — color único (corregido: color duplicado eliminado) */
   .bev-modal-precio {
     font-family: var(--font-display);
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: 700;
-    color: var(--pr-gray-1200);
+    color: var(--pr-white);
     background-color: var(--pr-gray-1200);
-    color: #fff;                    /* texto blanco para que contraste */
-    padding: 0.75rem 1.75rem;
-    border-radius: 12px;
+    padding: 0.65rem 1.5rem;
+    border-radius: 10px;
     display: inline-block;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
@@ -171,15 +159,13 @@
     padding: 4px 12px;
   }
 
-  /* Sección autor */
   .bev-modal-autor-section {
     border-top: 1px solid var(--bev-cream-dk);
   }
 
-  /* FOTO DEL AUTOR - más grande */
   .bev-modal-autor-foto {
-    width: 92px;
-    height: 92px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     object-position: top;
@@ -189,21 +175,21 @@
 
   .bev-modal-autor-fallback {
     display: none;
-    width: 92px;
-    height: 92px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background: var(--pr-gray-400);
+    background: var(--pr-gray-200);
     border: 3px solid var(--pr-gray-900);
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--pr-gray-900);
     font-weight: 700;
   }
 
   .bev-modal-autor-label {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--pr-gray-700);
@@ -214,21 +200,36 @@
     font-weight: 700;
     color: var(--pr-gray-900);
     margin-bottom: 0.4rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
-  /* BIO DEL AUTOR - más grande */
   .bev-modal-autor-bio {
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     color: var(--pr-gray-700);
     line-height: 1.75;
     margin: 0;
   }
 
-  /* Botón más grande y con imagen de pagos */
   #modalBtnCarrito {
-    font-size: 1.1rem;
-    padding: 0.85rem 1.75rem;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
     font-weight: 700;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 767px) {
+    .bev-modal-cover-img {
+      max-height: 280px;
+    }
+
+    .bev-modal-precio {
+      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .bev-modal-footer-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 </style>
