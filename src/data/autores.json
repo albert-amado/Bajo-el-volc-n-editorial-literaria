@@ -19,7 +19,7 @@
     "id": 3,
     "nombre": "Juana Carolina",
     "nacionalidad": "Colombia",
-    "bio": "",
+    "bio": "Juana Carolina nació en Bogotá, Colombia. Es profesional en Creación Literaria y ha compartido sus cuentos y reseñas en medios como El Espectador, Publímetro y El País Cali. Su escritura nace de la narrativa contemporánea y la cultura pop. Instinto de Partida es su primer libro de cuentos.",
     "foto": "/assets/img/autores/Juanacarolina.webp",
     "libros_ids": [3]
   },
@@ -34,8 +34,8 @@
   {
     "id": 6,
     "nombre": "Fabiana Bartra",
-    "nacionalidad": "",
-    "bio": "",
+    "nacionalidad": "Colombia",
+    "bio": "Nació en Cali. Es profesional en artes visuales y trabaja en una agencia publicitaria. Le gusta dibujar rostros femeninos y escribir poemas sobre la mujer. Yo no maté ese gato es su primer libro.",
     "foto": "/assets/img/autores/",
     "libros_ids": [6]
   },
