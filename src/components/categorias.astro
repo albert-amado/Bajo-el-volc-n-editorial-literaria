@@ -1,5 +1,7 @@
 ---
+
 ---
+
 <div class="row g-4 mb-4">
   <div class="col-12">
     <div class="bev-categorias-container">
@@ -7,7 +9,9 @@
       <ul class="bev-categorias-lista-horizontal" id="listaCategorias">
         <li class="bev-categoria-item activo" data-categoria="todos">Todos</li>
         <li class="bev-categoria-item" data-categoria="nuevo">Nuevos</li>
-        <li class="bev-categoria-item" data-categoria="destacado">Destacados</li>
+        <li class="bev-categoria-item" data-categoria="destacado">
+          Destacados
+        </li>
         <li class="bev-categoria-item" data-categoria="preventa">Preventa</li>
         <li class="bev-categoria-item" data-categoria="Misterio">Misterio</li>
         <li class="bev-categoria-item" data-categoria="Romance">Romance</li>
@@ -20,74 +24,76 @@
 </div>
 <style is:global>
   .bev-categorias {
-  border-right: 1px solid rgba(255,255,255,0.08);
-}
-
-.bev-categorias-titulo {
-  font-family: var(--font-body);
-  font-size: 0.80rem;
-  font-weight: 700;
-  letter-spacing: 0.5em;
-  color: var(--bev-red);
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 2px solid var(--bev-red);
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
-}
-
-.bev-categorias-lista {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.bev-categoria-item {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--bev-charcoal);
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  cursor: pointer;
-  transition: color 0.25s, padding-left 0.25s, letter-spacing 0.25s;
-}
-
-.bev-categoria-item:hover {
-  color: var(--bev-red);          
-  padding-left: 6px;
-  letter-spacing: 0.05em;        
-}
-.bev-categoria-item.activo {
-  color: var(--bev-ink);
-  font-weight: 700;
-  padding-left: 6px;
-}
-
-@media (max-width: 991px) {
-  .bev-categorias {
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding-right: 0;
-    padding-bottom: 1rem;
-    min-height: auto;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
   }
-  .bev-categorias-lista {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .bev-categoria-item {
-    border: 1px solid var(--bev-cream-dk);
-    padding: 0.3rem 0.8rem;
-    border-bottom: 1px solid var(--bev-cream-dk);
+
+  .bev-categorias-titulo {
+    font-family: var(--font-body);
     font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5em;
+    color: var(--bev-red);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 2px solid var(--bev-red);
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+  }
+
+  .bev-categorias-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .bev-categoria-item {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--bev-charcoal);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition:
+      color 0.25s,
+      padding-left 0.25s,
+      letter-spacing 0.25s;
+  }
+
+  .bev-categoria-item:hover {
+    color: var(--bev-red);
+    padding-left: 6px;
+    letter-spacing: 0.05em;
   }
   .bev-categoria-item.activo {
-    background: var(--bev-ink);
-    color: var(--bev-gold);
-    border-color: var(--bev-ink);
-    padding-left: 0.8rem;
+    color: var(--bev-ink);
+    font-weight: 700;
+    padding-left: 6px;
   }
-}
 
+  @media (max-width: 991px) {
+    .bev-categorias {
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-right: 0;
+      padding-bottom: 1rem;
+      min-height: auto;
+    }
+    .bev-categorias-lista {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .bev-categoria-item {
+      border: 1px solid var(--bev-cream-dk);
+      padding: 0.3rem 0.8rem;
+      border-bottom: 1px solid var(--bev-cream-dk);
+      font-size: 0.8rem;
+    }
+    .bev-categoria-item.activo {
+      background: var(--bev-ink);
+      color: var(--bev-gold);
+      border-color: var(--bev-ink);
+      padding-left: 0.8rem;
+    }
+  }
 </style>

@@ -1,22 +1,32 @@
 [
   {
     "id": 1,
-    "titulo": "",
-    "resumen": "",
-    "contenido": "",
-    "imagen": "",
-    "fecha": "2026-04-04",
+    "titulo": "Premio Nacional de Novela 2027",
+    "resumen": "«¡Convocatoria al Primer Premio Nacional de Novela: Bajo el Volcán Ediciones! Se recibirán postulaciones a partir del día 8 de abril de 2026 hasta el 31 de octubre de 2026.»",
+    "contenido": "La premiacion sera el dia sabado: 10/04/2027",
+    "imagen": "/assets/img/carrusels/premionacional.webp",
+    "fecha": "8/04/2026",
     "categoria": "evento",
     "slug": ""
   },
   {
     "id": 2,
-    "titulo": "",
-    "resumen": "",
-    "contenido": "",
-    "imagen": "",
-    "fecha": "2026-04-04",
-    "categoria": "lanzamiento",
+    "titulo": "Una mujer / Natalia Álvarez Arenas",
+    "resumen": "«Próximamente: nuevos universos literarios de la mano de Natalia Álvarez Arenas. Una apuesta imperdible de Bajo el Volcán Ediciones.»",
+    "contenido": "Proximas Publicaciones",
+    "imagen": "/assets/img/Libros/Unamujer.webp",
+    "fecha": "Pronto",
+    "categoria": "Proximas Publicaciones",
+    "slug": ""
+  },
+   {
+    "id": 3,
+    "titulo": "Donde Habita el Olvido / Ruben Dario Higuera",
+    "resumen": "«Lanzamiento de la novela Donde Habita el Olvido , autor de Bajo el Volcán Ediciones.»",
+    "contenido": "Proximas Publicaciones",
+    "imagen": "/assets/img/Libros/Dondehabitaelolvido.webp",
+    "fecha": "Pronto",
+    "categoria": "Proximas Publicaciones",
     "slug": ""
   }
 ]

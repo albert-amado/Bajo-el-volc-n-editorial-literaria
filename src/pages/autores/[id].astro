@@ -27,7 +27,6 @@ const getInitials = (nombre: string) => {
 <Layout title={`${autor.nombre} - Bajo el Volcán`}>
   <main class="bev-author-profile mt-5 pt-5">
     <div class="container">
-
       <div class="mb-4">
         <a href="/" class="bev-back-link">
           <i class="bi bi-arrow-left"></i> Volver al inicio
@@ -38,7 +37,7 @@ const getInitials = (nombre: string) => {
         <div class="col-lg-4 text-center mb-4 mb-lg-0">
           <div class="bev-author-detail-avatar mx-auto">
             <img
-              src={autor.foto.startsWith('/') ? autor.foto : `/${autor.foto}`}
+              src={autor.foto.startsWith("/") ? autor.foto : `/${autor.foto}`}
               alt={autor.nombre}
               class="img-fluid shadow-lg"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
@@ -77,7 +76,11 @@ const getInitials = (nombre: string) => {
               >
                 <div class="bev-book-cover-v2">
                   <img
-                    src={libro.imagen.startsWith('/') ? libro.imagen : `/${libro.imagen}`}
+                    src={
+                      libro.imagen.startsWith("/")
+                        ? libro.imagen
+                        : `/${libro.imagen}`
+                    }
                     alt={libro.titulo}
                     class="card-img-top rounded shadow"
                   />
@@ -93,7 +96,6 @@ const getInitials = (nombre: string) => {
           ))
         }
       </div>
-
     </div>
   </main>
 
@@ -102,12 +104,14 @@ const getInitials = (nombre: string) => {
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content bev-modal-content">
         <div class="bev-modal-header d-flex justify-content-end">
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="modal"></button>
         </div>
 
         <div class="modal-body p-0">
           <div class="row g-0" style="min-height: 520px;">
-
             <!-- Portada -->
             <div class="col-12 col-md-4 bev-modal-cover">
               <img
@@ -119,16 +123,26 @@ const getInitials = (nombre: string) => {
             </div>
 
             <!-- Info -->
-            <div class="col-12 col-md-8 d-flex flex-column p-4 p-lg-5" style="background: var(--bev-cream);">
-
+            <div
+              class="col-12 col-md-8 d-flex flex-column p-4 p-lg-5"
+              style="background: var(--bev-cream);"
+            >
               <div class="d-flex align-items-center gap-2 mb-2">
-                <span id="autorModalEtiqueta" class="bev-etiqueta" style="position:static; font-size:0.7rem; padding:3px 10px;"></span>
-                <span id="autorModalGenero" class="bev-eyebrow mb-0" style="font-size:0.72rem;"></span>
+                <span
+                  id="autorModalEtiqueta"
+                  class="bev-etiqueta"
+                  style="position:static; font-size:0.7rem; padding:3px 10px;"
+                ></span>
+                <span
+                  id="autorModalGenero"
+                  class="bev-eyebrow mb-0"
+                  style="font-size:0.72rem;"></span>
               </div>
 
               <h2 id="autorModalTitulo" class="bev-modal-titulo"></h2>
               <p id="autorModalAutor" class="bev-modal-autor"></p>
-              <p id="autorModalDesc" class="bev-modal-desc flex-grow-1 mb-4"></p>
+              <p id="autorModalDesc" class="bev-modal-desc flex-grow-1 mb-4">
+              </p>
 
               <!-- Ficha técnica -->
               <div class="d-flex gap-4 mb-4 flex-wrap">
@@ -152,7 +166,6 @@ const getInitials = (nombre: string) => {
                   <i class="bi bi-bag-plus me-2"></i>Agregar al carrito
                 </button>
               </div>
-
             </div>
           </div>
         </div>
@@ -195,7 +208,8 @@ const getInitials = (nombre: string) => {
         // Etiqueta
         const etiquetaEl = document.getElementById("autorModalEtiqueta")!;
         if (libro.etiqueta) {
-          etiquetaEl.textContent = etiquetasMap[libro.etiqueta.toLowerCase()] || libro.etiqueta;
+          etiquetaEl.textContent =
+            etiquetasMap[libro.etiqueta.toLowerCase()] || libro.etiqueta;
           etiquetaEl.className = `bev-etiqueta bev-etiqueta-${libro.etiqueta.toLowerCase()}`;
           etiquetaEl.classList.remove("d-none");
         } else {
@@ -214,8 +228,11 @@ const getInitials = (nombre: string) => {
         // Campos nuevos
         document.getElementById("autorModalISBN")!.textContent =
           (libro as any).isbn || "No disponible";
-        document.getElementById("autorModalPaginas")!.textContent =
-          (libro as any).paginas ? `${(libro as any).paginas} páginas` : "No disponible";
+        document.getElementById("autorModalPaginas")!.textContent = (
+          libro as any
+        ).paginas
+          ? `${(libro as any).paginas} páginas`
+          : "No disponible";
 
         // Botón carrito
         document.getElementById("autorModalBtnCarrito")!.onclick = () => {
@@ -276,7 +293,9 @@ const getInitials = (nombre: string) => {
   }
 
   /* Tipografía */
-  h1, h3, h6 {
+  h1,
+  h3,
+  h6 {
     color: var(--pr-gray-900);
   }
 
@@ -328,7 +347,7 @@ const getInitials = (nombre: string) => {
 
   .bev-book-card-v2:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   }
 
   /* Dentro de cards (texto blanco para contraste) */

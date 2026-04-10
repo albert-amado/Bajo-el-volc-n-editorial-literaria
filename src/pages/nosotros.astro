@@ -17,27 +17,23 @@ const getInitials = (nombre: string) => {
   <main class="bev-nosotros mt-5 pt-5">
     <div class="container">
 
-      <!-- ENCABEZADO -->
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
-          <!-- bev-section-tag viene de utilities.css -->
           <span class="bev-section-tag">Quiénes somos</span>
           <h1 class="display-4 fw-bold mt-3 mb-4">Bajo el Volcán</h1>
           <div class="bev-divider mx-auto mb-4"></div>
           <p class="lead">
-            <!-- Descripción de la editorial -->
           </p>
         </div>
       </div>
 
-      <!-- QUIÉNES SOMOS -->
+
       <div class="row g-4 mb-5 justify-content-center">
         <div class="col-12 col-md-8 col-lg-7">
           <div class="bev-info-card h-100 p-5">
 
             <div class="bev-info-sello" aria-hidden="true">
-              <!-- Ruta corregida: sin /public/ -->
-              <img src="/assets/img/ui/logo.png" alt="" />
+              <img src="/assets/img/ui/logo.webp" alt="" />
             </div>
 
             <div class="bev-info-icon mb-3">
@@ -55,7 +51,6 @@ const getInitials = (nombre: string) => {
 
       <hr class="border-secondary my-5" />
 
-      <!-- EQUIPO -->
       <div class="row mb-4">
         <div class="col-12 text-center">
           <h2 class="fw-bold mb-2">Familia Bajo el Volcán Ediciones</h2>
@@ -68,8 +63,8 @@ const getInitials = (nombre: string) => {
             <div class="bev-team-card text-center p-4 h-100">
 
               <div class="bev-team-sello" aria-hidden="true">
-                <!-- Ruta corregida: sin /public/ -->
-                <img src="/assets/img/ui/logo.png" alt="" />
+        
+                <img src="/assets/img/ui/logo.webp" alt="" />
               </div>
 
               <div class="bev-team-avatar mx-auto mb-4">
@@ -109,7 +104,6 @@ const getInitials = (nombre: string) => {
     color: var(--pr-gray-900);
   }
 
-  /* ── Card misión ── */
   .bev-info-card {
     background-color: var(--pr-white);
     border: 1px solid var(--pr-gray-900);
@@ -163,7 +157,6 @@ const getInitials = (nombre: string) => {
     z-index: 1;
   }
 
-  /* ── Cards equipo ── */
   .bev-team-card {
     background-color: var(--pr-white);
     border: 1px solid var(--pr-gray-200);

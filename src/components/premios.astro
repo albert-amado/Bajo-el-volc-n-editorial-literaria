@@ -1,9 +1,11 @@
 ---
 ---
+
 <div class="bev-premios">
   <div class="bev-promo-wrapper text-center mx-auto">
     <p class="bev-promo-text">
-      "Tu talento merece ser descubierto. Participa en el Primer Premio Nacional de Novela."
+      "Tu talento merece ser descubierto. Participa en el Primer Premio
+      Nacional de Novela."
     </p>
 
     <div class="bev-promo-img-wrapper">
@@ -11,14 +13,16 @@
         src="/assets/img/carrusels/premionacional.webp"
         alt="Premio Nacional de Novela"
         class="bev-promo-img"
-        loading="lazy">
+        loading="lazy"
+      />
 
       <div class="bev-btn-premio-wrap">
         
-        <a class="btn bev-btn-premio"
+          class="btn bev-btn-premio"
           href="/assets/img/doc/bases.pdf"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           Participa
         </a>
       </div>
@@ -33,8 +37,9 @@
     padding: 5rem 0 3rem;
   }
 
+  /* ✅ Sin max-width ni padding lateral: ocupa todo el ancho */
   .bev-promo-wrapper {
-    max-width: 1200px;
+    width: 100%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   }
 
@@ -60,11 +65,14 @@
     height: auto;
   }
 
-  /* ✅ Botón pegado al borde izquierdo con 20px de separación */
+  /* ✅ Botón centrado correctamente con flexbox */
   .bev-btn-premio-wrap {
     position: absolute;
-    bottom: 5%;
-    left: 20px;
+    bottom: 8%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
   }
 
   .bev-btn-premio {
@@ -79,7 +87,11 @@
     border-radius: 4px;
     backdrop-filter: blur(6px);
     white-space: nowrap;
-    transition: all 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s ease;
   }
 
   .bev-btn-premio:hover {

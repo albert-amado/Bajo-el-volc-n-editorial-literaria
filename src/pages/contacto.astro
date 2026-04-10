@@ -5,11 +5,8 @@ import Layout from "../layouts/layout.astro";
 <Layout title="Contacto - Bajo el Volcán">
   <main class="bev-contacto mt-5 pt-5">
     <div class="container">
-
-      <!-- ENCABEZADO -->
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
-          <!-- bev-section-tag y bev-divider vienen de utilities.css -->
           <span class="bev-section-tag">Escríbenos</span>
           <h1 class="display-4 fw-bold mt-3 mb-4">Contacto</h1>
           <div class="bev-divider mx-auto mb-4"></div>
@@ -18,15 +15,11 @@ import Layout from "../layouts/layout.astro";
       </div>
 
       <div class="row g-5 mb-5">
-
-        <!-- COLUMNA IZQUIERDA: logo + info -->
         <div class="col-12 col-lg-5">
           <div class="bev-contact-info h-100 p-4">
-
             <div class="text-center mb-4">
-              <!-- Ruta corregida -->
               <img
-                src="/assets/img/ui/logo.png"
+                src="/assets/img/ui/logo.webp"
                 alt="Bajo el Volcán"
                 class="bev-contact-logo"
                 onerror="this.style.display='none'"
@@ -36,14 +29,18 @@ import Layout from "../layouts/layout.astro";
             <hr class="border-secondary mb-4" />
 
             <ul class="list-unstyled bev-contact-list">
-
               <li class="d-flex align-items-start gap-3 mb-4">
                 <div class="bev-contact-icon">
                   <i class="bi bi-whatsapp"></i>
                 </div>
                 <div>
                   <p class="bev-contact-label">WhatsApp</p>
-                  <a href="https://wa.me/573144559506" target="_blank" rel="noopener noreferrer" class="bev-contact-value">
+                  <a
+                    href="https://wa.me/573144559506"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bev-contact-value"
+                  >
                     +57 314 455 9506
                   </a>
                 </div>
@@ -55,7 +52,10 @@ import Layout from "../layouts/layout.astro";
                 </div>
                 <div>
                   <p class="bev-contact-label">Correo</p>
-                  <a href="mailto:bajoelvolcane@gmail.com" class="bev-contact-value">
+                  <a
+                    href="mailto:bajoelvolcane@gmail.com"
+                    class="bev-contact-value"
+                  >
                     bajoelvolcane@gmail.com
                   </a>
                 </div>
@@ -67,7 +67,12 @@ import Layout from "../layouts/layout.astro";
                 </div>
                 <div>
                   <p class="bev-contact-label">Instagram</p>
-                  <a href="https://www.instagram.com/bajoelvolcane" target="_blank" rel="noopener noreferrer" class="bev-contact-value">
+                  <a
+                    href="https://www.instagram.com/bajoelvolcane"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bev-contact-value"
+                  >
                     @bajoelvolcane
                   </a>
                 </div>
@@ -79,60 +84,92 @@ import Layout from "../layouts/layout.astro";
                 </div>
                 <div>
                   <p class="bev-contact-label">Ubicación</p>
-                  <p class="bev-contact-value mb-0">Duitama, Boyacá — Colombia</p>
+                  <p class="bev-contact-value mb-0">
+                    Duitama, Boyacá — Colombia
+                  </p>
                 </div>
               </li>
-
             </ul>
           </div>
         </div>
 
-        <!-- COLUMNA DERECHA: formulario -->
         <div class="col-12 col-lg-7">
           <div class="bev-contact-form p-4 p-lg-5 h-100">
-            <h4 class="fw-bold mb-4">Envíanos un mensaje</h4>
+            <h4 class="fw-bold mb-4">Dejanos tu mensaje</h4>
 
             <div id="formContacto">
               <div class="row g-3">
-
                 <div class="col-12 col-md-6">
                   <label class="bev-form-label" for="inputNombre">Nombre</label>
-                  <input type="text" id="inputNombre" class="bev-form-input" placeholder="Tu nombre" required />
+                  <input
+                    type="text"
+                    id="inputNombre"
+                    class="bev-form-input"
+                    placeholder="Tu nombre"
+                    required
+                  />
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <label class="bev-form-label" for="inputCorreo">Correo electrónico</label>
-                  <input type="email" id="inputCorreo" class="bev-form-input" placeholder="tu@correo.com" required />
+                  <label class="bev-form-label" for="inputCorreo"
+                    >Correo electrónico</label
+                  >
+                  <input
+                    type="email"
+                    id="inputCorreo"
+                    class="bev-form-input"
+                    placeholder="tu@correo.com"
+                    required
+                  />
                 </div>
 
                 <div class="col-12">
                   <label class="bev-form-label" for="inputAsunto">Asunto</label>
-                  <input type="text" id="inputAsunto" class="bev-form-input" placeholder="¿En qué podemos ayudarte?" />
+                  <input
+                    type="text"
+                    id="inputAsunto"
+                    class="bev-form-input"
+                    placeholder="¿En qué podemos ayudarte?"
+                  />
                 </div>
 
                 <div class="col-12">
-                  <label class="bev-form-label" for="inputMensaje">Mensaje</label>
-                  <textarea id="inputMensaje" class="bev-form-input" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                  <label class="bev-form-label" for="inputMensaje"
+                    >Mensaje</label
+                  >
+                  <textarea
+                    id="inputMensaje"
+                    class="bev-form-input"
+                    rows="5"
+                    placeholder="Escribe tu mensaje aquí..."
+                    required></textarea>
                 </div>
 
                 <div class="col-12">
-                  <button type="button" id="btnEnviar" class="btn bev-btn-submit w-100">
+                  <button
+                    type="button"
+                    id="btnEnviar"
+                    class="btn bev-btn-submit w-100"
+                  >
                     <i class="bi bi-send me-2"></i>Enviar mensaje
-                    <a href="https://wa.me/573144559506" target="_blank" rel="noopener noreferrer" class="bev-contact-value">
-                    +57 314 455 9506
-                  </a>
+                    <a
+                      href="https://wa.me/573144559506"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="bev-contact-value"
+                    >
+                      +57 314 455 9506
+                    </a>
                   </button>
                 </div>
 
                 <div class="col-12">
                   <div id="formMensaje" class="bev-form-feedback d-none"></div>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </main>
@@ -142,41 +179,60 @@ import Layout from "../layouts/layout.astro";
   document.addEventListener("astro:page-load", () => {
     const feedback = document.getElementById("formMensaje");
 
-    document.getElementById("btnEnviar")?.addEventListener("click", async () => {
-      const nombre = (document.getElementById("inputNombre") as HTMLInputElement).value.trim();
-      const correo = (document.getElementById("inputCorreo") as HTMLInputElement).value.trim();
-      const asunto = (document.getElementById("inputAsunto") as HTMLInputElement).value.trim();
-      const mensaje = (document.getElementById("inputMensaje") as HTMLTextAreaElement).value.trim();
+    document
+      .getElementById("btnEnviar")
+      ?.addEventListener("click", async () => {
+        const nombre = (
+          document.getElementById("inputNombre") as HTMLInputElement
+        ).value.trim();
+        const correo = (
+          document.getElementById("inputCorreo") as HTMLInputElement
+        ).value.trim();
+        const asunto = (
+          document.getElementById("inputAsunto") as HTMLInputElement
+        ).value.trim();
+        const mensaje = (
+          document.getElementById("inputMensaje") as HTMLTextAreaElement
+        ).value.trim();
 
-      if (!nombre || !correo || !mensaje) {
-        showFeedback("Por favor completa los campos obligatorios.", false);
-        return;
-      }
-
-      try {
-        const res = await fetch("https://formspree.io/f/TU_ID_AQUI", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ nombre, correo, asunto, mensaje }),
-        });
-
-        if (res.ok) {
-          showFeedback("¡Mensaje enviado! Te responderemos pronto.", true);
-          (document.getElementById("inputNombre") as HTMLInputElement).value = "";
-          (document.getElementById("inputCorreo") as HTMLInputElement).value = "";
-          (document.getElementById("inputAsunto") as HTMLInputElement).value = "";
-          (document.getElementById("inputMensaje") as HTMLTextAreaElement).value = "";
-        } else {
-          throw new Error();
+        if (!nombre || !correo || !mensaje) {
+          showFeedback("Por favor completa los campos obligatorios.", false);
+          return;
         }
-      } catch {
-        showFeedback("Hubo un error al enviar. Intenta de nuevo.", false);
-      }
-    });
+
+        try {
+          const res = await fetch("https://formspree.io/f/TU_ID_AQUI", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nombre, correo, asunto, mensaje }),
+          });
+
+          if (res.ok) {
+            showFeedback("¡Mensaje enviado! Te responderemos pronto.", true);
+            (document.getElementById("inputNombre") as HTMLInputElement).value =
+              "";
+            (document.getElementById("inputCorreo") as HTMLInputElement).value =
+              "";
+            (document.getElementById("inputAsunto") as HTMLInputElement).value =
+              "";
+            (
+              document.getElementById("inputMensaje") as HTMLTextAreaElement
+            ).value = "";
+          } else {
+            throw new Error();
+          }
+        } catch {
+          showFeedback("Hubo un error al enviar. Intenta de nuevo.", false);
+        }
+      });
 
     function showFeedback(msg: string, ok: boolean) {
       if (!feedback) return;
-      feedback.classList.remove("d-none", "bev-feedback-ok", "bev-feedback-error");
+      feedback.classList.remove(
+        "d-none",
+        "bev-feedback-ok",
+        "bev-feedback-error",
+      );
       feedback.classList.add(ok ? "bev-feedback-ok" : "bev-feedback-error");
       feedback.textContent = msg;
     }
@@ -253,7 +309,9 @@ import Layout from "../layouts/layout.astro";
     color: var(--pr-gray-900);
     padding: 0.65rem 1rem;
     font-size: 0.95rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
     outline: none;
     resize: vertical;
   }
@@ -275,7 +333,9 @@ import Layout from "../layouts/layout.astro";
     border-radius: 8px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    transition: opacity 0.2s, transform 0.2s;
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
   }
 
   .bev-btn-submit:hover {

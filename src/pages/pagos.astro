@@ -7,7 +7,6 @@ import Layout from "../layouts/layout.astro";
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10 col-xl-8 text-center">
-
           <h1 class="bev-pagos-titulo fw-bold mb-4">Realiza tu pago</h1>
 
           <p class="bev-pagos-lead lead mb-5 px-md-5">
@@ -18,16 +17,17 @@ import Layout from "../layouts/layout.astro";
           <!-- QR -->
           <div class="bev-qr-box mx-auto mb-5">
             <img
-              src="/assets/img/pagos/pagos.png"
+              src="/assets/img/pagos/pagos.webp"
               alt="Código QR de pago - Bajo el Volcán Ediciones"
               class="img-fluid bev-qr-img"
             />
             <p class="mt-4 mb-0 bev-qr-label">Bajo el Volcán Ediciones</p>
           </div>
 
-          <!-- WhatsApp -->
           <div class="bev-pago-info">
-            <p class="bev-pago-subtitle fw-semibold mb-3">Envía el comprobante a:</p>
+            <p class="bev-pago-subtitle fw-semibold mb-3">
+              Envía el comprobante a:
+            </p>
             <a
               href="https://wa.me/573144559506"
               target="_blank"
@@ -36,7 +36,9 @@ import Layout from "../layouts/layout.astro";
             >
               <i class="bi bi-whatsapp bev-wp-icon"></i>
               <div class="text-start">
-                <span class="d-block bev-wp-numero fw-bold">+57 314 455 9506</span>
+                <span class="d-block bev-wp-numero fw-bold"
+                  >+57 314 455 9506</span
+                >
                 <small class="bev-wp-label">• Abre WhatsApp</small>
               </div>
             </a>
@@ -44,11 +46,11 @@ import Layout from "../layouts/layout.astro";
 
           <div class="mt-5 pt-4 border-top">
             <p class="bev-pagos-footer text-muted">
-              Una vez enviado el comprobante, te confirmaremos el pago en pocos minutos.<br />
+              Una vez enviado el comprobante, te confirmaremos el pago en pocos
+              minutos.<br />
               ¡Gracias por elegir Bajo el Volcán!
             </p>
           </div>
-
         </div>
       </div>
     </div>
@@ -92,18 +94,18 @@ import Layout from "../layouts/layout.astro";
     font-size: 1.05rem;
     color: var(--pr-gray-700);
   }
-
-  /* Subtítulo */
   .bev-pago-subtitle {
     font-size: clamp(1.1rem, 2vw, 1.55rem);
   }
 
-  /* Botón WhatsApp */
   .bev-whatsapp-btn {
     background-color: #25d366;
     color: white;
     text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
     border: none;
   }
 
@@ -131,7 +133,6 @@ import Layout from "../layouts/layout.astro";
     font-size: clamp(0.95rem, 1.5vw, 1.2rem);
   }
 
-  /* ── Responsive ── */
   @media (max-width: 576px) {
     .bev-qr-box {
       padding: 1.5rem;

@@ -1,9 +1,11 @@
 ---
----
-<div class="bev-topbar">
-  <div class="container-fluid d-flex justify-content-between align-items-center">
 
-    <!-- Info de contacto: visible solo en desktop -->
+---
+
+<div class="bev-topbar">
+  <div
+    class="container-fluid d-flex justify-content-between align-items-center"
+  >
     <div class="d-none d-lg-flex gap-3">
       <a href="tel:+573144559506" class="bev-topbar-info">
         <i class="bi bi-telephone"></i> 314-455-9506
@@ -16,15 +18,12 @@
       </a>
     </div>
 
-    <!-- En móvil: solo el ícono de contacto -->
     <a href="/contacto" class="bev-topbar-info d-lg-none">
       <i class="bi bi-chat fs-5"></i>
     </a>
 
-    <!-- Marca: siempre centrada -->
     <span class="bev-topbar-marca">Bajo el Volcán Ediciones</span>
 
-    <!-- Instagram: siempre visible -->
     <a
       href="https://www.instagram.com/bajoelvolcane"
       target="_blank"
@@ -34,7 +33,6 @@
       <i class="bi bi-instagram"></i>
       <span class="d-none d-sm-inline"><i>@bajoelvolcane</i></span>
     </a>
-
   </div>
 </div>
 
@@ -65,7 +63,6 @@
     font-size: 0.85rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    /* En móvil reducimos el tracking para que no se corte */
   }
 
   @media (max-width: 576px) {

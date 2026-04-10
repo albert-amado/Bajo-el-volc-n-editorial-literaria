@@ -22,41 +22,42 @@ const getInitials = (nombre: string) => {
 
     <div data-aos="fade-up">
       <div class="row g-4 justify-content-center">
-        {autoresDestacados.map((autor) => (
-          <div class="col-6 col-md-4 col-lg-2 text-center">
-
-            <a href={`/autores/${autor.id}`} class="bev-author-link">
-              <div class="bev-author-avatar mx-auto">
-                <img
-                  src={autor.foto.startsWith("/") ? autor.foto : `/${autor.foto}`}
-                  alt={autor.nombre}
-                  loading="lazy"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                />
-                <div class="bev-avatar-fallback" style="display:none">
-                  {getInitials(autor.nombre)}
+        {
+          autoresDestacados.map((autor) => (
+            <div class="col-6 col-md-4 col-lg-2 text-center">
+              <a href={`/autores/${autor.id}`} class="bev-author-link">
+                <div class="bev-author-avatar mx-auto">
+                  <img
+                    src={
+                      autor.foto.startsWith("/") ? autor.foto : `/${autor.foto}`
+                    }
+                    alt={autor.nombre}
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="bev-avatar-fallback" style="display:none">
+                    {getInitials(autor.nombre)}
+                  </div>
                 </div>
-              </div>
-            </a>
-
-            <p class="bev-author-name mt-3">{autor.nombre}</p>
-            <p class="bev-author-country">{autor.nacionalidad}</p>
-
-            <div class="mt-3">
-              <a href={`/autores/${autor.id}`} class="btn bev-btn-autor">
-                <i class="bi bi-plus-circle me-1"></i> Ver sus obras
               </a>
-            </div>
 
-          </div>
-        ))}
+              <p class="bev-author-name mt-3">{autor.nombre}</p>
+              <p class="bev-author-country">{autor.nacionalidad}</p>
+
+              <div class="mt-3">
+                <a href={`/autores/${autor.id}`} class="btn bev-btn-autor">
+                  <i class="bi bi-plus-circle me-1" /> Ver sus obras
+                </a>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  /* Scoped aquí porque son estilos propios de este componente */
   .bev-author-link {
     display: block;
     text-decoration: none;
@@ -70,7 +71,6 @@ const getInitials = (nombre: string) => {
   }
 
   .bev-author-avatar {
-    /* Tamaño relativo al contenedor, no fijo en px */
     width: clamp(90px, 14vw, 200px);
     height: clamp(90px, 14vw, 200px);
     border-radius: 50%;
@@ -80,7 +80,9 @@ const getInitials = (nombre: string) => {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.2s, transform 0.2s;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
   }
 
   .bev-author-avatar:hover {

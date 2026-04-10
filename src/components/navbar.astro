@@ -1,15 +1,16 @@
 ---
+
 ---
+
 <nav class="navbar navbar-expand-lg navbar-light bev-navbar sticky-top">
   <div class="container-fluid bev-navbar-inner">
-
-    <!-- IZQUIERDA: texto editorial (solo desktop) -->
-    <div class="d-none d-lg-flex flex-column align-items-start bev-navbar-brand-text">
+    <div
+      class="d-none d-lg-flex flex-column align-items-start bev-navbar-brand-text"
+    >
       <span class="bev-brand-main">BAJO EL VOLCÁN</span>
       <span class="bev-brand-sub">Editorial Literaria</span>
     </div>
 
-    <!-- Logo móvil -->
     <a class="navbar-brand d-lg-none" href="/">
       <img
         src="/assets/img/ui/logo.webp"
@@ -18,7 +19,6 @@
       />
     </a>
 
-    <!-- Toggler móvil -->
     <button
       class="navbar-toggler ms-auto d-lg-none"
       type="button"
@@ -31,7 +31,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Logo desktop (centro) -->
     <a class="navbar-brand mx-auto d-none d-lg-block" href="/nosotros">
       <img
         src="/assets/img/ui/logo.webp"
@@ -40,7 +39,6 @@
       />
     </a>
 
-    <!-- DERECHA: Links -->
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="navbar-nav ms-lg-auto align-items-lg-center gap-lg-1">
         <li class="nav-item bev-nav-item">
@@ -56,22 +54,32 @@
           <a class="nav-link" href="/noticias">Noticias</a>
         </li>
         <li class="nav-item bev-nav-item">
-          <a class="nav-link" href="/assets/img/doc/bases.pdf" target="_blank" rel="noopener noreferrer">
+          <a
+            class="nav-link"
+            href="/assets/img/doc/bases.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Premio nacional de novela
           </a>
         </li>
         <li class="nav-item bev-nav-item">
           <a class="nav-link" href="/pagos">Pagos</a>
         </li>
+        <!--
         <li class="nav-item ms-lg-2 bev-nav-item">
-          <a class="nav-link bev-cart-btn position-relative" href="/carrito" aria-label="Carrito de compras">
+          <a
+            class="nav-link bev-cart-btn position-relative"
+            href="/carrito"
+            aria-label="Carrito de compras"
+          > 
             <i class="bi bi-bag fs-5"></i>
             <span class="bev-cart-badge" id="cartCount">0</span>
+          -->
           </a>
         </li>
       </ul>
     </div>
-
   </div>
 </nav>
 
@@ -89,7 +97,6 @@
     position: relative;
   }
 
-  /* ── Texto de marca (desktop) ── */
   .bev-navbar-brand-text {
     flex: 1;
   }
@@ -111,10 +118,9 @@
     margin-top: -2px;
   }
 
-  /* ── Logos ── */
   .bev-logo-desktop {
-    width: 110px;
-    height: 110px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
     filter: drop-shadow(0 0 6px var(--navbar-logo-glow));
     transition: transform 0.3s ease;
@@ -130,7 +136,6 @@
     object-fit: contain;
   }
 
-  /* ── Links ── */
   .bev-navbar .nav-link {
     position: relative;
     color: var(--navbar-text);
@@ -138,7 +143,9 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 0.6rem 0.9rem;
-    transition: color 0.25s ease, letter-spacing 0.25s ease;
+    transition:
+      color 0.25s ease,
+      letter-spacing 0.25s ease;
   }
 
   .bev-navbar .nav-link:hover {
@@ -146,7 +153,6 @@
     letter-spacing: 0.16em;
   }
 
-  /* Subrayado animado (solo desktop) */
   @media (min-width: 992px) {
     .bev-navbar .nav-link::after {
       content: "";
@@ -158,13 +164,10 @@
       background-color: var(--navbar-accent);
       transition: width 0.35s ease;
     }
-
     .bev-navbar .nav-link:hover::after,
     .bev-navbar .nav-link.active::after {
       width: 76%;
     }
-
-    /* Separadores entre items */
     .bev-nav-item {
       position: relative;
     }
@@ -182,7 +185,6 @@
     }
   }
 
-  /* ── Carrito ── */
   .bev-cart-btn {
     padding-left: 1rem;
   }
@@ -203,7 +205,6 @@
     justify-content: center;
   }
 
-  /* ── Menú colapsado (móvil) ── */
   @media (max-width: 991px) {
     .bev-navbar {
       padding: 0.85rem 0;

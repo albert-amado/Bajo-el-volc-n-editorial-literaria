@@ -1,31 +1,38 @@
 ---
----
-<div class="modal fade" id="modalLibro" tabindex="-1" aria-hidden="true" aria-label="Detalle del libro">
-  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content bev-modal-content">
 
+---
+
+<div
+  class="modal fade"
+  id="modalLibro"
+  tabindex="-1"
+  aria-hidden="true"
+  aria-label="Detalle del libro"
+>
+  <div
+    class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
+  >
+    <div class="modal-content bev-modal-content">
       <div class="bev-modal-header d-flex justify-content-end">
         <button
           type="button"
           class="btn-close btn-close-white"
           data-bs-dismiss="modal"
-          aria-label="Cerrar"
-        ></button>
+          aria-label="Cerrar"></button>
       </div>
 
       <div class="modal-body p-0">
         <div class="row g-0 bev-modal-row">
-
-          <!-- Portada -->
           <div class="col-12 col-md-4 bev-modal-cover">
             <img id="modalPortada" src="" alt="" class="bev-modal-cover-img" />
           </div>
 
-          <!-- Info -->
-          <div class="col-12 col-md-8 d-flex flex-column p-4 p-lg-5 bev-modal-info">
-
+          <div
+            class="col-12 col-md-8 d-flex flex-column p-4 p-lg-5 bev-modal-info"
+          >
             <div class="d-flex align-items-center gap-2 mb-2">
-              <span id="modalEtiqueta" class="bev-etiqueta bev-etiqueta-static"></span>
+              <span id="modalEtiqueta" class="bev-etiqueta bev-etiqueta-static"
+              ></span>
               <span id="modalGenero" class="bev-eyebrow mb-0"></span>
             </div>
 
@@ -33,18 +40,19 @@
             <p id="modalAutorNombre" class="bev-modal-autor"></p>
             <p id="modalDesc" class="bev-modal-desc flex-grow-1 mb-4"></p>
 
-            <!-- Precio y carrito -->
             <div class="bev-modal-footer-row mt-auto pt-3">
               <span id="modalPrecio" class="bev-modal-precio"></span>
-              <button id="modalBtnCarrito" class="btn bev-btn-gold d-flex align-items-center gap-2">
+              <button
+                id="modalBtnCarrito"
+                class="btn bev-btn-gold d-flex align-items-center gap-2"
+              >
                 Comprar ahora
               </button>
             </div>
 
-            <!-- Sección autor -->
+            <!-- autores -->
             <div class="bev-modal-autor-section mt-4 pt-4">
               <div class="d-flex align-items-start gap-3">
-
                 <img
                   id="modalAutorFoto"
                   src=""
@@ -59,17 +67,18 @@
 
                 <div>
                   <p class="bev-modal-autor-label">Autor</p>
-                  <p id="modalAutorNombreDetalle" class="bev-modal-autor-nombre"></p>
+                  <p
+                    id="modalAutorNombreDetalle"
+                    class="bev-modal-autor-nombre"
+                  >
+                  </p>
                   <p id="modalAutorBio" class="bev-modal-autor-bio"></p>
                 </div>
-
               </div>
             </div>
-
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -87,13 +96,12 @@
     padding: 0.75rem 1rem;
   }
 
-  /* Sin min-height fija: el modal se adapta al contenido */
   .bev-modal-cover {
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: var(--pr-gray-50);
+    background-color: var(--pr-gray-900);
   }
 
   .bev-modal-cover-img {
@@ -139,7 +147,6 @@
     border-top: 1px solid var(--bev-cream-dk);
   }
 
-  /* Precio — color único (corregido: color duplicado eliminado) */
   .bev-modal-precio {
     font-family: var(--font-display);
     font-size: 2rem;
@@ -152,7 +159,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
-  /* Etiqueta estática dentro del modal */
   .bev-etiqueta-static {
     position: static;
     font-size: 0.8rem;
@@ -216,7 +222,6 @@
     font-weight: 700;
   }
 
-  /* ── Responsive ── */
   @media (max-width: 767px) {
     .bev-modal-cover-img {
       max-height: 280px;
