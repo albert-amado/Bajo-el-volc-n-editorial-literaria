@@ -12,12 +12,5 @@
     "cargo": "Diseñador y diagramador",
     "foto": "/assets/img/team/diseñador.webp",
     "bio": "Además del diseño y la invención es un lector asiduo. Al igual que Roberto Arlt, siempre anda inventando objetos y proyectos quijotescos como una fábrica de ron de miel o una vega de tabaco en su propia casa. Es fumador de puros y degustador de rones."
-  },
-  {
-    "id": 3,
-    "nombre": "Laura Correa Flórez",
-    "cargo": "Editora y correctora de estilo",
-    "foto": "/assets/img/team/editora.webp",
-    "bio": "Profesa un amor por los libros heredado de su abuelo, un gusto que ha nutrido con los años, al igual que su pasión por la historia y el arte. La música y la moda de los 70s, le encantan, pasa sus días creando curiosos muñecos de fieltro. Su libro favorito es cumbres borrascosas."
   }
 ]
