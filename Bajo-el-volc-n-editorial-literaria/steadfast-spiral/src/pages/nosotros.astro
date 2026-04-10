@@ -1,0 +1,258 @@
+---
+import Layout from "../layouts/layout.astro";
+import equipo from "../data/team.json";
+
+const getInitials = (nombre: string) => {
+  if (!nombre) return "?";
+  return nombre
+    .split(" ")
+    .map((n) => n[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+};
+---
+
+<Layout title="Nosotros - Bajo el Volcán">
+  <main class="bev-nosotros mt-5 pt-5">
+    <div class="container">
+
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <span class="bev-section-tag">Quiénes somos</span>
+          <h1 class="display-4 fw-bold mt-3 mb-4">Bajo el Volcán</h1>
+          <div class="bev-divider mx-auto mb-4"></div>
+          <p class="lead">
+          </p>
+        </div>
+      </div>
+
+
+      <div class="row g-4 mb-5 justify-content-center">
+        <div class="col-12 col-md-8 col-lg-7">
+          <div class="bev-info-card h-100 p-5">
+
+            <div class="bev-info-sello" aria-hidden="true">
+              <img src="/assets/img/ui/logo.webp" alt="" />
+            </div>
+
+            <div class="bev-info-icon mb-3">
+              <i class="bi bi-book"></i>
+            </div>
+            <h4 class="fw-bold mb-3">¿Quiénes somos?</h4>
+            <p>
+              Somos una editorial literaria independiente; apostamos por voces nuevas que se arriesgan a contar.
+              Creemos en el oficio editorial de rescate literario. Publicamos clásicos, autores contemporáneos
+              y narrativa, con el objetivo de fomentar la reflexión y la experiencia literaria.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-5" />
+
+      <div class="row mb-4">
+        <div class="col-12 text-center">
+          <h2 class="fw-bold mb-2">Familia Bajo el Volcán Ediciones</h2>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-content-center mb-5">
+        {equipo.map((persona) => (
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="bev-team-card text-center p-4 h-100">
+
+              <div class="bev-team-sello" aria-hidden="true">
+                <!-- Ruta corregida: sin /public/ -->
+                <img src="/assets/img/ui/logo.webp" alt="" />
+              </div>
+
+              <div class="bev-team-avatar mx-auto mb-4">
+                <img
+                  src={persona.foto || ""}
+                  alt={persona.nombre}
+                  style={persona.foto ? "" : "display:none"}
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div
+                  class="bev-team-fallback"
+                  style={persona.foto ? "display:none" : "display:flex"}
+                >
+                  {getInitials(persona.nombre)}
+                </div>
+              </div>
+
+              <h4 class="fw-bold mb-1">{persona.nombre || "Por definir"}</h4>
+              <p class="bev-team-cargo mb-3">{persona.cargo || ""}</p>
+              <div class="bev-team-divider mx-auto mb-3"></div>
+              {persona.bio && <p class="bev-team-bio">{persona.bio}</p>}
+
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .bev-nosotros {
+    background-color: var(--pr-gray-1000);
+    min-height: 100vh;
+    color: var(--pr-gray-900);
+  }
+
+  .bev-info-card {
+    background-color: var(--pr-white);
+    border: 1px solid var(--pr-gray-900);
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bev-info-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .bev-info-sello {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bev-info-sello img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .bev-info-icon {
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bev-info-card h4 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bev-info-card p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bev-team-card {
+    background-color: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
+    border-radius: 16px;
+    border-left: 5px solid var(--pr-gray-900);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bev-team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    border-left-color: var(--pr-gray-400);
+  }
+
+  .bev-team-sello {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    height: 160px;
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bev-team-sello img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .bev-team-avatar {
+    width: clamp(90px, 12vw, 160px);
+    height: clamp(90px, 12vw, 160px);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--pr-gray-900);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .bev-team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .bev-team-fallback {
+    width: 100%;
+    height: 100%;
+    background: var(--pr-gray-400);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--pr-gray-900);
+  }
+
+  .bev-team-card h4 {
+    font-size: 1.1rem;
+    color: var(--pr-gray-900);
+    position: relative;
+    z-index: 1;
+  }
+
+  .bev-team-cargo {
+    color: var(--pr-gray-900);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bev-team-divider {
+    height: 2px;
+    width: 40px;
+    background-color: var(--pr-gray-400);
+    border-radius: 2px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bev-team-bio {
+    font-size: 0.95rem;
+    color: var(--pr-gray-700);
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+  }
+</style>

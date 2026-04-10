@@ -1,0 +1,306 @@
+---
+import libros from "../data/libros.json";
+
+const etiquetasMap: Record<string, string> = {
+  nuevo: "Nuevo",
+  destacado: "Destacado",
+  preventa: "En preventa",
+  descuento: "Oferta",
+};
+---
+
+<section class="py-5">
+  <div class="bev-container">
+    <div class="text-center mb-5">
+      <span class="bev-section-tag-light">Colección de Bajo el Volcán</span>
+      <h2 class="bev-section-title">Nuestras Novelas</h2>
+    </div>
+
+    <div class="bev-carousel-wrapper">
+
+      <button class="bev-carousel-ctrl" id="btnPrev" type="button" aria-label="Anterior">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+
+      <div class="bev-carousel-viewport">
+        <div class="bev-carousel-track" id="carouselTrack">
+          {libros.map((libro) => (
+            <div class="bev-carousel-slide">
+
+              <!-- Portada con etiqueta encima -->
+              <div
+                class="bev-book-cover-v2 js-card-modal"
+                data-id={libro.id}
+                style="cursor:pointer; position:relative; overflow:hidden;"
+              >
+                <img src={libro.imagen} alt={libro.titulo} loading="lazy" />
+
+                {libro.etiqueta && (
+                  <span
+                    class={`bev-libro-etiqueta bev-etiqueta-${libro.etiqueta.toLowerCase()}`}
+                    style="position:absolute; top:10px; left:0; z-index:3;"
+                  >
+                    {etiquetasMap[libro.etiqueta] || libro.etiqueta}
+                  </span>
+                )}
+              </div>
+
+              <!-- Info -->
+              <div class="bev-book-info-v2">
+                <span class="bev-book-genre">{libro.genero}</span>
+                <h5 class="bev-book-title">{libro.titulo}</h5>
+                <p class="bev-book-author">{libro.autor}</p>
+
+                <div class="bev-book-footer">
+                  <span class="bev-book-price">
+                    ${libro.precio.toLocaleString("es-CO")}
+                  </span>
+                  <div class="d-flex gap-2 flex-wrap">
+                    <button
+                      class="btn btn-sm bev-btn-outline js-btn-modal"
+                      data-id={libro.id}
+                    >
+                      <i class="bi bi-plus-circle"></i> Conoce más
+                    </button>
+                    <button
+                      class="btn bev-btn-add-cart js-btn-carrito"
+                      data-id={libro.id}
+                      data-titulo={libro.titulo}
+                      data-precio={libro.precio}
+                    >
+                      <i class="bi bi-bag-plus"></i> Comprar
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button class="bev-carousel-ctrl" id="btnNext" type="button" aria-label="Siguiente">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import { abrirModal } from "../js/modal.js";
+  import { agregarAlCarrito } from "../js/carrito.js";
+
+  document.addEventListener("astro:page-load", () => {
+    const track = document.getElementById("carouselTrack") as HTMLElement;
+    const slides = track?.querySelectorAll<HTMLElement>(".bev-carousel-slide");
+    if (!slides || !track) return;
+
+    function getVisible(): number {
+      if (window.innerWidth < 640) return 1;
+      if (window.innerWidth < 992) return 2;
+      return 3;
+    }
+
+    let current = 0;
+
+    function mover(dir: number) {
+      const VISIBLE = getVisible();
+      const max = Math.max(0, slides.length - VISIBLE);
+      current += dir;
+      if (current > max) current = 0;
+      if (current < 0) current = max;
+      const slideWidth = slides[0].offsetWidth + 32;
+      track.style.transform = `translateX(-${current * slideWidth}px)`;
+    }
+
+    document.getElementById("btnPrev")?.addEventListener("click", () => mover(-1));
+    document.getElementById("btnNext")?.addEventListener("click", () => mover(1));
+
+    window.addEventListener("resize", () => {
+      current = 0;
+      track.style.transform = "translateX(0)";
+    });
+
+    document.querySelectorAll(".js-card-modal, .js-btn-modal").forEach((trigger) => {
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = trigger.getAttribute("data-id");
+        if (id) abrirModal(parseInt(id));
+      });
+    });
+
+    document.querySelectorAll(".js-btn-carrito").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute("data-id");
+        const titulo = btn.getAttribute("data-titulo");
+        const precio = parseFloat(btn.getAttribute("data-precio") || "0");
+        if (id && titulo) agregarAlCarrito(id, titulo, precio);
+      });
+    });
+  });
+</script>
+
+<style>
+  .bev-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .bev-carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .bev-carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .bev-carousel-slide {
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: calc(33.333% - 1rem);
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+  }
+
+
+  @media (max-width: 991px) {
+    .bev-carousel-slide {
+      flex: 0 0 calc(50% - 0.75rem);
+      min-width: calc(50% - 0.75rem);
+      max-width: none;
+    }
+  }
+
+  /* Responsive telefonos */
+  @media (max-width: 639px) {
+    .bev-carousel-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+      max-width: none;
+    }
+
+    .bev-carousel-wrapper {
+      gap: 0.5rem;
+    }
+  }
+
+  /*Flechas*/
+  .bev-carousel-ctrl {
+    background: none;
+    border: none;
+    color: var(--pr-gray-400);
+    font-size: 2.5rem;
+    line-height: 1;
+    padding: 0.3rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  .bev-carousel-ctrl:hover {
+    color: var(--pr-gray-900);
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 639px) {
+    .bev-carousel-ctrl {
+      font-size: 1.8rem;
+    }
+  }
+
+  .bev-book-cover-v2 img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /*Etiquetas */
+  .bev-libro-etiqueta {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .bev-etiqueta-nuevo      { background: #111; color: #fff; }
+  .bev-etiqueta-destacado  { background: #000000; color: #FFFFFF; }
+  .bev-etiqueta-preventa   { background: #c0392b; color: #fff; }
+  .bev-etiqueta-descuento  { background: #27ae60; color: #fff; }
+
+  .bev-book-info-v2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.9rem 1rem;
+    background: var(--pr-gray-400);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    flex: 1;
+  }
+
+  .bev-book-genre {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--pr-gray-900);
+    margin: 0;
+  }
+
+  .bev-book-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2vw, 1.9rem);
+    font-weight: 700;
+    color: var(--pr-gray-900);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .bev-book-author {
+    font-size: 0.95rem;
+    color: var(--pr-gray-900);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .bev-book-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .bev-book-price {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--pr-gray-1200);
+  }
+  .bev-btn-add-cart {
+    background: var(--pr-gray-900);
+    border: none;
+    color: var(--pr-white);
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .bev-btn-add-cart:hover {
+    background: var(--pr-gray-200);
+    color: var(--pr-gray-900);
+  }
+</style>

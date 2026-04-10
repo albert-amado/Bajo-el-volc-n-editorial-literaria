@@ -1,13 +1,13 @@
 ---
+
 ---
+
 <div class="bev-premios">
-  <div class="container">
-
+  <div class="container-fluid px-4 px-lg-5">
     <div class="bev-promo-wrapper text-center mx-auto">
-
-      <!-- Texto -->
       <p class="bev-promo-text">
-        "Tu talento merece ser descubierto. Participa en el Primer Premio Nacional de Novela."
+        "Tu talento merece ser descubierto. Participa en el Primer Premio
+        Nacional de Novela."
       </p>
 
       <div class="bev-promo-img-wrapper">
@@ -17,7 +17,11 @@
           class="bev-promo-img"
           loading="lazy"
         />
-        <div class="bev-btn-premio-wrap">
+
+        <div
+          class="bev-btn-premio-wrap"
+          style="position:absolute; bottom:5%; left:20%; transform:translateX(-50%);"
+        >
           <a
             class="btn bev-btn-premio"
             href="/assets/img/doc/bases_premio_nacional_de_novela.pdf"
@@ -28,9 +32,7 @@
           </a>
         </div>
       </div>
-
     </div>
-
   </div>
 </div>
 
@@ -42,11 +44,10 @@
   }
 
   .bev-promo-wrapper {
-    max-width: 900px;
+    max-width: 1400px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   }
 
-  /* Texto encima de la imagen */
   .bev-promo-text {
     font-family: "Lato", sans-serif;
     font-size: clamp(1.4rem, 3vw, 2.8rem);
@@ -58,7 +59,6 @@
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   }
 
-  /* Contenedor imagen con botón encima */
   .bev-promo-img-wrapper {
     position: relative;
     line-height: 0;
@@ -68,14 +68,6 @@
     display: block;
     width: 100%;
     height: auto;
-  }
-
-  /* Botón centrado sobre la imagen */
-  .bev-btn-premio-wrap {
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   .bev-btn-premio {
@@ -90,7 +82,10 @@
     border-radius: 4px;
     backdrop-filter: blur(6px);
     white-space: nowrap;
-    transition: all 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease;
   }
 
   .bev-btn-premio:hover {
@@ -103,6 +98,10 @@
   @media (max-width: 576px) {
     .bev-premios {
       padding: 3rem 0 2rem;
+    }
+
+    .bev-promo-wrapper {
+      max-width: 100%;
     }
 
     .bev-promo-text {

@@ -1,0 +1,53 @@
+:root {
+  --pr-white:        #FFFFFF;
+  --pr-gray-50:      #e6e6e6;
+  --pr-gray-100:     #b6b6b6;
+  --pr-gray-200:     #E5E5E5;
+  --pr-gray-400:     #BFBFBF;
+  --pr-gray-700:     #000000;
+  --pr-gray-900:     #000000;
+  --pr-gray-1000:     #F2F2F2;
+  --pr-gray-1200: #F23838;
+  --pr-gray-1400: #BBD679;
+
+  --pr-glass-dark:   rgba(0, 0, 0, 0.05);
+  --pr-glass-light:  rgba(255, 255, 255, 0.8);
+
+  --bg-main:          var(--pr-white);
+  --bg-subtle:        var(--pr-gray-50);
+  --bg-surface:       var(--pr-gray-100);
+
+  --text-primary:     var(--pr-gray-700);
+  --text-secondary:   var(--pr-gray-900);
+  --text-bold:        var(--pr-gray-900);
+
+  --border-light:     var(--pr-gray-100);
+  --border-strong:    var(--pr-gray-200);
+
+  --action-hover:     var(--pr-gray-900);
+
+  --shadow-sm:        0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:        0 4px 6px -1px rgba(0,0,0,0.1);
+
+  --topbar-bg:        var(--pr-gray-900);
+  --topbar-text:      var(--pr-white);
+  --topbar-muted:     var(--pr-gray-200);
+  --topbar-hover:     var(--pr-white);
+  --topbar-border:    var(--pr-gray-700);
+
+  --navbar-bg:          transparent;
+  --navbar-text:        var(--pr-gray-900);
+  --navbar-text-muted:  var(--pr-gray-700);
+  --navbar-accent:      var(--pr-gray-900);
+  --navbar-border:      rgba(255, 255, 255, 0.08);
+  --navbar-logo-glow:   rgba(255,255,255,0.3);
+
+  --content-max-width:      1400px;
+  --carousel-bg:            var(--pr-gray-1000);
+  --carousel-overlay-start: rgba(0,0,0,0.85);
+  --carousel-overlay-mid:   rgba(0,0,0,0.5);
+  --carousel-overlay-end:   rgba(0,0,0,0.1);
+  --carousel-text:          var(--pr-white);
+  --carousel-text-muted:    var(--pr-gray-200);
+  --carousel-accent:        var(--pr-white);
+}

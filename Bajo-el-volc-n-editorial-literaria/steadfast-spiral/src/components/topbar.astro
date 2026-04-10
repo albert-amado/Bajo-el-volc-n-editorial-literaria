@@ -1,0 +1,88 @@
+---
+
+---
+
+<div class="bev-topbar">
+  <div
+    class="container-fluid d-flex justify-content-between align-items-center"
+  >
+    <div class="d-none d-lg-flex gap-3">
+      <a href="tel:+573144559506" class="bev-topbar-info">
+        <i class="bi bi-telephone"></i> 314-455-9506
+      </a>
+      <a href="mailto:bajoelvolcane@gmail.com" class="bev-topbar-info">
+        <i class="bi bi-envelope"></i> bajoelvolcane@gmail.com
+      </a>
+      <a href="/contacto" class="bev-topbar-info">
+        <i class="bi bi-chat"></i> Déjanos tu mensaje
+      </a>
+    </div>
+
+    <a href="/contacto" class="bev-topbar-info d-lg-none">
+      <i class="bi bi-chat fs-5"></i>
+    </a>
+
+    <span class="bev-topbar-marca">Bajo el Volcán Ediciones</span>
+
+    <a
+      href="https://www.instagram.com/bajoelvolcane"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="bev-topbar-link"
+    >
+      <i class="bi bi-instagram"></i>
+      <span class="d-none d-sm-inline"><i>@bajoelvolcane</i></span>
+    </a>
+  </div>
+</div>
+
+<style>
+  .bev-topbar {
+    background-color: var(--topbar-bg);
+    border-bottom: 1px solid var(--topbar-border);
+    padding: 0.75rem 0.5rem;
+  }
+
+  .bev-topbar-info {
+    color: var(--topbar-muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .bev-topbar-info:hover {
+    color: var(--topbar-hover);
+  }
+
+  .bev-topbar-marca {
+    color: var(--topbar-text);
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 576px) {
+    .bev-topbar-marca {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+    }
+  }
+
+  .bev-topbar-link {
+    color: var(--topbar-muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .bev-topbar-link:hover {
+    color: var(--topbar-hover);
+  }
+</style>

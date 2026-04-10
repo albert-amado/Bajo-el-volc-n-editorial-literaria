@@ -1,0 +1,230 @@
+---
+
+---
+
+<nav class="navbar navbar-expand-lg navbar-light bev-navbar sticky-top">
+  <div class="container-fluid bev-navbar-inner">
+    <div
+      class="d-none d-lg-flex flex-column align-items-start bev-navbar-brand-text"
+    >
+      <span class="bev-brand-main">BAJO EL VOLCÁN</span>
+      <span class="bev-brand-sub">Editorial Literaria</span>
+    </div>
+
+    <a class="navbar-brand d-lg-none" href="/">
+      <img
+        src="/assets/img/ui/logo.webp"
+        alt="Bajo el Volcán"
+        class="bev-logo-mobile"
+      />
+    </a>
+
+    <button
+      class="navbar-toggler ms-auto d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarMenu"
+      aria-controls="navbarMenu"
+      aria-expanded="false"
+      aria-label="Abrir menú"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand mx-auto d-none d-lg-block" href="/nosotros">
+      <img
+        src="/assets/img/ui/logo.webp"
+        alt="Bajo el Volcán"
+        class="bev-logo-desktop"
+      />
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ms-lg-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item bev-nav-item">
+          <a class="nav-link" href="/">Inicio</a>
+        </li>
+        <li class="nav-item bev-nav-item">
+          <a class="nav-link" href="/nosotros">Nosotros</a>
+        </li>
+        <li class="nav-item bev-nav-item">
+          <a class="nav-link" href="/contacto">Contáctanos</a>
+        </li>
+        <li class="nav-item bev-nav-item">
+          <a class="nav-link" href="/noticias">Noticias</a>
+        </li>
+        <li class="nav-item bev-nav-item">
+          <a
+            class="nav-link"
+            href="/assets/img/doc/bases_premio_nacional_de_novela.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Premio nacional de novela
+          </a>
+        </li>
+        <li class="nav-item bev-nav-item">
+          <a class="nav-link" href="/pagos">Pagos</a>
+        </li>
+        <!--
+        <li class="nav-item ms-lg-2 bev-nav-item">
+          <a
+            class="nav-link bev-cart-btn position-relative"
+            href="/carrito"
+            aria-label="Carrito de compras"
+          > 
+            <i class="bi bi-bag fs-5"></i>
+            <span class="bev-cart-badge" id="cartCount">0</span>
+          -->
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .bev-navbar {
+    background-color: var(--pr-gray-100);
+    border-bottom: 3px solid var(--pr-gray-200);
+    padding: 1.2rem 0;
+    backdrop-filter: blur(8px);
+  }
+
+  .bev-navbar-inner {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .bev-navbar-brand-text {
+    flex: 1;
+  }
+
+  .bev-brand-main {
+    font-family: "Lato", sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    color: var(--pr-gray-700);
+    line-height: 1.1;
+  }
+
+  .bev-brand-sub {
+    font-size: 1rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--pr-gray-1200);
+    margin-top: -2px;
+  }
+
+  .bev-logo-desktop {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px var(--navbar-logo-glow));
+    transition: transform 0.3s ease;
+  }
+
+  .bev-logo-desktop:hover {
+    transform: scale(1.08);
+  }
+
+  .bev-logo-mobile {
+    width: 55px;
+    height: 68px;
+    object-fit: contain;
+  }
+
+  .bev-navbar .nav-link {
+    position: relative;
+    color: var(--navbar-text);
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.9rem;
+    transition:
+      color 0.25s ease,
+      letter-spacing 0.25s ease;
+  }
+
+  .bev-navbar .nav-link:hover {
+    color: var(--navbar-accent);
+    letter-spacing: 0.16em;
+  }
+
+  @media (min-width: 992px) {
+    .bev-navbar .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 12%;
+      bottom: 6px;
+      width: 0%;
+      height: 3px;
+      background-color: var(--navbar-accent);
+      transition: width 0.35s ease;
+    }
+    .bev-navbar .nav-link:hover::after,
+    .bev-navbar .nav-link.active::after {
+      width: 76%;
+    }
+    .bev-nav-item {
+      position: relative;
+    }
+
+    .bev-nav-item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.5px;
+      height: 22px;
+      background-color: var(--pr-gray-200);
+      opacity: 0.75;
+    }
+  }
+
+  .bev-cart-btn {
+    padding-left: 1rem;
+  }
+
+  .bev-cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: var(--navbar-text);
+    color: var(--pr-white);
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 991px) {
+    .bev-navbar {
+      padding: 0.85rem 0;
+    }
+
+    #navbarMenu {
+      background-color: var(--pr-gray-100);
+      border-top: 1px solid var(--pr-gray-200);
+      margin-top: 0.75rem;
+      padding: 0.5rem 0 1rem;
+    }
+
+    .bev-navbar .nav-link {
+      padding: 0.65rem 1.25rem;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--pr-gray-200);
+    }
+
+    .bev-navbar .nav-link:last-child {
+      border-bottom: none;
+    }
+  }
+</style>
