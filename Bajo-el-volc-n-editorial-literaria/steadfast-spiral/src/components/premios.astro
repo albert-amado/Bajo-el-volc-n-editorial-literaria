@@ -1,36 +1,30 @@
 ---
-
 ---
 
 <div class="bev-premios">
-  <div class="container-fluid px-4 px-lg-5">
-    <div class="bev-promo-wrapper text-center mx-auto">
-      <p class="bev-promo-text">
-        "Tu talento merece ser descubierto. Participa en el Primer Premio
-        Nacional de Novela."
-      </p>
+  <div class="bev-promo-wrapper text-center mx-auto">
+    <p class="bev-promo-text">
+      "Tu talento merece ser descubierto. Participa en el Primer Premio
+      Nacional de Novela."
+    </p>
 
-      <div class="bev-promo-img-wrapper">
-        <img
-          src="/assets/img/carrusels/premionacional.webp"
-          alt="Premio Nacional de Novela"
-          class="bev-promo-img"
-          loading="lazy"
-        />
+    <div class="bev-promo-img-wrapper">
+      <img
+        src="/assets/img/carrusels/premionacional.webp"
+        alt="Premio Nacional de Novela"
+        class="bev-promo-img"
+        loading="lazy"
+      />
 
-        <div
-          class="bev-btn-premio-wrap"
-          style="position:absolute; bottom:5%; left:20%; transform:translateX(-50%);"
+      <div class="bev-btn-premio-wrap">
+        
+          class="btn bev-btn-premio"
+          href="/assets/img/doc/bases.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <a
-            class="btn bev-btn-premio"
-            href="/assets/img/doc/bases.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Participa
-          </a>
-        </div>
+          Participa
+        </a>
       </div>
     </div>
   </div>
@@ -43,8 +37,9 @@
     padding: 5rem 0 3rem;
   }
 
+  /* ✅ Sin max-width ni padding lateral: ocupa todo el ancho */
   .bev-promo-wrapper {
-    max-width: 1400px;
+    width: 100%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   }
 
@@ -70,6 +65,16 @@
     height: auto;
   }
 
+  /* ✅ Botón centrado correctamente con flexbox */
+  .bev-btn-premio-wrap {
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+  }
+
   .bev-btn-premio {
     background-color: var(--pr-gray-1400);
     color: var(--pr-white);
@@ -85,7 +90,8 @@
     transition:
       background-color 0.3s ease,
       border-color 0.3s ease,
-      color 0.3s ease;
+      color 0.3s ease,
+      transform 0.3s ease;
   }
 
   .bev-btn-premio:hover {
@@ -98,10 +104,6 @@
   @media (max-width: 576px) {
     .bev-premios {
       padding: 3rem 0 2rem;
-    }
-
-    .bev-promo-wrapper {
-      max-width: 100%;
     }
 
     .bev-promo-text {
