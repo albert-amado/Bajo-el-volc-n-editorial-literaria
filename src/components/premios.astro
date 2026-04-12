@@ -14,15 +14,24 @@
         loading="lazy"
       />
       <div class="bev-btn-premio-wrap">
-        
-          <a class="btn bev-btn-premio"
+        <a class="btn bev-btn-premio"
           href="/assets/img/doc/bases.pdf"
           target="_blank"
           rel="noopener noreferrer">
-          Participa
+          Bases del premio
         </a>
       </div>
     </div>
+    <!--Enlace manusccritos -->
+    <div class="bev-promo-contact">
+      <h3 class="bev-promo-contact-title">Envía aqui tu manuscrito:</h3>
+      <a href="mailto:bajoelvolcane@gmail.com"
+        class="bev-footer-text bev-footer-link bev-promo-contact-link"
+      >
+        bajoelvolcane@gmail.com
+      </a>
+    </div>
+
   </div>
 </div>
 
@@ -89,6 +98,37 @@
     transform: scale(1.05);
   }
 
+  .bev-promo-contact {
+    background-color: var(--pr-gray-1400);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .bev-promo-contact-title {
+    font-family: "Lato", sans-serif;
+    font-size: clamp(3rem, 2vw, 1.3rem);
+    font-weight: 900;
+    color: var(--pr-gray-900);
+    margin: 0;
+  }
+
+  .bev-promo-contact-link {
+    font-family: "Lato", sans-serif;
+    font-size: clamp(3rem, 2vw, 1.3rem);
+    color: var(--pr-white);
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+  }
+
+  .bev-promo-contact-link:hover {
+    opacity: 0.75;
+    color: var(--pr-white);
+  }
+
   @media (max-width: 576px) {
     .bev-premios {
       padding: 3rem 0 2rem;
@@ -101,6 +141,12 @@
     .bev-btn-premio {
       padding: 0.65rem 1.5rem;
       font-size: 0.85rem;
+    }
+
+    .bev-promo-contact {
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: 1.2rem 1rem;
     }
   }
 </style>
