@@ -1,4 +1,4 @@
-name: 🚀 Deploy a Hostinger
+name: 🚀 Deploy a Hostinger 
 
 on:
   push:
