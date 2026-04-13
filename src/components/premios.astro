@@ -22,9 +22,10 @@
         </a>
       </div>
     </div>
-    <!--Enlace manusccritos -->
+
+    <!--Enlace manuscritos -->
     <div class="bev-promo-contact">
-      <h3 class="bev-promo-contact-title">Envía aqui tu manuscrito:</h3>
+      <h3 class="bev-promo-contact-title">Envía aquí tu manuscrito:</h3>
       <a href="mailto:bajoelvolcane@gmail.com"
         class="bev-footer-text bev-footer-link bev-promo-contact-link"
       >
@@ -97,6 +98,7 @@
     transform: scale(1.05);
   }
 
+  /* --- Sección de contacto --- */
   .bev-promo-contact {
     background-color: var(--pr-gray-1400);
     padding: 1.5rem 2rem;
@@ -109,11 +111,7 @@
 
   .bev-promo-contact-title {
     font-family: "Lato", sans-serif;
-
-    font-size: clamp(2rem, 2vw, 1.3rem);
-
-    font-size: clamp(3rem, 2vw, 1.3rem);
-
+    font-size: clamp(1rem, 2vw, 1.6rem);
     font-weight: 900;
     color: var(--pr-gray-900);
     margin: 0;
@@ -121,11 +119,7 @@
 
   .bev-promo-contact-link {
     font-family: "Lato", sans-serif;
-
-    font-size: clamp(2rem, 2vw, 1.3rem);
-
-    font-size: clamp(3rem, 2vw, 1.3rem);
-
+    font-size: clamp(1rem, 2vw, 1.6rem);
     color: var(--pr-white);
     text-decoration: underline;
     transition: opacity 0.2s ease;
@@ -136,6 +130,7 @@
     color: var(--pr-white);
   }
 
+  /* --- Responsive móvil --- */
   @media (max-width: 576px) {
     .bev-premios {
       padding: 3rem 0 2rem;
@@ -152,8 +147,20 @@
 
     .bev-promo-contact {
       flex-direction: column;
-      gap: 0.4rem;
-      padding: 1.2rem 1rem;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 1rem 1rem;
+    }
+
+    .bev-promo-contact-title {
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .bev-promo-contact-link {
+      font-size: 0.9rem;
+      text-align: center;
+      word-break: break-all;
     }
   }
 </style>
