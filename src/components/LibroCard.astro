@@ -1,0 +1,200 @@
+---
+interface Props {
+  id: number;
+  titulo: string;
+  autor: string;
+  genero: string;
+  precio: number;
+  imagen: string;
+  etiqueta?: string;
+}
+
+const { id, titulo, autor, genero, precio, imagen, etiqueta } = Astro.props;
+
+const etiquetasMap: Record<string, string> = {
+  nuevo: "Nuevo",
+  destacado: "Destacado",
+  preventa: "En preventa",
+  descuento: "Oferta",
+};
+---
+
+<article class="libro-card">
+  <div class="libro-card__cover" data-id={id}>
+    <img src={imagen} alt={titulo} loading="lazy" />
+
+    {etiqueta && (
+      <span class={`libro-card__etiqueta libro-card__etiqueta--${etiqueta.toLowerCase()}`}>
+        {etiquetasMap[etiqueta] || etiqueta}
+      </span>
+    )}
+
+    <!-- Overlay hover -->
+    <div class="libro-card__overlay">
+      <button class="libro-card__overlay-btn libro-card__overlay-btn--carrito js-btn-carrito"
+        data-id={id}
+        data-titulo={titulo}
+        data-precio={precio}
+      >
+        <i class="bi bi-bag-plus"></i> Agregar al carrito
+      </button>
+      <button class="libro-card__overlay-btn libro-card__overlay-btn--detalle js-btn-modal"
+        data-id={id}
+      >
+        <i class="bi bi-eye"></i> Ver detalle
+      </button>
+    </div>
+  </div>
+
+  <div class="libro-card__info">
+    <span class="libro-card__genero">{genero}</span>
+    <h5 class="libro-card__titulo">{titulo}</h5>
+    <p class="libro-card__autor">{autor}</p>
+    <span class="libro-card__precio">${precio.toLocaleString("es-CO")}</span>
+  </div>
+</article>
+
+<style>
+  .libro-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  /* ── Portada ── */
+  .libro-card__cover {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 2 / 3;
+  }
+
+  .libro-card__cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+
+  .libro-card:hover .libro-card__cover img {
+    transform: scale(1.05);
+    filter: brightness(0.45);
+  }
+
+  /* ── Overlay con botones ── */
+  .libro-card__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .libro-card:hover .libro-card__overlay {
+    opacity: 1;
+  }
+
+  .libro-card__overlay-btn {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .libro-card__overlay-btn--carrito {
+    background: var(--pr-gray-900);
+    color: var(--pr-white);
+  }
+
+  .libro-card__overlay-btn--carrito:hover {
+    background: #fff;
+    color: var(--pr-gray-900);
+  }
+
+  .libro-card__overlay-btn--detalle {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+  }
+
+  .libro-card__overlay-btn--detalle:hover {
+    background: #fff;
+    color: var(--pr-gray-900);
+  }
+
+  /* ── Etiqueta ── */
+  .libro-card__etiqueta {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    z-index: 3;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .libro-card__etiqueta--nuevo     { background: #111; color: #fff; }
+  .libro-card__etiqueta--destacado { background: #000; color: #fff; }
+  .libro-card__etiqueta--preventa  { background: #c0392b; color: #fff; }
+  .libro-card__etiqueta--descuento { background: #27ae60; color: #fff; }
+
+  /* ── Info debajo de la portada ── */
+  .libro-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.75rem 0.75rem 0.9rem;
+    background: var(--pr-gray-400);
+    flex: 1;
+  }
+
+  .libro-card__genero {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pr-gray-700);
+    margin: 0;
+  }
+
+  .libro-card__titulo {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--pr-gray-900);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .libro-card__autor {
+    font-size: 0.8rem;
+    color: var(--pr-gray-700);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .libro-card__precio {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--pr-gray-1200);
+    margin-top: 0.4rem;
+  }
+</style>
