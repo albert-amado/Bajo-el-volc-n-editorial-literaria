@@ -13,11 +13,13 @@ const getInitials = (nombre: string) => {
 };
 ---
 
-<section class="py-5 bev-section-dark">
+<section class="py-5 bev-section bev-section-dark">
   <div class="container">
     <div class="text-center mb-5">
       <span class="bev-section-tag-light">Voces Bajo el Volcán</span>
       <h2 class="bev-section-title">Nuestros autores</h2>
+
+      <div class="bev-section-line"></div>
     </div>
 
     <div data-aos="fade-up">
@@ -56,7 +58,6 @@ const getInitials = (nombre: string) => {
     </div>
   </div>
 </section>
-
 <style>
   .bev-author-link {
     display: block;
@@ -130,7 +131,7 @@ const getInitials = (nombre: string) => {
 
   .bev-btn-autor {
     background: transparent;
-    border: 1px solid var(--pr-gray-400);
+    border: 1px solid var(--pr-gray-1500);
     color: var(--pr-gray-900);
     font-size: 0.78rem;
     padding: 0.4rem 0.9rem;
@@ -145,4 +146,32 @@ const getInitials = (nombre: string) => {
     color: var(--pr-gray-900);
     border-color: var(--pr-gray-400);
   }
+  .bev-section-dark {
+    background: var(--pr-gray-400);
+    color: var(--pr-gray-900);
+  }
+
+  .bev-section-tag-light {
+    text-align: left;
+    display: block;
+  }
+
+  .bev-section-title {
+    text-align: left;
+  }
+
+  .bev-section-line {
+    height: 3px;
+    width: 800px;
+    background: var(--pr-gray-1500);
+    margin: 1rem 0 2.5rem 0;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 576px) {
+    .bev-section-line {
+      width: 140px;
+    }
+  }
+  
 </style>
