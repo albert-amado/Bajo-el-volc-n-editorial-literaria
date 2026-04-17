@@ -53,9 +53,7 @@ const slides = libros.slice(0, 9);
                     <h1 class="bev-slide-title">{libro.titulo}</h1>
                     <p class="bev-slide-author">{libro.autor}</p>
                     <p class="bev-slide-desc">
-                      {libro.descripcion
-                        ? libro.descripcion.substring(0, 120) + "..."
-                        : ""}
+                      <p class="bev-slide-desc">{libro.frase || ""}</p>
                     </p>
                   </div>
                 </div>
@@ -122,14 +120,9 @@ const slides = libros.slice(0, 9);
   }
 
   .bev-slide-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(0, 0, 0, 0.72) 50%,
-      rgba(0, 0, 0, 0.85) 70%
-    );
+    .bev-slide-overlay {
+      display: none;
+    }
   }
 
   .bev-slide-content {
@@ -153,11 +146,11 @@ const slides = libros.slice(0, 9);
 
   .bev-slide-title {
     font-family: "Lato", sans-serif;
-    font-size: clamp(2rem, 5vw, 5rem);
+    font-size: clamp(1.6rem, 3.8vw, 3.5rem); /* ↓ más pequeño */
     font-weight: 800;
     color: var(--pr-white);
     margin-bottom: 0.4rem;
-    line-height: 1.05;
+    line-height: 1.1;
   }
 
   .bev-slide-author {
@@ -170,12 +163,19 @@ const slides = libros.slice(0, 9);
   }
 
   .bev-slide-desc {
-    font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+    font-size: clamp(0.9rem, 1.4vw, 1.2rem);
     color: var(--pr-white);
-    opacity: 0.9;
-    max-width: 720px;
-    line-height: 1.5;
-    font-weight: 500;
+    opacity: 0.95;
+    max-width: 700px;
+    width: 100%;
+    line-height: 1.7;
+    font-weight: 400;
+    font-style: italic;
+    text-align: center;
+    margin: 0 auto;
+
+    /* Mejora legibilidad sin overlay */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   }
 
   /* Flechas */
@@ -232,12 +232,10 @@ const slides = libros.slice(0, 9);
   }
 
   @media (max-width: 480px) {
-    .bev-slide {
-      height: 60vh;
-    }
-
     .bev-slide-desc {
-      display: none;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      padding: 0 10px;
     }
   }
 </style>
