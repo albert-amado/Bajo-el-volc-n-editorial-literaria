@@ -29,7 +29,6 @@ const etiquetasMap: Record<string, string> = {
       </span>
     )}
 
-    <!-- Overlay hover -->
     <div class="libro-card__overlay">
       <button class="libro-card__overlay-btn libro-card__overlay-btn--carrito js-btn-carrito"
         data-id={id}
@@ -63,7 +62,6 @@ const etiquetasMap: Record<string, string> = {
     margin: 0 auto;
   }
 
-  /* ── Portada ── */
   .libro-card__cover {
     position: relative;
     overflow: hidden;
@@ -84,7 +82,6 @@ const etiquetasMap: Record<string, string> = {
     filter: brightness(0.45);
   }
 
-  /* ── Overlay con botones ── */
   .libro-card__overlay {
     position: absolute;
     inset: 0;
@@ -139,7 +136,6 @@ const etiquetasMap: Record<string, string> = {
     color: var(--pr-gray-900);
   }
 
-  /* ── Etiqueta ── */
   .libro-card__etiqueta {
     position: absolute;
     top: 8px;
@@ -157,7 +153,6 @@ const etiquetasMap: Record<string, string> = {
   .libro-card__etiqueta--preventa  { background: #c0392b; color: #fff; }
   .libro-card__etiqueta--descuento { background: #27ae60; color: #fff; }
 
-  /* ── Info debajo de la portada ── */
   .libro-card__info {
     display: flex;
     flex-direction: column;

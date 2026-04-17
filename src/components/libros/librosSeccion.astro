@@ -1,0 +1,180 @@
+---
+import LibrosSidebarLeft from "../libros/LibrosSidebarLeft.astro";
+import LibrosGrid from "../libros/LibrosGrid.astro";
+import LibrosContactForm from "../libros/LibrosContactForm.astro";
+import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
+---
+
+<section class="py-5 FondoPersonalizado">
+  <div class="bev-container">
+    <div class="mb-5">
+      <span class="bev-section-tag-light libros-seccion__tag">
+        Colección de Bajo el Volcán
+      </span>
+      <h2 class="bev-section-title libros-seccion__titulo">Nuestras Novelas</h2>
+      <div class="bev-section-line"></div>
+    </div>
+
+    <div class="libros-layout">
+      <LibrosSidebarLeft />
+      <LibrosGrid />
+
+      <aside class="libros-sidebar-right">
+        <LibrosContactForm />
+        <LibrosNoticiasLateral />
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script>
+    import { abrirModal }       from "../../js/modal.js";
+    import { agregarAlCarrito } from "../../js/carrito.js";
+
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll(".js-btn-modal").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute("data-id");
+        if (id) abrirModal(parseInt(id));
+      });
+    });
+
+    document.querySelectorAll(".js-btn-carrito").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute("data-id");
+        const titulo = btn.getAttribute("data-titulo");
+        const precio = parseFloat(btn.getAttribute("data-precio") || "0");
+        if (id && titulo) agregarAlCarrito(id, titulo, precio);
+      });
+    });
+
+    const items = document.querySelectorAll<HTMLElement>(".libro-item");
+    document.querySelectorAll(".bev-categoria-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document
+          .querySelectorAll(".bev-categoria-item")
+          .forEach((b) => b.classList.remove("activo"));
+        btn.classList.add("activo");
+        const cat = btn.getAttribute("data-categoria");
+        items.forEach((item) => {
+          const etiqueta = item.getAttribute("data-etiqueta") || "";
+          const genero = item.getAttribute("data-genero") || "";
+          const visible =
+            cat === "todos" ||
+            etiqueta === cat?.toLowerCase() ||
+            genero === cat?.toLowerCase();
+          item.style.display = visible ? "" : "none";
+        });
+      });
+    });
+
+    const feedback = document.getElementById("formMensajeLibros");
+
+    document
+      .getElementById("btnEnviarLibros")
+      ?.addEventListener("click", async (e) => {
+        const nombre = (
+          document.getElementById("inputNombre") as HTMLInputElement
+        ).value.trim();
+        const correo = (
+          document.getElementById("inputCorreo") as HTMLInputElement
+        ).value.trim();
+        const mensaje = (
+          document.getElementById("inputMensaje") as HTMLTextAreaElement
+        ).value.trim();
+
+        if (!nombre || !correo || !mensaje) {
+          e.preventDefault();
+          showFeedback("Completa los campos obligatorios.", false);
+          return;
+        }
+
+        showFeedback("¡Abriendo cliente de correo...", true);
+      });
+
+    function showFeedback(msg: string, ok: boolean) {
+      if (!feedback) return;
+      feedback.classList.remove("d-none", "bev-feedback-ok", "bev-feedback-error");
+      feedback.classList.add(ok ? "bev-feedback-ok" : "bev-feedback-error");
+      feedback.textContent = msg;
+      setTimeout(() => feedback.classList.add("d-none"), 4000);
+    }
+  });
+</script>
+
+<style>
+.FondoPersonalizado {
+  background-image: url("/assets/img/fondos/patron.png");
+
+  background-repeat: repeat;
+  background-size: 950px; /* ajusta según tu patrón */
+  background-position: top left;
+
+  background-color: #f5f5f5; /* base clara tipo editorial */
+}
+  .libros-seccion__tag {
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    display: block;
+    text-align: left;
+  }
+
+  .libros-seccion__titulo {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    text-align: left;
+  }
+
+  .bev-section-line {
+    height: 3px;
+    width: 900px;
+    background: var(--pr-gray-1500);
+    margin: 1rem 0 2.5rem 0;
+    border-radius: 5px;
+  }
+
+  .libros-layout {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr) 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .libros-sidebar-right {
+    position: sticky;
+    top: 5rem;
+    margin-top: 4rem;
+  }
+
+  @media (max-width: 1199px) {
+    .libros-layout {
+      grid-template-columns: 140px minmax(0, 1fr) 200px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .libros-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .libros-sidebar-right {
+      position: static;
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .bev-section-line {
+      width: 140px;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .libros-seccion__titulo {
+      font-size: 2rem;
+    }
+  }
+</style>

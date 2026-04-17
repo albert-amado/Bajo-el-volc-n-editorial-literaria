@@ -1,0 +1,97 @@
+---
+---
+
+<aside class="libros-sidebar-left">
+  <div class="bev-categorias-container">
+    <p class="bev-categorias-titulo">CATEGORÍAS</p>
+    <ul class="bev-categorias-lista" id="listaCategorias">
+      <li class="bev-categoria-item activo" data-categoria="todos">Todos</li>
+      <li class="bev-categoria-item" data-categoria="nuevo">Nuevos</li>
+      <li class="bev-categoria-item" data-categoria="destacado">Destacados</li>
+      <li class="bev-categoria-item" data-categoria="preventa">Preventa</li>
+      <li class="bev-categoria-item" data-categoria="Misterio">Misterio</li>
+      <li class="bev-categoria-item" data-categoria="Romance">Romance</li>
+      <li class="bev-categoria-item" data-categoria="Novela">Novela</li>
+      <li class="bev-categoria-item" data-categoria="Filosofia">Filosofía</li>
+      <li class="bev-categoria-item" data-categoria="Crimen">Crimen</li>
+    </ul>
+  </div>
+</aside>
+
+<style>
+  .libros-sidebar-left {
+    position: sticky;
+    top: 5rem;
+    margin-top: 4rem;
+  }
+
+  .bev-categorias-container {
+    padding-right: 1rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .bev-categorias-titulo {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 0.4em;
+    color: var(--pr-gray-1500);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--pr-gray-1500);
+  }
+
+  .bev-categorias-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .bev-categoria-item {
+    font-size: 0.88rem;
+    color: var(--bev-charcoal);
+    padding: 0.25rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .bev-categoria-item:hover,
+  .bev-categoria-item.activo {
+    color: var(--pr-gray-1500);
+    font-weight: 600;
+  }
+
+  @media (max-width: 991px) {
+    .libros-sidebar-left {
+      position: static;
+      margin-top: 0;
+    }
+
+    .bev-categorias-container {
+      border-right: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding-right: 0;
+      padding-bottom: 1rem;
+    }
+
+    .bev-categorias-lista {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .bev-categoria-item {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    .bev-categoria-item.activo {
+      background-color: var(--bev-ink);
+      color: var(--pr-white);
+      border-color: var(--bev-ink);
+    }
+  }
+</style>

@@ -1,0 +1,164 @@
+---
+import noticias from "../../data/noticias.json";
+
+const formatearFecha = (fecha: string) =>
+  new Date(fecha).toLocaleDateString("es-CO", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+const noticiasOrdenadas = [...noticias].sort(
+  (a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime()
+);
+
+const categoriaColores: Record<string, string> = {
+  evento: "bev-cat-evento",
+  lanzamiento: "bev-cat-lanzamiento",
+  convocatoria: "bev-cat-convocatoria",
+  entrevista: "bev-cat-entrevista",
+  premio: "bev-cat-premio",
+};
+
+const categoriaTextos: Record<string, string> = {
+  evento: "Evento",
+  lanzamiento: "Lanzamiento",
+  convocatoria: "Convocatoria",
+  entrevista: "Entrevista",
+  premio: "Premio",
+};
+---
+
+<div class="bev-noticias-lateral">
+  <p class="bev-categorias-titulo">NOTICIAS</p>
+  <div class="d-flex flex-column gap-3">
+    {
+      noticiasOrdenadas.map((noticia) => (
+        <a href={`/noticias/${noticia.slug}`} class="text-decoration-none">
+          <div class="bev-noticia-card-mini">
+            <div class="bev-noticia-img-mini">
+              {noticia.imagen ? (
+                <img src={noticia.imagen} alt={noticia.titulo} loading="lazy" />
+              ) : (
+                <div class="bev-img-placeholder-mini">
+                  <i class="bi bi-newspaper" />
+                </div>
+              )}
+              <span class={`bev-categoria-badge-mini ${categoriaColores[noticia.categoria] || ""}`}>
+                {categoriaTextos[noticia.categoria] || noticia.categoria}
+              </span>
+            </div>
+            <div class="bev-noticia-body-mini p-2">
+              <p class="bev-noticia-fecha-mini mb-1">
+                <i class="bi bi-calendar3 me-1" />
+                {formatearFecha(noticia.fecha)}
+              </p>
+              <p class="bev-noticia-titulo-mini mb-1">{noticia.titulo}</p>
+              <p class="bev-noticia-resumen-mini">{noticia.resumen}</p>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .bev-categorias-titulo {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 0.4em;
+    color: var(--pr-gray-1500);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--pr-gray-1500);
+  }
+
+  .bev-noticias-lateral {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 1.5rem;
+  }
+
+  .bev-noticia-card-mini {
+    background-color: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .bev-noticia-card-mini:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .bev-noticia-img-mini {
+    position: relative;
+    height: 120px;
+    overflow: hidden;
+    background-color: var(--pr-gray-50);
+  }
+
+  .bev-noticia-img-mini img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .bev-noticia-card-mini:hover .bev-noticia-img-mini img {
+    transform: scale(1.05);
+  }
+
+  .bev-img-placeholder-mini {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--pr-gray-200);
+  }
+
+  .bev-categoria-badge-mini {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bev-cat-evento     { background-color: var(--pr-gray-400); color: var(--pr-gray-900); }
+  .bev-cat-lanzamiento{ background-color: var(--pr-gray-900); color: var(--pr-white); }
+  .bev-cat-convocatoria{ background-color: var(--pr-gray-100); color: var(--pr-gray-900); }
+  .bev-cat-entrevista { background-color: var(--pr-gray-700); color: var(--pr-white); }
+  .bev-cat-premio     { background-color: var(--pr-gray-200); color: var(--pr-gray-900); }
+
+  .bev-noticia-fecha-mini {
+    font-size: 0.7rem;
+    color: var(--pr-gray-700);
+  }
+
+  .bev-noticia-titulo-mini {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--pr-gray-900);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .bev-noticia-resumen-mini {
+    font-size: 0.75rem;
+    color: var(--pr-gray-700);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+  }
+</style>

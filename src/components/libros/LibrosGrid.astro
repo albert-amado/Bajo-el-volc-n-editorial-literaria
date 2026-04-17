@@ -1,0 +1,61 @@
+---
+import libros from "../../data/libros.json";
+import LibroCard from "../libros/LibroCard.astro";
+---
+
+<main class="libros-main">
+  <div class="libros-grid" id="librosGrid">
+    {
+      libros.map((libro) => (
+        <article
+          class="libro-item"
+          data-etiqueta={libro.etiqueta?.toLowerCase()}
+          data-genero={libro.genero?.toLowerCase()}
+        >
+          <LibroCard
+            id={libro.id}
+            titulo={libro.titulo}
+            autor={libro.autor}
+            genero={libro.genero}
+            precio={libro.precio}
+            imagen={libro.imagen}
+            etiqueta={libro.etiqueta}
+          />
+        </article>
+      ))
+    }
+  </div>
+</main>
+
+<style>
+  .libros-main {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .libros-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  @media (max-width: 1199px) {
+    .libros-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .libros-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 639px) {
+    .libros-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+  }
+</style>
