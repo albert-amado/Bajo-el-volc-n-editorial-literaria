@@ -12,7 +12,7 @@
     "nombre": "Natalia Álvarez Arenas",
     "nacionalidad": "Colombia",
     "bio": "Natalia Álvarez Arenas es Comunicadora Social y Periodista de la Universidad Pontificia Bolivariana, Magíster en Gestión Estratégica de la Información y el Conocimiento, de la Universidad Oberta de Cataluña y Obtuvo su título de Magíster en Escritura Creativa en la Universidad de Salamanca.",
-    "foto": "assets/img/autores/Nataliaalvarezarenas.webp",
+    "foto": "/assets/img/autores/Nataliaalvarezarenas.webp",
     "libros_ids": [2]
   },
   {
@@ -36,7 +36,7 @@
     "nombre": "Fabiana Bartra",
     "nacionalidad": "Colombia",
     "bio": "Nació en Cali. Es profesional en artes visuales y trabaja en una agencia publicitaria. Le gusta dibujar rostros femeninos y escribir poemas sobre la mujer. Yo no maté ese gato es su primer libro.",
-    "foto": "/assets/img/autores/",
+    "foto": "/assets/img/autores/fabiana.webp",
     "libros_ids": [6]
   },
     {
