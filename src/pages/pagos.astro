@@ -32,7 +32,7 @@ import Layout from "../layouts/layout.astro";
               href="https://wa.me/573144559506"
               target="_blank"
               rel="noopener noreferrer"
-              class="bev-whatsapp-btn d-inline-flex align-items-center gap-3 px-5 py-4 rounded-4"
+              class="bev-whatsapp-btn d-inline-flex align-items-center rounded-4"
             >
               <i class="bi bi-whatsapp bev-wp-icon"></i>
               <div class="text-start">
@@ -59,7 +59,7 @@ import Layout from "../layouts/layout.astro";
 
 <style>
   .bev-pagos {
-    background-color: var(--pr-gray-1000);
+    background-color: transparent;
     min-height: 100vh;
     color: var(--pr-gray-900);
   }
@@ -78,7 +78,7 @@ import Layout from "../layouts/layout.astro";
     background: var(--pr-white);
     padding: 2.5rem;
     border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-2xl-soft);
     display: inline-block;
     max-width: 560px;
     width: 100%;
@@ -99,9 +99,11 @@ import Layout from "../layouts/layout.astro";
   }
 
   .bev-whatsapp-btn {
-    background-color: #25d366;
-    color: white;
+    background-color: var(--wa-green);
+    color: var(--pr-white);
     text-decoration: none;
+    padding: 1rem 2rem;
+    gap: 0.75rem;
     transition:
       background-color 0.3s ease,
       transform 0.3s ease,
@@ -110,10 +112,10 @@ import Layout from "../layouts/layout.astro";
   }
 
   .bev-whatsapp-btn:hover {
-    background-color: #20b958;
+    background-color: var(--wa-green-hover);
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
-    color: white;
+    box-shadow: 0 15px 30px var(--wa-green-shadow);
+    color: var(--pr-white);
   }
 
   .bev-wp-icon {
@@ -126,7 +128,7 @@ import Layout from "../layouts/layout.astro";
 
   .bev-wp-label {
     font-size: 1rem;
-    color: #d4f5e2;
+    color: var(--wa-green-soft);
   }
 
   .bev-pagos-footer {
@@ -139,8 +141,16 @@ import Layout from "../layouts/layout.astro";
     }
 
     .bev-whatsapp-btn {
-      padding: 1rem 2rem !important;
-      gap: 0.75rem !important;
+      padding: 0.9rem 1rem;
+      gap: 0.55rem;
+      width: 100%;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .bev-wp-numero,
+    .bev-wp-label {
+      line-height: 1.2;
     }
   }
 </style>

@@ -4,7 +4,7 @@ import libros from "../data/libros.json";
 const slides = libros.slice(0, 9);
 ---
 
-<section class="pt-0 pb-4 bev-hero-section">
+<section class="pt-0 pb-4">
   <div class="container-fluid px-0">
     <div
       id="heroCarousel"
@@ -33,30 +33,7 @@ const slides = libros.slice(0, 9);
             <div
               class={`carousel-item bev-slide ${i === 0 ? "active" : ""}`}
               style={`background-image: url('${libro.imagen_hero || libro.imagen}');`}
-            >
-              <div class="bev-slide-overlay" />
-              <div class="container h-100">
-                <div class="row h-100 align-items-center justify-content-center">
-                  <div class="col-11 col-lg-10 bev-slide-content text-center mx-auto">
-                    {libro.etiqueta === "nuevo" && (
-                      <span class="bev-hero-badge bev-etiqueta-nuevo">
-                        Nuevo
-                      </span>
-                    )}
-                    {libro.etiqueta === "preventa" && (
-                      <span class="bev-hero-badge bev-etiqueta-preventa">
-                        Próximo lanzamiento
-                      </span>
-                    )}
-
-                    <span class="bev-eyebrow">{libro.genero}</span>
-                    <h1 class="bev-slide-title">{libro.titulo}</h1>
-                    <p class="bev-slide-author">{libro.autor}</p>
-                    <p class="bev-slide-desc">{libro.frase || ""}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            />
           ))
         }
       </div>
@@ -84,17 +61,11 @@ const slides = libros.slice(0, 9);
 </section>
 
 <style is:global>
-  .bev-hero-section .container-fluid {
-    max-width: none;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
   .bev-carousel-custom {
     width: min(100%, 1680px);
     margin: 0 auto;
     overflow: hidden;
-    box-shadow: none;
+    box-shadow: none;ñ
     border-radius: 0;
   }
 
@@ -106,65 +77,6 @@ const slides = libros.slice(0, 9);
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--pr-white);
-    display: flex;
-    align-items: center;
-  }
-
-  .bev-slide-overlay {
-    display: none;
-  }
-
-  .bev-slide-content {
-    display: none;
-  }
-
-  .bev-eyebrow {
-    font-size: 1rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--pr-white);
-    opacity: 0.9;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-  }
-
-  .bev-slide-title {
-    font-family: "Lato", sans-serif;
-    font-size: clamp(1.7rem, 4vw, 3.5rem);
-    font-weight: 800;
-    color: var(--pr-white);
-    margin-bottom: 0.4rem;
-    line-height: 1.1;
-    text-wrap: balance;
-  }
-
-  .bev-slide-author {
-    font-size: clamp(1rem, 2vw, 1.35rem);
-    font-style: italic;
-    color: var(--pr-white);
-    opacity: 0.95;
-    margin-bottom: 1rem;
-    font-weight: 700;
-  }
-
-  .bev-slide-desc {
-    font-size: clamp(0.9rem, 1.4vw, 1.2rem);
-    color: var(--pr-white);
-    opacity: 0.95;
-    max-width: 700px;
-    width: 100%;
-    line-height: 1.7;
-    font-weight: 400;
-    font-style: italic;
-    text-align: center;
-    margin: 0 auto;
-
-    /* Mejora legibilidad sin overlay */
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  }
-
-  .bev-slide .container {
-    max-width: 100%;
   }
 
   /* Flechas */
@@ -192,16 +104,16 @@ const slides = libros.slice(0, 9);
     display: block;
     width: 22px;
     height: 22px;
-    border-top: 4px solid #ffffff;
-    border-right: 4px solid #ffffff;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.28));
+    border-top: 4px solid var(--pr-white);
+    border-right: 4px solid var(--pr-white);
+    filter: drop-shadow(0 2px 4px var(--pr-glass-dark-28));
   }
 
   @media (min-width: 769px) {
     .bev-hero-nav .bev-hero-arrow {
       border-top-color: var(--pr-gray-900);
       border-right-color: var(--pr-gray-900);
-      filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.25));
+      filter: drop-shadow(0 1px 2px var(--pr-glass-light-25));
     }
   }
 
@@ -263,11 +175,6 @@ const slides = libros.slice(0, 9);
       height: 18px;
       border-top-width: 3px;
       border-right-width: 3px;
-    }
-
-    .bev-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
     }
 
   }

@@ -5,7 +5,7 @@ import LibrosContactForm from "../libros/LibrosContactForm.astro";
 import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
 ---
 
-<section class="py-5 FondoPersonalizado">
+<section class="py-5">
   <div class="bev-container">
     <div class="mb-5">
       <span class="bev-section-tag-light libros-seccion__tag">
@@ -96,53 +96,69 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
 </script>
 
 <style>
-.FondoPersonalizado {
-  background-image: url("/assets/img/fondos/patron.png");
-
-  background-repeat: repeat;
-  background-size: 950px; /* ajusta según tu patrón */
-  background-position: top left;
-
-  background-color: #f5f5f5; /* base clara tipo editorial */
-}
   .libros-seccion__tag {
     font-size: 1rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     display: block;
     text-align: left;
+    background: none;
+    color: var(--pr-white);
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 1rem;
+    width: fit-content;
   }
 
   .libros-seccion__titulo {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 400;
     text-align: left;
+    background: none;
+    color: var(--pr-white);
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    width: fit-content;
   }
 
   .bev-section-line {
-    height: 3px;
-    width: 900px;
-    background: var(--pr-gray-1500);
+    width: min(100%, 900px);
+    border-top: 3px dotted var(--pr-gray-1200);
     margin: 1rem 0 2.5rem 0;
-    border-radius: 5px;
   }
 
   .libros-layout {
     display: grid;
-    grid-template-columns: 160px minmax(0, 1fr) 240px;
-    gap: 2rem;
+    grid-template-columns: minmax(0, 170px) minmax(0, 1fr) minmax(0, 260px);
+    gap: 1.25rem;
     align-items: start;
+  }
+
+  .libros-sidebar-left {
+    justify-self: start;
+    width: 100%;
+    margin-left: -1.5rem;
   }
 
   .libros-sidebar-right {
     position: sticky;
     top: 5rem;
     margin-top: 4rem;
+    justify-self: end;
+    width: 100%;
+    margin-right: -1.5rem;
   }
 
   @media (max-width: 1199px) {
     .libros-layout {
-      grid-template-columns: 140px minmax(0, 1fr) 200px;
+      grid-template-columns: minmax(0, 150px) minmax(0, 1fr) minmax(0, 220px);
+    }
+
+    .libros-sidebar-left,
+    .libros-sidebar-right {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -154,12 +170,17 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
     .libros-sidebar-right {
       position: static;
       margin-top: 0;
+      margin-right: 0;
+    }
+
+    .libros-sidebar-left {
+      margin-left: 0;
     }
   }
 
   @media (max-width: 576px) {
     .bev-section-line {
-      width: 140px;
+      width: min(100%, 140px);
     }
   }
 

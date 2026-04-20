@@ -58,7 +58,7 @@ const etiquetasMap: Record<string, string> = {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 220px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -122,18 +122,18 @@ const etiquetasMap: Record<string, string> = {
   }
 
   .libro-card__overlay-btn--carrito:hover {
-    background: #fff;
+    background: var(--pr-white);
     color: var(--pr-gray-900);
   }
 
   .libro-card__overlay-btn--detalle {
     background: transparent;
-    color: #fff;
-    border: 1px solid #fff;
+    color: var(--pr-white);
+    border: 1px solid var(--pr-white);
   }
 
   .libro-card__overlay-btn--detalle:hover {
-    background: #fff;
+    background: var(--pr-white);
     color: var(--pr-gray-900);
   }
 
@@ -149,10 +149,10 @@ const etiquetasMap: Record<string, string> = {
     letter-spacing: 0.05em;
   }
 
-  .libro-card__etiqueta--nuevo     { background: #111; color: #fff; }
-  .libro-card__etiqueta--destacado { background: #000; color: #fff; }
-  .libro-card__etiqueta--preventa  { background: #c0392b; color: #fff; }
-  .libro-card__etiqueta--descuento { background: #27ae60; color: #fff; }
+  .libro-card__etiqueta--nuevo     { background: var(--pr-black-1100); color: var(--pr-white); }
+  .libro-card__etiqueta--destacado { background: var(--pr-black); color: var(--pr-white); }
+  .libro-card__etiqueta--preventa  { background: var(--status-error-text); color: var(--pr-white); }
+  .libro-card__etiqueta--descuento { background: var(--discount-green); color: var(--pr-white); }
 
   .libro-card__info {
     display: flex;
@@ -192,5 +192,37 @@ const etiquetasMap: Record<string, string> = {
     font-size: 1rem;
     color: var(--pr-gray-1200);
     margin-top: 0.4rem;
+  }
+
+  @media (hover: none), (max-width: 767px) {
+    .libro-card__cover img {
+      transform: none;
+      filter: none;
+    }
+
+    .libro-card:hover .libro-card__cover img {
+      transform: none;
+      filter: none;
+    }
+
+    .libro-card__overlay {
+      opacity: 1;
+      justify-content: flex-end;
+      padding-bottom: 0.85rem;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.02) 10%,
+        rgba(0, 0, 0, 0.62) 100%
+      );
+    }
+
+    .libro-card__overlay-btn {
+      font-size: 0.7rem;
+      padding: 8px 10px;
+    }
+
+    .libro-card__info {
+      padding: 0.7rem 0.7rem 0.85rem;
+    }
   }
 </style>

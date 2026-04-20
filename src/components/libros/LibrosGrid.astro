@@ -35,7 +35,7 @@ import LibroCard from "../libros/LibroCard.astro";
 
   .libros-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1.5rem;
     width: 100%;
   }
@@ -55,12 +55,12 @@ import LibroCard from "../libros/LibroCard.astro";
 
   @media (max-width: 639px) {
     .libros-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
     }
   }
 
-  @media (max-width: 420px) {
+  @media (max-width: 575px) {
     .libros-grid {
       grid-template-columns: 1fr;
     }

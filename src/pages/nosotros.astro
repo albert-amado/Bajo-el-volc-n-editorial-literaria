@@ -59,7 +59,7 @@ const getInitials = (nombre: string) => {
 
       <div class="row g-4 justify-content-center mb-5">
         {equipo.map((persona) => (
-          <div class="col-6 col-md-4 col-lg-3">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="bev-team-card text-center p-4 h-100">
 
               <div class="bev-team-sello" aria-hidden="true">
@@ -99,7 +99,7 @@ const getInitials = (nombre: string) => {
 
 <style>
   .bev-nosotros {
-    background-color: var(--pr-gray-1000);
+    background-color: transparent;
     min-height: 100vh;
     color: var(--pr-gray-900);
   }
@@ -169,7 +169,7 @@ const getInitials = (nombre: string) => {
 
   .bev-team-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 12px 32px var(--pr-glass-dark-12);
     border-left-color: var(--pr-gray-400);
   }
 
@@ -199,7 +199,7 @@ const getInitials = (nombre: string) => {
     border: 4px solid var(--pr-gray-900);
     position: relative;
     z-index: 1;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 20px var(--pr-glass-dark-15);
   }
 
   .bev-team-avatar img {
@@ -254,5 +254,39 @@ const getInitials = (nombre: string) => {
     position: relative;
     z-index: 1;
     margin: 0;
+  }
+
+  @media (max-width: 575px) {
+    .bev-info-card,
+    .bev-team-card {
+      padding: 1.25rem !important;
+    }
+
+    .bev-info-card h4 {
+      font-size: 1.4rem;
+    }
+
+    .bev-info-card p {
+      font-size: 1rem;
+    }
+
+    .bev-info-sello {
+      width: 150px;
+      height: 150px;
+    }
+
+    .bev-team-sello {
+      width: 120px;
+      height: 120px;
+    }
+
+    .bev-team-avatar {
+      width: 120px;
+      height: 120px;
+    }
+
+    .bev-team-card h4 {
+      font-size: 1rem;
+    }
   }
 </style>

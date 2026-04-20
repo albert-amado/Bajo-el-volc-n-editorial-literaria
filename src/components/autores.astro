@@ -22,11 +22,11 @@ const getInitials = (nombre: string) => {
       <div class="bev-section-line"></div>
     </div>
 
-    <div data-aos="fade-up">
+    <div class="bev-authors-grid">
       <div class="row g-4 justify-content-center">
         {
           autoresDestacados.map((autor) => (
-            <div class="col-6 col-md-4 col-lg-2 text-center">
+            <div class="col-6 col-md-4 col-lg-2 text-center bev-author-col">
               <a href={`/autores/${autor.id}`} class="bev-author-link">
                 <div class="bev-author-avatar mx-auto">
                   <img
@@ -147,30 +147,48 @@ const getInitials = (nombre: string) => {
     border-color: var(--pr-gray-400);
   }
   .bev-section-dark {
-    background: var(--pr-gray-400);
+    background: var(--pr-gray-200);
     color: var(--pr-gray-900);
   }
 
   .bev-section-tag-light {
     text-align: left;
     display: block;
+    background: none;
+    color: var(--pr-black);
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 1rem;
+    width: fit-content;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
   }
 
   .bev-section-title {
     text-align: left;
+    background: none;
+    color: var(--pr-gray-900);
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    width: fit-content;
+  }
+
+  .bev-authors-grid {
+    opacity: 1;
+    transform: none;
   }
 
   .bev-section-line {
-    height: 3px;
-    width: 800px;
-    background: var(--pr-gray-1500);
+    width: min(100%, 800px);
+    border-top: 3px dotted var(--pr-gray-1200);
     margin: 1rem 0 2.5rem 0;
-    border-radius: 5px;
   }
 
   @media (max-width: 576px) {
     .bev-section-line {
-      width: 140px;
+      width: min(100%, 140px);
     }
 
     .bev-author-avatar {
@@ -185,11 +203,14 @@ const getInitials = (nombre: string) => {
     .bev-btn-autor {
       font-size: 0.72rem;
       padding: 0.38rem 0.8rem;
+      width: 100%;
+      max-width: 170px;
+      white-space: normal;
     }
   }
 
   @media (max-width: 420px) {
-    .row.g-4.justify-content-center > .col-6 {
+    .bev-author-col {
       width: 100%;
     }
 

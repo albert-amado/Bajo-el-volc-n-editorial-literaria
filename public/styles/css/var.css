@@ -10,9 +10,37 @@
   --pr-gray-1200: #F23838;
   --pr-gray-1400: #BBD679;
   --pr-gray-1500:#182B3A;
+  --pr-black: #000000;
+  --pr-black-1100: #111111;
 
   --pr-glass-dark:   rgba(0, 0, 0, 0.05);
   --pr-glass-light:  rgba(255, 255, 255, 0.8);
+  --pr-glass-light-05: rgba(255, 255, 255, 0.05);
+  --pr-glass-light-08: rgba(255, 255, 255, 0.08);
+  --pr-glass-light-10: rgba(255, 255, 255, 0.1);
+  --pr-glass-light-70: rgba(255, 255, 255, 0.7);
+  --pr-glass-light-30: rgba(255, 255, 255, 0.3);
+  --pr-glass-light-25: rgba(255, 255, 255, 0.25);
+  --pr-glass-dark-08: rgba(0, 0, 0, 0.08);
+  --pr-glass-dark-10: rgba(0, 0, 0, 0.1);
+  --pr-glass-dark-12: rgba(0, 0, 0, 0.12);
+  --pr-glass-dark-15: rgba(0, 0, 0, 0.15);
+  --pr-glass-dark-28: rgba(0, 0, 0, 0.28);
+  --pr-glass-dark-40: rgba(0, 0, 0, 0.4);
+  --pr-glass-dark-60: rgba(0, 0, 0, 0.6);
+  --pr-glass-dark-90: rgba(0, 0, 0, 0.9);
+  --pr-glass-panel: rgba(255, 255, 255, 0.78);
+
+  --status-error-bg: #fff0f0;
+  --status-error-border: #ffcccc;
+  --status-error-text: #c0392b;
+
+  --wa-green: #25d366;
+  --wa-green-hover: #20b958;
+  --wa-green-strong: #1faa53;
+  --wa-green-soft: #d4f5e2;
+  --wa-green-shadow: rgba(37, 211, 102, 0.4);
+  --discount-green: #27ae60;
 
   --bg-main:          var(--pr-white);
   --bg-subtle:        var(--pr-gray-50);
@@ -29,6 +57,11 @@
 
   --shadow-sm:        0 1px 2px rgba(0,0,0,0.05);
   --shadow-md:        0 4px 6px -1px rgba(0,0,0,0.1);
+  --shadow-lg-soft:   0 10px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl-soft:   0 18px 40px rgba(0, 0, 0, 0.08);
+  --shadow-2xl-soft:  0 20px 40px rgba(0, 0, 0, 0.15);
+  --shadow-strong:    0 10px 30px rgba(0, 0, 0, 0.6);
+  --shadow-strong-md: 0 10px 25px rgba(0, 0, 0, 0.4);
 
   --topbar-bg:        var(--pr-gray-1500);
   --topbar-text:      var(--pr-white);
@@ -44,6 +77,11 @@
   --navbar-logo-glow:   rgba(255,255,255,0.3);
 
   --content-max-width:      1400px;
+  --site-bg-image:          url("/assets/img/fondos/patron.png");
+  --site-bg-repeat:         repeat;
+  --site-bg-size:           950px;
+  --site-bg-position:       top left;
+  --site-bg-color:          #f5f5f5;
   --carousel-bg:            var(--pr-gray-1000);
   --carousel-overlay-start: rgba(0,0,0,0.85);
   --carousel-overlay-mid:   rgba(0,0,0,0.5);
@@ -51,4 +89,7 @@
   --carousel-text:          var(--pr-white);
   --carousel-text-muted:    var(--pr-gray-200);
   --carousel-accent:        var(--pr-white);
+
+  --font-display:           "Playfair Display", serif;
+  --font-body:              "Lato", sans-serif;
 }

@@ -258,7 +258,7 @@ import Layout from "../layouts/layout.astro";
 
 <style>
   .bev-contacto {
-    background-color: var(--pr-gray-1000);
+    background-color: transparent;
     min-height: 100vh;
     color: var(--pr-gray-900);
   }
@@ -339,7 +339,7 @@ import Layout from "../layouts/layout.astro";
 
   .bev-form-input:focus {
     border-color: var(--pr-gray-900);
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 0 2px var(--pr-glass-dark);
   }
 
   .bev-btn-submit {
@@ -374,8 +374,34 @@ import Layout from "../layouts/layout.astro";
   }
 
   .bev-feedback-error {
-    background-color: #fff0f0;
-    border: 1px solid #ffcccc;
-    color: #c0392b;
+    background-color: var(--status-error-bg);
+    border: 1px solid var(--status-error-border);
+    color: var(--status-error-text);
+  }
+
+  @media (max-width: 575px) {
+    .bev-contact-info,
+    .bev-contact-form {
+      padding: 1.25rem !important;
+    }
+
+    .bev-contact-logo {
+      max-width: 110px;
+    }
+
+    .bev-contact-value {
+      font-size: 0.9rem;
+      word-break: break-word;
+    }
+
+    .bev-contact-icon {
+      width: 36px;
+      height: 36px;
+      font-size: 0.95rem;
+    }
+
+    .bev-form-input {
+      font-size: 0.92rem;
+    }
   }
 </style>

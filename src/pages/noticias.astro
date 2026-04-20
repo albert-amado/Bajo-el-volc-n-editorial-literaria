@@ -66,7 +66,7 @@ import {
                       {noticia.categoriaLabel}
                     </span>
                   </div>
-                  <div class="bev-noticia-body p-4">
+                  <div class="bev-noticia-body">
                     <p class="bev-noticia-fecha mb-2">
                       <i class="bi bi-calendar3 me-1" />
                       {formatNewsDate(noticia.fecha)}
@@ -113,14 +113,14 @@ import {
 
 <style>
   .bev-noticias {
-    background-color: var(--pr-gray-1000);
+    background-color: transparent;
     min-height: 100vh;
     color: var(--pr-gray-900);
   }
 
   .bev-filtro {
     background: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--pr-glass-dark-15);
     color: var(--pr-gray-900);
     padding: 6px 18px;
     border-radius: 20px;
@@ -254,13 +254,17 @@ import {
     transform: translateX(2px);
   }
 
+  .bev-noticia-body {
+    padding: 1.25rem;
+  }
+
   @media (max-width: 767px) {
     .bev-noticia-img {
       height: 170px;
     }
 
     .bev-noticia-body {
-      padding: 1rem !important;
+      padding: 1rem;
     }
 
     .bev-noticia-titulo {
