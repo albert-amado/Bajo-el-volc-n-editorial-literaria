@@ -1,0 +1,23 @@
+/* Utilities shared across pages */
+
+.u-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.u-text-balance {
+  text-wrap: balance;
+}
+
+.u-max-content {
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}

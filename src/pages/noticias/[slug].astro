@@ -1,0 +1,165 @@
+---
+import Layout from "../../layouts/layout.astro";
+import {
+  formatNewsDate,
+  getCategoriaColorClass,
+  noticiasPreparadas,
+} from "../../utils/noticias.js";
+
+export async function getStaticPaths() {
+  return noticiasPreparadas.map((noticia) => ({
+    params: { slug: noticia.slug },
+    props: { noticia },
+  }));
+}
+
+const { noticia } = Astro.props;
+---
+
+<Layout title={`${noticia.titulo} - Noticias | Bajo el Volcan`}>
+  <main class="bev-noticia-detalle mt-5 pt-5">
+    <article class="container py-5">
+      <a href="/noticias" class="bev-back-link mb-4 d-inline-flex align-items-center gap-2">
+        <i class="bi bi-arrow-left"></i>
+        Volver a noticias
+      </a>
+
+      <div class="bev-noticia-card-detalle">
+        <header class="mb-4">
+          <span class={`bev-categoria-badge ${getCategoriaColorClass(noticia.categoriaKey)}`}>
+            {noticia.categoriaLabel}
+          </span>
+          <h1 class="display-5 fw-bold mt-3 mb-2">{noticia.titulo}</h1>
+          <p class="bev-noticia-fecha mb-0">
+            <i class="bi bi-calendar3 me-1"></i>
+            {formatNewsDate(noticia.fecha)}
+          </p>
+        </header>
+
+        {
+          noticia.imagen && (
+            <figure class="bev-noticia-figure mb-4">
+              <img src={noticia.imagen} alt={noticia.titulo} loading="lazy" />
+            </figure>
+          )
+        }
+
+        <p class="lead">{noticia.resumen}</p>
+        <div class="bev-noticia-contenido mt-3">
+          <p>{noticia.contenido}</p>
+        </div>
+
+        {
+          noticia.enlacePdf && (
+            <div class="mt-4">
+              <a
+                class="btn bev-btn-noticia-pdf"
+                href={noticia.enlacePdf}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="bi bi-file-earmark-pdf me-2"></i>
+                Ver PDF relacionado
+              </a>
+            </div>
+          )
+        }
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .bev-noticia-detalle {
+    background-color: var(--pr-gray-1000);
+    min-height: 100vh;
+  }
+
+  .bev-noticia-card-detalle {
+    background: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
+    border-radius: 14px;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .bev-back-link {
+    color: var(--pr-gray-900);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .bev-back-link:hover {
+    opacity: 0.75;
+  }
+
+  .bev-noticia-figure {
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .bev-noticia-figure img {
+    width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bev-categoria-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .bev-cat-evento {
+    background-color: var(--pr-gray-400);
+    color: var(--pr-gray-900);
+  }
+
+  .bev-cat-lanzamiento {
+    background-color: var(--pr-gray-900);
+    color: var(--pr-white);
+  }
+
+  .bev-cat-convocatoria {
+    background-color: var(--pr-gray-100);
+    color: var(--pr-gray-900);
+  }
+
+  .bev-cat-entrevista {
+    background-color: var(--pr-gray-700);
+    color: var(--pr-white);
+  }
+
+  .bev-cat-premio {
+    background-color: var(--pr-gray-200);
+    color: var(--pr-gray-900);
+  }
+
+  .bev-noticia-fecha {
+    font-size: 0.85rem;
+    color: var(--pr-gray-700);
+  }
+
+  .bev-noticia-contenido {
+    color: var(--pr-gray-900);
+    line-height: 1.8;
+    white-space: pre-line;
+  }
+
+  .bev-btn-noticia-pdf {
+    background-color: var(--pr-gray-900);
+    color: var(--pr-white);
+    border: 1px solid var(--pr-gray-900);
+    font-weight: 600;
+  }
+
+  .bev-btn-noticia-pdf:hover {
+    background-color: transparent;
+    color: var(--pr-gray-900);
+  }
+</style>

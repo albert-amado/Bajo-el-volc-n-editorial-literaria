@@ -152,15 +152,18 @@ import Layout from "../layouts/layout.astro";
                     class="btn bev-btn-submit w-100"
                   >
                     <i class="bi bi-send me-2"></i>Enviar mensaje
-                    <a
-                      href="https://wa.me/573144559506"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="bev-contact-value"
-                    >
-                      +57 314 455 9506
-                    </a>
                   </button>
+                </div>
+
+                <div class="col-12 text-center">
+                  <a
+                    href="https://wa.me/573144559506"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bev-contact-value"
+                  >
+                    También puedes escribirnos por WhatsApp: +57 314 455 9506
+                  </a>
                 </div>
 
                 <div class="col-12">
@@ -178,6 +181,7 @@ import Layout from "../layouts/layout.astro";
 <script>
   document.addEventListener("astro:page-load", () => {
     const feedback = document.getElementById("formMensaje");
+    const formspreeEndpoint = "https://formspree.io/f/TU_ID_AQUI";
 
     document
       .getElementById("btnEnviar")
@@ -200,8 +204,21 @@ import Layout from "../layouts/layout.astro";
           return;
         }
 
+        if (formspreeEndpoint.includes("TU_ID_AQUI")) {
+          const subject = encodeURIComponent(asunto || "Mensaje desde contacto web");
+          const body = encodeURIComponent(
+            `Nombre: ${nombre}\nCorreo: ${correo}\n\nMensaje:\n${mensaje}`,
+          );
+          window.location.href = `mailto:bajoelvolcane@gmail.com?subject=${subject}&body=${body}`;
+          showFeedback(
+            "Configuración de formulario pendiente. Abrimos tu correo para enviar el mensaje.",
+            true,
+          );
+          return;
+        }
+
         try {
-          const res = await fetch("https://formspree.io/f/TU_ID_AQUI", {
+          const res = await fetch(formspreeEndpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ nombre, correo, asunto, mensaje }),

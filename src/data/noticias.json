@@ -7,7 +7,8 @@
     "imagen": "/assets/img/carrusels/premionacional.webp",
     "fecha": "8/04/2026",
     "categoria": "evento",
-    "slug": ""
+    "slug": "premio-nacional-de-novela-2027",
+    "enlacePdf": "/doc/bases.pdf"
   },
   {
     "id": 2,
@@ -17,7 +18,7 @@
     "imagen": "/assets/img/Libros/Unamujer.webp",
     "fecha": "Pronto",
     "categoria": "Proximas Publicaciones",
-    "slug": ""
+    "slug": "una-mujer-natalia-alvarez-arenas"
   },
    {
     "id": 3,
@@ -27,6 +28,6 @@
     "imagen": "/assets/img/Libros/Dondehabitaelolvido.webp",
     "fecha": "Pronto",
     "categoria": "Proximas Publicaciones",
-    "slug": ""
+    "slug": "donde-habita-el-olvido-ruben-dario-higuera"
   }
 ]

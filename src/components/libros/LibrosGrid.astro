@@ -3,7 +3,7 @@ import libros from "../../data/libros.json";
 import LibroCard from "../libros/LibroCard.astro";
 ---
 
-<main class="libros-main">
+<div class="libros-main">
   <div class="libros-grid" id="librosGrid">
     {
       libros.map((libro) => (
@@ -25,7 +25,7 @@ import LibroCard from "../libros/LibroCard.astro";
       ))
     }
   </div>
-</main>
+</div>
 
 <style>
   .libros-main {

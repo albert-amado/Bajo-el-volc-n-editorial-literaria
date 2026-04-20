@@ -1,39 +1,16 @@
 ---
-import noticias from "../../data/noticias.json";
-
-const formatearFecha = (fecha: string) =>
-  new Date(fecha).toLocaleDateString("es-CO", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-
-const noticiasOrdenadas = [...noticias].sort(
-  (a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime()
-);
-
-const categoriaColores: Record<string, string> = {
-  evento: "bev-cat-evento",
-  lanzamiento: "bev-cat-lanzamiento",
-  convocatoria: "bev-cat-convocatoria",
-  entrevista: "bev-cat-entrevista",
-  premio: "bev-cat-premio",
-};
-
-const categoriaTextos: Record<string, string> = {
-  evento: "Evento",
-  lanzamiento: "Lanzamiento",
-  convocatoria: "Convocatoria",
-  entrevista: "Entrevista",
-  premio: "Premio",
-};
+import {
+  formatNewsDate,
+  getCategoriaColorClass,
+  noticiasPreparadas,
+} from "../../utils/noticias.js";
 ---
 
 <div class="bev-noticias-lateral">
   <p class="bev-categorias-titulo">NOTICIAS</p>
   <div class="d-flex flex-column gap-3">
     {
-      noticiasOrdenadas.map((noticia) => (
+      noticiasPreparadas.map((noticia) => (
         <a href={`/noticias/${noticia.slug}`} class="text-decoration-none">
           <div class="bev-noticia-card-mini">
             <div class="bev-noticia-img-mini">
@@ -44,14 +21,14 @@ const categoriaTextos: Record<string, string> = {
                   <i class="bi bi-newspaper" />
                 </div>
               )}
-              <span class={`bev-categoria-badge-mini ${categoriaColores[noticia.categoria] || ""}`}>
-                {categoriaTextos[noticia.categoria] || noticia.categoria}
+              <span class={`bev-categoria-badge-mini ${getCategoriaColorClass(noticia.categoriaKey)}`}>
+                {noticia.categoriaLabel}
               </span>
             </div>
             <div class="bev-noticia-body-mini p-2">
               <p class="bev-noticia-fecha-mini mb-1">
                 <i class="bi bi-calendar3 me-1" />
-                {formatearFecha(noticia.fecha)}
+                {formatNewsDate(noticia.fecha)}
               </p>
               <p class="bev-noticia-titulo-mini mb-1">{noticia.titulo}</p>
               <p class="bev-noticia-resumen-mini">{noticia.resumen}</p>

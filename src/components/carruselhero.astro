@@ -52,9 +52,7 @@ const slides = libros.slice(0, 9);
                     <span class="bev-eyebrow">{libro.genero}</span>
                     <h1 class="bev-slide-title">{libro.titulo}</h1>
                     <p class="bev-slide-author">{libro.autor}</p>
-                    <p class="bev-slide-desc">
-                      <p class="bev-slide-desc">{libro.frase || ""}</p>
-                    </p>
+                    <p class="bev-slide-desc">{libro.frase || ""}</p>
                   </div>
                 </div>
               </div>
@@ -85,21 +83,6 @@ const slides = libros.slice(0, 9);
   </div>
 </section>
 
-<script>
-  import { agregarAlCarrito } from "../js/carrito.js";
-
-  document.addEventListener("astro:page-load", () => {
-    document.querySelectorAll(".btn-add-cart").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-id");
-        const titulo = btn.getAttribute("data-titulo") || "";
-        const precio = parseFloat(btn.getAttribute("data-precio") || "0");
-        if (id) agregarAlCarrito(id, titulo, precio);
-      });
-    });
-  });
-</script>
-
 <style is:global>
   .bev-carousel-custom {
     width: 100%;
@@ -120,9 +103,7 @@ const slides = libros.slice(0, 9);
   }
 
   .bev-slide-overlay {
-    .bev-slide-overlay {
-      display: none;
-    }
+    display: none;
   }
 
   .bev-slide-content {

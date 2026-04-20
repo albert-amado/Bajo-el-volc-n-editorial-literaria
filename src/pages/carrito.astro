@@ -1,0 +1,247 @@
+---
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout title="Carrito - Bajo el Volcán">
+	<main class="bev-carrito mt-5 pt-5">
+		<div class="container py-5">
+			<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+				<div>
+					<span class="bev-section-tag">Compra</span>
+					<h1 class="fw-bold mt-3 mb-1">Tu carrito</h1>
+					<p class="mb-0 text-muted">Revisa tus libros antes de finalizar.</p>
+				</div>
+				<a href="/" class="btn bev-btn-outline">
+					<i class="bi bi-arrow-left me-2"></i>Seguir comprando
+				</a>
+			</div>
+
+			<div class="bev-carrito-box p-4 p-lg-5">
+				<div id="cartEmpty" class="text-center py-5 d-none">
+					<i class="bi bi-bag-x fs-1 d-block mb-3"></i>
+					<h3 class="fw-bold">Tu carrito está vacío</h3>
+					<p class="text-muted mb-4">Aún no has agregado libros.</p>
+					<a href="/" class="btn bev-btn-gold">Explorar catálogo</a>
+				</div>
+
+				<div id="cartContent" class="d-none">
+					<div class="table-responsive">
+						<table class="table align-middle bev-carrito-table">
+							<thead>
+								<tr>
+									<th scope="col">Libro</th>
+									<th scope="col" class="text-center">Cantidad</th>
+									<th scope="col" class="text-end">Precio</th>
+									<th scope="col" class="text-end">Subtotal</th>
+									<th scope="col" class="text-center">Acciones</th>
+								</tr>
+							</thead>
+							<tbody id="cartRows"></tbody>
+						</table>
+					</div>
+
+						<div class="bev-checkout-actions d-flex flex-wrap gap-2 mt-4 mb-2">
+							<button id="buyWhatsApp" class="btn bev-btn-whatsapp">
+								<i class="bi bi-whatsapp me-2"></i>Comprar por WhatsApp
+							</button>
+							<button id="buyEmail" class="btn bev-btn-email">
+								<i class="bi bi-envelope me-2"></i>Comprar por Gmail
+							</button>
+						</div>
+
+					<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3">
+						<button id="clearCart" class="btn bev-btn-outline">
+							<i class="bi bi-trash me-2"></i>Vaciar carrito
+						</button>
+						<div class="text-end">
+								<p class="mb-1 text-muted" id="cartBooksCount">0 libros</p>
+							<p class="bev-carrito-total mb-0" id="cartTotal">$0</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<script>
+	import { actualizarContador } from "../js/carrito.js";
+	import { CheckoutMessenger } from "../js/checkoutMessenger.js";
+
+	document.addEventListener("astro:page-load", () => {
+		const rows = document.getElementById("cartRows");
+		const totalEl = document.getElementById("cartTotal");
+		const booksCountEl = document.getElementById("cartBooksCount");
+		const emptyEl = document.getElementById("cartEmpty");
+		const contentEl = document.getElementById("cartContent");
+		const clearBtn = document.getElementById("clearCart");
+		const buyWhatsAppBtn = document.getElementById("buyWhatsApp");
+		const buyEmailBtn = document.getElementById("buyEmail");
+		const messenger = new CheckoutMessenger();
+
+		const getCart = () => JSON.parse(localStorage.getItem("bev_carrito") || "[]");
+		const saveCart = (cart) => localStorage.setItem("bev_carrito", JSON.stringify(cart));
+		const money = (value) => `$${Number(value).toLocaleString("es-CO")}`;
+
+		const updateCheckoutButtons = (cart) => {
+			const disabled = !cart.length;
+			if (buyWhatsAppBtn) buyWhatsAppBtn.disabled = disabled;
+			if (buyEmailBtn) buyEmailBtn.disabled = disabled;
+		};
+
+		function render() {
+			const cart = getCart();
+			const totals = messenger.getTotals(cart);
+
+			if (!rows || !totalEl || !emptyEl || !contentEl) return;
+
+			if (!cart.length) {
+				rows.innerHTML = "";
+				totalEl.textContent = money(0);
+				if (booksCountEl) booksCountEl.textContent = "0 libros";
+				emptyEl.classList.remove("d-none");
+				contentEl.classList.add("d-none");
+				updateCheckoutButtons(cart);
+				actualizarContador();
+				return;
+			}
+
+			emptyEl.classList.add("d-none");
+			contentEl.classList.remove("d-none");
+
+			const rowTemplates = [];
+
+			for (const item of cart) {
+				rowTemplates.push(`
+					<tr>
+						<td>${item.titulo}</td>
+						<td class="text-center">${item.cantidad}</td>
+						<td class="text-end">${money(item.precio)}</td>
+						<td class="text-end">${money(item.precio * item.cantidad)}</td>
+						<td class="text-center">
+							<button class="btn btn-sm bev-btn-remove" data-id="${item.id}" aria-label="Eliminar ${item.titulo}">
+								<i class="bi bi-x-lg"></i>
+							</button>
+						</td>
+					</tr>
+				`);
+			}
+
+			rows.innerHTML = rowTemplates.join("");
+			totalEl.textContent = money(totals.totalValor);
+			if (booksCountEl) {
+				booksCountEl.textContent = `${totals.totalLibros} ${totals.totalLibros === 1 ? "libro" : "libros"}`;
+			}
+			updateCheckoutButtons(cart);
+			actualizarContador();
+		}
+
+		rows?.addEventListener("click", (event) => {
+			const target = event.target;
+			const button = target instanceof Element ? target.closest(".bev-btn-remove") : null;
+			if (!button) return;
+
+			const id = Number(button.getAttribute("data-id"));
+			const nextCart = [];
+			for (const item of getCart()) {
+				if (Number(item.id) !== id) {
+					nextCart.push(item);
+				}
+			}
+
+			saveCart(nextCart);
+			render();
+		});
+
+		clearBtn?.addEventListener("click", () => {
+			localStorage.removeItem("bev_carrito");
+			render();
+		});
+
+		buyWhatsAppBtn?.addEventListener("click", () => {
+			messenger.openWhatsApp(getCart());
+		});
+
+		buyEmailBtn?.addEventListener("click", () => {
+			messenger.openEmail(getCart());
+		});
+
+		render();
+	});
+</script>
+
+<style>
+	.bev-carrito {
+		min-height: 100vh;
+		background-color: var(--pr-gray-1000);
+	}
+
+	.bev-carrito-box {
+		background: var(--pr-white);
+		border: 1px solid var(--pr-gray-200);
+		border-radius: 14px;
+	}
+
+	.bev-carrito-table thead th {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--pr-gray-700);
+		border-bottom-width: 1px;
+	}
+
+	.bev-carrito-table td {
+		border-color: var(--pr-gray-200);
+		vertical-align: middle;
+	}
+
+	.bev-carrito-total {
+		font-size: 1.75rem;
+		font-weight: 700;
+		color: var(--pr-gray-1200);
+	}
+
+	.bev-btn-remove {
+		color: var(--pr-gray-900);
+		border: 1px solid var(--pr-gray-200);
+		background: transparent;
+	}
+
+	.bev-btn-remove:hover {
+		background: var(--pr-gray-900);
+		color: var(--pr-white);
+	}
+
+	.bev-checkout-actions .btn {
+		font-weight: 600;
+		padding: 0.6rem 1rem;
+	}
+
+	.bev-btn-whatsapp {
+		background: #25d366;
+		color: #fff;
+		border: 1px solid #25d366;
+	}
+
+	.bev-btn-whatsapp:hover {
+		background: #1faa53;
+		color: #fff;
+	}
+
+	.bev-btn-email {
+		background: var(--pr-gray-900);
+		color: var(--pr-white);
+		border: 1px solid var(--pr-gray-900);
+	}
+
+	.bev-btn-email:hover {
+		background: transparent;
+		color: var(--pr-gray-900);
+	}
+
+	.bev-btn-whatsapp:disabled,
+	.bev-btn-email:disabled {
+		opacity: 0.55;
+		cursor: not-allowed;
+	}
+</style>
