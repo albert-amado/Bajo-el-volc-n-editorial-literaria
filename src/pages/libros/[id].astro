@@ -1,0 +1,499 @@
+---
+import Layout from "../../layouts/layout.astro";
+import libros from "../../data/libros.json";
+import autores from "../../data/autores.json";
+
+export async function getStaticPaths() {
+  return libros.map((libro) => ({
+    params: { id: libro.id.toString() },
+    props: { libro },
+  }));
+}
+
+const { libro } = Astro.props;
+const libroInfo: any = libro;
+
+const autor = autores.find((item) => item.nombre === libro.autor);
+const autorLink = autor ? `/autores/${autor.id}` : "";
+const formattedPrice = `$${libro.precio.toLocaleString("es-CO")}`;
+const authorInstagram = (autor as (typeof autor & { instagram?: string }) | undefined)?.instagram || "https://www.instagram.com/bajoelvolcane";
+const etiquetaTexto =
+  {
+    nuevo: "Nuevo",
+    destacado: "Destacado",
+    preventa: "En preventa",
+    descuento: "Oferta",
+  }[libro.etiqueta?.toLowerCase?.() || ""] || libro.etiqueta || "";
+const separadorTexto = libro.separador || "";
+---
+
+<Layout title={`${libro.titulo} - Bajo el Volcán`}>
+  <main class="bev-book-detail mt-5 pt-5">
+    <div class="container py-5">
+      <div class="bev-book-hero mb-4 mb-lg-5">
+        <span class="bev-section-tag">Colección editorial</span>
+        <p class="bev-book-kicker mb-2 mt-3">Detalle del libro</p>
+        <h1 class="bev-book-page-title mb-3">{libro.titulo}</h1>
+        <p class="bev-book-page-lead mb-0">
+          Una ficha completa para revisar el libro, su descripción y los datos técnicos sin perder claridad visual.
+        </p>
+      </div>
+
+      <div class="mb-4">
+        <a href="/" class="bev-back-link">
+          <i class="bi bi-arrow-left"></i> Volver al catálogo
+        </a>
+      </div>
+
+      <div class="bev-book-detail-shell">
+        <div class="bev-book-detail-left">
+          <div class="bev-book-detail-cover">
+            <img
+              src={libro.imagen.startsWith("/") ? libro.imagen : `/${libro.imagen}`}
+              alt={libro.titulo}
+              loading="eager"
+            />
+          </div>
+
+          <section class="bev-detail-block bev-detail-block--under-cover">
+            <p class="bev-detail-label mb-2">Ficha técnica</p>
+            <div class="bev-tech-sheet mb-0">
+              <div class="bev-tech-row">
+                <span>Autor</span>
+                {
+                  autorLink ? (
+                    <a href={autorLink} class="bev-tech-link">{autor?.nombre}</a>
+                  ) : (
+                    <strong>{autor?.nombre || libro.autor}</strong>
+                  )
+                }
+              </div>
+              <div class="bev-tech-row">
+                <span>Precio</span>
+                <strong>{formattedPrice}</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>ISBN</span>
+                <strong>{libro.isbn || "No disponible"}</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>Páginas</span>
+                <strong>{libro.paginas ? `${libro.paginas} páginas` : "No disponible"}</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>Etiqueta</span>
+                <strong>{etiquetaTexto || "—"}</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>Encuadernación</span>
+                <strong>Tapa blanda</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>¿Tiene separador?</span>
+                <strong>{separadorTexto || ""}</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>Editorial</span>
+                <strong>{libroInfo.editorial || "No disponible"}</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>Formato</span>
+                <strong>{libroInfo.formato || "Libro físico"}</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>Categoría</span>
+                <strong>{libro.genero || "No disponible"}</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>Año</span>
+                <strong>{libroInfo.anio || libroInfo.año || "No disponible"}</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>Idioma</span>
+                <strong>{libroInfo.idioma || "Español"}</strong>
+              </div>
+              <div class="bev-tech-row">
+                <span>N° páginas</span>
+                <strong>{libro.paginas || "No disponible"}</strong>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="bev-book-detail-content">
+          <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+            {libro.etiqueta && <span class={`bev-etiqueta bev-etiqueta-${libro.etiqueta.toLowerCase()}`}>{etiquetaTexto}</span>}
+            <span class="bev-eyebrow mb-0">Detalle del libro</span>
+          </div>
+
+          <section class="bev-detail-block mb-4">
+            <p class="bev-detail-label mb-2">Frase destacada</p>
+            <blockquote class="bev-detail-quote mb-0">{libro.frase || ""}</blockquote>
+          </section>
+
+          <section class="bev-detail-block mb-4">
+            <p class="bev-detail-label mb-2">Descripción</p>
+            <p class="bev-detail-description mb-0">{libro.descripcion || "Descripción no disponible."}</p>
+          </section>
+
+          <div class="bev-detail-actions d-flex flex-wrap gap-2 mb-4">
+            <button
+              id="addToCartBtn"
+              class="btn bev-btn-gold"
+              data-id={libro.id}
+              data-titulo={libro.titulo}
+              data-precio={libro.precio}
+            >
+              <i class="bi bi-bag-plus me-2"></i>Agregar al carrito
+            </button>
+            <a href="/carrito" class="btn bev-btn-outline">
+              <i class="bi bi-bag me-2"></i>Ir al carrito
+            </a>
+          </div>
+
+          {autor && (
+            <section class="bev-author-box mt-4 pt-4">
+              <div class="d-flex align-items-start gap-4 flex-column flex-md-row">
+                <img
+                  src={autor.foto.startsWith("/") ? autor.foto : `/${autor.foto}`}
+                  alt={autor.nombre}
+                  class="bev-author-photo"
+                />
+                <div class="flex-grow-1">
+                  <p class="bev-detail-label mb-1">Autor</p>
+                  <h2 class="bev-author-name mb-1">{autor.nombre}</h2>
+                  <p class="bev-author-meta mb-2">{autor.nacionalidad}</p>
+                  <p class="bev-author-bio mb-0">{autor.bio}</p>
+
+                  <div class="bev-author-social mt-4">
+                    <p class="bev-detail-label mb-2">No te pierdas nada del autor:</p>
+                    <a
+                      href={authorInstagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="bev-author-instagram"
+                    >
+                      <i class="bi bi-instagram"></i>
+                      <span>@bajoelvolcane</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { agregarAlCarrito } from "../../js/carrito.js";
+
+  document.addEventListener("astro:page-load", () => {
+    const button = document.getElementById("addToCartBtn");
+
+    button?.addEventListener("click", () => {
+      const id = Number(button.getAttribute("data-id") || "0");
+      const titulo = button.getAttribute("data-titulo") || "";
+      const precio = Number(button.getAttribute("data-precio") || "0");
+      if (id && titulo) {
+        agregarAlCarrito(id, titulo, precio);
+      }
+    });
+  });
+</script>
+
+<style>
+  .bev-book-detail {
+    min-height: 100vh;
+    background-color: var(--pr-gray-1000);
+    color: var(--pr-gray-900);
+    background-image:
+      radial-gradient(circle at top left, rgba(0, 0, 0, 0.03), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.04), transparent 22%);
+  }
+
+  .bev-book-hero {
+    max-width: 920px;
+  }
+
+  .bev-book-kicker {
+    font-size: 0.82rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--pr-gray-1200);
+    font-weight: 700;
+  }
+
+  .bev-book-page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 4.4rem);
+    line-height: 1.02;
+    max-width: 12ch;
+  }
+
+  .bev-book-page-lead {
+    max-width: 70ch;
+    color: var(--pr-gray-700);
+    line-height: 1.7;
+    font-size: 1.02rem;
+  }
+
+  .bev-back-link {
+    color: var(--pr-gray-900);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .bev-back-link:hover {
+    opacity: 0.75;
+  }
+
+  .bev-book-detail-shell {
+    display: grid;
+    grid-template-columns: minmax(280px, 390px) minmax(0, 1fr);
+    gap: 0;
+    background: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .bev-book-detail-left {
+    background: var(--pr-gray-400);
+    padding: clamp(1rem, 2vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: sticky;
+    top: 1.25rem;
+    align-self: start;
+  }
+
+  .bev-book-detail-cover {
+    background-image: url("/assets/img/fondos/patron.png");
+    background-repeat: repeat;
+    background-size: 950px;
+    background-position: top left;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+  }
+
+  .bev-book-detail-cover img {
+    width: 100%;
+    height: auto;
+    max-height: 720px;
+    object-fit: contain;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .bev-detail-block--under-cover {
+    margin-bottom: 0;
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .bev-tech-sheet {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .bev-tech-row {
+    display: grid;
+    grid-template-columns: minmax(130px, 38%) minmax(0, 1fr);
+    gap: 0.5rem;
+    align-items: start;
+    padding: 0.42rem 0.7rem;
+    border-bottom: 1px solid var(--pr-gray-200);
+    font-size: 0.76rem;
+    line-height: 1.2;
+  }
+
+  .bev-tech-row:last-child {
+    border-bottom: 0;
+  }
+
+  .bev-tech-row span {
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pr-gray-700);
+    font-weight: 700;
+  }
+
+  .bev-tech-row strong,
+  .bev-tech-link {
+    font-size: 0.76rem;
+    color: var(--pr-gray-900);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .bev-tech-link {
+    color: var(--pr-gray-1200);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .bev-tech-link:hover {
+    opacity: 0.78;
+  }
+
+  .bev-book-detail-content {
+    background: var(--pr-gray-400);
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .bev-detail-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--pr-gray-700);
+    font-weight: 700;
+  }
+
+  .bev-book-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.08;
+    margin: 0;
+  }
+
+  .bev-book-author {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--pr-gray-700);
+  }
+
+  .bev-detail-block {
+    background: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+  }
+
+  .bev-detail-quote,
+  .bev-detail-description {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--pr-gray-900);
+    margin: 0;
+  }
+
+  .bev-detail-quote {
+    font-style: italic;
+  }
+
+  .bev-detail-actions .btn {
+    padding: 0.7rem 1.15rem;
+    font-weight: 600;
+  }
+
+  .bev-detail-actions .btn:first-child {
+    min-width: 190px;
+  }
+
+  .bev-author-box {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  .bev-author-photo {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 3px solid var(--pr-gray-900);
+    flex-shrink: 0;
+  }
+
+  .bev-author-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bev-author-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    padding: 0.65rem 0.9rem;
+    border-radius: 999px;
+    background: var(--pr-white);
+    border: 1px solid var(--pr-gray-200);
+    color: var(--pr-gray-900);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .bev-author-instagram:hover {
+    background: var(--pr-gray-900);
+    color: var(--pr-white);
+  }
+
+  .bev-author-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--pr-gray-900);
+    line-height: 1.1;
+  }
+
+  .bev-author-meta {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--pr-gray-700);
+  }
+
+  .bev-author-bio {
+    color: var(--pr-gray-900);
+    line-height: 1.45;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 991px) {
+    .bev-book-detail-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .bev-book-detail-left {
+      position: static;
+    }
+
+    .bev-book-detail-cover {
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .bev-author-photo {
+      width: 108px;
+      height: 108px;
+    }
+
+    .bev-tech-row {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+
+    .bev-detail-actions .btn:first-child {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+</style>

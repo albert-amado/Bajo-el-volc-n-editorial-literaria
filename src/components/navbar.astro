@@ -63,9 +63,6 @@
             Premio nacional de novela
           </a>
         </li>
-        <li class="nav-item bev-nav-item">
-          <a class="nav-link" href="/pagos">Pagos</a>
-        </li>
         <li class="nav-item ms-lg-2 bev-nav-item">
           <a
             class="nav-link bev-cart-btn position-relative"
@@ -121,11 +118,11 @@
     height: 150px;
     object-fit: contain;
     filter: drop-shadow(0 0 6px var(--navbar-logo-glow));
-    transition: transform 0.3s ease;
+    transition: opacity 0.2s ease;
   }
 
   .bev-logo-desktop:hover {
-    transform: scale(1.08);
+    opacity: 0.9;
   }
 
   .bev-logo-mobile {
@@ -141,14 +138,12 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 0.6rem 0.9rem;
-    transition:
-      color 0.25s ease,
-      letter-spacing 0.20s ease;
+    transition: color 0.2s ease, opacity 0.2s ease;
   }
 
   .bev-navbar .nav-link:hover {
     color: var(--navbar-accent);
-    letter-spacing: 0.16em;
+    opacity: 0.82;
   }
 
   @media (min-width: 992px) {
@@ -158,13 +153,13 @@
       left: 12%;
       bottom: 6px;
       width: 0%;
-      height: 3px;
+      height: 2px;
       background-color: var(--navbar-accent);
-      transition: width 0.35s ease;
+      transition: width 0.22s ease;
     }
     .bev-navbar .nav-link:hover::after,
     .bev-navbar .nav-link.active::after {
-      width: 76%;
+      width: 70%;
     }
     .bev-nav-item {
       position: relative;
@@ -181,6 +176,12 @@
       background-color: var(--pr-gray-200);
       opacity: 0.75;
     }
+  }
+
+  .bev-navbar .nav-link:focus-visible {
+    outline: 2px solid var(--navbar-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
   }
 
   .bev-cart-btn {
@@ -208,6 +209,15 @@
       padding: 0.85rem 0;
     }
 
+    .bev-navbar-inner {
+      gap: 0.5rem;
+    }
+
+    .bev-logo-mobile {
+      width: 48px;
+      height: 58px;
+    }
+
     #navbarMenu {
       background-color: var(--pr-gray-100);
       border-top: 1px solid var(--pr-gray-200);
@@ -223,6 +233,21 @@
 
     .bev-navbar .nav-link:last-child {
       border-bottom: none;
+    }
+
+    .bev-cart-btn {
+      padding-left: 1.25rem;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .bev-navbar {
+      padding: 0.65rem 0;
+    }
+
+    .bev-navbar .nav-link {
+      letter-spacing: 0.08em;
+      padding: 0.6rem 1rem;
     }
   }
 </style>

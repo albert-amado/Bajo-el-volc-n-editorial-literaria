@@ -28,18 +28,9 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
 </section>
 
 <script>
-    import { abrirModal }       from "../../js/modal.js";
     import { agregarAlCarrito } from "../../js/carrito.js";
 
   document.addEventListener("astro:page-load", () => {
-    document.querySelectorAll(".js-btn-modal").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const id = btn.getAttribute("data-id");
-        if (id) abrirModal(parseInt(id));
-      });
-    });
-
     document.querySelectorAll(".js-btn-carrito").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -174,7 +165,31 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
 
   @media (max-width: 639px) {
     .libros-seccion__titulo {
-      font-size: 2rem;
+      font-size: 1.8rem;
+    }
+
+    .libros-layout {
+      gap: 1.25rem;
+    }
+
+    .libros-sidebar-right {
+      margin-top: 0.5rem;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .libros-seccion__tag {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+    }
+
+    .libros-seccion__titulo {
+      font-size: clamp(1.6rem, 8vw, 2rem);
+    }
+
+    .bev-section-line {
+      width: 110px;
+      margin-bottom: 1.75rem;
     }
   }
 </style>

@@ -37,11 +37,11 @@ const etiquetasMap: Record<string, string> = {
       >
         <i class="bi bi-bag-plus"></i> Agregar al carrito
       </button>
-      <button class="libro-card__overlay-btn libro-card__overlay-btn--detalle js-btn-modal"
-        data-id={id}
+      <a class="libro-card__overlay-btn libro-card__overlay-btn--detalle"
+        href={`/libros/${id}`}
       >
         <i class="bi bi-eye"></i> Ver detalle
-      </button>
+      </a>
     </div>
   </div>
 
@@ -113,6 +113,7 @@ const etiquetasMap: Record<string, string> = {
     justify-content: center;
     gap: 6px;
     transition: background 0.2s, color 0.2s;
+    text-decoration: none;
   }
 
   .libro-card__overlay-btn--carrito {

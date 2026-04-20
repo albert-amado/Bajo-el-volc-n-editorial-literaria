@@ -5,3 +5,49 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+main {
+  width: 100%;
+}
+
+.container,
+.container-fluid {
+  padding-left: clamp(1rem, 2vw, 1.5rem);
+  padding-right: clamp(1rem, 2vw, 1.5rem);
+}
+
+@media (max-width: 991px) {
+  h1,
+  .display-4 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  h2,
+  .bev-section-title {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .container,
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .row {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
+  }
+}

@@ -4,7 +4,7 @@ import libros from "../data/libros.json";
 const slides = libros.slice(0, 9);
 ---
 
-<section class="pt-0 pb-4">
+<section class="pt-0 pb-4 bev-hero-section">
   <div class="container-fluid px-0">
     <div
       id="heroCarousel"
@@ -62,42 +62,50 @@ const slides = libros.slice(0, 9);
       </div>
 
       <button
-        class="carousel-control-prev"
+        class="carousel-control-prev bev-hero-nav bev-hero-nav--prev"
         type="button"
         data-bs-target="#heroCarousel"
         data-bs-slide="prev"
         aria-label="Anterior"
       >
-        <span class="carousel-control-prev-icon"></span>
+        <span class="bev-hero-arrow" aria-hidden="true"></span>
       </button>
       <button
-        class="carousel-control-next"
+        class="carousel-control-next bev-hero-nav bev-hero-nav--next"
         type="button"
         data-bs-target="#heroCarousel"
         data-bs-slide="next"
         aria-label="Siguiente"
       >
-        <span class="carousel-control-next-icon"></span>
+        <span class="bev-hero-arrow" aria-hidden="true"></span>
       </button>
     </div>
   </div>
 </section>
 
 <style is:global>
+  .bev-hero-section .container-fluid {
+    max-width: none;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
   .bev-carousel-custom {
-    width: 100%;
+    width: min(100%, 1680px);
+    margin: 0 auto;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    box-shadow: none;
+    border-radius: 0;
   }
 
   .bev-slide {
-    height: 70vh;
-    min-height: 320px;
+    height: clamp(280px, 32vw, 500px);
+    min-height: 280px;
     position: relative;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: var(--pr-gray-1000);
+    background-color: var(--pr-white);
     display: flex;
     align-items: center;
   }
@@ -107,12 +115,7 @@ const slides = libros.slice(0, 9);
   }
 
   .bev-slide-content {
-    position: relative;
-    z-index: 2;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: none;
   }
 
   .bev-eyebrow {
@@ -127,11 +130,12 @@ const slides = libros.slice(0, 9);
 
   .bev-slide-title {
     font-family: "Lato", sans-serif;
-    font-size: clamp(1.6rem, 3.8vw, 3.5rem); /* ↓ más pequeño */
+    font-size: clamp(1.7rem, 4vw, 3.5rem);
     font-weight: 800;
     color: var(--pr-white);
     margin-bottom: 0.4rem;
     line-height: 1.1;
+    text-wrap: balance;
   }
 
   .bev-slide-author {
@@ -159,17 +163,21 @@ const slides = libros.slice(0, 9);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   }
 
+  .bev-slide .container {
+    max-width: 100%;
+  }
+
   /* Flechas */
   .bev-carousel-custom .carousel-control-prev,
   .bev-carousel-custom .carousel-control-next {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
     top: 50%;
     transform: translateY(-50%);
     opacity: 1;
-    background-color: rgba(0, 0, 0, 0.35);
-    border-radius: 50%;
-    transition: all 0.3s ease;
+    background: transparent;
+    border-radius: 0;
+    transition: transform 0.25s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -177,21 +185,65 @@ const slides = libros.slice(0, 9);
 
   .bev-carousel-custom .carousel-control-prev:hover,
   .bev-carousel-custom .carousel-control-next:hover {
-    background-color: rgba(0, 0, 0, 0.6);
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.08);
   }
 
-  .bev-carousel-custom .carousel-control-prev-icon,
-  .bev-carousel-custom .carousel-control-next-icon {
-    width: 36px;
-    height: 36px;
-    filter: brightness(0) invert(1);
+  .bev-hero-nav .bev-hero-arrow {
+    display: block;
+    width: 22px;
+    height: 22px;
+    border-top: 4px solid #ffffff;
+    border-right: 4px solid #ffffff;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.28));
+  }
+
+  @media (min-width: 769px) {
+    .bev-hero-nav .bev-hero-arrow {
+      border-top-color: var(--pr-gray-900);
+      border-right-color: var(--pr-gray-900);
+      filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.25));
+    }
+  }
+
+  .bev-hero-nav--prev .bev-hero-arrow {
+    transform: rotate(-135deg);
+  }
+
+  .bev-hero-nav--next .bev-hero-arrow {
+    transform: rotate(45deg);
+  }
+
+  @media (min-width: 1200px) {
+    .bev-carousel-custom {
+      width: min(100%, 1760px);
+    }
+
+    .bev-slide {
+      height: clamp(300px, 34vw, 540px);
+      min-height: 300px;
+    }
+
+    .bev-carousel-custom .carousel-control-prev {
+      left: 1.5rem;
+    }
+
+    .bev-carousel-custom .carousel-control-next {
+      right: 1.5rem;
+    }
+
+    .bev-hero-nav .bev-hero-arrow {
+      width: 26px;
+      height: 26px;
+      border-top-width: 4px;
+      border-right-width: 4px;
+    }
   }
 
   @media (max-width: 768px) {
     .bev-slide {
-      height: 55vh;
-      min-height: 280px;
+      height: clamp(120px, 28vw, 170px);
+      min-height: 120px;
+      background-position: center center;
     }
 
     .bev-carousel-custom .carousel-control-prev,
@@ -200,23 +252,69 @@ const slides = libros.slice(0, 9);
       height: 44px;
     }
 
-    .bev-carousel-custom .carousel-control-prev-icon,
-    .bev-carousel-custom .carousel-control-next-icon {
-      width: 26px;
-      height: 26px;
+    .bev-carousel-custom .carousel-control-prev,
+    .bev-carousel-custom .carousel-control-next,
+    .carousel-indicators {
+      opacity: 0.95;
+    }
+
+    .bev-hero-nav .bev-hero-arrow {
+      width: 18px;
+      height: 18px;
+      border-top-width: 3px;
+      border-right-width: 3px;
     }
 
     .bev-eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: 0.25em;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
     }
+
   }
 
   @media (max-width: 480px) {
-    .bev-slide-desc {
-      font-size: 0.85rem;
-      line-height: 1.5;
-      padding: 0 10px;
+    .bev-slide {
+      height: clamp(110px, 34vw, 150px);
+      min-height: 110px;
+    }
+
+    .bev-carousel-custom .carousel-control-prev,
+    .bev-carousel-custom .carousel-control-next {
+      width: 38px;
+      height: 38px;
+      top: auto;
+      bottom: 0.75rem;
+      transform: none;
+    }
+
+    .bev-carousel-custom .carousel-control-prev:hover,
+    .bev-carousel-custom .carousel-control-next:hover {
+      transform: scale(1.04);
+    }
+
+    .bev-carousel-custom .carousel-control-prev {
+      left: 0.75rem;
+    }
+
+    .bev-carousel-custom .carousel-control-next {
+      right: 0.75rem;
+    }
+
+    .bev-hero-nav .bev-hero-arrow {
+      width: 15px;
+      height: 15px;
+      border-top-width: 2.5px;
+      border-right-width: 2.5px;
+    }
+
+    .carousel-indicators {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .bev-carousel-custom {
+      width: calc(100% - 1rem);
     }
   }
 </style>

@@ -26,7 +26,7 @@ export class CheckoutMessenger {
 
     const lines = [
       "Hola, Bajo el Volcan Ediciones.",
-      "Estoy interesado en los siguientes libros de su catalogo. Puedes guiarme para hacer el proceso de envio?",
+      "Estoy interesado en los siguientes libros. ¿Puedes ayudarme con el proceso de compra?",
       "",
       "Detalle del pedido:",
     ];

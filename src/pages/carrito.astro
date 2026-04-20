@@ -40,13 +40,18 @@ import Layout from "../layouts/layout.astro";
 						</table>
 					</div>
 
-						<div class="bev-checkout-actions d-flex flex-wrap gap-2 mt-4 mb-2">
-							<button id="buyWhatsApp" class="btn bev-btn-whatsapp">
-								<i class="bi bi-whatsapp me-2"></i>Comprar por WhatsApp
-							</button>
-							<button id="buyEmail" class="btn bev-btn-email">
-								<i class="bi bi-envelope me-2"></i>Comprar por Gmail
-							</button>
+						<div class="bev-checkout-layout mt-4 mb-2">
+							<div class="bev-checkout-actions d-flex flex-column gap-2">
+								<button id="buyWhatsApp" class="btn bev-btn-whatsapp">
+									<i class="bi bi-whatsapp me-2"></i>Enviar por WhatsApp
+								</button>
+								<button id="buyEmail" class="btn bev-btn-email">
+									<i class="bi bi-envelope me-2"></i>Enviar por Gmail
+								</button>
+								<a href="tel:+573144559506" class="btn bev-btn-help">
+									<i class="bi bi-telephone me-2"></i>¿Necesitas ayuda? Llámanos
+								</a>
+							</div>
 						</div>
 
 					<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3">
@@ -65,24 +70,39 @@ import Layout from "../layouts/layout.astro";
 </Layout>
 
 <script>
+	// @ts-nocheck
 	import { actualizarContador } from "../js/carrito.js";
 	import { CheckoutMessenger } from "../js/checkoutMessenger.js";
 
+	/** @typedef {{ id: number | string, titulo: string, precio: number, cantidad: number }} CartItem */
+
 	document.addEventListener("astro:page-load", () => {
+		/** @type {HTMLTableSectionElement | null} */
 		const rows = document.getElementById("cartRows");
+		/** @type {HTMLElement | null} */
 		const totalEl = document.getElementById("cartTotal");
+		/** @type {HTMLElement | null} */
 		const booksCountEl = document.getElementById("cartBooksCount");
+		/** @type {HTMLElement | null} */
 		const emptyEl = document.getElementById("cartEmpty");
+		/** @type {HTMLElement | null} */
 		const contentEl = document.getElementById("cartContent");
+		/** @type {HTMLButtonElement | null} */
 		const clearBtn = document.getElementById("clearCart");
+		/** @type {HTMLButtonElement | null} */
 		const buyWhatsAppBtn = document.getElementById("buyWhatsApp");
+		/** @type {HTMLButtonElement | null} */
 		const buyEmailBtn = document.getElementById("buyEmail");
 		const messenger = new CheckoutMessenger();
 
+		/** @returns {CartItem[]} */
 		const getCart = () => JSON.parse(localStorage.getItem("bev_carrito") || "[]");
+		/** @param {CartItem[]} cart */
 		const saveCart = (cart) => localStorage.setItem("bev_carrito", JSON.stringify(cart));
+		/** @param {number} value */
 		const money = (value) => `$${Number(value).toLocaleString("es-CO")}`;
 
+		/** @param {CartItem[]} cart */
 		const updateCheckoutButtons = (cart) => {
 			const disabled = !cart.length;
 			if (buyWhatsAppBtn) buyWhatsAppBtn.disabled = disabled;
@@ -109,6 +129,7 @@ import Layout from "../layouts/layout.astro";
 			emptyEl.classList.add("d-none");
 			contentEl.classList.remove("d-none");
 
+			/** @type {string[]} */
 			const rowTemplates = [];
 
 			for (const item of cart) {
@@ -142,6 +163,7 @@ import Layout from "../layouts/layout.astro";
 			if (!button) return;
 
 			const id = Number(button.getAttribute("data-id"));
+			/** @type {CartItem[]} */
 			const nextCart = [];
 			for (const item of getCart()) {
 				if (Number(item.id) !== id) {
@@ -217,6 +239,25 @@ import Layout from "../layouts/layout.astro";
 		padding: 0.6rem 1rem;
 	}
 
+	.bev-checkout-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+		gap: 1rem;
+		align-items: stretch;
+	}
+
+	.bev-btn-help {
+		background: transparent;
+		color: var(--pr-gray-900);
+		border: 1px solid var(--pr-gray-200);
+		font-weight: 600;
+	}
+
+	.bev-btn-help:hover {
+		background: var(--pr-gray-900);
+		color: var(--pr-white);
+	}
+
 	.bev-btn-whatsapp {
 		background: #25d366;
 		color: #fff;
@@ -243,5 +284,11 @@ import Layout from "../layouts/layout.astro";
 	.bev-btn-email:disabled {
 		opacity: 0.55;
 		cursor: not-allowed;
+	}
+
+	@media (max-width: 991px) {
+		.bev-checkout-layout {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>
