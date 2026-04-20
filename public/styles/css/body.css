@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--site-bg-image);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), var(--site-bg-image);
   background-repeat: var(--site-bg-repeat);
   background-size: var(--site-bg-size);
   background-position: var(--site-bg-position);
