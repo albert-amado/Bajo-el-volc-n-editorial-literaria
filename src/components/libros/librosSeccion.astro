@@ -8,10 +8,10 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
 <section class="py-5">
   <div class="bev-container">
     <div class="mb-5">
-      <span class="bev-section-tag-light libros-seccion__tag">
+      <span class="bev-section-tag-light bev-section-tag-left libros-seccion__tag">
         Colección de Bajo el Volcán
       </span>
-      <h2 class="bev-section-title libros-seccion__titulo">Nuestras Novelas</h2>
+      <h2 class="bev-section-title bev-section-title-left libros-seccion__titulo">Nuestras Novelas</h2>
       <div class="bev-section-line"></div>
     </div>
 
@@ -28,7 +28,7 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
 </section>
 
 <script>
-    import { agregarAlCarrito } from "../../js/carrito.js";
+  import { agregarAlCarrito } from "../../js/carrito.js";
 
   document.addEventListener("astro:page-load", () => {
     document.querySelectorAll(".js-btn-carrito").forEach((btn) => {
@@ -65,12 +65,15 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
 
     document
       .getElementById("btnEnviarLibros")
-      ?.addEventListener("click", async (e) => {
+      ?.addEventListener("click", (e) => {
         const nombre = (
           document.getElementById("inputNombre") as HTMLInputElement
         ).value.trim();
         const correo = (
           document.getElementById("inputCorreo") as HTMLInputElement
+        ).value.trim();
+        const asunto = (
+          document.getElementById("inputAsunto") as HTMLInputElement
         ).value.trim();
         const mensaje = (
           document.getElementById("inputMensaje") as HTMLTextAreaElement
@@ -82,7 +85,15 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
           return;
         }
 
-        showFeedback("¡Abriendo cliente de correo...", true);
+        const subject = encodeURIComponent(
+          asunto || "Mensaje desde libros y catálogo",
+        );
+        const body = encodeURIComponent(
+          `Nombre: ${nombre}\nCorreo: ${correo}\n\nMensaje:\n${mensaje}`,
+        );
+
+        window.location.href = `mailto:bajoelvolcane@gmail.com?subject=${subject}&body=${body}`;
+        showFeedback("Abrimos tu correo para enviar el mensaje.", true);
       });
 
     function showFeedback(msg: string, ok: boolean) {
@@ -97,35 +108,23 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
 
 <style>
   .libros-seccion__tag {
+    font-family: var(--font-body);
     font-size: 1rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    display: block;
-    text-align: left;
-    background: none;
     color: var(--pr-white);
-    padding: 0;
-    border-radius: 0;
     margin-bottom: 1rem;
-    width: fit-content;
   }
 
   .libros-seccion__titulo {
+    font-family: var(--font-body);
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 400;
-    text-align: left;
-    background: none;
     color: var(--pr-white);
-    padding: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    width: fit-content;
   }
 
   .bev-section-line {
     width: min(100%, 900px);
-    border-top: 3px dotted var(--pr-gray-1200);
-    margin: 1rem 0 2.5rem 0;
   }
 
   .libros-layout {

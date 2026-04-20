@@ -1,6 +1,6 @@
 body {
   font-family: var(--font-body);
-  color: var(--bev-ink);
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -22,31 +22,16 @@ main {
   width: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--pr-gray-700);
-}
-
 @media (max-width: 991px) {
-  h1,
-  .display-4 {
+  .bev-display-4 {
     font-size: clamp(2rem, 6vw, 3rem);
   }
 
-  h2,
   .bev-section-title {
     font-size: clamp(1.8rem, 5vw, 2.8rem);
   }
 
-  .lead {
+  .bev-lead {
     font-size: 1rem;
   }
-}
-
-@media (max-width: 575px) {
-  /* Keep Bootstrap default spacing behavior on small devices */
 }

@@ -8,9 +8,9 @@ import Layout from "../layouts/layout.astro";
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
           <span class="bev-section-tag">Escríbenos</span>
-          <h1 class="display-4 fw-bold mt-3 mb-4">Contacto</h1>
+          <h1 class="display-4 bev-display-4 fw-bold mt-3 mb-4">Contacto</h1>
           <div class="bev-divider mx-auto mb-4"></div>
-          <p class="lead">¿Tienes dudas? Estamos aquí para escucharte.</p>
+          <p class="lead bev-lead">¿Tienes dudas? Estamos aquí para escucharte.</p>
         </div>
       </div>
 
@@ -181,11 +181,11 @@ import Layout from "../layouts/layout.astro";
 <script>
   document.addEventListener("astro:page-load", () => {
     const feedback = document.getElementById("formMensaje");
-    const formspreeEndpoint = "https://formspree.io/f/TU_ID_AQUI";
+    const destinationEmail = "bajoelvolcane@gmail.com";
 
     document
       .getElementById("btnEnviar")
-      ?.addEventListener("click", async () => {
+      ?.addEventListener("click", () => {
         const nombre = (
           document.getElementById("inputNombre") as HTMLInputElement
         ).value.trim();
@@ -204,43 +204,13 @@ import Layout from "../layouts/layout.astro";
           return;
         }
 
-        if (formspreeEndpoint.includes("TU_ID_AQUI")) {
-          const subject = encodeURIComponent(asunto || "Mensaje desde contacto web");
-          const body = encodeURIComponent(
-            `Nombre: ${nombre}\nCorreo: ${correo}\n\nMensaje:\n${mensaje}`,
-          );
-          window.location.href = `mailto:bajoelvolcane@gmail.com?subject=${subject}&body=${body}`;
-          showFeedback(
-            "Configuración de formulario pendiente. Abrimos tu correo para enviar el mensaje.",
-            true,
-          );
-          return;
-        }
+        const subject = encodeURIComponent(asunto || "Mensaje desde contacto web");
+        const body = encodeURIComponent(
+          `Nombre: ${nombre}\nCorreo: ${correo}\n\nMensaje:\n${mensaje}`,
+        );
 
-        try {
-          const res = await fetch(formspreeEndpoint, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nombre, correo, asunto, mensaje }),
-          });
-
-          if (res.ok) {
-            showFeedback("¡Mensaje enviado! Te responderemos pronto.", true);
-            (document.getElementById("inputNombre") as HTMLInputElement).value =
-              "";
-            (document.getElementById("inputCorreo") as HTMLInputElement).value =
-              "";
-            (document.getElementById("inputAsunto") as HTMLInputElement).value =
-              "";
-            (
-              document.getElementById("inputMensaje") as HTMLTextAreaElement
-            ).value = "";
-          } else {
-            throw new Error();
-          }
-        } catch {
-          showFeedback("Hubo un error al enviar. Intenta de nuevo.", false);
-        }
+        window.location.href = `mailto:${destinationEmail}?subject=${subject}&body=${body}`;
+        showFeedback("Abrimos tu correo para enviar el mensaje.", true);
       });
 
     function showFeedback(msg: string, ok: boolean) {

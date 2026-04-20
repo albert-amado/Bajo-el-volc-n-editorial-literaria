@@ -16,8 +16,8 @@ const getInitials = (nombre: string) => {
 <section class="py-5 bev-section bev-section-dark">
   <div class="container">
     <div class="text-center mb-5">
-      <span class="bev-section-tag-light">Voces Bajo el Volcán</span>
-      <h2 class="bev-section-title">Nuestros autores</h2>
+      <span class="bev-section-tag-light bev-section-tag-left">Voces Bajo el Volcán</span>
+      <h2 class="bev-section-title bev-section-title-left">Nuestros autores</h2>
 
       <div class="bev-section-line"></div>
     </div>
@@ -146,44 +146,8 @@ const getInitials = (nombre: string) => {
     color: var(--pr-gray-900);
     border-color: var(--pr-gray-400);
   }
-  .bev-section-dark {
-    background: var(--pr-gray-200);
-    color: var(--pr-gray-900);
-  }
-
-  .bev-section-tag-light {
-    text-align: left;
-    display: block;
-    background: none;
-    color: var(--pr-black);
-    padding: 0;
-    border-radius: 0;
-    margin-bottom: 1rem;
-    width: fit-content;
-    font-size: 1rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-  }
-
-  .bev-section-title {
-    text-align: left;
-    background: none;
-    color: var(--pr-gray-900);
-    padding: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    width: fit-content;
-  }
-
-  .bev-authors-grid {
-    opacity: 1;
-    transform: none;
-  }
-
   .bev-section-line {
     width: min(100%, 800px);
-    border-top: 3px dotted var(--pr-gray-1200);
-    margin: 1rem 0 2.5rem 0;
   }
 
   @media (max-width: 576px) {

@@ -13,28 +13,49 @@
 
 .bev-section-tag-light {
   display: block;
+  font-family: var(--font-body);
   font-size: 1.35rem;
   letter-spacing: 0.5em;
   text-transform: uppercase;
-  color: var(--pr-gray-1200);
+  color: var(--pr-white);
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
+.bev-section-tag-left {
+  text-align: left;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  width: fit-content;
+}
+
 .bev-section-title {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 4rem;
-  color: var(--pr-gray-1200);
+  color: var(--pr-white);
   font-weight: 700;
   line-height: 1.1;
 }
 
-.bev-section-dark {
-  background-color: var(--pr-gray-400);
+.bev-section-title-left {
+  text-align: left;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  width: fit-content;
 }
 
-.bev-section-light {
-  background-color: var(--pr-gray-50);
+.bev-section-dark {
+  background-color: var(--pr-gray-400);
+  color: var(--pr-gray-900);
+}
+
+.bev-section-line {
+  width: min(100%, 900px);
+  border-top: 3px dotted var(--pr-gray-1200);
+  margin: 1rem 0 2.5rem 0;
 }
 
 /* Linea decorativa */
@@ -105,19 +126,6 @@
   background: var(--pr-gray-900);
   color: var(--pr-white);
 }
-
-/* Carrusel hero */
-.bev-hero-badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: 0.75rem;
-  border-radius: 2px;
-}
-
 
 .bev-container {
   width: 100%;
