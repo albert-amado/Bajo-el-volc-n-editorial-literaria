@@ -33,7 +33,14 @@ const slides = libros.slice(0, 9);
             <div
               class={`carousel-item bev-slide ${i === 0 ? "active" : ""}`}
               style={`background-image: url('${libro.imagen_hero || libro.imagen}');`}
-            />
+            >
+              <div class="bev-slide__overlay"></div>
+              {
+                libro.frase && (
+                  <p class="bev-slide__phrase">{libro.frase}</p>
+                )
+              }
+            </div>
           ))
         }
       </div>
@@ -77,6 +84,36 @@ const slides = libros.slice(0, 9);
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--pr-white);
+  }
+
+  .bev-slide__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.48) 0%,
+      rgba(0, 0, 0, 0.36) 40%,
+      rgba(0, 0, 0, 0.52) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .bev-slide__phrase {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(86%, 980px);
+    margin: 0;
+    z-index: 2;
+    text-align: center;
+    font-style: italic;
+    color: var(--pr-whuite, var(--pr-white));
+    font-size: clamp(0.95rem, 1.6vw, 1.5rem);
+    line-height: 1.45;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    padding: 0 0.5rem;
   }
 
   /* Flechas */
@@ -153,9 +190,20 @@ const slides = libros.slice(0, 9);
 
   @media (max-width: 768px) {
     .bev-slide {
-      height: clamp(120px, 28vw, 170px);
-      min-height: 120px;
+      height: clamp(180px, 38vw, 260px);
+      min-height: 180px;
       background-position: center center;
+    }
+
+    .bev-slide__phrase {
+      width: min(90%, 760px);
+      font-size: clamp(0.78rem, 2.6vw, 1.02rem);
+      line-height: 1.36;
+      -webkit-line-clamp: 4;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .bev-carousel-custom .carousel-control-prev,
@@ -181,8 +229,16 @@ const slides = libros.slice(0, 9);
 
   @media (max-width: 480px) {
     .bev-slide {
-      height: clamp(110px, 34vw, 150px);
-      min-height: 110px;
+      height: clamp(210px, 58vw, 300px);
+      min-height: 210px;
+    }
+
+    .bev-slide__phrase {
+      width: 88%;
+      top: 46%;
+      font-size: clamp(0.74rem, 3.5vw, 0.92rem);
+      line-height: 1.33;
+      -webkit-line-clamp: 5;
     }
 
     .bev-carousel-custom .carousel-control-prev,
@@ -216,6 +272,21 @@ const slides = libros.slice(0, 9);
 
     .bev-carousel-custom .carousel-indicators {
       margin-bottom: 0.5rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .bev-slide {
+      height: clamp(200px, 62vw, 250px);
+      min-height: 200px;
+    }
+
+    .bev-slide__phrase {
+      width: 90%;
+      top: 45%;
+      font-size: clamp(0.68rem, 3.8vw, 0.84rem);
+      line-height: 1.3;
+      -webkit-line-clamp: 5;
     }
   }
 
