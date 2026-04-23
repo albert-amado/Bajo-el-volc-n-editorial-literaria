@@ -4,7 +4,7 @@
     "titulo": "Premio Nacional de Novela 2027",
     "resumen": "«¡Convocatoria al Primer Premio Nacional de Novela: Bajo el Volcán Ediciones! Se recibirán postulaciones a partir del día 8 de abril de 2026 hasta el 31 de octubre de 2026.»",
     "contenido": "La premiacion sera el dia sabado: 10/04/2027",
-    "imagen": "/assets/img/carrusels/premionacional.webp",
+    "imagen": "/assets/img/noticias/premio.webp",
     "fecha": "8/04/2026",
     "categoria": "evento",
     "slug": "premio-nacional-de-novela-2027",
@@ -28,6 +28,16 @@
     "imagen": "/assets/img/Libros/Dondehabitaelolvido.webp",
     "fecha": "Pronto",
     "categoria": "Proximas Publicaciones",
+    "slug": "donde-habita-el-olvido-ruben-dario-higuera"
+  },
+  {
+    "id": 4,
+    "titulo": "Presentación de libros con autores.",
+    "resumen": "Presentación con Juana Carolina, Natalia Álvarez y Rubén Darío Higuera, autores",
+    "contenido": "Proximas Publicaciones",
+    "imagen": "/assets/img/noticias/presentacionlibros.webp",
+    "fecha": "Jueves, 30 de abril de 2026.",
+    "categoria": "Presentaciones",
     "slug": "donde-habita-el-olvido-ruben-dario-higuera"
   }
 ]

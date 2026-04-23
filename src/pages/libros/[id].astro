@@ -44,13 +44,12 @@ const separadorTexto = libro.separador || "";
 
       <div class="bev-book-detail-shell">
         <div class="bev-book-detail-left">
-          <div class="bev-book-detail-cover">
-            <img
-              src={libro.imagen.startsWith("/") ? libro.imagen : `/${libro.imagen}`}
-              alt={libro.titulo}
-              loading="eager"
-            />
-          </div>
+          <img
+            src={libro.imagen.startsWith("/") ? libro.imagen : `/${libro.imagen}`}
+            alt={libro.titulo}
+            loading="eager"
+            class="bev-book-detail-image"
+          />
 
           <section class="bev-detail-block bev-detail-block--under-cover">
             <p class="bev-detail-label mb-2">Ficha técnica</p>
@@ -259,26 +258,16 @@ const separadorTexto = libro.separador || "";
     align-self: start;
   }
 
-  .bev-book-detail-cover {
-    background-image: var(--site-bg-image);
-    background-repeat: var(--site-bg-repeat);
-    background-size: var(--site-bg-size);
-    background-position: var(--site-bg-position);
-    background-color: var(--site-bg-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.2rem;
-  }
-
-  .bev-book-detail-cover img {
+  .bev-book-detail-image {
     width: 100%;
     height: auto;
     max-height: 720px;
     object-fit: contain;
     display: block;
-    border-radius: 12px;
-    box-shadow: var(--shadow-lg-soft);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
   }
 
   .bev-detail-block--under-cover {
@@ -447,10 +436,6 @@ const separadorTexto = libro.separador || "";
 
     .bev-book-detail-left {
       position: static;
-    }
-
-    .bev-book-detail-cover {
-      padding: 1rem;
     }
   }
 

@@ -48,7 +48,8 @@
 }
 
 .bev-section-dark {
-  background-color: var(--pr-gray-400);
+  background-image: none;
+  background-color: var(--pr-white);
   color: var(--pr-gray-900);
 }
 

@@ -5,7 +5,7 @@ import LibrosContactForm from "../libros/LibrosContactForm.astro";
 import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
 ---
 
-<section class="py-5">
+<section class="py-5 libros-seccion">
   <div class="bev-container">
     <div class="mb-5">
       <span class="bev-section-tag-light bev-section-tag-left libros-seccion__tag">
@@ -107,12 +107,16 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
 </script>
 
 <style>
+  .libros-seccion {
+    background-color: var(--pr-white);
+  }
+
   .libros-seccion__tag {
     font-family: var(--font-body);
     font-size: 1rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--pr-white);
+    color: var(--pr-gray-900);
     margin-bottom: 1rem;
   }
 
@@ -120,7 +124,7 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
     font-family: var(--font-body);
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 400;
-    color: var(--pr-white);
+    color: var(--pr-gray-900);
   }
 
   .bev-section-line {

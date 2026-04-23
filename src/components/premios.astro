@@ -8,7 +8,7 @@
 
     <div class="bev-promo-img-wrapper">
       <img
-        src="/assets/img/carrusels/premionacional.webp"
+        src="/assets/img/noticias/premio.webp"
         alt="Premio Nacional de Novela"
         class="bev-promo-img"
         loading="lazy"
@@ -38,6 +38,10 @@
 
 <style>
   .bev-premios {
+    background-image: var(--site-bg-image);
+    background-repeat: var(--site-bg-repeat);
+    background-size: var(--site-bg-size);
+    background-position: var(--site-bg-position);
     background-color: var(--pr-white);
     border-bottom: 1px solid var(--pr-glass-light-25);
     padding: 5rem 0 3rem;
@@ -72,20 +76,24 @@
 
   .bev-btn-premio-wrap {
     position: absolute;
-    bottom: 5%;
-    left: 20px;
+    bottom: 1.1rem;
+    left: 1rem;
   }
 
   .bev-btn-premio {
     background-color: var(--pr-gray-1400);
     color: var(--pr-white);
     border: 2px solid var(--pr-glass-light-70);
-    padding: 0.9rem 2.5rem;
-    font-size: clamp(0.9rem, 1.5vw, 1.15rem);
-    letter-spacing: 0.2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 0.62rem 1.25rem;
+    font-size: clamp(0.8rem, 1.1vw, 0.98rem);
+    letter-spacing: 0.11em;
     text-transform: uppercase;
     font-weight: 700;
-    border-radius: 4px;
+    border-radius: 999px;
     backdrop-filter: blur(6px);
     white-space: nowrap;
     transition: all 0.3s ease;
@@ -141,8 +149,9 @@
     }
 
     .bev-btn-premio {
-      padding: 0.65rem 1.5rem;
-      font-size: 0.85rem;
+      padding: 0.56rem 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.09em;
     }
 
     .bev-promo-contact {

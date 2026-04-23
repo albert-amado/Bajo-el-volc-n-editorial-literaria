@@ -1,7 +1,9 @@
 ---
 import libros from "../data/libros.json";
 
-const slides = libros.slice(0, 9);
+const slides = libros.filter(
+  (libro) => typeof libro.imagen_hero === "string" && libro.imagen_hero.trim() !== ""
+);
 ---
 
 <section class="pt-0 pb-4">
@@ -32,14 +34,13 @@ const slides = libros.slice(0, 9);
           slides.map((libro, i) => (
             <div
               class={`carousel-item bev-slide ${i === 0 ? "active" : ""}`}
-              style={`background-image: url('${libro.imagen_hero || libro.imagen}');`}
             >
-              <div class="bev-slide__overlay"></div>
-              {
-                libro.frase && (
-                  <p class="bev-slide__phrase">{libro.frase}</p>
-                )
-              }
+              <img
+                src={libro.imagen_hero}
+                alt={`Portada hero de ${libro.titulo}`}
+                class="bev-slide-image"
+                loading={i === 0 ? "eager" : "lazy"}
+              />
             </div>
           ))
         }
@@ -80,10 +81,21 @@ const slides = libros.slice(0, 9);
     height: clamp(280px, 32vw, 500px);
     min-height: 280px;
     position: relative;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
     background-color: var(--pr-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel-item.bev-slide.active {
+    background-color: var(--pr-white);
+  }
+
+  .bev-slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
   }
 
   .bev-slide__overlay {
@@ -92,7 +104,6 @@ const slides = libros.slice(0, 9);
     background: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.48) 0%,
-      rgba(0, 0, 0, 0.36) 40%,
       rgba(0, 0, 0, 0.52) 100%
     );
     z-index: 1;
@@ -192,7 +203,6 @@ const slides = libros.slice(0, 9);
     .bev-slide {
       height: clamp(180px, 38vw, 260px);
       min-height: 180px;
-      background-position: center center;
     }
 
     .bev-slide__phrase {

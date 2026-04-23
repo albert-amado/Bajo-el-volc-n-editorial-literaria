@@ -39,11 +39,11 @@
     font-size: 1.2rem;
     font-weight: 900;
     letter-spacing: 0.4em;
-    color: var(--pr-white);
+    color: var(--pr-gray-900);
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid var(--pr-gray-200);
   }
 
   .bev-categorias-lista {
@@ -58,7 +58,7 @@
   .bev-categoria-item {
     font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--pr-white);
+    color: var(--pr-gray-900);
     background: transparent;
     padding: 0.45rem 0;
     border-radius: 0;
@@ -70,12 +70,13 @@
   }
 
   .bev-categoria-item:hover {
-    color: var(--pr-gray-200);
+    color: var(--pr-gray-900);
+    opacity: 0.75;
   }
 
   .bev-categoria-item.activo {
     background: transparent;
-    color: var(--pr-white);
+    color: var(--pr-gray-900);
     font-weight: 700;
     border: none;
   }
