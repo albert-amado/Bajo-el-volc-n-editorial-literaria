@@ -1,0 +1,411 @@
+﻿{
+    "generatedAt":  "2026-04-23T02:04:42.6874289-05:00",
+    "scope":  {
+                  "astroFiles":  22,
+                  "cssFiles":  3,
+                  "totalFiles":  25
+              },
+    "totals":  {
+                   "findings":  47,
+                   "unusedStyleClasses":  23,
+                   "unusedCssVariables":  21,
+                   "unusedAstroImports":  0,
+                   "suspiciousCssFragments":  3
+               },
+    "countsByType":  [
+                         {
+                             "type":  "unused_style_class_in_astro",
+                             "count":  23
+                         },
+                         {
+                             "type":  "unused_css_variable",
+                             "count":  21
+                         },
+                         {
+                             "type":  "suspicious_css_important",
+                             "count":  2
+                         },
+                         {
+                             "type":  "suspicious_css_high_zindex",
+                             "count":  1
+                         }
+                     ],
+    "findings":  [
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibroCard.astro",
+                         "symbol":  ".libro-card__etiqueta--nuevo",
+                         "line":  149,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibroCard.astro",
+                         "symbol":  ".libro-card__etiqueta--destacado",
+                         "line":  151,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibroCard.astro",
+                         "symbol":  ".libro-card__etiqueta--preventa",
+                         "line":  152,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibroCard.astro",
+                         "symbol":  ".libro-card__etiqueta--descuento",
+                         "line":  153,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibrosContactForm.astro",
+                         "symbol":  ".bev-feedback-ok",
+                         "line":  105,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibrosContactForm.astro",
+                         "symbol":  ".bev-feedback-error",
+                         "line":  111,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibrosGrid.astro",
+                         "symbol":  ".libro-card",
+                         "line":  64,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibrosNoticiasLateral.astro",
+                         "symbol":  ".bev-cat-evento",
+                         "line":  111,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibrosNoticiasLateral.astro",
+                         "symbol":  ".bev-cat-lanzamiento",
+                         "line":  113,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibrosNoticiasLateral.astro",
+                         "symbol":  ".bev-cat-convocatoria",
+                         "line":  114,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibrosNoticiasLateral.astro",
+                         "symbol":  ".bev-cat-entrevista",
+                         "line":  115,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\LibrosNoticiasLateral.astro",
+                         "symbol":  ".bev-cat-premio",
+                         "line":  116,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\components\\libros\\librosSeccion.astro",
+                         "symbol":  ".libros-sidebar-left",
+                         "line":  139,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\noticias.astro",
+                         "symbol":  ".bev-cat-evento",
+                         "line":  194,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\noticias.astro",
+                         "symbol":  ".bev-cat-lanzamiento",
+                         "line":  199,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\noticias.astro",
+                         "symbol":  ".bev-cat-convocatoria",
+                         "line":  203,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\noticias.astro",
+                         "symbol":  ".bev-cat-entrevista",
+                         "line":  207,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\noticias.astro",
+                         "symbol":  ".bev-cat-premio",
+                         "line":  211,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\noticias\\[slug].astro",
+                         "symbol":  ".bev-cat-evento",
+                         "line":  116,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\noticias\\[slug].astro",
+                         "symbol":  ".bev-cat-lanzamiento",
+                         "line":  121,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\noticias\\[slug].astro",
+                         "symbol":  ".bev-cat-convocatoria",
+                         "line":  126,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\noticias\\[slug].astro",
+                         "symbol":  ".bev-cat-entrevista",
+                         "line":  131,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_style_class_in_astro",
+                         "severity":  "high",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\noticias\\[slug].astro",
+                         "symbol":  ".bev-cat-premio",
+                         "line":  136,
+                         "detail":  "Clase declarada en \u003cstyle\u003e sin referencia en markup del mismo archivo."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--pr-glass-light",
+                         "line":  17,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--pr-glass-light-05",
+                         "line":  18,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--pr-glass-light-10",
+                         "line":  20,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--pr-glass-light-30",
+                         "line":  22,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--pr-glass-dark-10",
+                         "line":  25,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--pr-glass-dark-40",
+                         "line":  29,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--pr-glass-dark-60",
+                         "line":  30,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--bg-main",
+                         "line":  45,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--bg-subtle",
+                         "line":  46,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--bg-surface",
+                         "line":  47,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--text-secondary",
+                         "line":  50,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--text-bold",
+                         "line":  51,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--border-light",
+                         "line":  53,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--border-strong",
+                         "line":  54,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--action-hover",
+                         "line":  56,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--shadow-sm",
+                         "line":  58,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--shadow-lg-soft",
+                         "line":  60,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--navbar-bg",
+                         "line":  72,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--navbar-text-muted",
+                         "line":  74,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--navbar-border",
+                         "line":  76,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "unused_css_variable",
+                         "severity":  "high",
+                         "file":  "public/styles/css/var.css",
+                         "symbol":  "--content-max-width",
+                         "line":  79,
+                         "detail":  "Variable CSS declarada pero no utilizada con var(--...)."
+                     },
+                     {
+                         "type":  "suspicious_css_high_zindex",
+                         "severity":  "medium",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\public\\styles\\css\\components.css",
+                         "symbol":  "z-index:9999",
+                         "line":  143,
+                         "detail":  "z-index alto; revisar colisiones de capas."
+                     },
+                     {
+                         "type":  "suspicious_css_important",
+                         "severity":  "low",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\contacto.astro",
+                         "symbol":  "!important",
+                         "line":  127,
+                         "detail":  "Uso de !important; posible sobreescritura difícil de mantener."
+                     },
+                     {
+                         "type":  "suspicious_css_important",
+                         "severity":  "low",
+                         "file":  "C:\\Users\\amado\\Documents\\Bajo el volcan Boostrap 1.0\\src\\pages\\nosotros.astro",
+                         "symbol":  "!important",
+                         "line":  163,
+                         "detail":  "Uso de !important; posible sobreescritura difícil de mantener."
+                     }
+                 ]
+}

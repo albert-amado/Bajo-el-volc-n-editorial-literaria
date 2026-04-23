@@ -2,14 +2,12 @@
 interface Props {
   id: number;
   titulo: string;
-  autor: string;
-  genero: string;
   precio: number;
   imagen: string;
   etiqueta?: string;
 }
 
-const { id, titulo, autor, genero, precio, imagen, etiqueta } = Astro.props;
+const { id, titulo, precio, imagen, etiqueta } = Astro.props;
 
 const etiquetasMap: Record<string, string> = {
   nuevo: "Nuevo",

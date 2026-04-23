@@ -14,20 +14,13 @@
   --pr-black-1100: #111111;
 
   --pr-glass-dark:   rgba(0, 0, 0, 0.05);
-  --pr-glass-light:  rgba(255, 255, 255, 0.8);
-  --pr-glass-light-05: rgba(255, 255, 255, 0.05);
   --pr-glass-light-08: rgba(255, 255, 255, 0.08);
-  --pr-glass-light-10: rgba(255, 255, 255, 0.1);
   --pr-glass-light-70: rgba(255, 255, 255, 0.7);
-  --pr-glass-light-30: rgba(255, 255, 255, 0.3);
   --pr-glass-light-25: rgba(255, 255, 255, 0.25);
   --pr-glass-dark-08: rgba(0, 0, 0, 0.08);
-  --pr-glass-dark-10: rgba(0, 0, 0, 0.1);
   --pr-glass-dark-12: rgba(0, 0, 0, 0.12);
   --pr-glass-dark-15: rgba(0, 0, 0, 0.15);
   --pr-glass-dark-28: rgba(0, 0, 0, 0.28);
-  --pr-glass-dark-40: rgba(0, 0, 0, 0.4);
-  --pr-glass-dark-60: rgba(0, 0, 0, 0.6);
   --pr-glass-dark-90: rgba(0, 0, 0, 0.9);
   --pr-glass-panel: rgba(255, 255, 255, 0.78);
 
@@ -42,20 +35,7 @@
   --wa-green-shadow: rgba(37, 211, 102, 0.4);
   --discount-green: #27ae60;
 
-  --bg-main:          var(--pr-white);
-  --bg-subtle:        var(--pr-gray-50);
-  --bg-surface:       var(--pr-gray-100);
-
   --text-primary:     var(--pr-gray-700);
-  --text-secondary:   var(--pr-gray-900);
-  --text-bold:        var(--pr-gray-900);
-
-  --border-light:     var(--pr-gray-100);
-  --border-strong:    var(--pr-gray-200);
-
-  --action-hover:     var(--pr-gray-900);
-
-  --shadow-sm:        0 1px 2px rgba(0,0,0,0.05);
   --shadow-md:        0 4px 6px -1px rgba(0,0,0,0.1);
   --shadow-lg-soft:   0 10px 24px rgba(0, 0, 0, 0.12);
   --shadow-xl-soft:   0 18px 40px rgba(0, 0, 0, 0.08);
@@ -69,26 +49,14 @@
   --topbar-hover:     var(--pr-white);
   --topbar-border:    var(--pr-gray-700);
 
-  --navbar-bg:          transparent;
   --navbar-text:        var(--pr-gray-900);
-  --navbar-text-muted:  var(--pr-gray-700);
   --navbar-accent:      var(--pr-gray-900);
-  --navbar-border:      rgba(255, 255, 255, 0.08);
   --navbar-logo-glow:   rgba(255,255,255,0.3);
 
-  --content-max-width:      1400px;
   --site-bg-image:          url("/assets/img/fondos/patron.png");
   --site-bg-repeat:         repeat;
   --site-bg-size:           950px;
   --site-bg-position:       top left;
-  --site-bg-color:          #f5f5f5;
-  --carousel-bg:            var(--pr-gray-1000);
-  --carousel-overlay-start: rgba(0,0,0,0.85);
-  --carousel-overlay-mid:   rgba(0,0,0,0.5);
-  --carousel-overlay-end:   rgba(0,0,0,0.1);
-  --carousel-text:          var(--pr-white);
-  --carousel-text-muted:    var(--pr-gray-200);
-  --carousel-accent:        var(--pr-white);
 
   --font-display:           "Playfair Display", serif;
   --font-body:              "Lato", sans-serif;

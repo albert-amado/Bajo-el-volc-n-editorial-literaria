@@ -138,12 +138,6 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
     align-items: start;
   }
 
-  .libros-sidebar-left {
-    justify-self: start;
-    width: 100%;
-    margin-left: -1.5rem;
-  }
-
   .libros-sidebar-right {
     position: sticky;
     top: 5rem;
@@ -158,9 +152,7 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
       grid-template-columns: minmax(0, 150px) minmax(0, 1fr) minmax(0, 220px);
     }
 
-    .libros-sidebar-left,
     .libros-sidebar-right {
-      margin-left: 0;
       margin-right: 0;
     }
   }
@@ -176,9 +168,6 @@ import LibrosNoticiasLateral from "../libros/LibrosNoticiasLateral.astro";
       margin-right: 0;
     }
 
-    .libros-sidebar-left {
-      margin-left: 0;
-    }
   }
 
   @media (max-width: 576px) {
