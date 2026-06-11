@@ -32,15 +32,28 @@ const slides = libros.filter(
       <div class="carousel-inner">
         {
           slides.map((libro, i) => (
-            <div
-              class={`carousel-item bev-slide ${i === 0 ? "active" : ""}`}
-            >
+            <div class={`carousel-item bev-slide ${i === 0 ? "active" : ""}`}>
               <img
-                src={libro.imagen_hero}
-                alt={`Portada hero de ${libro.titulo}`}
-                class="bev-slide-image"
+                src={libro.imagen_hero || libro.imagen}
+                alt={libro.titulo}
+                class="bev-slide-bg"
                 loading={i === 0 ? "eager" : "lazy"}
+                fetchpriority={i === 0 ? "high" : "auto"}
+                decoding={i === 0 ? "sync" : "async"}
               />
+              <div class="bev-slide-overlay" />
+              <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center">
+                  <div class="col-11 col-lg-10 bev-slide-content text-center mx-auto">
+                    {libro.etiqueta === "nuevo" && (
+                      <span class="bev-hero-badge bev-etiqueta-nuevo">Nuevo</span>
+                    )}
+                    {libro.etiqueta === "preventa" && (
+                      <span class="bev-hero-badge bev-etiqueta-preventa">Próximo lanzamiento</span>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           ))
         }
@@ -91,11 +104,24 @@ const slides = libros.filter(
     background-color: var(--pr-white);
   }
 
-  .bev-slide-image {
+  .bev-slide-bg {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    display: block;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+
+  .bev-slide-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .bev-slide-content {
+    z-index: 2;
   }
 
   /* Flechas */
