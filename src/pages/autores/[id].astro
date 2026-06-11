@@ -24,7 +24,12 @@ const getInitials = (nombre: string) => {
 };
 ---
 
-<Layout title={`${autor.nombre} - Bajo el Volcán`}>
+<Layout
+  title={autor.nombre}
+  description={`${autor.bio?.substring(0, 150)}...`}
+  image={autor.foto?.startsWith("/") ? autor.foto : `/${autor.foto}`}
+  type="profile"
+>
   <main class="bev-author-profile mt-5 pt-5">
     <div class="container">
       <div class="mb-4">

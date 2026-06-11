@@ -7,34 +7,79 @@ import "aos/dist/aos.css";
 import librosData from "../data/libros.json";
 import autoresData from "../data/autores.json";
 
-const { title = "Bajo el Volcán Editorial Literaria" } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article" | "book" | "profile";
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "Bajo el Volcán Editorial Literaria",
+  description = "Editorial literaria independiente. Descubre nuestro catálogo de novelas, cuentos y poesía. Autores colombianos y latinoamericanos.",
+  image = "/assets/img/ui/logo.webp",
+  type = "website",
+  canonical,
+  noindex = false,
+}: Props = Astro.props;
+
+const siteUrl = "https://bajoelvolcanediciones.com";
+const canonicalUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
+const ogImage = image.startsWith("http") ? image : `${siteUrl}${image}`;
+const pageTitle =
+  title === "Bajo el Volcán Editorial Literaria"
+    ? title
+    : `${title} | Bajo el Volcán`;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
-    <link rel="icon" type="image/png" href="/assets/img/ui/favicon.png" />
-
-    <link rel="apple-touch-icon" href="/assets/img/ui/favicon.png" />
-
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/img/ui/favicon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/img/ui/favicon.png"
-    />
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
+
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="author" content="Bajo el Volcán Editorial Literaria" />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={pageTitle} />
+    <meta property="og:site_name" content="Bajo el Volcán Editorial Literaria" />
+    <meta property="og:locale" content="es_CO" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/webp" href="/assets/img/ui/logo.webp" />
+    <link rel="apple-touch-icon" href="/assets/img/ui/logo.webp" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Bajo el Volcán Editorial Literaria",
+        "url": "https://bajoelvolcanediciones.com",
+        "logo": "https://bajoelvolcanediciones.com/assets/img/ui/logo.webp",
+        "description": "Editorial literaria independiente especializada en narrativa colombiana y latinoamericana.",
+        "sameAs": []
+      }
+    </script>
 
     <ClientRouter />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
     <link rel="stylesheet" href="/styles/css/var.css" />
     <link rel="stylesheet" href="/styles/css/body.css" />
