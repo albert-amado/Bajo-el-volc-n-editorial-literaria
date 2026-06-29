@@ -1,0 +1,76 @@
+---
+import autores from '../../data/autores.json';
+
+interface GaleriaItem {
+  src: string;
+  titulo: string;
+  autorId: number;
+  libro?: string;
+}
+
+interface Props {
+  galeria: GaleriaItem[];
+}
+
+const { galeria = [] } = Astro.props;
+
+// Agrupar de 3 en 3
+const grupos = [];
+for (let i = 0; i < galeria.length; i += 3) {
+  grupos.push(galeria.slice(i, i + 3));
+}
+---
+
+{
+  galeria.length > 0 && (
+    <section class="bev-noticia-galeria my-5">
+      <h2 class="h3 mb-4">Galería del evento</h2>
+      
+      {grupos.map((grupo, grupoIndex) => {
+        const primerItem = grupo[0];
+        const autor = autores.find(a => a.id === primerItem.autorId);
+        
+        return (
+          <div class="mb-5">
+            <!-- Título del grupo -->
+            <div class="mb-3">
+              <h5 class="text-dark mb-1">{primerItem.titulo}</h5>
+              
+              {primerItem.libro && (
+                <p class="text-muted mb-1 small">
+                  <strong>Libro:</strong> {primerItem.libro}
+                </p>
+              )}
+              
+              {autor && (
+                <a 
+                  href={`/autores/${autor.id}`}
+                  class="text-danger fw-bold text-decoration-none"
+                >
+                  {autor.nombre}
+                </a>
+              )}
+            </div>
+
+            <!-- Fila de imágenes (3 columnas) -->
+            <div class="row g-3">
+              {grupo.map((item, index) => (
+                <div class="col-12 col-md-4">
+                  <a href={item.src} data-lightbox="evento-galeria" class="d-block rounded overflow-hidden shadow-sm">
+                    <img 
+                      src={item.src} 
+                      alt={item.titulo}
+                      class="w-100"
+                      style="height: 240px; object-fit: cover;"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </section>
+  )
+}

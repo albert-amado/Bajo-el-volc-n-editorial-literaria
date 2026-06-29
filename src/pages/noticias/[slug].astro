@@ -6,6 +6,9 @@ import {
   noticiasPreparadas,
 } from "../../utils/noticias.js";
 
+import NoticiaGallery from "../../components/noticias/NoticiaGallery.astro";
+import NoticiaParticipantes from "../../components/noticias/NoticiaParticipantes.astro";
+
 export async function getStaticPaths() {
   return noticiasPreparadas.map((noticia) => ({
     params: { slug: noticia.slug },
@@ -45,9 +48,16 @@ const { noticia } = Astro.props;
         }
 
         <p class="lead">{noticia.resumen}</p>
+        
         <div class="bev-noticia-contenido mt-3">
           <p>{noticia.contenido}</p>
         </div>
+
+        <!-- Galería del evento -->
+        <NoticiaGallery galeria={noticia.galeria || []} />
+
+        <!-- Participantes -->
+        <NoticiaParticipantes />
 
         {
           noticia.enlacePdf && (
@@ -113,31 +123,6 @@ const { noticia } = Astro.props;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-  }
-
-  .bev-cat-evento {
-    background-color: var(--pr-gray-400);
-    color: var(--pr-gray-900);
-  }
-
-  .bev-cat-lanzamiento {
-    background-color: var(--pr-gray-900);
-    color: var(--pr-white);
-  }
-
-  .bev-cat-convocatoria {
-    background-color: var(--pr-gray-100);
-    color: var(--pr-gray-900);
-  }
-
-  .bev-cat-entrevista {
-    background-color: var(--pr-gray-700);
-    color: var(--pr-white);
-  }
-
-  .bev-cat-premio {
-    background-color: var(--pr-gray-200);
-    color: var(--pr-gray-900);
   }
 
   .bev-noticia-fecha {

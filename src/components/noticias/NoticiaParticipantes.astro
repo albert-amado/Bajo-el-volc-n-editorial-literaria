@@ -1,0 +1,25 @@
+---
+interface Props {
+  autores?: string[]; // Por ahora lo dejamos flexible
+}
+
+const { autores = ["Juana Carolina", "Natalia Álvarez Arenas", "Rubén Darío Higuera"] } = Astro.props;
+---
+
+<section class="bev-noticia-participantes my-5">
+  <h2 class="h3 mb-4 text-center">Participantes</h2>
+  <div class="row justify-content-center g-4">
+    {autores.map((autor, i) => (
+      <div class="col-6 col-md-4 text-center">
+        <div class="mx-auto mb-3" style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 3px solid #f1f1f1;">
+          <img 
+            src={`/assets/img/autores/${['Juanacarolina', 'Nataliaalvarezarenas', 'Rubendariohiguera'][i] || 'default'}.webp`} 
+            alt={autor}
+            class="w-100 h-100 object-fit-cover"
+          />
+        </div>
+        <h5 class="mb-0">{autor}</h5>
+      </div>
+    ))}
+  </div>
+</section>
