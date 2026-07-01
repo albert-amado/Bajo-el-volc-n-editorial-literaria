@@ -12,5 +12,12 @@
     "cargo": "Diseñador y diagramador",
     "foto": "/assets/img/team/diseñador.webp",
     "bio": "Además del diseño y la invención es un lector asiduo. Al igual que Roberto Arlt, siempre anda inventando objetos y proyectos quijotescos como una fábrica de ron de miel o una vega de tabaco en su propia casa. Es fumador de puros y degustador de rones."
+  },
+   {
+    "id": 3,
+    "nombre": "Laura Flórez",
+    "cargo": "Editora",
+    "foto": "/assets/img/team/editora.webp",
+    "bio": "Heredó de su abuelo el amor por los libros y, con los años, convirtió ese legado en una profunda pasión por la literatura, la historia y el arte. El teatro y la música alimentan constantemente su imaginación, mientras que la creación de curiosos muñecos de fieltro le permite dar vida a pequeños universos hechos a mano. Encuentra en la literatura escrita por mujeres un lugar al que siempre vuelve, atraída por los personajes complejos y las memorias que resisten el olvido. Cree que toda historia merece ser contada, especialmente aquellas que el tiempo ha intentado borrar."
   }
 ]
